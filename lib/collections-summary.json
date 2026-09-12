@@ -1,0 +1,7159 @@
+[
+  {
+    "id": "collection-ERFS5GWK",
+    "title": "Services de streaming",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 22,
+    "sourcesCount": 743,
+    "folders": [
+      {
+        "id": "folder-WFGY1XPD",
+        "title": "Netflix",
+        "sourcesCount": 51,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "cf7a3d79-0cc9-42c5-b460-d2e3b838ecfc",
+        "title": "Crunchyroll",
+        "sourcesCount": 20,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-AT8KYHZO",
+        "title": "Prime Video",
+        "sourcesCount": 50,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-8ZBZOMW9",
+        "title": "Disney+",
+        "sourcesCount": 48,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-OA4T8NYO",
+        "title": "HBO Max",
+        "sourcesCount": 49,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-IQTF27K8",
+        "title": "Apple TV+",
+        "sourcesCount": 44,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ILJM8PD0",
+        "title": "Paramount+",
+        "sourcesCount": 48,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-LN9SPMQN",
+        "title": "Hulu",
+        "sourcesCount": 50,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-9YQK1ZF1",
+        "title": "Peacock",
+        "sourcesCount": 45,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-9B3VK7AU",
+        "title": "Starz",
+        "sourcesCount": 44,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-526STREAM",
+        "title": "AMC+",
+        "sourcesCount": 47,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-CRV8230X",
+        "title": "Crave",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "a7576199-c7b2-4c40-895c-b9aaaae655ab",
+        "title": "Criterion",
+        "sourcesCount": 23,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "7c17bdd2-83d8-4ae9-9323-f25fd94c08de",
+        "title": "Curiosity Stream",
+        "sourcesCount": 12,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-5H64D1DG",
+        "title": "Discovery+",
+        "sourcesCount": 15,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-HYU80029",
+        "title": "Hayu",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Nouvelles séries",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-MGL80551",
+        "title": "Magellan",
+        "sourcesCount": 4,
+        "sourcesPreview": [
+          "Documentaires populaires",
+          "Docuseries",
+          "Nouveaux documentaires"
+        ]
+      },
+      {
+        "id": "folder-6S0KR2JH",
+        "title": "MGM+",
+        "sourcesCount": 44,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "1f10af82-da2e-446d-8cac-0658bf587667",
+        "title": "Mubi",
+        "sourcesCount": 23,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-300STREAM",
+        "title": "Pluto TV",
+        "sourcesCount": 49,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-OKRSGYYC",
+        "title": "Shudder",
+        "sourcesCount": 18,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-73STREAM",
+        "title": "Tubi TV",
+        "sourcesCount": 50,
+        "sourcesPreview": [
+          "Top 10 des films",
+          "Top 10 des séries",
+          "Nouveaux films"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-SPOTLIGHTS",
+    "title": "En vedette",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 8,
+    "sourcesCount": 8,
+    "folders": [
+      {
+        "id": "folder-SPOTHEAD",
+        "title": "À la une",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La vedette : Pedro Pascal"
+        ]
+      },
+      {
+        "id": "folder-SPOTVISI",
+        "title": "Le Visionnaire",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Le visionnaire : Denis Villeneuve"
+        ]
+      },
+      {
+        "id": "folder-SPOTPOWE",
+        "title": "La Force",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Le titan : A24"
+        ]
+      },
+      {
+        "id": "folder-SPOTSAGA",
+        "title": "La Saga",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Saga : Collection Alien"
+        ]
+      },
+      {
+        "id": "folder-SPOTPULS",
+        "title": "Le pouls culturel",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Le pouls culturel : Blockbusters de l'été"
+        ]
+      },
+      {
+        "id": "folder-SPOTPRES",
+        "title": "Le favori Le Prestige",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Les chouchous de The Prestige : Cinéma prestige"
+        ]
+      },
+      {
+        "id": "folder-SPOTLEGE",
+        "title": "La légende vivante",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La légende vivante : Denzel Washington"
+        ]
+      },
+      {
+        "id": "folder-SPOTRETR",
+        "title": "Rétro Rembobinage",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Rétro Rembobinage : Nostalgie SF des années 80"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-UGED6TEZ",
+    "title": "Découvrir",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 7,
+    "sourcesCount": 121,
+    "folders": [
+      {
+        "id": "folder-25429024",
+        "title": "Pour vous",
+        "sourcesCount": 13,
+        "sourcesPreview": [
+          "Films recommandés",
+          "Séries recommandées",
+          "Prochains épisodes"
+        ]
+      },
+      {
+        "id": "folder-9D1C5A0D",
+        "title": "Nouveaux films",
+        "sourcesCount": 19,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouveaux films d'action",
+          "Nouveaux films d'aventure"
+        ]
+      },
+      {
+        "id": "folder-F5BC0453",
+        "title": "Nouvelles séries",
+        "sourcesCount": 17,
+        "sourcesPreview": [
+          "Nouvelles séries",
+          "Nouvelles séries d'action et d'aventure",
+          "Nouvelles séries d'animation"
+        ]
+      },
+      {
+        "id": "folder-c2fa6b78",
+        "title": "Films tendances",
+        "sourcesCount": 19,
+        "sourcesPreview": [
+          "Films tendances",
+          "Films d'action tendances",
+          "Films d'aventure tendance"
+        ]
+      },
+      {
+        "id": "folder-4a9b21f7",
+        "title": "Séries tendance",
+        "sourcesCount": 17,
+        "sourcesPreview": [
+          "Séries tendance",
+          "Séries d'action et d'aventure tendances",
+          "Séries d'animation tendance"
+        ]
+      },
+      {
+        "id": "folder-IHPHVHSB",
+        "title": "Meilleurs films",
+        "sourcesCount": 18,
+        "sourcesPreview": [
+          "Tous les services combinés",
+          "Netflix",
+          "Apple TV+"
+        ]
+      },
+      {
+        "id": "folder-XUX2DKEX",
+        "title": "Meilleures séries",
+        "sourcesCount": 18,
+        "sourcesPreview": [
+          "Tous les services combinés",
+          "Netflix",
+          "Apple TV+"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-HFTCV0TA",
+    "title": "Genres",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 25,
+    "sourcesCount": 197,
+    "folders": [
+      {
+        "id": "folder-JRWZVYWG",
+        "title": "Action",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-CSJVDVSC",
+        "title": "Aventure",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-K8CIZ3LO",
+        "title": "Animation",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-AP4ISXTE",
+        "title": "Anime",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-IWC8T1WM",
+        "title": "Comédie",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-DTEQHREL",
+        "title": "Policier",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-6DUG1MQF",
+        "title": "Documentaire",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-8Z2DZVUO",
+        "title": "Drame",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-FWKG65UR",
+        "title": "Famille",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-ZYDJZBEV",
+        "title": "Fantastique",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-LCRKWAHO",
+        "title": "Histoire",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-W7VQ4ZGQ",
+        "title": "Horreur",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-KDRAMA01",
+        "title": "Drama coréen",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-P3VIAWP0",
+        "title": "Arts martiaux",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-5CTPRQ44",
+        "title": "Musique / Comédie musicale",
+        "sourcesCount": 9,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-KVW3FYE5",
+        "title": "Mystère",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-GXG1NG9E",
+        "title": "Romance",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-d1d8a13d",
+        "title": "Comédie romantique",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-edbb0941",
+        "title": "Science-fiction",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-VLDG4GZP",
+        "title": "Sports",
+        "sourcesCount": 7,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-8B3PEI1Y",
+        "title": "Spectacles de Stand-Up",
+        "sourcesCount": 7,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-Y0JJD3MR",
+        "title": "Super-héros",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-X9YZCXBH",
+        "title": "Thriller",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-SY0BJAAJ",
+        "title": "Guerre",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-VHE2JOX2",
+        "title": "Western",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-3UOL2OFV",
+    "title": "Humeurs et ambiances",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 10,
+    "sourcesCount": 60,
+    "folders": [
+      {
+        "id": "folder-W52X6SMF",
+        "title": "Chaleureux et réconfortant",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Comédies romantiques en prise de vues réelles",
+          "Comédies et drames télévisés réconfortants",
+          "Histoires romantique et douillettes"
+        ]
+      },
+      {
+        "id": "folder-7TSDBZYI",
+        "title": "À couper le souffle",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Thrillers de science-fiction hallucinants",
+          "Émissions de mystère psychologique",
+          "Fins inattendues et à rebondissements"
+        ]
+      },
+      {
+        "id": "folder-S21P049B",
+        "title": "Adrénaline pure",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Blockbusters d'action survitaminés",
+          "Films de survie et de casse",
+          "Séries action et thriller"
+        ]
+      },
+      {
+        "id": "folder-070BQVHR",
+        "title": "Épiques et grandioses",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Épopées historiques et de guerre",
+          "Grandes fresques fantastiques",
+          "Sagas télévisées à grand spectacle"
+        ]
+      },
+      {
+        "id": "folder-7AXTM9QX",
+        "title": "Feel-Good",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films réconfortants et inspirants",
+          "Séries télévisées comiques et joyeuses",
+          "Histoires vraies inspirantes"
+        ]
+      },
+      {
+        "id": "folder-RSVZ5OM5",
+        "title": "Intrigue lente",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Mystères lents et atmosphériques",
+          "Séries dramatiques lentes et envoûtantes",
+          "Néo-noir et crime ténébreux"
+        ]
+      },
+      {
+        "id": "folder-SJGV86EH",
+        "title": "Films mélodramatiques",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films dramatiques larmoyants acclamés",
+          "Séries TV émouvantes",
+          "Chagrins d'amour"
+        ]
+      },
+      {
+        "id": "folder-VRAANHHD",
+        "title": "Ambiance années 80 et 90",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Blockbusters cultes des années 80",
+          "Blockbusters emblématiques des années 90",
+          "Action pop-corn des années 80 et 90"
+        ]
+      },
+      {
+        "id": "folder-M50463BF",
+        "title": "Sombre et réaliste",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Crimes et pègre",
+          "Séries TV sombres et intenses",
+          "Histoires d'anti-héros et de vengeance"
+        ]
+      },
+      {
+        "id": "folder-79A8YOOM",
+        "title": "Effrayant et angoissant",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Maisons hantées et fantômes",
+          "Séries TV paranormales et flippantes",
+          "Horreur psychologique et effroi"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-BASEDON1",
+    "title": "Basé sur",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 10,
+    "sourcesCount": 60,
+    "folders": [
+      {
+        "id": "folder-BSTRUE01",
+        "title": "Histoire vraie",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSGAME01",
+        "title": "Jeux vidéo",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSBOOK01",
+        "title": "Livre",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSCOMIC1",
+        "title": "Comics",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSMYTH01",
+        "title": "Mythologie",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSPLAY01",
+        "title": "Lecture",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSFAIRY1",
+        "title": "Conte de fées",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSTOY001",
+        "title": "Jouet",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSTVSH01",
+        "title": "Série TV",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSSHORT1",
+        "title": "Court-métrage",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-8EYK6R4X",
+    "title": "Collections de films",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 249,
+    "sourcesCount": 514,
+    "folders": [
+      {
+        "id": "folder-3B76E2AD",
+        "title": "Collections de films d'action",
+        "sourcesCount": 52,
+        "sourcesPreview": [
+          "Collection Bad Boys",
+          "Collection Piège de cristal (Die Hard)",
+          "Collection L'Inspecteur Harry"
+        ]
+      },
+      {
+        "id": "folder-1EA77FFE",
+        "title": "Collections de comédies",
+        "sourcesCount": 34,
+        "sourcesPreview": [
+          "Collection Ace Ventura",
+          "Collection American Pie",
+          "Collection Présentateur vedette"
+        ]
+      },
+      {
+        "id": "folder-651D1072",
+        "title": "Collections de films policiers et de crime",
+        "sourcesCount": 9,
+        "sourcesPreview": [
+          "Collection Ocean's",
+          "Collection Bad Boys",
+          "Collection L'Arme fatale"
+        ]
+      },
+      {
+        "id": "folder-283B7C4F",
+        "title": "Collections dramatiques",
+        "sourcesCount": 10,
+        "sourcesPreview": [
+          "Collection Le Parrain",
+          "Collection Creed",
+          "Collection Magic Mike"
+        ]
+      },
+      {
+        "id": "folder-B362DBAF",
+        "title": "Collections famille et animation",
+        "sourcesCount": 43,
+        "sourcesPreview": [
+          "Collection Alvin et les Chipmunks",
+          "Collection Cars",
+          "Collection Moi, moche et méchant"
+        ]
+      },
+      {
+        "id": "folder-95E9AAB8",
+        "title": "Collections fantastiques",
+        "sourcesCount": 24,
+        "sourcesPreview": [
+          "Collection Les Animaux fantastiques",
+          "Collection SOS Fantômes",
+          "Collection Harry Potter"
+        ]
+      },
+      {
+        "id": "folder-EFF8894F",
+        "title": "Collections de films d'horreur",
+        "sourcesCount": 40,
+        "sourcesPreview": [
+          "Collection Les Griffes de la nuit (A Nightmare on Elm Street)",
+          "Collection Sans un bruit",
+          "Collection Blade"
+        ]
+      },
+      {
+        "id": "folder-C2A6842E",
+        "title": "Collections de mystères",
+        "sourcesCount": 5,
+        "sourcesPreview": [
+          "Collection À couteaux tirés",
+          "Collection Robert Langdon",
+          "Collection Sherlock Holmes"
+        ]
+      },
+      {
+        "id": "folder-28BBC0D4",
+        "title": "Collections de science-fiction",
+        "sourcesCount": 37,
+        "sourcesPreview": [
+          "Collection Alien",
+          "Collection Retour vers le futur",
+          "Collection Blade Runner"
+        ]
+      },
+      {
+        "id": "folder-8D387FC0",
+        "title": "Collections de thrillers",
+        "sourcesCount": 16,
+        "sourcesPreview": [
+          "Collection Hannibal Lecter",
+          "Collection Escape Room",
+          "Collection Don't Breathe"
+        ]
+      },
+      {
+        "id": "folder-C8E270BF",
+        "title": "Collections de films de guerre",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Collection Rambo",
+          "Collection Sniper",
+          "Collection Jarhead"
+        ]
+      },
+      {
+        "id": "folder-AO9B0UT3",
+        "title": "Collection 28 jours/semaines/ans plus tard",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection 28 jours/semaines/ans plus tard"
+        ]
+      },
+      {
+        "id": "folder-KJZ5BUX7",
+        "title": "Les Griffes de la nuit",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Griffes de la nuit (A Nightmare on Elm Street)"
+        ]
+      },
+      {
+        "id": "folder-XSN1INN6",
+        "title": "Sans un bruit",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sans un bruit"
+        ]
+      },
+      {
+        "id": "folder-IOF3LR1A",
+        "title": "Ace Ventura",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ace Ventura"
+        ]
+      },
+      {
+        "id": "folder-F41E9238",
+        "title": "Collection Aladdin",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Aladdin"
+        ]
+      },
+      {
+        "id": "folder-C3ZUQWMC",
+        "title": "Alien",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Alien"
+        ]
+      },
+      {
+        "id": "folder-66907F25",
+        "title": "Collection Alien vs. Predator",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Alien vs. Predator"
+        ]
+      },
+      {
+        "id": "folder-6AKYJNFB",
+        "title": "Alvin et les Chipmunks",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Alvin et les Chipmunks"
+        ]
+      },
+      {
+        "id": "folder-5HY3HTRO",
+        "title": "American Pie",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection American Pie"
+        ]
+      },
+      {
+        "id": "folder-3SBEVDLE",
+        "title": "Anchorman : Ron Burgundy",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Présentateur vedette"
+        ]
+      },
+      {
+        "id": "folder-1NP3H9XV",
+        "title": "Collection Annabelle",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Annabelle"
+        ]
+      },
+      {
+        "id": "folder-R8JTL3EO",
+        "title": "Austin Powers",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Austin Powers"
+        ]
+      },
+      {
+        "id": "folder-F49819FR",
+        "title": "Collection Avatar",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Avatar"
+        ]
+      },
+      {
+        "id": "folder-X582BX4A",
+        "title": "Retour vers le futur",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Retour vers le futur"
+        ]
+      },
+      {
+        "id": "folder-MOHS9H0N",
+        "title": "Bad Boys",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Bad Boys"
+        ]
+      },
+      {
+        "id": "folder-545318AB",
+        "title": "Collection Basic Instinct",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Basic Instinct"
+        ]
+      },
+      {
+        "id": "folder-3EDDDA75",
+        "title": "Collection Batman (1989-1997)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Batman (1989-1997)"
+        ]
+      },
+      {
+        "id": "folder-B0C69755",
+        "title": "Collection La Belle et la Bête",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Belle et la Bête"
+        ]
+      },
+      {
+        "id": "folder-DB662A5E",
+        "title": "En territoire ennemi",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection En territoire ennemi"
+        ]
+      },
+      {
+        "id": "folder-U5TZUOB0",
+        "title": "Le Flic de Beverly Hills",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Flic de Beverly Hills"
+        ]
+      },
+      {
+        "id": "folder-7BX3LL9D",
+        "title": "Big Momma's House",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Big Mamma"
+        ]
+      },
+      {
+        "id": "folder-170B1B57",
+        "title": "Collection Bill & Ted",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Bill & Ted"
+        ]
+      },
+      {
+        "id": "folder-320FQYEZ",
+        "title": "Blade",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Blade"
+        ]
+      },
+      {
+        "id": "folder-LF8A431B",
+        "title": "Blade Runner",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Blade Runner"
+        ]
+      },
+      {
+        "id": "folder-F7ED3T81",
+        "title": "Bridget Jones",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Bridget Jones"
+        ]
+      },
+      {
+        "id": "folder-90A40480",
+        "title": "American Girls",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Bring It On"
+        ]
+      },
+      {
+        "id": "folder-7BEF8127",
+        "title": "Collection Candyman",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Candyman"
+        ]
+      },
+      {
+        "id": "folder-PJ1XJMTI",
+        "title": "Cars",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Cars"
+        ]
+      },
+      {
+        "id": "folder-5GS484XX",
+        "title": "Chucky : Jeu d'enfant",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Chucky (Child's Play)"
+        ]
+      },
+      {
+        "id": "folder-EVAMV5SA",
+        "title": "Collection Le Choc des Titans",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Choc des Titans"
+        ]
+      },
+      {
+        "id": "folder-HTIDPKBZ",
+        "title": "Clerks",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Clerks"
+        ]
+      },
+      {
+        "id": "folder-YOI5X3WM",
+        "title": "Collection Tempête de boulettes géantes",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Tempête de boulettes géantes"
+        ]
+      },
+      {
+        "id": "folder-O0PUA7V6",
+        "title": "Collection Cloverfield",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Cloverfield"
+        ]
+      },
+      {
+        "id": "folder-B4E8C290",
+        "title": "Collection Conan le Barbare",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Conan le Barbare"
+        ]
+      },
+      {
+        "id": "folder-C1ACADFD",
+        "title": "Creed",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Creed"
+        ]
+      },
+      {
+        "id": "folder-YGDARF72",
+        "title": "Very Bad Dads",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Daddy's Home"
+        ]
+      },
+      {
+        "id": "folder-31D5B2FE",
+        "title": "Collection Un justicier dans la ville",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Un justicier dans la ville"
+        ]
+      },
+      {
+        "id": "folder-ED94D115",
+        "title": "Demon Slayer",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Demon Slayer"
+        ]
+      },
+      {
+        "id": "folder-VUHKCDPM",
+        "title": "Moi, moche et méchant",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Moi, moche et méchant"
+        ]
+      },
+      {
+        "id": "folder-753F7B69",
+        "title": "Détective Conan",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Détective Conan"
+        ]
+      },
+      {
+        "id": "folder-DPKGQKLD",
+        "title": "Le Journal d'un dégonflé",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Journal d'un dégonflé"
+        ]
+      },
+      {
+        "id": "folder-BL7KM01U",
+        "title": "Piège de cristal",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Piège de cristal (Die Hard)"
+        ]
+      },
+      {
+        "id": "folder-CNOAB9BW",
+        "title": "Dirty Harry",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection L'Inspecteur Harry"
+        ]
+      },
+      {
+        "id": "folder-53QK358F",
+        "title": "Divergente",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Divergente"
+        ]
+      },
+      {
+        "id": "folder-4F6AB496",
+        "title": "Don't Breathe : La Maison des ténèbres",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Don't Breathe"
+        ]
+      },
+      {
+        "id": "folder-DAC5B4AF",
+        "title": "Dragon Ball",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Dragon Ball"
+        ]
+      },
+      {
+        "id": "folder-8C0F231B",
+        "title": "Collection Ddumb and Dumber",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ddumb and Dumber"
+        ]
+      },
+      {
+        "id": "folder-UJIZA08U",
+        "title": "Dune",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Dune"
+        ]
+      },
+      {
+        "id": "folder-R1WHDLHR",
+        "title": "Trilogie Eastrail 177",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Trilogie Eastrail 177"
+        ]
+      },
+      {
+        "id": "folder-76513F64",
+        "title": "Enola Holmes",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Enola Holmes"
+        ]
+      },
+      {
+        "id": "folder-B49FDAE1",
+        "title": "Collection Évasion",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Évasion"
+        ]
+      },
+      {
+        "id": "folder-5EE83CE6",
+        "title": "Escape Room",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Escape Room"
+        ]
+      },
+      {
+        "id": "folder-6CDB9C65",
+        "title": "Evangelion",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Evangelion"
+        ]
+      },
+      {
+        "id": "folder-YKAUXIGO",
+        "title": "Evil Dead",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Evil Dead"
+        ]
+      },
+      {
+        "id": "folder-6A318DF1",
+        "title": "Collection Tyler Rake",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Tyler Rake"
+        ]
+      },
+      {
+        "id": "folder-1AU8TDK7",
+        "title": "Les Animaux fantastiques",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Animaux fantastiques"
+        ]
+      },
+      {
+        "id": "folder-63CBE301",
+        "title": "Cinquante Nuances",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Fifty Shades"
+        ]
+      },
+      {
+        "id": "folder-7QJEQRSP",
+        "title": "Destination Finale",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Destination Finale"
+        ]
+      },
+      {
+        "id": "folder-Q9GZNU7Y",
+        "title": "Le Monde de Nemo",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Monde de Nemo"
+        ]
+      },
+      {
+        "id": "folder-O03VNAH2",
+        "title": "Vendredi 13",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Vendredi 13"
+        ]
+      },
+      {
+        "id": "folder-M8NF0CBI",
+        "title": "Collection G.I. Joe (Live-Action)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection G.I. Joe (Live-Action)"
+        ]
+      },
+      {
+        "id": "folder-9ANELR9B",
+        "title": "Ghostbusters",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection SOS Fantômes"
+        ]
+      },
+      {
+        "id": "folder-F89C1185",
+        "title": "But !",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Goal!"
+        ]
+      },
+      {
+        "id": "folder-MYN6219P",
+        "title": "Godzilla",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Godzilla"
+        ]
+      },
+      {
+        "id": "folder-WWCP4J8A",
+        "title": "Collection Copains pour toujours",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Copains pour toujours"
+        ]
+      },
+      {
+        "id": "folder-Z1IYO44U",
+        "title": "Les Gardiens de la Galaxie",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Gardiens de la Galaxie"
+        ]
+      },
+      {
+        "id": "folder-WID9KLHT",
+        "title": "Halloween",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Halloween"
+        ]
+      },
+      {
+        "id": "folder-93EDA2FC",
+        "title": "Hannibal Lecter",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hannibal Lecter"
+        ]
+      },
+      {
+        "id": "folder-C7534995",
+        "title": "Collection Harold & Kumar",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Harold & Kumar"
+        ]
+      },
+      {
+        "id": "folder-J2Z9JLRI",
+        "title": "Harry Potter",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Harry Potter"
+        ]
+      },
+      {
+        "id": "folder-01D6F102",
+        "title": "Collection La Chute",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Chute"
+        ]
+      },
+      {
+        "id": "folder-8741500F",
+        "title": "Collection Hellboy",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hellboy"
+        ]
+      },
+      {
+        "id": "folder-PM09ON0Y",
+        "title": "Hellraiser",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hellraiser"
+        ]
+      },
+      {
+        "id": "folder-ZWC6BB73",
+        "title": "Collection Highlander",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Highlander"
+        ]
+      },
+      {
+        "id": "folder-76BVHL1E",
+        "title": "Maman, j'ai raté l'avion",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Maman, j'ai raté l'avion"
+        ]
+      },
+      {
+        "id": "folder-L6VU4T1V",
+        "title": "Collection Comment tuer son boss ?",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Comment tuer son boss ?"
+        ]
+      },
+      {
+        "id": "folder-C4UHEVJO",
+        "title": "Hôtel Transylvanie",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hôtel Transylvanie"
+        ]
+      },
+      {
+        "id": "folder-GRP514U5",
+        "title": "Dragons",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Dragons"
+        ]
+      },
+      {
+        "id": "folder-GRLYVJ19",
+        "title": "L'Âge de glace",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection L'Âge de Glace"
+        ]
+      },
+      {
+        "id": "folder-GVH4W51M",
+        "title": "Indiana Jones",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Indiana Jones"
+        ]
+      },
+      {
+        "id": "folder-WKWXVLKA",
+        "title": "Collection Vice-versa",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Vice-versa"
+        ]
+      },
+      {
+        "id": "folder-K5OYMCK5",
+        "title": "Insidious",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Insidious"
+        ]
+      },
+      {
+        "id": "folder-BD340B72",
+        "title": "Collection Ip Man",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ip Man"
+        ]
+      },
+      {
+        "id": "folder-0V63GE6Q",
+        "title": "Ça",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ça"
+        ]
+      },
+      {
+        "id": "folder-MPLDA6KJ",
+        "title": "Collection Jack Reacher",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jack Reacher"
+        ]
+      },
+      {
+        "id": "folder-4SRL3EHG",
+        "title": "James Bond",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection James Bond"
+        ]
+      },
+      {
+        "id": "folder-0D60F3D4",
+        "title": "Jarhead : La Fin de l'innocence",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jarhead"
+        ]
+      },
+      {
+        "id": "folder-EX4SNDUJ",
+        "title": "Les Dents de la mer",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Dents de la mer"
+        ]
+      },
+      {
+        "id": "folder-B0KZUYHR",
+        "title": "Collection Jeepers Creepers",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jeepers Creepers"
+        ]
+      },
+      {
+        "id": "folder-0WVX71K4",
+        "title": "John Wick",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection John Wick"
+        ]
+      },
+      {
+        "id": "folder-550AEEF9",
+        "title": "Collection Johnny English",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Johnny English"
+        ]
+      },
+      {
+        "id": "folder-3OF5AVMV",
+        "title": "Jumanji",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jumanji"
+        ]
+      },
+      {
+        "id": "folder-H4BR906B",
+        "title": "Jump Street",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jump Street"
+        ]
+      },
+      {
+        "id": "folder-V70WWC3W",
+        "title": "Jurassic Park",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Jurassic Park"
+        ]
+      },
+      {
+        "id": "folder-1187D75D",
+        "title": "Collection Kick-Ass",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Kick-Ass"
+        ]
+      },
+      {
+        "id": "folder-5N39A7GE",
+        "title": "King Kong (1976)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection King Kong (1976)"
+        ]
+      },
+      {
+        "id": "folder-O0ZGRFZ7",
+        "title": "Kingsman",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Kingsman"
+        ]
+      },
+      {
+        "id": "folder-679D11BD",
+        "title": "À couteaux tirés",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection À couteaux tirés"
+        ]
+      },
+      {
+        "id": "folder-X2VO0H0D",
+        "title": "Kung Fu Panda",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Kung Fu Panda"
+        ]
+      },
+      {
+        "id": "folder-5RJTENQ3",
+        "title": "La Revanche d'une blonde",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Revanche d'une blonde"
+        ]
+      },
+      {
+        "id": "folder-CQNUP6E3",
+        "title": "Lethal Weapon",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection L'Arme fatale"
+        ]
+      },
+      {
+        "id": "folder-BD2E1EF7",
+        "title": "Collection Allô maman, ici bébé",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Allô maman, ici bébé"
+        ]
+      },
+      {
+        "id": "folder-1TI94GOT",
+        "title": "Mad Max",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mad Max"
+        ]
+      },
+      {
+        "id": "folder-XZYOGHCP",
+        "title": "Madagascar",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Madagascar"
+        ]
+      },
+      {
+        "id": "folder-8D9BC163",
+        "title": "Magic Mike",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Magic Mike"
+        ]
+      },
+      {
+        "id": "folder-BA4C8329",
+        "title": "Major League",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Major League"
+        ]
+      },
+      {
+        "id": "folder-UWX1LLAD",
+        "title": "Man of Steel",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Man of Steel"
+        ]
+      },
+      {
+        "id": "folder-J42YTYW9",
+        "title": "Mon beau-père et moi",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mon beau-père et moi"
+        ]
+      },
+      {
+        "id": "folder-P0P1OKQT",
+        "title": "Collection Men in Black",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Men in Black"
+        ]
+      },
+      {
+        "id": "folder-ZIPRVS3O",
+        "title": "Collection Minions",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Minions"
+        ]
+      },
+      {
+        "id": "folder-4E6361FA",
+        "title": "Porté disparu",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Porté disparu"
+        ]
+      },
+      {
+        "id": "folder-KPX2Q2WZ",
+        "title": "Mission: Impossible",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mission: Impossible"
+        ]
+      },
+      {
+        "id": "folder-SHRQQWUC",
+        "title": "Monsters, Inc.",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Monsters, Inc."
+        ]
+      },
+      {
+        "id": "folder-84272982",
+        "title": "Collection Mortal Kombat",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mortal Kombat"
+        ]
+      },
+      {
+        "id": "folder-92D6C127",
+        "title": "Collection Mulan",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mulan"
+        ]
+      },
+      {
+        "id": "folder-BE0409EB",
+        "title": "My Hero Academia",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection My Hero Academia"
+        ]
+      },
+      {
+        "id": "folder-5E5254D6",
+        "title": "Naruto",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Naruto"
+        ]
+      },
+      {
+        "id": "folder-50AOAZHB",
+        "title": "Bonjour les vacances (National Lampoon)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection National Lampoon's Vacation"
+        ]
+      },
+      {
+        "id": "folder-2F3OCZAQ",
+        "title": "Benjamin Gates (National Treasure)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Benjamin Gates"
+        ]
+      },
+      {
+        "id": "folder-QHTS44BL",
+        "title": "La Nuit au musée",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Nuit au musée"
+        ]
+      },
+      {
+        "id": "folder-32QHZQMQ",
+        "title": "Insaisissables",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Insaisissables"
+        ]
+      },
+      {
+        "id": "folder-4QQ72TWF",
+        "title": "Ocean's",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ocean's"
+        ]
+      },
+      {
+        "id": "folder-07272920",
+        "title": "One Piece",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection One Piece"
+        ]
+      },
+      {
+        "id": "folder-C65D5F8E",
+        "title": "Collection Ong Bak",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ong Bak"
+        ]
+      },
+      {
+        "id": "folder-B791D449",
+        "title": "Collection Les Rebelles de la forêt",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Rebelles de la forêt"
+        ]
+      },
+      {
+        "id": "folder-WN0TBPTM",
+        "title": "Pacific Rim",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Pacific Rim"
+        ]
+      },
+      {
+        "id": "folder-710COXTP",
+        "title": "Paddington",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Paddington"
+        ]
+      },
+      {
+        "id": "folder-R96DZK69",
+        "title": "Paranormal Activity",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Paranormal Activity"
+        ]
+      },
+      {
+        "id": "folder-WRDHWZ5K",
+        "title": "Percy Jackson",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Percy Jackson"
+        ]
+      },
+      {
+        "id": "folder-02D0DACC",
+        "title": "Collection Phantasm",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Phantasm"
+        ]
+      },
+      {
+        "id": "folder-120URWPB",
+        "title": "Pirates des Caraïbes",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Pirates des Caraïbes"
+        ]
+      },
+      {
+        "id": "folder-S02SZLJA",
+        "title": "Pitch Perfect",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Hit Girls"
+        ]
+      },
+      {
+        "id": "folder-5WWDM0GW",
+        "title": "La Planète des singes (Original)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Planète des singes (Originale)"
+        ]
+      },
+      {
+        "id": "folder-O4YH9LT7",
+        "title": "Collection La Planète des singes (Reboot)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Planète des singes (Reboot)"
+        ]
+      },
+      {
+        "id": "folder-ACD00A34",
+        "title": "Pokémon",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Pokémon"
+        ]
+      },
+      {
+        "id": "folder-2A875AEE",
+        "title": "Collection Police Academy",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Police Academy"
+        ]
+      },
+      {
+        "id": "folder-3BFFE3B1",
+        "title": "Collection Police Story",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Police Story"
+        ]
+      },
+      {
+        "id": "folder-094KA6ZE",
+        "title": "Poltergeist",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Poltergeist"
+        ]
+      },
+      {
+        "id": "folder-26RPSH1H",
+        "title": "Predator",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Predator"
+        ]
+      },
+      {
+        "id": "folder-B6B1A3F5",
+        "title": "Collection Psychose",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Psychose"
+        ]
+      },
+      {
+        "id": "folder-QUEZYOGP",
+        "title": "Rambo",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Rambo"
+        ]
+      },
+      {
+        "id": "folder-06KXSSPW",
+        "title": "Resident Evil",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Resident Evil"
+        ]
+      },
+      {
+        "id": "folder-APQ8HRDA",
+        "title": "Collection Mise à l'épreuve",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Mise à l'épreuve"
+        ]
+      },
+      {
+        "id": "folder-0AD513EC",
+        "title": "Robert Langdon",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Robert Langdon"
+        ]
+      },
+      {
+        "id": "folder-PPEIXVD0",
+        "title": "RoboCop",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection RoboCop"
+        ]
+      },
+      {
+        "id": "folder-R1ZY7195",
+        "title": "Rocky",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Rocky"
+        ]
+      },
+      {
+        "id": "folder-YKZOU9YB",
+        "title": "Rush Hour",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Rush Hour"
+        ]
+      },
+      {
+        "id": "folder-CPO9DWK5",
+        "title": "Saw",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Saw"
+        ]
+      },
+      {
+        "id": "folder-G5WF3ZRF",
+        "title": "Scary Movie",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Scary Movie"
+        ]
+      },
+      {
+        "id": "folder-OXLYM1Z0",
+        "title": "Scooby-Doo",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Scooby-Doo"
+        ]
+      },
+      {
+        "id": "folder-1DDSBN8C",
+        "title": "Scream",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Scream"
+        ]
+      },
+      {
+        "id": "folder-565F8621",
+        "title": "Collection Shaft",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Shaft"
+        ]
+      },
+      {
+        "id": "folder-FD4C9C01",
+        "title": "Sherlock Holmes",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sherlock Holmes"
+        ]
+      },
+      {
+        "id": "folder-VIEZ2QKM",
+        "title": "Shrek",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Shrek"
+        ]
+      },
+      {
+        "id": "folder-KZKZCR0D",
+        "title": "Sicario",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sicario"
+        ]
+      },
+      {
+        "id": "folder-6CB17807",
+        "title": "Collection Silent Hill",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Silent Hill"
+        ]
+      },
+      {
+        "id": "folder-NCAHRBWY",
+        "title": "Tous en scène",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Tous en scène"
+        ]
+      },
+      {
+        "id": "folder-0589401B",
+        "title": "Collection Sinister",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sinister"
+        ]
+      },
+      {
+        "id": "folder-B8C5C0EA",
+        "title": "Sniper",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sniper"
+        ]
+      },
+      {
+        "id": "folder-81751D14",
+        "title": "Collection Speed",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Speed"
+        ]
+      },
+      {
+        "id": "folder-P7B2XE16",
+        "title": "Spider-Man",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Spider-Man"
+        ]
+      },
+      {
+        "id": "folder-1RKKSJG8",
+        "title": "Spider-Man : Across the Spider-Verse",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Spider-Man : Dans le ज्या-verse"
+        ]
+      },
+      {
+        "id": "folder-D137967F",
+        "title": "Collection Spy Kids",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Spy Kids"
+        ]
+      },
+      {
+        "id": "folder-P4I6YCU5",
+        "title": "Star Trek : Réalités alternatives",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Star Trek : Collection Réalité alternative"
+        ]
+      },
+      {
+        "id": "folder-B4D2E50F",
+        "title": "Films Star Trek : La Nouvelle Génération",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Films Star Trek : La Nouvelle Génération"
+        ]
+      },
+      {
+        "id": "folder-C35AE282",
+        "title": "Films de Star Trek : La série originale",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Films de Star Trek : La série originale"
+        ]
+      },
+      {
+        "id": "folder-XW5YZZE1",
+        "title": "Star Wars",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Star Wars"
+        ]
+      },
+      {
+        "id": "folder-HNO881F6",
+        "title": "Starship Troopers",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Starship Troopers"
+        ]
+      },
+      {
+        "id": "folder-24ACF7AD",
+        "title": "Sexy Dance",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sexy Dance"
+        ]
+      },
+      {
+        "id": "folder-40C5BBFC",
+        "title": "Collection classique Superman",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection classique Superman"
+        ]
+      },
+      {
+        "id": "folder-AOC9T1JO",
+        "title": "Collection Taken",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Taken"
+        ]
+      },
+      {
+        "id": "folder-1XNML48R",
+        "title": "Collection Ted",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Ted"
+        ]
+      },
+      {
+        "id": "folder-A56F1044",
+        "title": "Collection Teenage Mutant Ninja Turtles",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Teenage Mutant Ninja Turtles"
+        ]
+      },
+      {
+        "id": "folder-IDUJJRK7",
+        "title": "Collection Massacre à la tronçonneuse",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Massacre à la tronçonneuse"
+        ]
+      },
+      {
+        "id": "folder-VY74USVO",
+        "title": "La Famille Addams (animé)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Famille Addams (Animé)"
+        ]
+      },
+      {
+        "id": "folder-1F3CA0F4",
+        "title": "La collection Amityville",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Amityville"
+        ]
+      },
+      {
+        "id": "folder-59YRE6DB",
+        "title": "Collection The Avengers",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Avengers"
+        ]
+      },
+      {
+        "id": "folder-8C2EB350",
+        "title": "La Trilogie Before",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Trilogie Before"
+        ]
+      },
+      {
+        "id": "folder-53F30D32",
+        "title": "Les Anges de Boston",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Anges de Boston"
+        ]
+      },
+      {
+        "id": "folder-I68P6JDB",
+        "title": "Le Boss bébé",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Baby Boss"
+        ]
+      },
+      {
+        "id": "folder-N6S918EV",
+        "title": "Jason Bourne",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Collection Bourne"
+        ]
+      },
+      {
+        "id": "folder-MGWC6ZT3",
+        "title": "Le Monde de Narnia",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Monde de Narnia"
+        ]
+      },
+      {
+        "id": "folder-5E9D25FA",
+        "title": "La collection Les Chroniques de Riddick",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Les Chroniques de Riddick"
+        ]
+      },
+      {
+        "id": "folder-O7OCAZQT",
+        "title": "The Conjuring",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Conjuring"
+        ]
+      },
+      {
+        "id": "folder-ED9B6BAB",
+        "title": "Collection The Crow",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Crow"
+        ]
+      },
+      {
+        "id": "folder-DIFWS4BO",
+        "title": "The Dark Knight",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Dark Knight"
+        ]
+      },
+      {
+        "id": "folder-C7969F90",
+        "title": "Les Douze Salopards",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Les Douze Salopards"
+        ]
+      },
+      {
+        "id": "folder-66JC9K0O",
+        "title": "Equalizer",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Equalizer"
+        ]
+      },
+      {
+        "id": "folder-BV10CREW",
+        "title": "L'Exorciste",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection L'Exorciste"
+        ]
+      },
+      {
+        "id": "folder-W3RIXIH9",
+        "title": "The Expendables",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Expendables : Unité spéciale"
+        ]
+      },
+      {
+        "id": "folder-P6NJJ7M5",
+        "title": "Fast and Furious",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Fast and Furious"
+        ]
+      },
+      {
+        "id": "folder-322296C6",
+        "title": "Collection La Mouche",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Mouche"
+        ]
+      },
+      {
+        "id": "folder-8E15F6E7",
+        "title": "Le Parrain",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Parrain"
+        ]
+      },
+      {
+        "id": "folder-6K2840HJ",
+        "title": "The Grudge",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Grudge"
+        ]
+      },
+      {
+        "id": "folder-9FZBX98B",
+        "title": "Very Bad Trip",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Very Bad Trip"
+        ]
+      },
+      {
+        "id": "folder-2GGVV5KS",
+        "title": "Collection Hitman & Bodyguard",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hitman & Bodyguard"
+        ]
+      },
+      {
+        "id": "folder-XT8PKMOL",
+        "title": "Le Hobbit",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Hobbit"
+        ]
+      },
+      {
+        "id": "folder-GO9EJ7WK",
+        "title": "Hunger Games",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Hunger Games"
+        ]
+      },
+      {
+        "id": "folder-4DSFHELZ",
+        "title": "Les Indestructibles",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Indestructibles"
+        ]
+      },
+      {
+        "id": "folder-C54E7AC3",
+        "title": "La Collection Jack Ryan",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Collection Jack Ryan"
+        ]
+      },
+      {
+        "id": "folder-JCUYFXBO",
+        "title": "Karaté Kid",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Karaté Kid"
+        ]
+      },
+      {
+        "id": "folder-764AB5EC",
+        "title": "Collection Le Petit Dinosaure",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Petit Dinosaure"
+        ]
+      },
+      {
+        "id": "folder-KHE9H664",
+        "title": "La Grande Aventure Lego",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Grande Aventure Lego"
+        ]
+      },
+      {
+        "id": "folder-5C598ACF",
+        "title": "Collection Le Roi Lion",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Roi Lion"
+        ]
+      },
+      {
+        "id": "folder-83BBDF9E",
+        "title": "Collection La Petite Sirène",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Petite Sirène"
+        ]
+      },
+      {
+        "id": "folder-D4DC9YMI",
+        "title": "Le Seigneur des Anneaux",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Seigneur des anneaux"
+        ]
+      },
+      {
+        "id": "folder-MULC2HR6",
+        "title": "Matrix",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Matrix"
+        ]
+      },
+      {
+        "id": "folder-Y9M2V713",
+        "title": "Le Labyrinthe",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Labyrinthe"
+        ]
+      },
+      {
+        "id": "folder-B1AA1DFB",
+        "title": "Collection En eaux troubles",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection En eaux troubles"
+        ]
+      },
+      {
+        "id": "folder-2988FEE1",
+        "title": "Les Mighty Ducks",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Mighty Ducks"
+        ]
+      },
+      {
+        "id": "folder-9PD8N0IA",
+        "title": "La Momie",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection La Momie"
+        ]
+      },
+      {
+        "id": "folder-8AECD2FF",
+        "title": "Collection Y a-t-il un flic...",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Y a-t-il un flic..."
+        ]
+      },
+      {
+        "id": "folder-0NH4J7MZ",
+        "title": "Collection La Nonne",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Nonne"
+        ]
+      },
+      {
+        "id": "folder-5EBJHPQ5",
+        "title": "La Malédiction",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection La Malédiction"
+        ]
+      },
+      {
+        "id": "folder-CDEB2EBB",
+        "title": "La Panthère rose (Original)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Panthère rose (Original)"
+        ]
+      },
+      {
+        "id": "folder-7F73CA21",
+        "title": "La Panthère rose (Reboot)",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Panthère rose (Reboot)"
+        ]
+      },
+      {
+        "id": "folder-AZ4XK68L",
+        "title": "American Nightmare",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection American Nightmare (The Purge)"
+        ]
+      },
+      {
+        "id": "folder-A8678P2N",
+        "title": "Collection The Raid",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection The Raid"
+        ]
+      },
+      {
+        "id": "folder-NN4N7AQY",
+        "title": "Le Cercle",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Le Cercle"
+        ]
+      },
+      {
+        "id": "folder-ADDORPVE",
+        "title": "Comme des bêtes",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Comme des bêtes"
+        ]
+      },
+      {
+        "id": "folder-O995DQEI",
+        "title": "Terminator",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Terminator"
+        ]
+      },
+      {
+        "id": "folder-PD54TO8F",
+        "title": "Le Transporteur",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La Collection Le Transporteur"
+        ]
+      },
+      {
+        "id": "folder-294EE0I6",
+        "title": "Twilight",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "La collection Twilight"
+        ]
+      },
+      {
+        "id": "folder-EB28323E",
+        "title": "Collection Tomb Raider",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Tomb Raider"
+        ]
+      },
+      {
+        "id": "folder-V41P1RJJ",
+        "title": "Top Gun",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Top Gun"
+        ]
+      },
+      {
+        "id": "folder-IN4KJMF0",
+        "title": "Toy Story",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Toy Story"
+        ]
+      },
+      {
+        "id": "folder-9M9NM1WZ",
+        "title": "Transformers",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Transformers"
+        ]
+      },
+      {
+        "id": "folder-JJNT63VF",
+        "title": "Tremors",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Tremors"
+        ]
+      },
+      {
+        "id": "folder-ZFWBJF8T",
+        "title": "Les Trolls fêtent Noël",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Trolls : Fêtes"
+        ]
+      },
+      {
+        "id": "folder-3QPTH7L9",
+        "title": "TRON",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection TRON"
+        ]
+      },
+      {
+        "id": "folder-Y0FCHI45",
+        "title": "Underworld",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Underworld"
+        ]
+      },
+      {
+        "id": "folder-UQNB7996",
+        "title": "V/H/S",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection V/H/S"
+        ]
+      },
+      {
+        "id": "folder-EG0POZBG",
+        "title": "Wayne's World",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Wayne's World"
+        ]
+      },
+      {
+        "id": "folder-Z57JAOND",
+        "title": "Les Mondes de Ralph",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Les Mondes de Ralph"
+        ]
+      },
+      {
+        "id": "folder-QGUYYRM4",
+        "title": "X-Men",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection X-Men"
+        ]
+      },
+      {
+        "id": "folder-ERODGFUC",
+        "title": "xXx",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection xXx"
+        ]
+      },
+      {
+        "id": "folder-YF147GV8",
+        "title": "Collection Bienvenue à Zombieland",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Bienvenue à Zombieland"
+        ]
+      },
+      {
+        "id": "folder-A4QW915J",
+        "title": "Zoolander",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Zoolander"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-1IPJJWUO",
+    "title": "Acteurs",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 152,
+    "sourcesCount": 668,
+    "folders": [
+      {
+        "id": "folder-WBL5AUA4",
+        "title": "Adam Sandler",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ZJ8TOJOV",
+        "title": "Al Pacino",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-30HU5XKY",
+        "title": "Amy Adams",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-DA5P6E85",
+        "title": "Ana de Armas",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-GMCD5KGI",
+        "title": "Angela Bassett",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-1VGWJJJB",
+        "title": "Angelina Jolie",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-NOGR7OHV",
+        "title": "Anne Hathaway",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-MULF8GWG",
+        "title": "Anthony Hopkins",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-RQ6SLROZ",
+        "title": "Anya Taylor-Joy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-9TH1MOBW",
+        "title": "Arnold Schwarzenegger",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-FF65376C",
+        "title": "Audrey Hepburn",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-DOII6WV3",
+        "title": "Austin Butler",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-XER5AQ3T",
+        "title": "Barry Keoghan",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Z09ZKDSZ",
+        "title": "Ben Stiller",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-MFLI0FMD",
+        "title": "Benedict Cumberbatch",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Z7DBVRV0",
+        "title": "Bill Murray",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-PXIZD054",
+        "title": "Brad Pitt",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ICAWUP7G",
+        "title": "Bruce Willis",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-17030512",
+        "title": "Cameron Diaz",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-A58P48N5",
+        "title": "Cate Blanchett",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-TQ46STUW",
+        "title": "Channing Tatum",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-MJBGYP6B",
+        "title": "Charlize Theron",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-9A8F4DE2",
+        "title": "Chris Evans",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-D2CFC273",
+        "title": "Chris Hemsworth",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ASZD5A4V",
+        "title": "Chris Pratt",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-8TAZ6A0Q",
+        "title": "Christian Bale",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-U2UQO2BJ",
+        "title": "Christoph Waltz",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-UUYB9RPU",
+        "title": "Chuck Norris",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-T43JW6XT",
+        "title": "Cillian Murphy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-PL4P3B1Q",
+        "title": "Clint Eastwood",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-1892A8C2",
+        "title": "Colin Farrell",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-D5RGZ3VR",
+        "title": "Daniel Craig",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-F33DBED8",
+        "title": "Daniel Day-Lewis",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-4S69X6BS",
+        "title": "Daniel Kaluuya",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-RIA5HR35",
+        "title": "Daniel Radcliffe",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ONAK2C9N",
+        "title": "Denzel Washington",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-CYVFGY96",
+        "title": "Dev Patel",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-FH15ULOQ",
+        "title": "Donnie Yen",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-D5244D8A",
+        "title": "Drew Barrymore",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-07R890RD",
+        "title": "Dwayne Johnson",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-Z6S54LGD",
+        "title": "Eddie Murphy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-WZ227UB7",
+        "title": "Emily Blunt",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-L7XT7A7L",
+        "title": "Emma Stone",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-3DB991C5",
+        "title": "Emma Watson",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-D3DK695R",
+        "title": "Florence Pugh",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-4WZSK2HQ",
+        "title": "Forest Whitaker",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-CX0JHAUK",
+        "title": "Gary Oldman",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ACWQ14XR",
+        "title": "Gene Hackman",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-4XRKGC82",
+        "title": "George Clooney",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-TZ8ZFGCN",
+        "title": "Glen Powell",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-FK9VMYHY",
+        "title": "Halle Berry",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-QUCYLCY9",
+        "title": "Harrison Ford",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-BC09D96C",
+        "title": "Heath Ledger",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-B6E8D526",
+        "title": "Hiroyuki Sanada",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-18GZE0MQ",
+        "title": "Hugh Jackman",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-6136CC17",
+        "title": "Humphrey Bogart",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-WDV07SJY",
+        "title": "Idris Elba",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-J1WUV8FO",
+        "title": "Jack Black",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-VGJ9G5GV",
+        "title": "Jack Nicholson",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Z59AJUYO",
+        "title": "Jackie Chan",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-4FJLTWYG",
+        "title": "Jake Gyllenhaal",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-5ZGQ2B3S",
+        "title": "Jamie Foxx",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-D8PPUHIE",
+        "title": "Jason Statham",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-SYGPEDMV",
+        "title": "Javier Bardem",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-3WC8I4GA",
+        "title": "Jean-Claude Van Damme",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ZASSCSIC",
+        "title": "Jeffrey Wright",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-O3OG8E01",
+        "title": "Jenna Ortega",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Z5XYMZS1",
+        "title": "Jennifer Aniston",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-VWMVWLSM",
+        "title": "Jennifer Lawrence",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-7ECAF658",
+        "title": "Jennifer Lopez",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-GO1HCW6S",
+        "title": "Jeremy Allen White",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-NNBJWT7P",
+        "title": "Jessica Chastain",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-1RF88RWO",
+        "title": "Jet Li",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Q1HEIV6U",
+        "title": "Jim Carrey",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-78BD022F",
+        "title": "Joaquin Phoenix",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-C3VLG5ZF",
+        "title": "John David Washington",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-60AE4CAA",
+        "title": "John Travolta",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-O8QPCGH2",
+        "title": "Johnny Depp",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-M16Q1W2H",
+        "title": "Jonah Hill",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-2IAN1H6H",
+        "title": "Julia Roberts",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-MR9WMHUR",
+        "title": "Kate Winslet",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-1GMOXRXX",
+        "title": "Katherine Heigl",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-D37JKRU8",
+        "title": "Keanu Reeves",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-6EEBC1ED",
+        "title": "Keira Knightley",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-A468FA7A",
+        "title": "Kevin Costner",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-B68AB670",
+        "title": "Kurt Russell",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-X6DZXD29",
+        "title": "Laurence Fishburne",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-KAF08LH9",
+        "title": "Leonardo DiCaprio",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-0B23AC48",
+        "title": "Liam Neeson",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Y6IIBR23",
+        "title": "Lily Collins",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-I62XOTHC",
+        "title": "Lupita Nyong'o",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-71ZEPSY8",
+        "title": "Mads Mikkelsen",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-RYNCM2WO",
+        "title": "Mahershala Ali",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-15CC914A",
+        "title": "Margot Robbie",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-563E00D6",
+        "title": "Mark Wahlberg",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-63GJUMC0",
+        "title": "Marlon Brando",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-TYX4G5P3",
+        "title": "Matt Damon",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-TR8NRI88",
+        "title": "Matthew McConaughey",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-1L09X3YR",
+        "title": "Melissa McCarthy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-6WUONCAR",
+        "title": "Meryl Streep",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Q5MTSVE1",
+        "title": "Michael B. Jordan",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-38F0773D",
+        "title": "Michael Fassbender",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-6QKXQ0P3",
+        "title": "Michael Herbig",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-121Y6Z25",
+        "title": "Michelle Yeoh",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-Q5ZZ4IJQ",
+        "title": "Mila Kunis",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-I3VIBXVB",
+        "title": "Millie Bobby Brown",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-JNCCEB8T",
+        "title": "Morgan Freeman",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-6BKY6W3C",
+        "title": "Natalie Portman",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-CGWEX5NT",
+        "title": "Nicolas Cage",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-3V7BIKDZ",
+        "title": "Nicole Kidman",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-BU4IT2EK",
+        "title": "Octavia Spencer",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-76H6KRA1",
+        "title": "Oscar Isaac",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-LJ6K6WQ4",
+        "title": "Owen Wilson",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-E71626SP",
+        "title": "Paul Mescal",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-3FDDCCAD",
+        "title": "Paul Newman",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-45WHECZN",
+        "title": "Paul Rudd",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-OK8Z3CTX",
+        "title": "Pedro Pascal",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-HTT7QLSK",
+        "title": "Penélope Cruz",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-A13EC0B6",
+        "title": "Rachel McAdams",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-TDL8CIHS",
+        "title": "Reese Witherspoon",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-NBIFUAKW",
+        "title": "Robert De Niro",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-TWR66N19",
+        "title": "Robert Downey Jr.",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-FJZ84GA3",
+        "title": "Robin Williams",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-NRAGDACW",
+        "title": "Ryan Gosling",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-1WLIGD5C",
+        "title": "Ryan Reynolds",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-YOR5PVAB",
+        "title": "Sadie Sink",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-MP1RNVPJ",
+        "title": "Salma Hayek Pinault",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-DVIHJC86",
+        "title": "Samuel L. Jackson",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-H1P5FUH1",
+        "title": "Sandra Bullock",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-LI1PDADR",
+        "title": "Scarlett Johansson",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-MHGNAS02",
+        "title": "Seth Rogen",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-88DB9F0E",
+        "title": "Sigourney Weaver",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-97726E46",
+        "title": "Song Kang-ho",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-9QHTMQDZ",
+        "title": "Steve Carell",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-2AFAKOUX",
+        "title": "Steve Martin",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-QQ7P8T6J",
+        "title": "Sydney Sweeney",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-C3Z55FSW",
+        "title": "Sylvester Stallone",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-5DNUVAKW",
+        "title": "Tessa Thompson",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-I2BO9LZU",
+        "title": "Timothée Chalamet",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ZISLC5VJ",
+        "title": "Tom Cruise",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-4K51G24E",
+        "title": "Tom Hanks",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-MM2G5H2C",
+        "title": "Tom Hardy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-VN8TVG4M",
+        "title": "Tom Holland",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-D018AV8U",
+        "title": "Vin Diesel",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-K4SHYOWV",
+        "title": "Viola Davis",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-RQXU2K5A",
+        "title": "Will Ferrell",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-59J071DM",
+        "title": "Will Smith",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-5R6SLQIA",
+        "title": "Willem Dafoe",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-8B78EAF9",
+        "title": "Woody Harrelson",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-8B14F765",
+        "title": "Zac Efron",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-NCVWCX3E",
+        "title": "Zendaya",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-HMXS9XCV",
+        "title": "Zoe Saldaña",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-13LJW3A6",
+    "title": "Réalisateurs légendaires",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 84,
+    "sourcesCount": 168,
+    "folders": [
+      {
+        "id": "folder-MWUR5JCJ",
+        "title": "Akira Kurosawa",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Akira Kurosawa (Le meilleur de)",
+          "Akira Kurosawa (Récents)"
+        ]
+      },
+      {
+        "id": "folder-R0TG3ZPQ",
+        "title": "Alejandro González Iñárritu",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Alejandro González Iñárritu (le meilleur de)",
+          "Alejandro González Iñárritu (Récents)"
+        ]
+      },
+      {
+        "id": "folder-OCM9TEN5",
+        "title": "Alex Garland",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Alex Garland (Le meilleur de)",
+          "Alex Garland (Récents)"
+        ]
+      },
+      {
+        "id": "folder-5QIX2YSY",
+        "title": "Alfonso Cuarón",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Alfonso Cuarón (Best of)",
+          "Alfonso Cuarón (Récents)"
+        ]
+      },
+      {
+        "id": "folder-2FUNKZ46",
+        "title": "Alfred Hitchcock",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Alfred Hitchcock (le meilleur de)",
+          "Alfred Hitchcock (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0EB440E2",
+        "title": "Antoine Fuqua",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Antoine Fuqua (Le Meilleur de)",
+          "Antoine Fuqua (Récent)"
+        ]
+      },
+      {
+        "id": "folder-LKQIGE7V",
+        "title": "Ari Aster",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Ari Aster (Best of)",
+          "Ari Aster (Récent)"
+        ]
+      },
+      {
+        "id": "folder-4A5BCCC4",
+        "title": "Billy Wilder",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Billy Wilder (Meilleur de)",
+          "Billy Wilder (récents)"
+        ]
+      },
+      {
+        "id": "folder-5KEV9F74",
+        "title": "Bong Joon-ho",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Bong Joon Ho (Le meilleur de)",
+          "Bong Joon Ho (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0JLCJIWA",
+        "title": "Brian De Palma",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Brian De Palma (Le Meilleur de)",
+          "Brian De Palma (Récents)"
+        ]
+      },
+      {
+        "id": "folder-8E049C04",
+        "title": "Chad Stahelski",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Chad Stahelski (Le meilleur de)",
+          "Chad Stahelski (récent)"
+        ]
+      },
+      {
+        "id": "folder-OIUQV4WQ",
+        "title": "Christopher Nolan",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Christopher Nolan (Le meilleur de)",
+          "Christopher Nolan (Récents)"
+        ]
+      },
+      {
+        "id": "folder-C459436E",
+        "title": "Clint Eastwood",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Clint Eastwood (Best Of)",
+          "Clint Eastwood (Réents)"
+        ]
+      },
+      {
+        "id": "folder-FZLHL0FP",
+        "title": "Damien Chazelle",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Damien Chazelle (Best Of)",
+          "Damien Chazelle (Récents)"
+        ]
+      },
+      {
+        "id": "folder-1S2KWLHD",
+        "title": "Daniel Scheinert",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Daniel Scheinert (Best Of)",
+          "Daniel Scheinert (Récent)"
+        ]
+      },
+      {
+        "id": "folder-RVWJ8YXW",
+        "title": "Danny Boyle",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Danny Boyle (Le meilleur de)",
+          "Danny Boyle (Récent)"
+        ]
+      },
+      {
+        "id": "folder-TQLTEJ41",
+        "title": "Darren Aronofsky",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Darren Aronofsky (Le meilleur de)",
+          "Darren Aronofsky (Réents)"
+        ]
+      },
+      {
+        "id": "folder-6D2C8505",
+        "title": "David Cronenberg",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "David Cronenberg (Le meilleur de)",
+          "David Cronenberg (Récents)"
+        ]
+      },
+      {
+        "id": "folder-ORT2G4HQ",
+        "title": "David Fincher",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "David Fincher (Best Of)",
+          "David Fincher (Récents)"
+        ]
+      },
+      {
+        "id": "folder-BXQCPCBV",
+        "title": "David Lynch",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "David Lynch (Le meilleur de)",
+          "David Lynch (Récents)"
+        ]
+      },
+      {
+        "id": "folder-I4NYCWWV",
+        "title": "Denis Villeneuve",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Denis Villeneuve (Le meilleur de)",
+          "Denis Villeneuve (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0RN654SH",
+        "title": "Edgar Wright",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Edgar Wright (Le meilleur de)",
+          "Edgar Wright (Récent)"
+        ]
+      },
+      {
+        "id": "folder-C34MCJNY",
+        "title": "Emerald Fennell",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Emerald Fennell (Le meilleur de)",
+          "Emerald Fennell (Récent)"
+        ]
+      },
+      {
+        "id": "folder-RX1KW27K",
+        "title": "Francis Ford Coppola",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Francis Ford Coppola (Le meilleur de)",
+          "Francis Ford Coppola (Récents)"
+        ]
+      },
+      {
+        "id": "folder-P3TT53P3",
+        "title": "George Lucas",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "George Lucas (Best of)",
+          "George Lucas (Récents)"
+        ]
+      },
+      {
+        "id": "folder-42775B86",
+        "title": "George Miller",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "George Miller (Le Meilleur de)",
+          "George Miller (Récent)"
+        ]
+      },
+      {
+        "id": "folder-678B18F5",
+        "title": "Gore Verbinski",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Gore Verbinski (Le meilleur de)",
+          "Gore Verbinski (Récent)"
+        ]
+      },
+      {
+        "id": "folder-8UPHB2I5",
+        "title": "Greta Gerwig",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Greta Gerwig (Meilleur de)",
+          "Greta Gerwig (Récent)"
+        ]
+      },
+      {
+        "id": "folder-Z6H0DPEH",
+        "title": "Guillermo del Toro",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Guillermo del Toro (Le meilleur de)",
+          "Guillermo del Toro (Récents)"
+        ]
+      },
+      {
+        "id": "folder-VZAELEDR",
+        "title": "Guy Ritchie",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Guy Ritchie (Le Meilleur de)",
+          "Guy Ritchie (Récents)"
+        ]
+      },
+      {
+        "id": "folder-B3ZDSG01",
+        "title": "Hayao Miyazaki",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Hayao Miyazaki (Le meilleur de)",
+          "Hayao Miyazaki (Récent)"
+        ]
+      },
+      {
+        "id": "folder-KIYFQDGL",
+        "title": "James Cameron",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "James Cameron (Best Of)",
+          "James Cameron (Récent)"
+        ]
+      },
+      {
+        "id": "folder-83CD920E",
+        "title": "James Gunn",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "James Gunn (Best Of)",
+          "James Gunn (récents)"
+        ]
+      },
+      {
+        "id": "folder-7T9Z13PN",
+        "title": "James Wan",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "James Wan (Le meilleur de)",
+          "James Wan (Récent)"
+        ]
+      },
+      {
+        "id": "folder-4Q94KG36",
+        "title": "Joel Coen",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Joel Coen (Le meilleur de)",
+          "Joel Coen (Récent)"
+        ]
+      },
+      {
+        "id": "folder-E7TC1R89",
+        "title": "John Carpenter",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "John Carpenter (Le meilleur de)",
+          "John Carpenter (Récents)"
+        ]
+      },
+      {
+        "id": "folder-FAAF485C",
+        "title": "John Hughes",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "John Hughes (Le meilleur de)",
+          "John Hughes (Récent)"
+        ]
+      },
+      {
+        "id": "folder-3E92A199",
+        "title": "Jonathan Demme",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Jonathan Demme (Le meilleur de)",
+          "Jonathan Demme (Récents)"
+        ]
+      },
+      {
+        "id": "folder-SJCCP0SK",
+        "title": "Jordan Peele",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Jordan Peele (Le meilleur de)",
+          "Jordan Peele (Récent)"
+        ]
+      },
+      {
+        "id": "folder-F8WMWLBP",
+        "title": "Kathryn Bigelow",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Kathryn Bigelow (Best Of)",
+          "Kathryn Bigelow (Récent)"
+        ]
+      },
+      {
+        "id": "folder-AA249B00",
+        "title": "Luc Besson",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Luc Besson (Best Of)",
+          "Luc Besson (Récents)"
+        ]
+      },
+      {
+        "id": "folder-037CFEF2",
+        "title": "Martin McDonagh",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Martin McDonagh (Best Of)",
+          "Martin McDonagh (Récents)"
+        ]
+      },
+      {
+        "id": "folder-5AP9RNB7",
+        "title": "Martin Scorsese",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Martin Scorsese (Meilleur de)",
+          "Martin Scorsese (Récent)"
+        ]
+      },
+      {
+        "id": "folder-1VPO8OYE",
+        "title": "Mel Brooks",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Mel Brooks (Le meilleur de)",
+          "Mel Brooks (Récent)"
+        ]
+      },
+      {
+        "id": "folder-BA7JJ48I",
+        "title": "Michael Mann",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Michael Mann (Le meilleur de)",
+          "Michael Mann (Récent)"
+        ]
+      },
+      {
+        "id": "folder-S7FCTI9L",
+        "title": "Mike Flanagan",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Mike Flanagan (Best Of)",
+          "Mike Flanagan (Récents)"
+        ]
+      },
+      {
+        "id": "folder-13E7BOCB",
+        "title": "Oliver Stone",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Oliver Stone (Le Meilleur de)",
+          "Oliver Stone (Récents)"
+        ]
+      },
+      {
+        "id": "folder-DYBV6L81",
+        "title": "Park Chan-wook",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Park Chan-wook (Le meilleur de)",
+          "Park Chan-wook (Récents)"
+        ]
+      },
+      {
+        "id": "folder-3YVWC7AA",
+        "title": "Paul Thomas Anderson",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Paul Thomas Anderson (Le meilleur de)",
+          "Paul Thomas Anderson (récents)"
+        ]
+      },
+      {
+        "id": "folder-B0322692",
+        "title": "Paul Verhoeven",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Paul Verhoeven (Best Of)",
+          "Paul Verhoeven (Récent)"
+        ]
+      },
+      {
+        "id": "folder-OKSBGVJB",
+        "title": "Pedro Almodóvar",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Pedro Almodóvar (Best Of)",
+          "Pedro Almodóvar (Récents)"
+        ]
+      },
+      {
+        "id": "folder-VUV0NGE4",
+        "title": "Peter Jackson",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Peter Jackson (Le meilleur de)",
+          "Peter Jackson (Récent)"
+        ]
+      },
+      {
+        "id": "folder-KGVNOYUN",
+        "title": "Quentin Tarantino",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Quentin Tarantino (Best of)",
+          "Quentin Tarantino (récent)"
+        ]
+      },
+      {
+        "id": "folder-Y82E1SHR",
+        "title": "Richard Linklater",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Richard Linklater (Best Of)",
+          "Richard Linklater (Récent)"
+        ]
+      },
+      {
+        "id": "folder-2MVP44YL",
+        "title": "Ridley Scott",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Ridley Scott (Le meilleur de)",
+          "Ridley Scott (Récents)"
+        ]
+      },
+      {
+        "id": "folder-HT9FI8PA",
+        "title": "Rob Reiner",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Rob Reiner (Le meilleur de)",
+          "Rob Reiner (Récents)"
+        ]
+      },
+      {
+        "id": "folder-S72PK4W0",
+        "title": "Robert Eggers",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Robert Eggers (Best of)",
+          "Robert Eggers (Récents)"
+        ]
+      },
+      {
+        "id": "folder-XVF16L85",
+        "title": "Robert Zemeckis",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Robert Zemeckis (Le meilleur de)",
+          "Robert Zemeckis (Récent)"
+        ]
+      },
+      {
+        "id": "folder-LD7EJZ3Q",
+        "title": "Roland Emmerich",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Roland Emmerich (Best of)",
+          "Roland Emmerich (Récent)"
+        ]
+      },
+      {
+        "id": "folder-E18F650C",
+        "title": "Ron Howard",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Ron Howard (Best Of)",
+          "Ron Howard (Récents)"
+        ]
+      },
+      {
+        "id": "folder-6VLQPAQY",
+        "title": "Ryan Coogler",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Ryan Coogler (Le meilleur de)",
+          "Ryan Coogler (Récent)"
+        ]
+      },
+      {
+        "id": "folder-UWEO44LT",
+        "title": "Sam Esmail",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Sam Esmail (Le meilleur de)",
+          "Sam Esmail (Récents)"
+        ]
+      },
+      {
+        "id": "folder-6KCYV7TD",
+        "title": "Sam Mendes",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Sam Mendes (Le meilleur de)",
+          "Sam Mendes (Récents)"
+        ]
+      },
+      {
+        "id": "folder-SV2DU8QN",
+        "title": "Sam Raimi",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Sam Raimi (Best of)",
+          "Sam Raimi (Récents)"
+        ]
+      },
+      {
+        "id": "folder-6C3F61D0",
+        "title": "Satoshi Kon",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Satoshi Kon (Le meilleur de)",
+          "Satoshi Kon (Récent)"
+        ]
+      },
+      {
+        "id": "folder-AD0Z4JYI",
+        "title": "Sergio Leone",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Sergio Leone (Le meilleur de)",
+          "Sergio Leone (Récents)"
+        ]
+      },
+      {
+        "id": "folder-C0AAB442",
+        "title": "Sidney Lumet",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Sidney Lumet (Best Of)",
+          "Sidney Lumet (Récent)"
+        ]
+      },
+      {
+        "id": "folder-1A18C3F1",
+        "title": "Spike Jonze",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Spike Jonze (Le meilleur de)",
+          "Spike Jonze (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0NDCDY31",
+        "title": "Spike Lee",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Spike Lee (Best Of)",
+          "Spike Lee (Récents)"
+        ]
+      },
+      {
+        "id": "folder-VQDLSF2L",
+        "title": "Stanley Kubrick",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Stanley Kubrick (le meilleur de)",
+          "Stanley Kubrick (Récent)"
+        ]
+      },
+      {
+        "id": "folder-WSTB29HB",
+        "title": "Steven Soderbergh",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Steven Soderbergh (Le meilleur de)",
+          "Steven Soderbergh (Récents)"
+        ]
+      },
+      {
+        "id": "folder-BBLOJJ1V",
+        "title": "Steven Spielberg",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Steven Spielberg (Le meilleur de)",
+          "Steven Spielberg (Récent)"
+        ]
+      },
+      {
+        "id": "folder-29EC143B",
+        "title": "Taika Waititi",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Taika Waititi (Le meilleur de)",
+          "Taika Waititi (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0AB66301",
+        "title": "Terry Gilliam",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Terry Gilliam (Le meilleur de)",
+          "Terry Gilliam (Récents)"
+        ]
+      },
+      {
+        "id": "folder-805F4338",
+        "title": "Les Wachowski",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "The Wachowskis (Le meilleur de)",
+          "Les Wachowski (Récent)"
+        ]
+      },
+      {
+        "id": "folder-JNAONKLX",
+        "title": "Tim Burton",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Tim Burton (Best Of)",
+          "Tim Burton (Récent)"
+        ]
+      },
+      {
+        "id": "folder-9FFD0FWT",
+        "title": "Todd Phillips",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Todd Phillips (Le meilleur de)",
+          "Todd Phillips (Récent)"
+        ]
+      },
+      {
+        "id": "folder-3767634B",
+        "title": "Tony Scott",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Tony Scott (Le meilleur de)",
+          "Tony Scott (Récent)"
+        ]
+      },
+      {
+        "id": "folder-0TQB9YAC",
+        "title": "Vince Gilligan",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Vince Gilligan (Best Of)",
+          "Vince Gilligan (Récent)"
+        ]
+      },
+      {
+        "id": "folder-U5WAYZNG",
+        "title": "Wes Anderson",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Wes Anderson (Le meilleur de)",
+          "Wes Anderson (Récent)"
+        ]
+      },
+      {
+        "id": "folder-3ARDD5TS",
+        "title": "Wes Craven",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Wes Craven (Le meilleur de)",
+          "Wes Craven (Récent)"
+        ]
+      },
+      {
+        "id": "folder-343A598B",
+        "title": "Wong Kar-wai",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Wong Kar-wai (Le meilleur de)",
+          "Wong Kar-wai (Récents)"
+        ]
+      },
+      {
+        "id": "folder-F2FRH147",
+        "title": "Yorgos Lanthimos",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Yorgos Lanthimos (Le meilleur de)",
+          "Yorgos Lanthimos (Récent)"
+        ]
+      },
+      {
+        "id": "folder-LWZIKER3",
+        "title": "Zack Snyder",
+        "sourcesCount": 2,
+        "sourcesPreview": [
+          "Zack Snyder (Le meilleur de)",
+          "Zack Snyder (Récent)"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-XB14SDA2",
+    "title": "Studios",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 20,
+    "sourcesCount": 99,
+    "folders": [
+      {
+        "id": "folder-ZDYYVMWR",
+        "title": "20th Century Studios",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-4ZV8HZGY",
+        "title": "A24",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-BNC84SJ4",
+        "title": "Blumhouse Productions",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-J66S9Y7E",
+        "title": "DC",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-9ZZK6A6C",
+        "title": "DreamWorks Pictures",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-10146STUDIO",
+        "title": "Focus Features",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-79DVGTP9",
+        "title": "Illumination",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-HIU1YFQA",
+        "title": "Lionsgate",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ZVTA71KC",
+        "title": "Lucasfilm Ltd.",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-CYHIQOKR",
+        "title": "Marvel Studios",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-V0MRWXHJ",
+        "title": "MGM",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-5VIHLY7Y",
+        "title": "New Line Cinema",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-A59XSVAT",
+        "title": "Paramount Pictures",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-2XGVUWET",
+        "title": "Pixar",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-127929STUDIO",
+        "title": "Searchlight Pictures",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-34STUDIO",
+        "title": "Sony Pictures",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-KIRXHA4A",
+        "title": "Studio Ghibli",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-IAL16XW3",
+        "title": "Universal Pictures",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-4OZG50Y4",
+        "title": "Walt Disney Studio",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-2KA1KP6V",
+        "title": "Warner Bros. Entertainment",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films récents",
+          "Films populaires",
+          "Films les mieux notés"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-Y2HQBZ5I",
+    "title": "Par décennie",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 8,
+    "sourcesCount": 112,
+    "folders": [
+      {
+        "id": "folder-N0O4TY4I",
+        "title": "Films des années 2020",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 2020",
+          "Séries télévisées populaires des années 2020",
+          "Films des années 2020 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-RTDIH0YV",
+        "title": "Films des années 10",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 10",
+          "Séries TV populaires des années 2010",
+          "Films des années 2010 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-NEK4LQ1T",
+        "title": "Films des années 2000",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films des années 2000 populaires",
+          "Émissions de télévision populaires des années 2000",
+          "Films des années 2000 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-VMYWM6ZK",
+        "title": "Films des années 90",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 90",
+          "Émissions de télévision populaires des années 1990",
+          "Films des années 90 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-8CFPI44Q",
+        "title": "Films des années 80",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 80",
+          "Séries TV populaires des années 1980",
+          "Films des années 80 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-FXPDJY5T",
+        "title": "Films des années 70",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 70",
+          "Émissions de télévision populaires des années 1970",
+          "Films des années 70 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-NEW60SMO",
+        "title": "Films des années 60",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 60",
+          "Émissions de télévision des années 1960 populaires",
+          "Films des années 60 les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-NEW50SMO",
+        "title": "Films des années 50",
+        "sourcesCount": 14,
+        "sourcesPreview": [
+          "Films populaires des années 50",
+          "Émissions de télévision populaires des années 1950",
+          "Films des années 50 les mieux notés"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-b530d60c",
+    "title": "Anime",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 6,
+    "sourcesCount": 36,
+    "folders": [
+      {
+        "id": "folder-08IC2WBN",
+        "title": "Découvrir l'anime",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Séries d'anime tendances",
+          "Séries d'animation les mieux notées",
+          "Films d'animation tendance"
+        ]
+      },
+      {
+        "id": "folder-QCEU9Z9A",
+        "title": "Animés shonen et d'action",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Séries shōnen populaires",
+          "Animes de combat les mieux notés",
+          "Dark fantasy et surnaturel"
+        ]
+      },
+      {
+        "id": "folder-9RP4Z63N",
+        "title": "Coup de projecteur sur le studio",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Chefs-d'œuvre du Studio Ghibli",
+          "Joyaux visuels de Kyoto Animation",
+          "MAPPA : La puissance moderne"
+        ]
+      },
+      {
+        "id": "folder-JQ8I3SCI",
+        "title": "Sagas Isekai & Fantasy",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Aventures isekai populaires",
+          "Isekai les mieux notés",
+          "Piégés dans un jeu vidéo"
+        ]
+      },
+      {
+        "id": "folder-FML2DNZO",
+        "title": "Tranche de vie et romance",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Tranches de vie populaires",
+          "Animes romantiques les mieux notés",
+          "Histoires de lycée"
+        ]
+      },
+      {
+        "id": "folder-CDMZH7S0",
+        "title": "Anime de sports et compétition",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Animes de sport populaires",
+          "Animes de sport les plus populaires",
+          "Tournois de combat"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-56d0517f",
+    "title": "Récompenses",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 3,
+    "sourcesCount": 55,
+    "folders": [
+      {
+        "id": "folder-13a3da42",
+        "title": "Oscars",
+        "sourcesCount": 22,
+        "sourcesPreview": [
+          "Meilleurs films de l'année (Oscars du meilleur film) 1929-2025",
+          "Meilleurs scénarios adaptés de 1928 à 2025",
+          "Meilleur film d'animation - Gagnants 2001-2025"
+        ]
+      },
+      {
+        "id": "folder-4ee02f67",
+        "title": "Festival de Cannes",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Palmes d'or 1946-2025",
+          "Courts métrages palmes d'or 1947-2025",
+          "Gagnants du Grand Prix 1967-2025"
+        ]
+      },
+      {
+        "id": "folder-47ec917f",
+        "title": "Golden Globes",
+        "sourcesCount": 25,
+        "sourcesPreview": [
+          "Meilleurs films dramatiques - Gagnants 1943-2025",
+          "Meilleures séries télévisées - Gagnants dramatiques 1961-2025",
+          "Gagnants du meilleur film - Comédie ou comédie musicale 1951-2025"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-R69FJM5K",
+    "title": "Cinéma international",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 65,
+    "sourcesCount": 383,
+    "folders": [
+      {
+        "id": "folder-DAKK95AS",
+        "title": "Cinéma latino-américain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films latino-américains populaires",
+          "Films latino-américains les mieux notés et acclamés",
+          "Nouveautés latino-américaines"
+        ]
+      },
+      {
+        "id": "folder-6QY0M3IY",
+        "title": "Cinéma nord-américain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films nord-américains populaires",
+          "Films nord-américains acclamés et les mieux notés",
+          "Nouveautés nord-américaines"
+        ]
+      },
+      {
+        "id": "folder-75QYR3TP",
+        "title": "Cinéma nordique",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films nordiques populaires",
+          "Films nordiques acclamés et les mieux notés",
+          "Nouveautés et sorties nordiques"
+        ]
+      },
+      {
+        "id": "folder-FZ3RIQ1V",
+        "title": "Cinéma d'Asie de l'Est",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films est-asiatiques populaires",
+          "Films d'Asie de l'Est les mieux notés et acclamés",
+          "Nouveautés et sorties récentes d'Asie de l'Est"
+        ]
+      },
+      {
+        "id": "folder-RN6L9OKY",
+        "title": "Cinéma sud-asiatique",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films d'Asie du Sud-Est populaires",
+          "Films sud-est asiatiques les mieux notés et acclamés",
+          "Nouveautés d'Asie du Sud-Est"
+        ]
+      },
+      {
+        "id": "folder-7C9RNJ3U",
+        "title": "Cinéma sud-asiatique",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films sud-asiatiques populaires",
+          "Films sud-asiatiques les mieux notés et acclamés",
+          "Nouveautés sud-asiatiques"
+        ]
+      },
+      {
+        "id": "folder-RWNY9QZ0",
+        "title": "Cinéma du Moyen-Orient",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films du Moyen-Orient populaires",
+          "Films du Moyen-Orient les mieux notés et acclamés",
+          "Nouveautés et récents films du Moyen-Orient"
+        ]
+      },
+      {
+        "id": "folder-1L4QQIKN",
+        "title": "Cinéma africain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films africains populaires",
+          "Films africains les mieux notés et acclamés",
+          "Nouveautés africaines récentes"
+        ]
+      },
+      {
+        "id": "folder-1DLH4Q3B",
+        "title": "Cinéma algérien",
+        "sourcesCount": 5,
+        "sourcesPreview": [
+          "Films algériens populaires",
+          "Films algériens acclamés et les mieux notés",
+          "Nouveautés et sorties algériennes"
+        ]
+      },
+      {
+        "id": "folder-5IS5EIVV",
+        "title": "Cinéma argentin",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films argentins populaires",
+          "Films argentins acclamés et les mieux notés",
+          "Nouveautés et sorties argentines"
+        ]
+      },
+      {
+        "id": "folder-TRWE0E34",
+        "title": "Cinéma australien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films australiens populaires",
+          "Films australiens les mieux notés et acclamés",
+          "Nouveautés australiennes"
+        ]
+      },
+      {
+        "id": "folder-Z55EA73B",
+        "title": "Cinéma bangladais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires du Bangladesh",
+          "Films bangladais les mieux notés et acclamés",
+          "Nouveautés et sorties bangladaises"
+        ]
+      },
+      {
+        "id": "folder-2YV5HI8I",
+        "title": "Cinéma belge",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films belges populaires",
+          "Films belges les mieux notés et acclamés",
+          "Nouveautés belges"
+        ]
+      },
+      {
+        "id": "folder-VLTMKACY",
+        "title": "Cinéma brésilien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films brésiliens populaires",
+          "Films brésiliens les mieux notés et acclamés",
+          "Nouveautés et sorties brésiliennes récentes"
+        ]
+      },
+      {
+        "id": "folder-BICUTNJY",
+        "title": "Cinéma britannique",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films britanniques populaires",
+          "Films britanniques les mieux notés et acclamés",
+          "Nouveautés et sorties britanniques"
+        ]
+      },
+      {
+        "id": "folder-WCOQJ028",
+        "title": "Cinéma canadien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films canadiens populaires",
+          "Films canadiens les mieux notés et acclamés",
+          "Nouveautés canadiennes"
+        ]
+      },
+      {
+        "id": "folder-FI6BJN1Z",
+        "title": "Cinéma chilien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films chiliens populaires",
+          "Films chiliens les mieux notés et acclamés",
+          "Nouveautés et sorties récentes du Chili"
+        ]
+      },
+      {
+        "id": "folder-LHFRZV64",
+        "title": "Cinéma chinois",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films chinois populaires",
+          "Films chinois acclamés et les mieux notés",
+          "Nouveautés chinoises"
+        ]
+      },
+      {
+        "id": "folder-5069W7D9",
+        "title": "Cinéma colombien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films colombiens populaires",
+          "Films colombiens les mieux notés et acclamés",
+          "Nouveautés colombiennes"
+        ]
+      },
+      {
+        "id": "folder-XJ6HNL6G",
+        "title": "Cinéma danois",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films danois populaires",
+          "Films danois les mieux notés et acclamés",
+          "Nouveautés et sorties danoises"
+        ]
+      },
+      {
+        "id": "folder-V9HNQAV1",
+        "title": "Cinéma néerlandais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films néerlandais populaires",
+          "Films néerlandais acclamés et les mieux notés",
+          "Nouveautés et sorties néerlandaises"
+        ]
+      },
+      {
+        "id": "folder-0ZI700NE",
+        "title": "Cinéma égyptien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films égyptiens populaires",
+          "Films égyptiens acclamés et les mieux notés",
+          "Nouveautés et récents films égyptiens"
+        ]
+      },
+      {
+        "id": "folder-D1NICV2Z",
+        "title": "Cinéma émirati",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films émiratis populaires",
+          "Films émiratis les mieux notés et acclamés",
+          "Nouveautés émiraties récentes"
+        ]
+      },
+      {
+        "id": "folder-W2F9SBO8",
+        "title": "Cinéma éthiopien",
+        "sourcesCount": 4,
+        "sourcesPreview": [
+          "Films éthiopiens populaires",
+          "Films éthiopiens les mieux notés et acclamés",
+          "Action, crime et thrillers éthiopiens"
+        ]
+      },
+      {
+        "id": "folder-FVCF354Y",
+        "title": "Cinéma philippin",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films philippins populaires",
+          "Films philippins acclamés et les mieux notés",
+          "Nouveautés philippines"
+        ]
+      },
+      {
+        "id": "folder-5U334FWO",
+        "title": "Cinéma finlandais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films finlandais populaires",
+          "Films finlandais les mieux notés et acclamés",
+          "Nouveautés et sorties finlandaises récentes"
+        ]
+      },
+      {
+        "id": "folder-NNKGX3M1",
+        "title": "Cinéma français",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films français populaires",
+          "Films français les mieux notés et acclamés",
+          "Nouveautés et sorties françaises"
+        ]
+      },
+      {
+        "id": "folder-V2DRW1HY",
+        "title": "Cinéma allemand",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films allemands populaires",
+          "Films allemands les mieux notés et acclamés",
+          "Nouveautés et récents films allemands"
+        ]
+      },
+      {
+        "id": "folder-AK9ECCMJ",
+        "title": "Cinéma ghanéen",
+        "sourcesCount": 5,
+        "sourcesPreview": [
+          "Films ghanéens populaires",
+          "Films ghanéens les mieux notés et acclamés",
+          "Nouveautés ghanéennes"
+        ]
+      },
+      {
+        "id": "folder-X8FT0TBR",
+        "title": "Cinéma grec",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films grecs populaires",
+          "Films grecs les mieux notés et acclamés",
+          "Nouveautés et sorties grecques"
+        ]
+      },
+      {
+        "id": "folder-369A49J9",
+        "title": "Cinéma hongkongais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires de Hong Kong",
+          "Films de Hong Kong les mieux notés et acclamés",
+          "Nouveautés et sorties récentes de Hong Kong"
+        ]
+      },
+      {
+        "id": "folder-U58KOK24",
+        "title": "Cinéma islandais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films islandais populaires",
+          "Films islandais acclamés et les mieux notés",
+          "Nouveautés islandaises"
+        ]
+      },
+      {
+        "id": "folder-NXN7P4SZ",
+        "title": "Cinéma indien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films indiens populaires",
+          "Films indiens les mieux notés et acclamés",
+          "Nouveautés et sorties indiennes"
+        ]
+      },
+      {
+        "id": "folder-UJU5PHHC",
+        "title": "Cinéma indonésien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films indonésiens populaires",
+          "Films indonésiens les mieux notés et acclamés",
+          "Nouveautés indonésiennes"
+        ]
+      },
+      {
+        "id": "folder-VBBN438M",
+        "title": "Cinéma irakien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films irakiens populaires",
+          "Films irakiens acclamés et les mieux notés",
+          "Nouveautés et sorties irakiennes"
+        ]
+      },
+      {
+        "id": "folder-9EYEPU66",
+        "title": "Cinéma irlandais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films irlandais populaires",
+          "Films irlandais acclamés et les mieux notés",
+          "Nouveautés et récents films irlandais"
+        ]
+      },
+      {
+        "id": "folder-2DT7DVAT",
+        "title": "Cinéma israélien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films israéliens populaires",
+          "Films israéliens acclamés et les mieux notés",
+          "Nouveautés et sorties israéliennes"
+        ]
+      },
+      {
+        "id": "folder-2LNN2T93",
+        "title": "Cinéma italien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films italiens populaires",
+          "Films italiens les mieux notés et acclamés",
+          "Nouveautés et sorties italiennes"
+        ]
+      },
+      {
+        "id": "folder-JLYZGV7Z",
+        "title": "Cinéma japonais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films japonais populaires",
+          "Films japonais les mieux notés et acclamés",
+          "Nouveautés et sorties japonaises récentes"
+        ]
+      },
+      {
+        "id": "folder-BPH7ACF1",
+        "title": "Cinéma jordanien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films jordaniens populaires",
+          "Films jordaniens acclamés et les mieux notés",
+          "Nouveautés jordaniennes récentes"
+        ]
+      },
+      {
+        "id": "folder-U4QLYE75",
+        "title": "Cinéma kényan",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films kényans populaires",
+          "Films kényans les mieux notés et acclamés",
+          "Nouveautés kenyanes"
+        ]
+      },
+      {
+        "id": "folder-2VP221Y7",
+        "title": "Cinéma coréen",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films coréens populaires",
+          "Films coréens acclamés et les mieux notés",
+          "Nouveautés coréennes récentes"
+        ]
+      },
+      {
+        "id": "folder-DWVPX66N",
+        "title": "Cinéma libanais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films libanais populaires",
+          "Films libanais acclamés et les mieux notés",
+          "Nouveautés libanaises récentes"
+        ]
+      },
+      {
+        "id": "folder-F4SMGZBV",
+        "title": "Cinéma mexicain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films mexicains populaires",
+          "Films mexicains acclamés et les mieux notés",
+          "Nouveautés et sorties mexicaines"
+        ]
+      },
+      {
+        "id": "folder-F5XQ4UP6",
+        "title": "Cinéma marocain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films marocains populaires",
+          "Films marocains les mieux notés et acclamés",
+          "Nouveautés marocaines"
+        ]
+      },
+      {
+        "id": "folder-MH8C4JIK",
+        "title": "Cinéma népalais",
+        "sourcesCount": 5,
+        "sourcesPreview": [
+          "Films népalais populaires",
+          "Films népalais acclamés et les mieux notés",
+          "Nouveautés et sorties népalaises"
+        ]
+      },
+      {
+        "id": "folder-0J1SF1P8",
+        "title": "Cinéma nigérian",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films nigérians populaires",
+          "Films nigérians les mieux notés et acclamés",
+          "Nouveautés nigérianes récentes"
+        ]
+      },
+      {
+        "id": "folder-TT3MZNJE",
+        "title": "Cinéma norvégien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films norvégiens populaires",
+          "Films norvégiens les mieux notés et acclamés",
+          "Nouveautés et récents films norvégiens"
+        ]
+      },
+      {
+        "id": "folder-OBIM1CC7",
+        "title": "Cinéma pakistanais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films pakistanais populaires",
+          "Films pakistanais acclamés et les mieux notés",
+          "Nouveautés pakistanaises"
+        ]
+      },
+      {
+        "id": "folder-Z4R165P4",
+        "title": "Cinéma persan",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films persans populaires",
+          "Films persans les mieux notés et acclamés",
+          "Nouveautés persanes"
+        ]
+      },
+      {
+        "id": "folder-RESMLEJZ",
+        "title": "Cinéma polonais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films polonais populaires",
+          "Films polonais acclamés et les mieux notés",
+          "Nouveautés et sorties polonaises"
+        ]
+      },
+      {
+        "id": "folder-YGB4RL7Z",
+        "title": "Cinéma portugais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films portugais populaires",
+          "Films portugais les mieux notés et acclamés",
+          "Nouveautés et sorties portugaises"
+        ]
+      },
+      {
+        "id": "folder-O96IIZVM",
+        "title": "Cinéma russe",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films russes populaires",
+          "Films russes les mieux notés et acclamés",
+          "Nouveautés et sorties russes récentes"
+        ]
+      },
+      {
+        "id": "folder-ZP0ZUNHA",
+        "title": "Cinéma saoudien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films saoudiens populaires",
+          "Films saoudiens les mieux notés et acclamés",
+          "Nouveautés et sorties saoudiennes"
+        ]
+      },
+      {
+        "id": "folder-34G8YHUB",
+        "title": "Cinéma sénégalais",
+        "sourcesCount": 4,
+        "sourcesPreview": [
+          "Films sénégalais populaires",
+          "Films sénégalais les mieux notés et acclamés",
+          "Action, crime & thrillers sénégalais"
+        ]
+      },
+      {
+        "id": "folder-8XVOQGAJ",
+        "title": "Cinéma sud-africain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films sud-africains populaires",
+          "Films sud-africains acclamés et les mieux notés",
+          "Nouveautés sud-africaines"
+        ]
+      },
+      {
+        "id": "folder-HCVIGJF9",
+        "title": "Cinéma espagnol",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films espagnols populaires",
+          "Films espagnols les mieux notés et acclamés",
+          "Sorties espagnoles récentes et nouvelles"
+        ]
+      },
+      {
+        "id": "folder-KFJI7SS7",
+        "title": "Cinéma srilankais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films srilankais populaires",
+          "Films sri-lankais acclamés et les mieux notés",
+          "Nouveautés et sorties récentes du Sri Lanka"
+        ]
+      },
+      {
+        "id": "folder-MV0AT0KN",
+        "title": "Cinéma suédois",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films suédois populaires",
+          "Films suédois les mieux notés et acclamés",
+          "Nouveautés et sorties suédoises"
+        ]
+      },
+      {
+        "id": "folder-CNVEC5EE",
+        "title": "Cinéma taïwanais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films taïwanais populaires",
+          "Films taiwanais les mieux notés et acclamés",
+          "Nouveautés et sorties taïwanaises récentes"
+        ]
+      },
+      {
+        "id": "folder-Y0KO0JXK",
+        "title": "Cinéma thaïlandais",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films thaïlandais populaires",
+          "Films thaïlandais les mieux notés et acclamés",
+          "Nouveautés thaïlandaises"
+        ]
+      },
+      {
+        "id": "folder-ZFQ2TA63",
+        "title": "Cinéma tunisien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films tunisiens populaires",
+          "Films tunisiens les mieux notés et acclamés",
+          "Nouveautés et sorties tunisiennes"
+        ]
+      },
+      {
+        "id": "folder-E66OMB1T",
+        "title": "Cinéma turc",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films turcs populaires",
+          "Films turcs les mieux notés et acclamés",
+          "Nouveautés turques récentes"
+        ]
+      },
+      {
+        "id": "folder-CHLCSAJ1",
+        "title": "Cinéma américain",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films américains populaires",
+          "Films américains les mieux notés et acclamés",
+          "Nouveautés américaines"
+        ]
+      },
+      {
+        "id": "folder-10NNKWPU",
+        "title": "Cinéma vietnamien",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films vietnamiens populaires",
+          "Films vietnamiens les mieux notés et acclamés",
+          "Nouveautés et sorties vietnamiennes récentes"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-4XMJ04BX",
+    "title": "Documentaires",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 7,
+    "sourcesCount": 42,
+    "folders": [
+      {
+        "id": "folder-3EO6D18E",
+        "title": "True crime et tueurs en série",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Séries de true crime populaires",
+          "Films de true crime acclamés",
+          "Tueurs en série et affaires non élucidées"
+        ]
+      },
+      {
+        "id": "folder-KQU791FW",
+        "title": "Nature, faune et Terre",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Séries populaires sur la nature et la faune",
+          "Films sur la nature acclamés",
+          "Océan profond et vie marine"
+        ]
+      },
+      {
+        "id": "folder-GLXQEJD5",
+        "title": "Histoires de sport et d'athlétisme",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Docuseries sportives populaires",
+          "Films de sport acclamés",
+          "Sports mécaniques et course"
+        ]
+      },
+      {
+        "id": "folder-E7NOL7FT",
+        "title": "Documentaires musicaux et concerts",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Documentaires musicaux populaires",
+          "Documentaires acclamés sur la musique et les groupes",
+          "Séries documentaires musicales populaires"
+        ]
+      },
+      {
+        "id": "folder-0WSZMM2X",
+        "title": "Histoire, guerre et civilisations",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Documentaires historiques populaires",
+          "Séries documentaires historiques acclamées",
+          "Seconde Guerre mondiale et conflits mondiaux"
+        ]
+      },
+      {
+        "id": "folder-H9YXHQC8",
+        "title": "Science, technologie et cosmos",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Documentaires et séries sur la science et l'espace populaires",
+          "Films acclamés sur le cosmos et l'univers",
+          "Technologie, IA et cybernétique"
+        ]
+      },
+      {
+        "id": "folder-VO70XOOU",
+        "title": "Enquêtes et scandales",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films d'investigation acclamés",
+          "Scandales d'entreprises et financiers",
+          "Scandales politiques & journalisme"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-NKKHPRKV",
+    "title": "Jeunesse et famille",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 6,
+    "sourcesCount": 38,
+    "folders": [
+      {
+        "id": "folder-9RSYJL73",
+        "title": "Découvrir en famille",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films familiaux d'animation les mieux notés",
+          "Émissions pour enfants populaires",
+          "Séries pour enfants les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9L1UCO4Y",
+        "title": "Pleins feux sur les studios d'animation",
+        "sourcesCount": 8,
+        "sourcesPreview": [
+          "Classiques d'animation Pixar",
+          "Joyaux de Walt Disney Animation",
+          "Poids lourds de DreamWorks"
+        ]
+      },
+      {
+        "id": "folder-3DCDF32B",
+        "title": "Soirée film en famille",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Classiques familiaux incontournables",
+          "Aventures fantastiques et magiques",
+          "Comédies familiales"
+        ]
+      },
+      {
+        "id": "folder-N8CJYFAA",
+        "title": "Dessins animés du samedi matin & nostalgiques",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Dessins animés cultes des années 90",
+          "Succès d'animation des années 2000",
+          "Classiques Cartoon Network"
+        ]
+      },
+      {
+        "id": "folder-IK22D8R8",
+        "title": "Préscolaire, tout-petits et jeunes enfants",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Favoris des tout-petits",
+          "Favoris de Nick Jr. et des tout-petits",
+          "Classiques de Disney Junior"
+        ]
+      },
+      {
+        "id": "folder-9EGSPU2W",
+        "title": "Séries familiales et de Disney Channel",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Originaux Disney Channel",
+          "Action et comédie Disney XD",
+          "Comédies pour adolescents Nickelodeon"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "collection-KBP5HRRD",
+    "title": "Télé-réalité",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 6,
+    "sourcesCount": 36,
+    "folders": [
+      {
+        "id": "folder-WZOQKARY",
+        "title": "Découvrez la téléréalité",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Télé-réalité populaire",
+          "Émissions de téléréalité les mieux notées",
+          "Succès de la téléréalité de compétition"
+        ]
+      },
+      {
+        "id": "folder-LEL50ZXT",
+        "title": "Compétitions à haut risque et survie",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Survie sur une île & Outlast",
+          "Métiers extrêmes et danger réel",
+          "Stratégie et huis clos"
+        ]
+      },
+      {
+        "id": "folder-KW5T2ZOD",
+        "title": "Drames, télé-réalité amoureuse et relations",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Speed dating et expériences sociales",
+          "Phénomènes de téléréalité de rencontres en streaming",
+          "Émissions de datation les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-JNY5J1DM",
+        "title": "Batailles culinaires et émissions de cuisine",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Batailles culinaires intenses",
+          "Compétitions de pâtisserie chaleureuses",
+          "Favoris de Food Network"
+        ]
+      },
+      {
+        "id": "folder-PO82L89F",
+        "title": "Immobilier, maison et relooking de vie",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Immobilier de luxe",
+          "Rénovation et transformation de maison",
+          "Favoris maison HGTV"
+        ]
+      },
+      {
+        "id": "folder-OJDG0AL6",
+        "title": "Jeux télévisés, talents et quiz",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Jeux télévisés populaires",
+          "Chant et concours de talents",
+          "Jeux et quiz les mieux notés"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "27bda92a-f626-4093-a2ba-0a32dc09437a",
+    "title": "Chaînes",
+    "viewMode": "FOLLOW_LAYOUT",
+    "pinToTop": true,
+    "backdropImageUrl": null,
+    "foldersCount": 68,
+    "sourcesCount": 204,
+    "folders": [
+      {
+        "id": "folder-PB23HCW4",
+        "title": "A&E",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-TLE4N48N",
+        "title": "ABC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-B0C86BC3",
+        "title": "ABC TV (AU)",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-TVYB2SBC",
+        "title": "Adult Swim",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-LB6IAEZE",
+        "title": "AMC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-CD33CE8A",
+        "title": "Animal Planet",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-1A97070B",
+        "title": "BBC Four",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-AJRDRO1N",
+        "title": "BBC One",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-609C53CE",
+        "title": "BBC Three",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-15C0E0F3",
+        "title": "BBC Two",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-0A3D1EEF",
+        "title": "BET",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-8R10TM2Q",
+        "title": "Bravo",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-E1BFECFC",
+        "title": "Canal+",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-2N39O9PQ",
+        "title": "Cartoon Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-6966964B",
+        "title": "CBC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-R0LFPCA6",
+        "title": "CBS",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-GACR3OCN",
+        "title": "Channel 4",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-2EEB00EC",
+        "title": "Channel 5",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-5372E441",
+        "title": "Cinemax",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-A9ZVZ05M",
+        "title": "Comedy Central",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-3565B08C",
+        "title": "CTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-B724051C",
+        "title": "Dave",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-I7AO8GY3",
+        "title": "Discovery",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-1PCHSFFV",
+        "title": "Disney Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-BA5FCEFD",
+        "title": "Disney Junior",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-916D5757",
+        "title": "Disney XD",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-C7D3B46D",
+        "title": "E!",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-3BEBFAD6",
+        "title": "E4",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9BE02A93",
+        "title": "Food Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-XSX9Q4RW",
+        "title": "FOX",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9B2B624B",
+        "title": "Freeform",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-H78F2QK3",
+        "title": "FX",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-7DAD2C58",
+        "title": "Hallmark Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-3WJJ8BER",
+        "title": "HBO",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-B9G2KQIK",
+        "title": "HGTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-I7A4OFK0",
+        "title": "Histoire",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-F54AC39B",
+        "title": "IFC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-4F303575",
+        "title": "Investigation Discovery",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-8101A554",
+        "title": "ITV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-1246C56B",
+        "title": "ITV2",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-3DF4492E",
+        "title": "JTBC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9D73161F",
+        "title": "Lifetime",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-U6XLS85Q",
+        "title": "MTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-R0QME9YO",
+        "title": "National Geographic",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-SJ5F6A2Q",
+        "title": "NBC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-M5SQVQ8H",
+        "title": "Nickelodeon",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-2242077E",
+        "title": "OWN",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-8C61F322",
+        "title": "Oxygen",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-D48A88FC",
+        "title": "Paramount Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-Q69F5OGB",
+        "title": "PBS",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-869XK12L",
+        "title": "Showtime",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-A766302D",
+        "title": "Sky Atlantic",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-FD2C4625",
+        "title": "Sky Max",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-3V6FV6SN",
+        "title": "STARZ",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-6F7F202A",
+        "title": "SundanceTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9IR7VOUG",
+        "title": "Syfy",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-01RL4GHQ",
+        "title": "TBS",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-40S1V9UG",
+        "title": "The CW",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-CTYIJHO0",
+        "title": "TLC",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-G0CZCHCB",
+        "title": "TNT",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-B2055965",
+        "title": "Tokyo MX",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-32FB17B4",
+        "title": "Travel Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-9ECDC568",
+        "title": "truTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-DBBEC777",
+        "title": "TV Land",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-09C4E124",
+        "title": "TV Tokyo",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-62F13874",
+        "title": "tvN",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-2FGMH39L",
+        "title": "USA Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-B2A80F79",
+        "title": "VH1",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      }
+    ]
+  }
+]

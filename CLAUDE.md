@@ -1,0 +1,29 @@
+# CLAUDE.md — NUVIO Collection
+
+## Workflow & Startup
+- **At session start:** Read `CONTEXT_HANDOFF.md` to get current status and pending tasks.
+- **At task completion:** After code changes and build verification (`pnpm build`), update `CONTEXT_HANDOFF.md` (completed items & next steps).
+
+## Coding Principles (Karpathy Style)
+- **Think Before Coding:** State assumptions, ask if uncertain, keep it simple.
+- **Absolute Simplicity:** No speculative features, no unused abstractions, write minimal code.
+- **Surgical Edits:** Touch only what's necessary. Clean up only your own mess.
+- **Zero Band-Aid Rule:** Fix root causes (Auth, DB, UI, Types). Never hide errors with empty `try/catch`, fake defaults, or silent fallbacks.
+- **Goal-Driven Execution:** Define verifiable success criteria before editing code.
+
+## Stack & Commands
+- **Stack:** Next.js (App Router, no `/src`), TypeScript strict (`no-any`), Tailwind CSS v4, pnpm.
+- **Setup:** Alias `@/*` -> `./*`. Node v24+.
+- **Commands:** `pnpm dev` | `pnpm build` | `pnpm lint`
+
+## Development Directives
+- **UI Language:** All user-facing text, placeholders, tooltips, and messages MUST be in **French**.
+- **Components:** Functional arrow functions. `"use client"` only when interactivity requires it.
+- **Styles:** Tailwind v4 (Design tokens in `app/globals.css` under `@theme`, e.g. `--color-harmo-green`).
+- **Accessibility:** WCAG, `focus-visible`, semantic HTML.
+- **Routes:** Folder names must be in **English** (`dashboard/`, `aiometadata/`).
+- **Git:** Branches `type/task_name_in_snake_case` (e.g. `feat/search_filter`). PR target `dev`.
+
+## Graphify Tool
+- Read `graphify-out/GRAPH_REPORT.md` or `graphify-out/wiki/index.md` before analyzing architecture.
+- After code modifications, run `graphify update .`.
