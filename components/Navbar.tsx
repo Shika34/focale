@@ -68,7 +68,7 @@ export function Navbar() {
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 hover:from-emerald-400 hover:to-purple-500 text-white shadow-glow hover:shadow-glow-lg transition-all duration-200 active:scale-95"
               >
                 <Sparkles className="w-3.5 h-3.5" />
-                <span>Configurateur 1-Clic</span>
+                <span>Assistant Nuvio</span>
               </button>
             </div>
 
@@ -111,7 +111,7 @@ export function Navbar() {
                 className="flex items-center justify-center gap-2 w-full px-4 py-2.5 rounded-xl text-sm font-bold bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 text-white shadow-glow"
               >
                 <Sparkles className="w-4 h-4" />
-                <span>Lancer le Configurateur 1-Clic</span>
+                <span>Ouvrir l&apos;assistant Nuvio</span>
               </button>
             </div>
           </div>

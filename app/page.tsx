@@ -1,16 +1,12 @@
 import Link from "next/link";
 import { HeroSection } from "@/components/HeroSection";
-import { CollectionBrowser } from "@/components/CollectionBrowser";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
-import { getCollectionsSummary } from "@/lib/nuvio-data";
-import { BookOpen, Database, Layers, ArrowRight, Gift, Sparkles } from "lucide-react";
+import { BookOpen, Database, ArrowRight } from "lucide-react";
 
 export default function HomePage() {
-  const collections = getCollectionsSummary();
-
   return (
     <div>
-      {/* Hero Section with 1-Click Configurator Trigger */}
+      {/* Hero Section with guided configurator trigger */}
       <HeroSection />
 
       {/* Torbox Featured Partner Banner */}
@@ -20,7 +16,7 @@ export default function HomePage() {
 
       {/* Feature Navigation Cards */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* Card 1: Tutoriel */}
           <Link
             href="/tutoriel"
@@ -46,32 +42,7 @@ export default function HomePage() {
             </div>
           </Link>
 
-          {/* Card 2: Catalogue Collections */}
-          <Link
-            href="/collections"
-            className="glass-card p-6 rounded-2xl group border border-surface-border hover:border-indigo-500/40 relative overflow-hidden"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Layers className="w-6 h-6 text-indigo-400" />
-              </div>
-              <span className="text-xs px-2.5 py-1 rounded-full bg-indigo-500/15 text-indigo-300 font-medium">
-                756 Dossiers
-              </span>
-            </div>
-            <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors">
-              Catalogue des Collections
-            </h3>
-            <p className="text-sm text-slate-400 mt-2">
-              Parcourez les 18 grandes catégories de films, séries, acteurs, anime et documentaires incluses.
-            </p>
-            <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold text-indigo-400 group-hover:translate-x-1 transition-transform">
-              <span>Explorer le catalogue</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </div>
-          </Link>
-
-          {/* Card 3: AIO Metadata */}
+          {/* Card 2: AIO Metadata */}
           <Link
             href="/aiometadata"
             className="glass-card p-6 rounded-2xl group border border-surface-border hover:border-cyan-500/40 relative overflow-hidden"
@@ -97,9 +68,6 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
-
-      {/* Main interactive Collection Explorer */}
-      <CollectionBrowser collections={collections} />
     </div>
   );
 }

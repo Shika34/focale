@@ -52,7 +52,7 @@ export const RECOMMENDED_ADDONS: NuvioAddon[] = [
   {
     id: "bingecat",
     name: "BingeCat",
-    description: "Catalogues, recherche IA et recommandations pour Nuvio. Instance publique sans inscription ni clé API, intégrée en 1 clic.",
+    description: "Catalogues, recherche IA et recommandations pour Nuvio. Instance publique sans inscription ni clé API, intégrée par l'assistant Nuvio.",
     category: "catalogue",
     manifestUrl: "https://bingecat.strem.fun/manifest.json",
     installUrl: "stremio://bingecat.strem.fun/manifest.json",

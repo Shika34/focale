@@ -21,22 +21,22 @@ export function HeroSection() {
           {/* Eyebrow badge */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold mb-6 shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-indigo-400 animate-pulse" />
-            <span>Configurateur Automatique Nuvio France</span>
+            <span>Assistant de configuration Nuvio</span>
           </div>
 
           {/* Hero Title */}
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white max-w-4xl mx-auto leading-[1.12]">
             Votre Nuvio parfait{" "}
             <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-cyan-300 bg-clip-text text-transparent">
-              en 1 Clic
+              en quelques étapes
             </span>
           </h1>
 
           {/* Hero Tagline */}
           <p className="mt-6 text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto font-normal leading-relaxed">
-            Injectez instantanément vos <strong className="text-white">18 collections francophones (756 dossiers)</strong>{" "}
-            et installez automatiquement la suite des <strong className="text-white">10 addons indispensables</strong>{" "}
-            directement dans votre compte Nuvio.
+            Suivez un assistant guidé pour installer vos <strong className="text-white">18 collections francophones (756 dossiers)</strong>{" "}
+            et configurer les <strong className="text-white">addons indispensables</strong>{" "}
+            avec vos propres clés API et votre manifest Lumio.
           </p>
 
           {/* Action Buttons */}
@@ -46,7 +46,7 @@ export function HeroSection() {
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-2xl font-extrabold text-white bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 hover:from-emerald-400 hover:to-purple-500 shadow-glow hover:shadow-glow-lg transition-all duration-200 transform hover:-translate-y-0.5 active:translate-y-0 text-base"
             >
               <Sparkles className="w-5 h-5" />
-              <span>Configurer mon Nuvio en 1 Clic</span>
+              <span>Configurer mon Nuvio</span>
             </button>
 
             <Link

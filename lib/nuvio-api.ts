@@ -19,6 +19,11 @@ export interface NuvioProfile {
 
 export interface ApiKeysConfig {
   torboxApiKey?: string;
+  tmdbApiKey?: string;
+  tvdbApiKey?: string;
+  mdblistApiKey?: string;
+  /** Manifest Lumio personnalisé généré sur https://mylumio.tv/configure */
+  lumioManifestUrl?: string;
 }
 
 export interface NuvioAddonInstall {
@@ -139,7 +144,7 @@ export const NuvioApi = {
 
   /**
    * Authentification automatique : tente la connexion, et si le compte n'existe pas,
-   * le crée automatiquement en 1 seule étape transparente pour l'utilisateur.
+   * le crée automatiquement pendant l'étape d'envoi vers Nuvio.
    */
   async autoAuth(email: string, password: string): Promise<{ token: string; userId: string; isNewAccount: boolean }> {
     const cleanEmail = email.trim();
@@ -334,6 +339,7 @@ export const NuvioApi = {
    */
   buildAddonsList(keys: ApiKeysConfig): NuvioAddonInstall[] {
     const torboxKey = keys.torboxApiKey?.trim();
+    const lumioManifestUrl = keys.lumioManifestUrl?.trim();
 
     const cinemetaUrl = "https://v3-cinemeta.strem.io/manifest.json";
     const openSubtitlesUrl = "https://opensubtitles-v3.strem.io/manifest.json";
@@ -350,12 +356,33 @@ export const NuvioApi = {
       { name: "Cinemeta", url: cinemetaUrl, note: "Métadonnées officielles" },
       { name: "OpenSubtitles v3", url: openSubtitlesUrl, note: "Sous-titres français officiels" },
       { name: "AIO Metadata", url: aioMetadataUrl, note: "Catalogues complets & métadonnées FR (sans clé TMDB)" },
-      { ...KEYLESS_INTEGRATIONS.lumio },
+      {
+        ...KEYLESS_INTEGRATIONS.lumio,
+        ...(lumioManifestUrl ? { url: lumioManifestUrl, note: "Lumio personnalisé (débrideur TorBox)" } : {}),
+      },
       { name: "AIO STREAM", url: aioStreamUrl, note: "Agrégateur multi-scrapers haute vitesse" },
       { ...KEYLESS_INTEGRATIONS.bingecat },
       { name: "Torrentio", url: torrentioUrl, note: "Scraper principal avec débrideur Torbox" },
       { name: "Comet", url: cometUrl, note: "Scraper rapide Torbox" },
       { name: "MediaFusion", url: mediaFusionUrl, note: "Replays & sports en direct" },
     ];
+  },
+
+  /**
+   * Génère une configuration AIO Metadata personnalisée à partir du modèle
+   * public, en y injectant les clés API métadonnées (TMDB / TVDB / MDBList).
+   * Renvoyée pour téléchargement ou import dans l'instance AIO Metadata de l'utilisateur.
+   */
+  async buildAioMetadataConfig(keys: ApiKeysConfig): Promise<string> {
+    const res = await fetch("/aiometadata-config-mitch.json");
+    const config = await res.json();
+
+    if (config?.config?.apiKeys) {
+      if (keys.tmdbApiKey?.trim()) config.config.apiKeys.tmdb = keys.tmdbApiKey.trim();
+      if (keys.tvdbApiKey?.trim()) config.config.apiKeys.tvdb = keys.tvdbApiKey.trim();
+      if (keys.mdblistApiKey?.trim()) config.config.apiKeys.mdblist = keys.mdblistApiKey.trim();
+    }
+
+    return JSON.stringify(config, null, 2);
   },
 };

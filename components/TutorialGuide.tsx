@@ -40,8 +40,8 @@ export function TutorialGuide() {
         </h1>
 
         <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-          Le configurateur s&apos;occupe de tout pour vous : entrez votre email et votre mot de passe, et votre compte
-          Nuvio est créé ou connecté, puis garni de la collection complète et de tous les addons indispensables.
+          L&apos;assistant vous guide étape par étape : compte Nuvio, clés API, manifest Lumio avec TorBox,
+          puis envoi final vers votre profil Nuvio.
         </p>
 
         <div className="pt-2">
@@ -50,7 +50,7 @@ export function TutorialGuide() {
             className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 hover:from-emerald-400 hover:to-purple-500 shadow-glow hover:shadow-glow-lg transition-all active:scale-95"
           >
             <Sparkles className="w-4 h-4" />
-            <span>Lancer la Configuration 1-Clic</span>
+            <span>Ouvrir l&apos;assistant de configuration</span>
             <ArrowRight className="w-4 h-4 ml-1" />
           </button>
         </div>
@@ -121,7 +121,7 @@ export function TutorialGuide() {
           </div>
           <div>
             <h2 className="text-xl sm:text-2xl font-bold text-white">
-              Installation 1-Clic : Tout est Automatisé !
+              Set Up &amp; Send to Nuvio : étape par étape
             </h2>
             <span className="text-xs text-slate-400">
               Collection complète 756 dossiers + Addons streaming indispensables
@@ -133,22 +133,22 @@ export function TutorialGuide() {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {[
             {
-              name: "TMDB Addon",
-              desc: "Affiches & résumés en français, installé via l'addon officiel public.",
+              name: "AIO Metadata",
+              desc: "Configuration personnalisable avec vos clés TMDB, TVDB et MDBList.",
               color: "text-cyan-400",
               border: "border-cyan-500/20",
               bg: "bg-cyan-500/5",
             },
             {
-              name: "Lumio",
-              desc: "Flux francophones optimisés, intégré automatiquement sans compte.",
+              name: "Lumio + TorBox",
+              desc: "Ajout de votre manifest Lumio personnalisé généré avec TorBox.",
               color: "text-indigo-400",
               border: "border-indigo-500/20",
               bg: "bg-indigo-500/5",
             },
             {
               name: "BingeCat",
-              desc: "Recommandations intelligentes via l'instance publique, sans inscription.",
+              desc: "Recommandations intelligentes via l'instance publique.",
               color: "text-emerald-400",
               border: "border-emerald-500/20",
               bg: "bg-emerald-500/5",
@@ -165,20 +165,20 @@ export function TutorialGuide() {
         </div>
 
         <p className="text-sm text-slate-300 leading-relaxed">
-          Ouvrez le configurateur automatique : indiquez simplement votre email, votre mot de passe et votre clé Torbox.
-          L&apos;assistant s&apos;occupe de créer ou connecter votre compte Nuvio et de tout configurer en quelques secondes.
+          Ouvrez l&apos;assistant : indiquez votre compte Nuvio, vos clés API TMDB / TVDB / MDBList si vous en avez,
+          puis collez le manifest Lumio généré avec TorBox. Chaque étape explique où récupérer les clés et comment créer un compte.
         </p>
 
         <div className="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="text-xs text-slate-300">
             <strong className="text-white block mb-0.5">Prêt à démarrer ?</strong>
-            Pas de démarches complexes ni de menus à configurer manuellement.
+            Chaque information est demandée au bon moment, avec des liens directs vers les sites nécessaires.
           </div>
           <button
             onClick={() => setConfigModalOpen(true)}
             className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-xs font-black text-white bg-gradient-to-r from-emerald-500 to-indigo-600 hover:from-emerald-400 hover:to-indigo-500 shadow-glow transition-all shrink-0"
           >
-            Lancer le Configurateur 1-Clic
+            Ouvrir l&apos;assistant de configuration
           </button>
         </div>
       </section>
