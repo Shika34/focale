@@ -66,15 +66,3 @@ export interface AioMetadataConfig {
   metadata?: unknown;
 }
 
-export interface NuvioAddon {
-  id: string;
-  name: string;
-  description: string;
-  category: "catalogue" | "streaming" | "metadata" | "sous-titres" | "anime" | "autre";
-  manifestUrl: string;
-  installUrl: string;
-  iconUrl?: string;
-  version: string;
-  isOfficial?: boolean;
-  tags: string[];
-}

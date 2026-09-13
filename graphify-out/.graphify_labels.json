@@ -1,10 +1,10 @@
 {
   "0": "package.json",
   "1": "compilerOptions",
-  "2": "next",
+  "2": "TutorialGuide.tsx",
   "3": "aiometadata/route.ts",
   "4": "site-nuvio",
-  "6": "NuvioConfiguratorModal.tsx",
+  "5": "HeroSection.tsx",
   "7": "devDependencies",
   "8": "eslint.config.mjs",
   "9": "postcss.config.mjs",
@@ -12,6 +12,6 @@
   "11": "Context Handoff — NUVIO Collection",
   "12": "next.config.mjs",
   "13": "README.md",
-  "14": "lucide-react",
-  "15": "nuvio-data.ts"
+  "14": "NuvioConfiguratorModal.tsx",
+  "15": "collections/page.tsx"
 }

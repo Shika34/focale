@@ -1,20 +1,35 @@
 import type { Metadata, Viewport } from "next";
+import { Inter, Instrument_Serif } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { SITE } from "@/lib/site";
+
+const sans = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sans",
+});
+
+const display = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-display",
+});
 
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
-  themeColor: "#0B0E14",
+  themeColor: "#0C0C0E",
 };
 
 export const metadata: Metadata = {
-  title: "NUVIO France — Collections, AIO Metadata & Addons",
-  description: "Plateforme francophone pour configurer vos collections Nuvio personnalisées, votre configuration AIO Metadata et vos addons essentiels.",
-  keywords: ["Nuvio", "Stremio", "Collections Nuvio FR", "AIO Metadata", "Torrentio", "Debrid", "Kaptain Collection"],
-  authors: [{ name: "Mitch / Nuvio FR" }],
+  title: `${SITE.name} — ${SITE.tagline}`,
+  description: SITE.description,
+  keywords: [...SITE.keywords],
+  authors: [{ name: SITE.name }],
 };
 
 export default function RootLayout({
@@ -23,20 +38,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" className="dark">
-      <body className="bg-background text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
-        {/* Cinematic Backdrop glow layers */}
-        <div className="cinematic-backdrop" />
-        
-        {/* Header navigation */}
+    <html lang="fr" className={`dark ${sans.variable} ${display.variable}`}>
+      <body className="bg-background text-mist-100 min-h-screen flex flex-col font-sans antialiased">
+        <div className="film-texture" />
         <Navbar />
-
-        {/* Main Content Area */}
-        <main className="flex-1 relative z-10">
-          {children}
-        </main>
-
-        {/* Global Footer */}
+        <main className="flex-1 relative z-10">{children}</main>
         <Footer />
       </body>
     </html>

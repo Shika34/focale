@@ -1,15 +1,13 @@
 import { TutorialGuide } from "@/components/TutorialGuide";
+import { SITE } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Tutoriel Nuvio France — Guide Complet, Addons & Débrideur",
-  description: "Guide étape par étape pour configurer votre Nuvio en France : Torbox, clés API, collection 756 dossiers et les 10 addons indispensables.",
+  title: `Tutoriels — comptes, clés API et Lumio | ${SITE.name}`,
+  description:
+    "Six tutoriels courts : compte Nuvio, débrideur TorBox, clés TMDB, TheTVDB, MDBList et profil Lumio, dans l'ordre où l'assistant vous les demande.",
 };
 
 export default function TutorielPage() {
-  return (
-    <div className="pt-4">
-      <TutorialGuide />
-    </div>
-  );
+  return <TutorialGuide />;
 }
