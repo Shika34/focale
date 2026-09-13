@@ -4,6 +4,8 @@
  * vers https://api.nuvio.tv. Aucune donnée sensible n'est envoyée à un tiers.
  */
 
+import { buildLumioUrl, buildTorrentioUrl, buildCometUrl } from "./manifest-urls";
+
 const SUPABASE_BASE = "https://api.nuvio.tv";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgxNTIxMzQ2LCJleHAiOjE5MzkyMDEzNDZ9.tmQaj682pwzehpqlgCDMnySOqiUvpgRbrE43T4VJpDI";
@@ -22,8 +24,6 @@ export interface ApiKeysConfig {
   tmdbApiKey?: string;
   tvdbApiKey?: string;
   mdblistApiKey?: string;
-  /** Manifest Lumio personnalisé généré sur https://mylumio.tv/configure */
-  lumioManifestUrl?: string;
 }
 
 export interface NuvioAddonInstall {
@@ -151,8 +151,8 @@ export const NuvioApi = {
     try {
       const loginRes = await this.login(cleanEmail, password);
       return { ...loginRes, isNewAccount: false };
-    } catch (err: any) {
-      const errMsg = String(err?.message || "").toLowerCase();
+    } catch (err) {
+      const errMsg = (err instanceof Error ? err.message : String(err)).toLowerCase();
       // Si les identifiants ne correspondent pas à un compte existant ou utilisateur inexistant
       if (
         errMsg.includes("invalid login credentials") ||
@@ -163,8 +163,8 @@ export const NuvioApi = {
         try {
           const signupRes = await this.signup(cleanEmail, password);
           return { ...signupRes, isNewAccount: true };
-        } catch (signupErr: any) {
-          const sMsg = String(signupErr?.message || "").toLowerCase();
+        } catch (signupErr) {
+          const sMsg = (signupErr instanceof Error ? signupErr.message : String(signupErr)).toLowerCase();
           if (sMsg.includes("already registered") || sMsg.includes("already exists")) {
             throw new Error("Ce compte Nuvio existe déjà, mais le mot de passe est erroné. Veuillez vérifier votre mot de passe.");
           }
@@ -180,7 +180,7 @@ export const NuvioApi = {
    */
   async getProfiles(token: string): Promise<NuvioProfile[]> {
     const data = await rpc("/rest/v1/rpc/sync_pull_profiles", token, {});
-    const list: any[] = Array.isArray(data) ? data : data?.profiles || [];
+    const list = (Array.isArray(data) ? data : data?.profiles || []) as Array<NuvioProfile & { id?: number }>;
     return list.map((p) => ({
       profile_index: Number(p.profile_index ?? p.id ?? 1),
       name: String(p.name || `Profil ${p.profile_index || 1}`),
@@ -227,11 +227,24 @@ export const NuvioApi = {
   /**
    * Injecte la collection complète dans un profil Nuvio
    */
-  async pushCollections(token: string, profileId: number, collections: any[]) {
+  async pushCollections(token: string, profileId: number, collections: unknown[]) {
     return rpc("/rest/v1/rpc/sync_push_collections", token, {
       p_profile_id: profileId,
       p_collections_json: Array.isArray(collections) ? collections : [],
     });
+  },
+
+  /**
+   * Injecte la collection complète dans un profil Nuvio.
+   *
+   * @param token Jeton d'authentification Nuvio.
+   * @param profileId ID du profil cible.
+   * @returns Promise résolue une fois la collection envoyée.
+   */
+  async pushNuvioCollections(token: string, profileId: number): Promise<void> {
+    const res = await fetch("/nuvio-collections-shika34.json");
+    const collections = await res.json();
+    await this.pushCollections(token, profileId, collections);
   },
 
   /**
@@ -320,69 +333,49 @@ export const NuvioApi = {
   },
 
   /**
-   * Attribue TMDB, Lumio et BingeCat sans saisie de clé ni création de compte tierce.
-   * Ces services exposent des manifests publics utilisables tels quels dans Nuvio.
+   * Génère la liste des addons du pack France.
+   *
+   * Torrentio et Comet sont générés à partir de la clé TorBox (formats d'URL
+   * stables). AIO Metadata, AIOStreams et Lumio ont une configuration stockée
+   * côté service : leur URL de manifest est fournie par l'utilisateur.
    */
-  async provisionTmdbLumioBingeCat(token: string, profileId: number): Promise<NuvioAddonInstall[]> {
-    const autoAddons: NuvioAddonInstall[] = [
-      KEYLESS_INTEGRATIONS.tmdb,
-      KEYLESS_INTEGRATIONS.lumio,
-      KEYLESS_INTEGRATIONS.bingecat,
-    ];
-    await this.installAddons(token, profileId, autoAddons);
-    return autoAddons;
-  },
-
-  /**
-   * Génère la liste des addons du pack France : TMDB / Lumio / BingeCat sont
-   * toujours inclus automatiquement, sans clé utilisateur.
-   */
-  buildAddonsList(keys: ApiKeysConfig): NuvioAddonInstall[] {
+  buildAddonsList(
+    keys: ApiKeysConfig,
+    manifests: { aioMetadataUrl?: string; lumioManifestUrl?: string } = {},
+  ): NuvioAddonInstall[] {
     const torboxKey = keys.torboxApiKey?.trim();
-    const lumioManifestUrl = keys.lumioManifestUrl?.trim();
+    const aioMetadataUrl = manifests.aioMetadataUrl?.trim();
+    const lumioUrl = buildLumioUrl(manifests.lumioManifestUrl);
 
-    const cinemetaUrl = "https://v3-cinemeta.strem.io/manifest.json";
-    const openSubtitlesUrl = "https://opensubtitles-v3.strem.io/manifest.json";
-    const aioMetadataUrl = "https://aiometadata.elfhosted.com/manifest.json";
-    const aioStreamUrl = "https://aiostreams.am/manifest.json";
-    const torrentioUrl = torboxKey
-      ? `https://torrentio.strem.fun/sort=qualitysize|qualityfilter=cam,scr,threed|torbox=${torboxKey}/manifest.json`
-      : "https://torrentio.strem.fun/sort=qualitysize|qualityfilter=cam,scr,threed/manifest.json";
-    const cometUrl = "https://cometfortheweebs.midnightignite.me/manifest.json";
-    const mediaFusionUrl = "https://mediafusion.elfhosted.com/manifest.json";
-
-    return [
-      { ...KEYLESS_INTEGRATIONS.tmdb },
-      { name: "Cinemeta", url: cinemetaUrl, note: "Métadonnées officielles" },
-      { name: "OpenSubtitles v3", url: openSubtitlesUrl, note: "Sous-titres français officiels" },
-      { name: "AIO Metadata", url: aioMetadataUrl, note: "Catalogues complets & métadonnées FR (sans clé TMDB)" },
+    const addons: NuvioAddonInstall[] = [
+      { name: "Cinemeta", url: "https://v3-cinemeta.strem.io/manifest.json", note: "Métadonnées officielles" },
+      { name: "OpenSubtitles v3", url: "https://opensubtitles-v3.strem.io/manifest.json", note: "Sous-titres français officiels" },
       {
-        ...KEYLESS_INTEGRATIONS.lumio,
-        ...(lumioManifestUrl ? { url: lumioManifestUrl, note: "Lumio personnalisé (débrideur TorBox)" } : {}),
+        name: "AIO Metadata",
+        url: aioMetadataUrl || "https://aiometadata.elfhosted.com/manifest.json",
+        note: aioMetadataUrl
+          ? "Ta configuration AIO Metadata (clés + catalogues FR)"
+          : "Instance publique AIO Metadata, sans tes clés ni tes catalogues",
       },
-      { name: "AIO STREAM", url: aioStreamUrl, note: "Agrégateur multi-scrapers haute vitesse" },
-      { ...KEYLESS_INTEGRATIONS.bingecat },
-      { name: "Torrentio", url: torrentioUrl, note: "Scraper principal avec débrideur Torbox" },
-      { name: "Comet", url: cometUrl, note: "Scraper rapide Torbox" },
-      { name: "MediaFusion", url: mediaFusionUrl, note: "Replays & sports en direct" },
     ];
-  },
 
-  /**
-   * Génère une configuration AIO Metadata personnalisée à partir du modèle
-   * public, en y injectant les clés API métadonnées (TMDB / TVDB / MDBList).
-   * Renvoyée pour téléchargement ou import dans l'instance AIO Metadata de l'utilisateur.
-   */
-  async buildAioMetadataConfig(keys: ApiKeysConfig): Promise<string> {
-    const res = await fetch("/aiometadata-config-mitch.json");
-    const config = await res.json();
-
-    if (config?.config?.apiKeys) {
-      if (keys.tmdbApiKey?.trim()) config.config.apiKeys.tmdb = keys.tmdbApiKey.trim();
-      if (keys.tvdbApiKey?.trim()) config.config.apiKeys.tvdb = keys.tvdbApiKey.trim();
-      if (keys.mdblistApiKey?.trim()) config.config.apiKeys.mdblist = keys.mdblistApiKey.trim();
+    if (lumioUrl) {
+      addons.push({ name: "Lumio", url: lumioUrl, note: "Profil Lumio (débrideur TorBox, préférences FR)" });
     }
 
-    return JSON.stringify(config, null, 2);
+    addons.push(
+      {
+        name: "Torrentio",
+        url: torboxKey ? buildTorrentioUrl(torboxKey) : "https://torrentio.strem.fun/manifest.json",
+        note: torboxKey ? "Scraper principal avec débrideur TorBox" : "Scraper sans débrideur",
+      },
+      {
+        name: "Comet",
+        url: torboxKey ? buildCometUrl(torboxKey) : "https://comet.elfhosted.com/manifest.json",
+        note: torboxKey ? "Scraper rapide avec débrideur TorBox" : "Scraper sans débrideur",
+      },
+    );
+
+    return addons;
   },
 };

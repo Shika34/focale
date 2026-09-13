@@ -165,8 +165,9 @@ export function TutorialGuide() {
         </div>
 
         <p className="text-sm text-slate-300 leading-relaxed">
-          Ouvrez l&apos;assistant : indiquez votre compte Nuvio, vos clés API TMDB / TVDB / MDBList si vous en avez,
-          puis collez le manifest Lumio généré avec TorBox. Chaque étape explique où récupérer les clés et comment créer un compte.
+          Ouvrez l&apos;assistant : indiquez votre compte Nuvio, votre clé API TorBox (indispensable pour regarder),
+          et laissez-le créer votre configuration AIO Metadata. Vos clés TMDB / TheTVDB / MDBList sont optionnelles ;
+          pour Lumio, collez le lien de manifest de votre profil. Chaque étape explique où récupérer les clés et comment créer un compte.
         </p>
 
         <div className="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">

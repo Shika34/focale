@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import {
   X,
   Sparkles,
@@ -14,11 +14,13 @@ import {
   Mail,
   ArrowLeft,
   ArrowRight,
-  Download,
   Link2,
   UserPlus,
+  BookOpen,
+  HelpCircle,
 } from "lucide-react";
 import { NuvioApi } from "@/lib/nuvio-api";
+import { buildLumioUrl } from "@/lib/manifest-urls";
 
 interface NuvioConfiguratorModalProps {
   isOpen: boolean;
@@ -28,27 +30,515 @@ interface NuvioConfiguratorModalProps {
 type ViewState = "form" | "installing" | "success";
 type WizardStep = 1 | 2 | 3 | 4;
 
-interface ApiKeyFieldProps {
-  label: string;
-  description: string;
-  value: string;
-  placeholder: string;
-  getKeyUrl: string;
+interface GuideStep {
+  title: string;
+  detail: string;
+  bullets?: string[];
+}
+
+interface ProviderGuide {
+  question: string;
+  steps: GuideStep[];
   signupUrl: string;
-  onChange: (value: string) => void;
+  signupLabel: string;
+  keyUrl: string;
+  keyLabel: string;
+  note: string;
 }
 
 const TORBOX_REFERRAL_LINK = "https://torbox.app/subscription?referral=49a51e6d-dcf6-47ad-a98d-147f11c4268f";
 
-function ApiKeyField({
+/** Tutoriels affichés dès que l'utilisateur n'a pas encore de compte ou de clé. */
+const PROVIDER_GUIDES: Record<
+  "tmdb" | "tvdb" | "mdblist" | "torbox" | "lumio",
+  ProviderGuide
+> = {
+  tmdb: {
+    question: "Avez-vous déjà un compte TMDB ?",
+    steps: [
+      {
+        title: "Créer un compte TMDB",
+        detail: "Ouvrez themoviedb.org et cliquez sur « S'inscrire ». C'est gratuit, et l'inscription se fait bien plus facilement depuis un ordinateur.",
+      },
+      {
+        title: "Ouvrir vos paramètres",
+        detail: "Une fois connecté, cliquez sur votre avatar en haut à droite, puis sur « Paramètres ».",
+      },
+      {
+        title: "Demander une clé API",
+        detail: "Dans le menu de gauche, cliquez sur « API », puis sur « Créer » et choisissez « Développeur ».",
+      },
+      {
+        title: "Remplir le formulaire",
+        detail: "Indiquez un usage personnel (par exemple « Nuvio — usage personnel »), acceptez les conditions puis validez le formulaire.",
+      },
+      {
+        title: "Copier la clé v3",
+        detail: "Copiez la valeur affichée à côté de « Clé API (v3 auth) » et collez-la dans le champ ci-dessous.",
+      },
+    ],
+    signupUrl: "https://www.themoviedb.org/signup",
+    signupLabel: "Créer mon compte TMDB",
+    keyUrl: "https://www.themoviedb.org/settings/api",
+    keyLabel: "Ouvrir la page des clés",
+    note: "Fortement recommandée : sans clé TMDB, les affiches et les fiches de films peuvent être incomplètes dans Nuvio. La clé est validée immédiatement après la demande.",
+  },
+  tvdb: {
+    question: "Avez-vous déjà un compte TheTVDB ?",
+    steps: [
+      {
+        title: "Créer un compte TheTVDB",
+        detail: "Sur thetvdb.com, cliquez sur « Register » en haut à droite. L'inscription est gratuite.",
+      },
+      {
+        title: "Ouvrir le Dashboard",
+        detail: "Dans le menu de votre profil (en haut à droite), cliquez sur « Dashboard ».",
+      },
+      {
+        title: "Aller dans API Keys",
+        detail: "Dans le menu de gauche, section « Account », cliquez sur « API Keys ».",
+      },
+      {
+        title: "Créer une clé v4",
+        detail: "Dans l'encadré « Developers », cliquez sur « Create a v4 API Key », puis renseignez le nom du projet (par exemple « Nuvio perso »), une description et vos coordonnées.",
+      },
+      {
+        title: "Copier la clé",
+        detail: "La clé v4 s'affiche dans votre dashboard : copiez-la et collez-la dans le champ ci-dessous.",
+      },
+    ],
+    signupUrl: "https://thetvdb.com/auth/register",
+    signupLabel: "Créer mon compte TheTVDB",
+    keyUrl: "https://thetvdb.com/dashboard/account/apikeys",
+    keyLabel: "Ouvrir mes clés API",
+    note: "Une clé TheTVDB fraîchement créée peut rester « inactive » quelques heures avant validation. Vous pouvez continuer : en attendant, AIO Metadata utilise les données publiques, puis basculera sur votre clé dès son activation.",
+  },
+  mdblist: {
+    question: "Avez-vous déjà un compte MDBList ?",
+    steps: [
+      {
+        title: "Créer un compte MDBList",
+        detail: "Sur mdblist.com, créez un compte gratuit (email, Google, GitHub ou Apple).",
+      },
+      {
+        title: "Ouvrir vos préférences",
+        detail: "Passez par le menu du site puis « Preferences », ou ouvrez directement mdblist.com/preferences/.",
+      },
+      {
+        title: "Trouver la clé API",
+        detail: "Descendez en bas de la page, à la rubrique « API Access » : votre clé s'y trouve. Si le champ est vide, cliquez sur le bouton pour la générer.",
+      },
+      {
+        title: "Copier la clé",
+        detail: "Copiez la clé et collez-la dans le champ ci-dessous.",
+      },
+    ],
+    signupUrl: "https://mdblist.com/",
+    signupLabel: "Créer mon compte MDBList",
+    keyUrl: "https://mdblist.com/preferences/#api_key_uid",
+    keyLabel: "Ouvrir mes préférences",
+    note: "Clé facultative : vous pouvez créer votre configuration AIO Metadata sans elle, les notes TMDB resteront disponibles.",
+  },
+  torbox: {
+    question: "Avez-vous déjà un compte TorBox ?",
+    steps: [
+      {
+        title: "Créer un compte TorBox",
+        detail: "Inscrivez-vous sur torbox.app via le lien de parrainage ci-dessous pour bénéficier des bonus de parrainage. Une formule payante est nécessaire : c'est elle qui donne accès à la clé API.",
+      },
+      {
+        title: "Confirmer votre email",
+        detail: "Validez l'email de confirmation, puis connectez-vous à votre compte TorBox.",
+      },
+      {
+        title: "Ouvrir les réglages",
+        detail: "Dans votre compte, ouvrez la page « Settings », puis la section « API ».",
+      },
+      {
+        title: "Créer la clé API",
+        detail: "Générez ou copiez votre clé API, puis collez-la dans le champ ci-dessous. Gardez-la privée : elle donne accès à votre quota.",
+      },
+    ],
+    signupUrl: TORBOX_REFERRAL_LINK,
+    signupLabel: "Créer mon compte TorBox (jours offerts)",
+    keyUrl: "https://torbox.app/settings",
+    keyLabel: "Ouvrir mes réglages TorBox",
+    note: "Votre clé TorBox sert à débriter vos flux : elle génère automatiquement vos manifests Torrentio et Comet, et alimente aussi votre profil Lumio.",
+  },
+  lumio: {
+    question: "Avez-vous déjà un compte Lumio et son URL de manifest ?",
+    steps: [
+      {
+        title: "Créer un profil",
+        detail: "Sur l'écran « À qui le tour ? », saisissez le nom de votre profil (ou sélectionnez-en un parmi les suggestions), puis cliquez sur Continuer.",
+      },
+      {
+        title: "Sélectionner TorBox",
+        detail: "Dans la section « Connectez votre débrideur », cliquez sur le logo TorBox.",
+      },
+      {
+        title: "Associer votre compte TorBox",
+        detail: "Choisissez votre méthode de connexion :",
+        bullets: [
+          "« Se connecter à TorBox » : valide directement la connexion depuis votre navigateur.",
+          "« Saisir la clé » : collez la clé API récupérée sur votre compte TorBox (torbox.app/settings), puis cliquez sur Vérifier.",
+        ],
+      },
+      {
+        title: "Définir votre style de visionnage",
+        detail: "Dans la section « Votre style de visionnage », sélectionnez la formule qui vous convient :",
+        bullets: [
+          "L'Essentiel : une liste épurée des 10 meilleures versions.",
+          "Zen : lancement automatique de la meilleure option (expérience type Netflix).",
+          "Cinéphile : qualité maximale sans compromis (4K REMUX, BluRay, HDR).",
+          "Nomade : fichiers légers pour une connexion limitée.",
+          "Mode Expert : réglage fin de la taille et des formats de fichiers.",
+        ],
+      },
+      {
+        title: "Ajuster l'affichage (facultatif)",
+        detail: "Dans le panneau de droite « Affichage », choisissez la présentation des liens : Direct, Netflix, Compact ou Détaillé.",
+      },
+      {
+        title: "Copier le lien du manifest",
+        detail: "Une fois la configuration terminée, cliquez sur le bouton d'icône de copie (en bas à droite, à côté de « Enregistrer les modifications »), puis collez le lien obtenu dans le champ ci-dessous.",
+      },
+    ],
+    signupUrl: "https://mylumio.tv",
+    signupLabel: "Ouvrir Lumio",
+    keyUrl: "https://mylumio.tv",
+    keyLabel: "Configurer mon profil Lumio",
+    note: "Votre lien de manifest est personnel : c'est lui qui active votre débrideur TorBox et vos préférences de langues dans Nuvio.",
+  },
+
+};
+
+interface GuideFieldProps {
+  label: string;
+  description: string;
+  value: string;
+  placeholder: string;
+  onChange: (value: string) => void;
+  guide: ProviderGuide;
+  /** Champ masqué (clés API). */
+  secret?: boolean;
+  /** Contenu additionnel affiché sous le champ une fois la question répondue. */
+  children?: ReactNode;
+}
+
+/** Question « Avez-vous déjà un compte ? » posée avant chaque champ. */
+function AccountQuestion({
+  question,
+  onAnswer,
+}: {
+  question: string;
+  onAnswer: (hasAccount: boolean) => void;
+}) {
+  return (
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-xl bg-surface/70 border border-indigo-500/25 px-3.5 py-3">
+      <span className="text-xs font-bold text-white flex items-center gap-2">
+        <HelpCircle className="w-4 h-4 text-indigo-400 shrink-0" />
+        <span>{question}</span>
+      </span>
+      <span className="flex items-center gap-2 shrink-0">
+        <button
+          type="button"
+          onClick={() => onAnswer(true)}
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+        >
+          Oui
+        </button>
+        <button
+          type="button"
+          onClick={() => onAnswer(false)}
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-indigo-500/15 border border-indigo-500/40 text-indigo-300 hover:bg-indigo-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+        >
+          Non
+        </button>
+      </span>
+    </div>
+  );
+}
+
+/** Lien discret pour rouvrir un tutoriel même après avoir répondu « Oui ». */
+function GuideToggle({
+  open,
+  onClick,
+}: {
+  open: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      aria-expanded={open}
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-300 hover:text-cyan-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 shrink-0"
+    >
+      <BookOpen className="w-3 h-3" />
+      <span>{open ? "Masquer le tutoriel" : "Voir le tutoriel"}</span>
+    </button>
+  );
+}
+
+/** Lien direct vers la page de la clé API, sans passer par le tutoriel. */
+function DirectKeyLink({ guide }: { guide: ProviderGuide }) {
+  return (
+    <a
+      href={guide.keyUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-300 hover:text-emerald-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 shrink-0"
+    >
+      <span>{guide.keyLabel}</span>
+      <ExternalLink className="w-3 h-3" />
+    </a>
+  );
+}
+
+/** Tutoriel pas à pas : création du compte puis récupération de la clé. */
+function GuidePanel({
+  guide,
+  readyLabel,
+  onReady,
+}: {
+  guide: ProviderGuide;
+  readyLabel: string;
+  onReady: () => void;
+}) {
+  return (
+    <div className="rounded-2xl bg-[#080B10]/80 border border-cyan-500/25 p-4 space-y-3.5">
+      <span className="flex items-center gap-2 text-xs font-bold text-cyan-300">
+        <BookOpen className="w-4 h-4" />
+        <span>Tutoriel pas à pas</span>
+      </span>
+
+      <ol className="space-y-3">
+        {guide.steps.map((item, index) => (
+          <li key={item.title} className="flex gap-3">
+            <span className="w-5 h-5 shrink-0 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-[11px] font-bold text-cyan-300 flex items-center justify-center">
+              {index + 1}
+            </span>
+            <div className="text-xs leading-relaxed">
+              <strong className="text-white">{item.title}</strong>
+              <p className="text-slate-400 mt-0.5">{item.detail}</p>
+              {item.bullets && (
+                <ul className="mt-1.5 space-y-1">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="text-slate-400 flex gap-1.5">
+                      <span className="text-cyan-400/80">•</span>
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </li>
+        ))}
+      </ol>
+
+      <p className="text-[11px] text-slate-400 leading-relaxed border-t border-surface-border/60 pt-3">
+        {guide.note}
+      </p>
+
+      <div className="flex flex-wrap items-center gap-2">
+        <a
+          href={guide.signupUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+        >
+          <span>{guide.signupLabel}</span>
+          <UserPlus className="w-3 h-3" />
+        </a>
+        <a
+          href={guide.keyUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+        >
+          <span>{guide.keyLabel}</span>
+          <ExternalLink className="w-3 h-3" />
+        </a>
+        <button
+          type="button"
+          onClick={onReady}
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-white bg-indigo-600 border border-indigo-500 hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+        >
+          <span>{readyLabel}</span>
+          <ArrowRight className="w-3 h-3" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+interface AioMetadataFieldProps {
+  value: string;
+  onChange: (value: string) => void;
+  password: string;
+  onPasswordChange: (value: string) => void;
+  onGenerate: () => Promise<string>;
+}
+
+/** Carte unique de configuration AIO Metadata : mot de passe, création, résultat. */
+function AioMetadataField({
+  value,
+  onChange,
+  password,
+  onPasswordChange,
+  onGenerate,
+}: AioMetadataFieldProps) {
+  const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [manual, setManual] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const created = value.trim().length > 0;
+  const passwordTooShort = password.trim().length < 6;
+
+  const handleGenerate = async () => {
+    setStatus("loading");
+    setErrorMessage("");
+    try {
+      onChange(await onGenerate());
+      setStatus("idle");
+    } catch (error) {
+      setStatus("error");
+      setErrorMessage(error instanceof Error ? error.message : "La création a échoué.");
+    }
+  };
+
+  return (
+    <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
+      <div>
+        <label className="text-sm font-bold text-white flex items-center gap-2">
+          <Key className="w-4 h-4 text-cyan-400" />
+          <span>AIO Metadata</span>
+        </label>
+        <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+          Catalogues, affiches et métadonnées FR, créés avec vos clés TMDB / TVDB / MDBList.
+        </p>
+      </div>
+
+      <div className="space-y-2 p-4 rounded-2xl bg-indigo-950/25 border border-indigo-500/30">
+        <label className="text-xs font-bold text-white flex items-center gap-1.5">
+          <Lock className="w-3.5 h-3.5 text-indigo-400" />
+          <span>Mot de passe de protection AIO Metadata</span>
+        </label>
+        <input
+          type="password"
+          value={password}
+          onChange={(e) => onPasswordChange(e.target.value)}
+          placeholder="6 caractères minimum"
+          className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+        />
+        <p className="text-[11px] text-slate-400 leading-relaxed">
+          Il protège votre configuration AIO Metadata et servira à la modifier plus
+          tard : notez-le. C&apos;est un mot de passe différent de celui de votre
+          compte Nuvio.
+        </p>
+      </div>
+
+      {created ? (
+        <div className="space-y-2">
+          <p className="text-[11px] font-semibold text-emerald-300 flex items-center gap-1.5">
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+            <span>Configuration prête : elle sera installée avec le profil Nuvio.</span>
+          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            <code className="flex-1 min-w-0 break-all text-[11px] text-slate-300 bg-surface px-3 py-2 rounded-xl border border-surface-border">
+              {value}
+            </code>
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(value).then(() => {
+                  setCopied(true);
+                  setTimeout(() => setCopied(false), 2000);
+                });
+              }}
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+            >
+              {copied ? "Copié !" : "Copier"}
+            </button>
+            <button
+              type="button"
+              onClick={() => onChange("")}
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-slate-300 glass-panel border border-surface-border hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/70 transition-colors"
+            >
+              Recommencer
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="space-y-2">
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={handleGenerate}
+              disabled={status === "loading" || passwordTooShort}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-white bg-indigo-600 border border-indigo-500 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+            >
+              {status === "loading" ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <Sparkles className="w-3.5 h-3.5" />
+              )}
+              <span>{status === "loading" ? "Création en cours..." : "Créer ma configuration AIO Metadata"}</span>
+            </button>
+            {!manual && (
+              <button
+                type="button"
+                onClick={() => setManual(true)}
+                className="text-[11px] font-semibold text-slate-400 hover:text-slate-200 underline decoration-dotted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/70 rounded-lg px-1"
+              >
+                J&apos;ai déjà une configuration, saisir mon lien
+              </button>
+            )}
+          </div>
+
+          {passwordTooShort && (
+            <p className="text-[11px] text-amber-300 leading-relaxed">
+              Choisissez d&apos;abord un mot de passe de protection (6 caractères minimum) ci-dessus.
+            </p>
+          )}
+
+          {manual && (
+            <input
+              type="text"
+              value={value}
+              onChange={(e) => onChange(e.target.value)}
+              placeholder="https://aiometadata.elfhosted.com/stremio/xxxxxxxx/manifest.json"
+              className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+            />
+          )}
+        </div>
+      )}
+
+      {status === "error" && errorMessage && (
+        <p className="text-[11px] text-red-300 flex items-start gap-1.5 leading-relaxed">
+          <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          <span>{errorMessage}</span>
+        </p>
+      )}
+    </div>
+  );
+}
+
+function GuideField({
   label,
   description,
   value,
   placeholder,
-  getKeyUrl,
-  signupUrl,
   onChange,
-}: ApiKeyFieldProps) {
+  guide,
+  secret = false,
+  children,
+}: GuideFieldProps) {
+  const [answer, setAnswer] = useState<"unset" | "yes" | "no">("unset");
+  const [guideOpen, setGuideOpen] = useState(false);
+  const showGuide = guideOpen || answer === "no";
+
   return (
     <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -59,34 +549,47 @@ function ApiKeyField({
           </label>
           <p className="text-xs text-slate-400 mt-1 leading-relaxed">{description}</p>
         </div>
-        <div className="flex flex-wrap items-center gap-2 shrink-0">
-          <a
-            href={getKeyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-300 hover:text-cyan-200"
-          >
-            <span>Récupérer la clé</span>
-            <ExternalLink className="w-3 h-3" />
-          </a>
-          <a
-            href={signupUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-300 hover:text-emerald-200"
-          >
-            <span>Créer un compte</span>
-            <UserPlus className="w-3 h-3" />
-          </a>
-        </div>
+        {answer !== "unset" && (
+          <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
+            <GuideToggle open={guideOpen} onClick={() => setGuideOpen((current) => !current)} />
+            {!showGuide && <DirectKeyLink guide={guide} />}
+          </div>
+        )}
       </div>
-      <input
-        type="password"
-        value={value}
-        onChange={(e) => onChange(e.target.value)}
-        placeholder={placeholder}
-        className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
-      />
+
+      {answer === "unset" && (
+        <AccountQuestion
+          question={guide.question}
+          onAnswer={(hasAccount) => {
+            setAnswer(hasAccount ? "yes" : "no");
+            setGuideOpen(!hasAccount);
+          }}
+        />
+      )}
+
+      {showGuide && (
+        <GuidePanel
+          guide={guide}
+          readyLabel={secret ? "J'ai ma clé, je la colle" : "J'ai mon lien, je le colle"}
+          onReady={() => {
+            setAnswer("yes");
+            setGuideOpen(false);
+          }}
+        />
+      )}
+
+      {answer === "yes" && (
+        <>
+          <input
+            type={secret ? "password" : "text"}
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder={placeholder}
+            className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+          />
+          {children}
+        </>
+      )}
     </div>
   );
 }
@@ -100,6 +603,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [tmdbKey, setTmdbKey] = useState("");
   const [tvdbKey, setTvdbKey] = useState("");
   const [mdblistKey, setMdblistKey] = useState("");
+  const [torboxKey, setTorboxKey] = useState("");
+  const [protectionPassword, setProtectionPassword] = useState("");
+  const [aioMetadataUrl, setAioMetadataUrl] = useState("");
   const [lumioManifestUrl, setLumioManifestUrl] = useState("");
 
   const [errorMessage, setErrorMessage] = useState("");
@@ -114,7 +620,34 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   });
 
   const [createdNewAccount, setCreatedNewAccount] = useState(false);
+  const [lumioUrlCopied, setLumioUrlCopied] = useState(false);
+  const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
+  const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verifying' | 'verified' | 'error'>('idle');
   const totalSteps = 4;
+
+  /** Crée la configuration AIO Metadata côté serveur, avec les clés de l'étape 2. */
+  const createAioMetadataConfig = async (): Promise<string> => {
+    const res = await fetch("/api/aiometadata", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        tmdbApiKey: tmdbKey,
+        tvdbApiKey: tvdbKey,
+        mdblistApiKey: mdblistKey,
+        password: protectionPassword,
+      }),
+    });
+    const data = await res.json().catch(() => null);
+    if (!res.ok || !data?.manifestUrl) {
+      throw new Error(data?.error || "La création de la configuration AIO Metadata a échoué.");
+    }
+    return data.manifestUrl as string;
+  };
+
+  const registerLumioManifest = (customUrl: string): string => {
+    // ✅ Pas de fetch ! Retourne l'URL Lumio directement après validation
+    return buildLumioUrl(customUrl);
+  };
 
   if (!isOpen) return null;
 
@@ -138,25 +671,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     }
   };
 
-  const downloadAioMetadataConfig = async () => {
-    try {
-      const json = await NuvioApi.buildAioMetadataConfig({
-        tmdbApiKey: tmdbKey,
-        tvdbApiKey: tvdbKey,
-        mdblistApiKey: mdblistKey,
-      });
-      const blob = new Blob([json], { type: "application/json" });
-      const url = URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "aiometadata-config-nuvio-personnalise.json";
-      link.click();
-      URL.revokeObjectURL(url);
-    } catch {
-      setErrorMessage("Impossible de générer la configuration AIO Metadata personnalisée.");
-    }
-  };
-
+  
   const handleSendToNuvio = async () => {
     if (!email.trim() || !password.trim()) {
       setErrorMessage("Veuillez renseigner votre email et votre mot de passe Nuvio.");
@@ -191,8 +706,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       }
 
       setProgressState({
+        step: "Préparation des addons personnalisés",
+        percent: 60,
+        details: "Préparation de votre configuration AIO Metadata et de vos addons...",
+      });
+
+      setProgressState({
         step: "Ajout des collections françaises",
-        percent: 58,
+        percent: 70,
         details: "Envoi des 18 collections et 756 dossiers francophones...",
       });
 
@@ -203,17 +724,18 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Installation des addons sélectionnés",
         percent: 82,
-        details: lumioManifestUrl.trim()
-          ? "Installation de Lumio personnalisé, AIO Metadata, Torrentio, Comet et les autres addons essentiels..."
-          : "Installation de Lumio public, AIO Metadata, Torrentio, Comet et les autres addons essentiels...",
+        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox...",
       });
 
-      const addons = NuvioApi.buildAddonsList({
-        tmdbApiKey: tmdbKey,
-        tvdbApiKey: tvdbKey,
-        mdblistApiKey: mdblistKey,
-        lumioManifestUrl,
-      });
+      const addons = NuvioApi.buildAddonsList(
+        {
+          tmdbApiKey: tmdbKey,
+          tvdbApiKey: tvdbKey,
+          mdblistApiKey: mdblistKey,
+          torboxApiKey: torboxKey,
+        },
+        { aioMetadataUrl, lumioManifestUrl },
+      );
       await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
 
       setProgressState({
@@ -235,7 +757,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const stepTitles: Record<WizardStep, string> = {
     1: "Compte Nuvio",
     2: "Clés API",
-    3: "TorBox / Lumio",
+    3: "Addons",
     4: "Récapitulatif",
   };
 
@@ -251,7 +773,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               <h3 className="text-lg sm:text-xl font-extrabold text-white">
                 Set Up & Send to Nuvio
               </h3>
-              <p className="text-xs text-slate-400">Assistant guidé, clair et 100% en français</p>
+              <p className="text-xs text-slate-400">
+                Assistant guidé, clair et 100% en français
+              </p>
             </div>
           </div>
           <button
@@ -268,8 +792,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
             <div className="space-y-6 animate-in fade-in">
               <div className="space-y-3">
                 <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>Étape {step} sur {totalSteps}</span>
-                  <span className="font-semibold text-indigo-300">{stepTitles[step]}</span>
+                  <span>
+                    Étape {step} sur {totalSteps}
+                  </span>
+                  <span className="font-semibold text-indigo-300">
+                    {stepTitles[step]}
+                  </span>
                 </div>
                 <div className="h-2 rounded-full bg-surface-elevated border border-surface-border overflow-hidden">
                   <div
@@ -307,18 +835,24 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 1 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">1. Connectez ou créez votre compte Nuvio</h4>
+                    <h4 className="text-xl font-black text-white">
+                      1. Connectez ou créez votre compte Nuvio
+                    </h4>
                     <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                      Entrez l'email et le mot de passe que vous voulez utiliser sur Nuvio. Si le compte n'existe pas encore,
-                      il sera créé automatiquement au moment de l'envoi.
+                      Entrez l&apos;email et le mot de passe que vous voulez utiliser
+                      sur Nuvio. Si le compte n&apos;existe pas encore, il sera créé
+                      automatiquement au moment de l&apos;envoi.
                     </p>
                   </div>
 
                   <div className="bg-indigo-950/25 border border-indigo-500/30 rounded-2xl p-4 flex items-start gap-3">
                     <Lock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <div className="text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-white block mb-0.5">Vos identifiants restent côté Nuvio</strong>
-                      Ils sont utilisés uniquement pour appeler l'API officielle <code className="text-cyan-300">api.nuvio.tv</code>.
+                      <strong className="text-white block mb-0.5">
+                        Vos identifiants restent côté Nuvio
+                      </strong>
+                      Ils sont utilisés uniquement pour appeler l&apos;API officielle{" "}
+                      <code className="text-cyan-300">api.nuvio.tv</code>.
                     </div>
                   </div>
 
@@ -359,54 +893,61 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 2 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">2. Ajoutez vos clés de métadonnées</h4>
+                    <h4 className="text-xl font-black text-white">
+                      2. Ajoutez vos clés API
+                    </h4>
                     <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                      Ces clés servent à personnaliser la configuration AIO Metadata. Elles sont optionnelles, mais recommandées
-                      pour améliorer les affiches, les fiches séries et les catalogues avancés.
+                      La clé API TorBox est indispensable pour regarder les films
+                      et les séries : elle débrite vos flux et sert aussi à
+                      configurer Lumio, Torrentio et Comet. Les clés de
+                      métadonnées (TMDB, TheTVDB et MDBList) sont optionnelles :
+                      elles enrichissent les affiches, les fiches et les
+                      catalogues d&apos;AIO Metadata.
                     </p>
                   </div>
 
-                  <ApiKeyField
-                    label="TMDB"
+                  <GuideField
+                    label="TorBox (obligatoire)"
+                    description="Indispensable pour regarder les films et les séries : débrite vos flux via votre compte TorBox."
+                    value={torboxKey}
+                    placeholder="Collez votre clé API TorBox..."
+                    guide={PROVIDER_GUIDES.torbox}
+                    onChange={setTorboxKey}
+                  />
+                  <GuideField
+                    label="TMDB (fortement recommandé)"
                     description="Affiches, résumés, notes et métadonnées de films en français."
                     value={tmdbKey}
                     placeholder="Collez votre clé API TMDB..."
-                    getKeyUrl="https://www.themoviedb.org/settings/api"
-                    signupUrl="https://www.themoviedb.org/signup"
+                    guide={PROVIDER_GUIDES.tmdb}
                     onChange={setTmdbKey}
                   />
-                  <ApiKeyField
+                  <GuideField
                     label="TVDB"
                     description="Métadonnées séries, saisons, épisodes et collections TV."
                     value={tvdbKey}
                     placeholder="Collez votre clé API TVDB..."
-                    getKeyUrl="https://thetvdb.com/api-information"
-                    signupUrl="https://thetvdb.com/"
+                    guide={PROVIDER_GUIDES.tvdb}
                     onChange={setTvdbKey}
                   />
-                  <ApiKeyField
-                    label="MDBList"
-                    description="Listes et catalogues avancés pour enrichir AIO Metadata."
+                  <GuideField
+                    label="MDBList (optionnel)"
+                    description="Croise les notes IMDb, Rotten Tomatoes (critiques et public), Metacritic, Letterboxd, Trakt et TMDB sur une seule fiche."
                     value={mdblistKey}
                     placeholder="Collez votre clé API MDBList..."
-                    getKeyUrl="https://mdblist.com/preferences/"
-                    signupUrl="https://mdblist.com/"
+                    guide={PROVIDER_GUIDES.mdblist}
                     onChange={setMdblistKey}
                   />
 
-                  <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-slate-300 leading-relaxed space-y-3">
+                  <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-slate-300 leading-relaxed">
                     <p>
-                      <strong className="text-white">Astuce :</strong> après avoir saisi vos clés, téléchargez votre configuration AIO Metadata personnalisée
-                      pour l'importer dans votre instance AIO Metadata.
+                      <strong className="text-white">
+                        Configuration automatique :
+                      </strong>{" "}
+                      votre clé TorBox personnalise Torrentio et Comet, et vos clés
+                      TMDB, TheTVDB et MDBList sont injectées dans votre
+                      configuration AIO Metadata lors de l&apos;envoi à Nuvio.
                     </p>
-                    <button
-                      type="button"
-                      onClick={downloadAioMetadataConfig}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold text-white bg-cyan-600 hover:bg-cyan-500 transition-colors"
-                    >
-                      <Download className="w-3.5 h-3.5" />
-                      <span>Télécharger ma config AIO Metadata</span>
-                    </button>
                   </div>
                 </section>
               )}
@@ -414,89 +955,119 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 3 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">3. Préparez TorBox avec Lumio</h4>
+                    <h4 className="text-xl font-black text-white">
+                      3. Vos addons personnalisés
+                    </h4>
                     <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                      TorBox sert au streaming rapide et stable. Pour l'ajouter proprement dans Nuvio, générez d'abord votre manifest Lumio,
-                      puis collez son lien ci-dessous.
+                      L&apos;assistant crée votre configuration AIO Metadata à
+                      votre place. Pour Lumio, la configuration se fait sur
+                      mylumio.tv : vous copiez le lien de manifest de votre profil
+                      et vous le collez ici.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/25 space-y-3">
-                    <div className="flex items-center gap-2 text-sm font-bold text-white">
-                      <Link2 className="w-4 h-4 text-emerald-400" />
-                      <span>Comment récupérer votre manifest Lumio ?</span>
-                    </div>
-                    <ol className="list-decimal list-inside space-y-1.5 text-xs text-slate-300 leading-relaxed">
-                      <li>Créez ou connectez-vous à votre compte TorBox.</li>
-                      <li>Récupérez votre clé API TorBox dans les paramètres.</li>
-                      <li>Ouvrez le configurateur Lumio et renseignez votre clé TorBox.</li>
-                      <li>Copiez le lien du manifest généré, puis collez-le ici.</li>
-                    </ol>
-                    <div className="flex flex-wrap gap-2 pt-1">
-                      <a
-                        href="https://mylumio.tv/configure"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-bold text-white bg-emerald-600 hover:bg-emerald-500 transition-colors"
-                      >
-                        <span>Générer mon manifest Lumio</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                      <a
-                        href="https://torbox.app/settings"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-bold text-emerald-200 glass-panel hover:bg-surface-hover border border-emerald-500/30"
-                      >
-                        <span>Récupérer ma clé TorBox</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                      <a
-                        href={TORBOX_REFERRAL_LINK}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-[11px] font-bold text-indigo-200 glass-panel hover:bg-surface-hover border border-indigo-500/30"
-                      >
-                        <span>Créer un compte TorBox</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
-                    </div>
-                  </div>
+                  <AioMetadataField
+                    value={aioMetadataUrl}
+                    onChange={setAioMetadataUrl}
+                    password={protectionPassword}
+                    onPasswordChange={setProtectionPassword}
+                    onGenerate={createAioMetadataConfig}
+                  />
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-bold text-white flex items-center gap-1.5">
-                      <Link2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <span>Lien du manifest Lumio personnalisé</span>
-                    </label>
-                    <input
-                      type="url"
-                      placeholder="https://mylumio.tv/.../manifest.json"
-                      value={lumioManifestUrl}
-                      onChange={(e) => setLumioManifestUrl(e.target.value)}
-                      className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-emerald-500 focus:outline-none"
-                    />
-                    <p className="text-[11px] text-slate-500 leading-relaxed">
-                      Si vous ne collez rien, Nuvio installera le manifest Lumio public. Pour profiter de TorBox dans Lumio, collez votre manifest personnalisé.
-                    </p>
-                  </div>
+                  <GuideField
+                    label="Lumio"
+                    description="Films et séries en français via votre profil Lumio (débrideur TorBox)."
+                    value={lumioManifestUrl}
+                    placeholder="https://mylumio.tv/xxxxxx/manifest.json"
+                    guide={PROVIDER_GUIDES.lumio}
+                    onChange={setLumioManifestUrl}
+                  >
+                    <div className="space-y-2">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <button
+                          type="button"
+                          onClick={() => {
+                            const resolvedUrl = registerLumioManifest(lumioManifestUrl);
+                            setLumioManifestId(resolvedUrl || null);
+                            setLumioVerificationStatus(resolvedUrl ? "verified" : "error");
+                          }}
+                          className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+                        >
+                          Vérifier mon lien Lumio
+                        </button>
+                        {lumioVerificationStatus === "verified" && lumioManifestId && (
+                          <button
+                            type="button"
+                            onClick={() => {
+                              navigator.clipboard.writeText(lumioManifestId).then(() => {
+                                setLumioUrlCopied(true);
+                                setTimeout(() => setLumioUrlCopied(false), 2000);
+                              });
+                            }}
+                            className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+                          >
+                            {lumioUrlCopied ? "Copié !" : "Copier le lien"}
+                          </button>
+                        )}
+                      </div>
+                      {lumioVerificationStatus === "verified" && lumioManifestId && (
+                        <p className="text-[11px] text-emerald-300 break-all">
+                          Lien Lumio validé : {lumioManifestId}
+                        </p>
+                      )}
+                      {lumioVerificationStatus === "error" && (
+                        <p className="text-[11px] text-red-300">
+                          Lien invalide : collez l&apos;URL complète de votre profil Lumio (elle commence par https://).
+                        </p>
+                      )}
+                    </div>
+                  </GuideField>
                 </section>
               )}
 
               {step === 4 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">4. Vérifiez puis envoyez à Nuvio</h4>
+                    <h4 className="text-xl font-black text-white">
+                      4. Vérifiez puis envoyez à Nuvio
+                    </h4>
                     <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                      Dernière vérification avant d'ajouter les collections françaises et les addons essentiels dans votre profil Nuvio.
+                      Dernière vérification avant d&apos;ajouter les collections
+                      françaises et les addons essentiels dans votre profil
+                      Nuvio.
                     </p>
                   </div>
 
                   <div className="p-4 rounded-2xl bg-[#080B10]/80 border border-surface-border/40 text-xs text-slate-400 space-y-2">
-                    <strong className="text-white block font-semibold">Ce qui sera envoyé :</strong>
-                    <div>• <span className="text-slate-300">Collection complète</span> : 18 catégories et 756 dossiers francophones.</div>
-                    <div>• <span className="text-slate-300">AIO Metadata</span> : config personnalisable avec vos clés TMDB / TVDB / MDBList.</div>
-                    <div>• <span className="text-slate-300">Lumio</span> : {lumioManifestUrl.trim() ? "manifest personnalisé collé" : "manifest public (sans TorBox personnalisé)"}.</div>
-                    <div>• <span className="text-slate-300">Addons</span> : Cinemeta, OpenSubtitles v3, AIO STREAM, BingeCat, Torrentio, Comet, MediaFusion.</div>
+                    <strong className="text-white block font-semibold">
+                      Ce qui sera envoyé :
+                    </strong>
+                    <div>
+                      •{" "}
+                      <span className="text-slate-300">
+                        Collection complète
+                      </span>{" "}
+                      : 18 catégories et 756 dossiers francophones.
+                    </div>
+                    <div>
+                      • <span className="text-slate-300">AIO Metadata</span> :{" "}
+                      {aioMetadataUrl.trim()
+                        ? "votre configuration (créée par l'assistant)"
+                        : "instance publique, sans vos clés ni vos catalogues"}
+                      .
+                    </div>
+                    <div>
+                      • <span className="text-slate-300">Lumio</span> :{" "}
+                      {lumioManifestUrl.trim()
+                        ? "votre profil (lien fourni)"
+                        : "non installé — aucun lien fourni"}
+                      .
+                    </div>
+                    <div>
+                      • <span className="text-slate-300">Addons</span> :
+                      Cinemeta, OpenSubtitles v3, Torrentio (TorBox) et Comet
+                      (TorBox).
+                    </div>
                   </div>
 
                   <button
@@ -509,7 +1080,6 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   </button>
                 </section>
               )}
-
               <div className="flex items-center justify-between gap-3 pt-2 border-t border-surface-border/60">
                 <button
                   type="button"
@@ -541,8 +1111,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               </div>
 
               <div>
-                <h4 className="text-xl font-extrabold text-white">{progressState.step}</h4>
-                <p className="text-xs text-slate-400 mt-1.5">{progressState.details}</p>
+                <h4 className="text-xl font-extrabold text-white">
+                  {progressState.step}
+                </h4>
+                <p className="text-xs text-slate-400 mt-1.5">
+                  {progressState.details}
+                </p>
               </div>
 
               <div className="max-w-md mx-auto w-full bg-surface-elevated h-3 rounded-full overflow-hidden border border-surface-border p-[1px]">
@@ -553,7 +1127,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               </div>
 
               <div className="text-xs text-slate-500">
-                Envoi sécurisé vers Nuvio. Merci de patienter quelques secondes...
+                Envoi sécurisé vers Nuvio. Merci de patienter quelques
+                secondes...
               </div>
             </div>
           )}
@@ -566,10 +1141,13 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
               <div>
                 <h4 className="text-2xl font-black text-white">
-                  {createdNewAccount ? "Compte créé et configuré !" : "Configuration envoyée !"}
+                  {createdNewAccount
+                    ? "Compte créé et configuré !"
+                    : "Configuration envoyée !"}
                 </h4>
                 <p className="text-sm text-slate-300 mt-2 max-w-md mx-auto">
-                  Votre profil Nuvio contient maintenant la collection complète, les addons essentiels et votre configuration Lumio.
+                  Votre profil Nuvio contient maintenant la collection complète,
+                  les addons essentiels et votre configuration Lumio.
                 </p>
               </div>
 
@@ -579,12 +1157,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <span>Connexion sur votre téléviseur ou smartphone :</span>
                 </span>
                 <ol className="list-decimal list-inside space-y-1.5 text-slate-400">
-                  <li>Téléchargez et ouvrez l'application Nuvio.</li>
+                  <li>Téléchargez et ouvrez l&apos;application Nuvio.</li>
                   <li>
-                    Connectez-vous avec : <strong className="text-white">{email}</strong>.
+                    Connectez-vous avec :{" "}
+                    <strong className="text-white">{email}</strong>.
                   </li>
                   <li>
-                    Sélectionnez le profil <strong className="text-emerald-400">Nuvio France FR</strong>.
+                    Sélectionnez le profil{" "}
+                    <strong className="text-emerald-400">
+                      Nuvio France FR
+                    </strong>
+                    .
                   </li>
                   <li>Tout est prêt, bon visionnage !</li>
                 </ol>

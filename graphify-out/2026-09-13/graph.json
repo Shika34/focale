@@ -320,7 +320,7 @@
       "file_type": "code",
       "norm_label": "nuvioconfiguratormodal()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L597"
+      "source_location": "L596"
     },
     {
       "id": "components_torboxpromobanner_torboxpromobanner",
@@ -536,7 +536,7 @@
       "file_type": "code",
       "norm_label": "guidefield()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L528"
+      "source_location": "L527"
     },
     {
       "id": "components_nuvioconfiguratormodal_guidepanel",
@@ -1295,7 +1295,7 @@
       "node_kind": "heading",
       "norm_label": "3. next steps",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L29"
+      "source_location": "L28"
     },
     {
       "id": "context_handoff_4_end_of_session_instructions_ai",
@@ -1307,7 +1307,7 @@
       "node_kind": "heading",
       "norm_label": "4. end of session instructions (ai)",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L37"
+      "source_location": "L36"
     },
     {
       "id": "context_handoff_context_handoff_nuvio_collection",
@@ -2137,7 +2137,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L649",
+      "source_location": "L648",
       "weight": 1.0
     },
     {
@@ -3733,7 +3733,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L528",
+      "source_location": "L527",
       "weight": 1.0
     },
     {
@@ -3744,7 +3744,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L597",
+      "source_location": "L596",
       "weight": 1.0
     },
     {
@@ -3788,7 +3788,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L29",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -3810,7 +3810,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L37",
+      "source_location": "L36",
       "weight": 1.0
     },
     {

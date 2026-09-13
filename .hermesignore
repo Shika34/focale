@@ -1,0 +1,10 @@
+# Fichiers de données volumineux (évite le gaspillage de tokens)
+nuvio-collections-shika34.json
+aiometadata-config-shika34.json
+temp_content.txt
+
+# Caches et builds
+.next/
+node_modules/
+graphify-out/cache/
+graphify-out/transcripts/
