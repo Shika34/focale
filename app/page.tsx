@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { HeroSection } from "@/components/HeroSection";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
 import { ArrowUpRight } from "lucide-react";
@@ -7,6 +6,7 @@ import { ArrowUpRight } from "lucide-react";
 const SHOTS = [
   {
     src: "/images/Nuvio-capture1.webp",
+    mobileSrc: "/images/Nuvio-capture1-800.webp",
     width: 1267,
     height: 671,
     title: "L'accueil de Nuvio",
@@ -16,6 +16,7 @@ const SHOTS = [
   },
   {
     src: "/images/Nuvio-capture2.webp",
+    mobileSrc: "/images/Nuvio-capture2-800.webp",
     width: 1211,
     height: 579,
     title: "Vos collections",
@@ -100,14 +101,25 @@ export default function HomePage() {
               key={shot.src}
               className="overflow-hidden rounded-card border border-line bg-ink-800"
             >
-              <Image
-                src={shot.src}
-                alt={shot.alt}
-                width={shot.width}
-                height={shot.height}
-                sizes="(min-width: 1024px) 592px, 100vw"
-                className="h-auto w-full border-b border-line"
-              />
+              <picture>
+                {/* Sous 768 px (téléphones), la capture s'affiche pleine largeur :
+                    la variante 800 px suffit et pèse 4 à 5 fois moins lourd (33
+                    et 56 Ko contre 171 et 229 Ko). À partir de 768 px, la
+                    définition d'origine est conservée. */}
+                <source media="(max-width: 767px)" srcSet={shot.mobileSrc} />
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  width={shot.width}
+                  height={shot.height}
+                  decoding="async"
+                  // La première capture est l'élément LCP sur desktop : chargée
+                  // tout de suite, la seconde reste paresseuse.
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : undefined}
+                  className="h-auto w-full border-b border-line"
+                />
+              </picture>
               <figcaption className="px-5 py-4">
                 <div className="flex items-baseline gap-3">
                   <span className="font-mono text-[11px] text-mist-600">

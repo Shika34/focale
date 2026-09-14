@@ -182,7 +182,7 @@
       "file_type": "code",
       "norm_label": "homepage()",
       "source_file": "app/page.tsx",
-      "source_location": "L77"
+      "source_location": "L78"
     },
     {
       "id": "components_torboxpromobanner_torboxpromobanner",
@@ -1169,7 +1169,7 @@
       "node_kind": "heading",
       "norm_label": "3. next steps",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L49"
+      "source_location": "L51"
     },
     {
       "id": "context_handoff_4_end_of_session_instructions_ai",
@@ -1181,7 +1181,7 @@
       "node_kind": "heading",
       "norm_label": "4. end of session instructions (ai)",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L60"
+      "source_location": "L62"
     },
     {
       "id": "context_handoff_context_handoff_nuvio_collection",
@@ -1354,7 +1354,7 @@
       "file_type": "code",
       "norm_label": "lumio_points",
       "source_file": "app/page.tsx",
-      "source_location": "L43"
+      "source_location": "L44"
     },
     {
       "id": "app_page_nuvio_points",
@@ -1365,7 +1365,7 @@
       "file_type": "code",
       "norm_label": "nuvio_points",
       "source_file": "app/page.tsx",
-      "source_location": "L28"
+      "source_location": "L29"
     },
     {
       "id": "app_page_sections",
@@ -1376,7 +1376,7 @@
       "file_type": "code",
       "norm_label": "sections",
       "source_file": "app/page.tsx",
-      "source_location": "L58"
+      "source_location": "L59"
     },
     {
       "id": "app_page_shots",
@@ -1387,7 +1387,7 @@
       "file_type": "code",
       "norm_label": "shots",
       "source_file": "app/page.tsx",
-      "source_location": "L7"
+      "source_location": "L6"
     },
     {
       "id": "app_collections_page",
@@ -2340,7 +2340,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L3",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -2352,7 +2352,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L4",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -2882,7 +2882,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L3",
+      "source_location": "L2",
       "weight": 1.0
     },
     {
@@ -2894,7 +2894,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L4",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -2906,7 +2906,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L5",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3425,7 +3425,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L28",
+      "source_location": "L29",
       "weight": 1.0
     },
     {
@@ -3436,7 +3436,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L43",
+      "source_location": "L44",
       "weight": 1.0
     },
     {
@@ -3447,7 +3447,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L58",
+      "source_location": "L59",
       "weight": 1.0
     },
     {
@@ -3458,7 +3458,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L7",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -3469,7 +3469,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L77",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -3865,7 +3865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L49",
+      "source_location": "L51",
       "weight": 1.0
     },
     {
@@ -3876,7 +3876,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L60",
+      "source_location": "L62",
       "weight": 1.0
     },
     {
@@ -4881,5 +4881,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8d31835e744091598b5e1c5361ee5714a5c8d6f0"
+  "built_at_commit": "c454772863e7c751cac917ca6e99d5831f5314f9"
 }
