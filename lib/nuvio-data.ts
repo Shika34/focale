@@ -1,5 +1,4 @@
 import collectionsSummary from "./collections-summary.json";
-import { NuvioCollection } from "@/types/nuvio";
 
 export interface CollectionSummaryItem {
   id: string;

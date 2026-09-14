@@ -24,7 +24,7 @@ export function HeroSection() {
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
             <p className="eyebrow eyebrow-lg">
-              Focale: l&apos;assistant de configuration Nuvio · en français
+              Focale&nbsp;: l&apos;assistant de configuration Nuvio · en français
             </p>
             <h1 className="display mt-5 text-[40px] leading-[1.06] text-mist-100 sm:text-[62px]">
               Votre cinéma en VF,
@@ -83,8 +83,10 @@ export function HeroSection() {
                 ))}
               </dl>
               <p className="mt-5 text-xs leading-relaxed text-mist-500">
-                Tout est configuré dans votre profil Nuvio via l&apos;API
-                officielle : vos clés ne passent pas par un service tiers.
+                Collections et addons sont installés dans votre profil Nuvio via
+                son API officielle. Vos clés ne servent qu&apos;aux services
+                concernés — Nuvio, AIO Metadata, Torrentio, Comet — et ne sont
+                pas conservées ici.
               </p>
             </div>
           </aside>

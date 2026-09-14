@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { CollectionSummaryItem } from "@/lib/nuvio-data";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
 import {
@@ -16,9 +16,6 @@ import {
 interface CollectionBrowserProps {
   collections: CollectionSummaryItem[];
 }
-
-// Option de personnalisation conservée sous le coude pour une future mise à jour
-const CUSTOM_SELECTION_ENABLED = false;
 
 export function CollectionBrowser({ collections }: CollectionBrowserProps) {
   const [searchQuery, setSearchQuery] = useState("");
@@ -56,6 +53,16 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
     return filteredData.reduce((acc, col) => acc + col.matchingFolders.length, 0);
   }, [filteredData]);
 
+  // Fermeture du détail dossier au clavier, comme n'importe quelle boîte de dialogue.
+  useEffect(() => {
+    if (!activeFolderDetail) return;
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveFolderDetail(null);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [activeFolderDetail]);
+
   return (
     <div id="collections" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       {/* Header Controls */}
@@ -63,7 +70,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
         <div>
           <h2 className="display text-3xl text-mist-100 sm:text-4xl">
             <Layers className="w-7 h-7 text-gold-400" />
-            <span>Catalogue des Collections Nuvio</span>
+            <span>Catalogue des collections Nuvio</span>
           </h2>
           <p className="text-mist-400 text-sm mt-1">
             Explorez les 18 collections et 756 dossiers francophones intégrés automatiquement dans votre profil.
@@ -78,12 +85,14 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher parmi 756 dossiers..."
+              placeholder="Rechercher parmi 756 dossiers…"
+              aria-label="Rechercher un dossier"
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface/80 border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
+                aria-label="Effacer la recherche"
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-mist-400 hover:text-mist-100"
               >
                 Effacer
@@ -93,7 +102,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
 
           <button
             onClick={() => setConfigModalOpen(true)}
-            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-mist-100 bg-gold-400 hover:from-gold-500 hover:to-gold-500 shadow-glow shrink-0 transition-all active:scale-95"
+            className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-ink bg-gold-400 hover:bg-gold-300 shadow-glow shrink-0 transition-all active:scale-95"
           >
             <Sparkles className="w-3.5 h-3.5" />
             <span>Installer sur mon Nuvio</span>
@@ -162,42 +171,41 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
               {col.matchingFolders.map((folder) => (
-                <div
+                <button
                   key={folder.id}
-                  className="glass-card p-4 rounded-xl flex flex-col justify-between border border-surface-border/60 hover:border-gold-500/40 cursor-pointer"
+                  type="button"
                   onClick={() =>
                     setActiveFolderDetail({
                       collectionTitle: col.title,
                       folder,
                     })
                   }
+                  className="glass-card w-full p-4 rounded-xl flex flex-col justify-between border border-surface-border/60 text-left"
                 >
-                  <div>
-                    <div className="flex items-start justify-between gap-2">
-                      <div className="font-semibold text-mist-100 text-sm line-clamp-1">
+                  <span className="block">
+                    <span className="flex items-start justify-between gap-2">
+                      <span className="font-semibold text-mist-100 text-sm line-clamp-1">
                         {folder.title}
-                      </div>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-gold-500/10 text-gold-300 border border-gold-500/20 font-mono shrink-0">
-                        {folder.sourcesCount} src
                       </span>
-                    </div>
+                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-gold-500/10 text-gold-300 border border-gold-500/20 font-mono shrink-0">
+                        {folder.sourcesCount} source
+                        {folder.sourcesCount > 1 ? "s" : ""}
+                      </span>
+                    </span>
 
-                    <div className="mt-2 text-xs text-mist-400 line-clamp-2">
+                    <span className="mt-2 block text-xs text-mist-400 line-clamp-2">
                       {folder.sourcesPreview.join(", ") || "Configuration standard"}
-                    </div>
-                  </div>
+                    </span>
+                  </span>
 
-                  <div className="mt-4 pt-3 border-t border-surface-border/40 flex items-center justify-between text-[11px] text-mist-500">
+                  <span className="mt-4 pt-3 border-t border-surface-border/40 flex items-center justify-between text-[11px] text-mist-500">
                     <span className="text-gold-400 font-medium">Inclus dans le pack</span>
-                    <button
-                      type="button"
-                      className="inline-flex items-center gap-1 text-mist-400 hover:text-mist-100 transition-colors"
-                    >
+                    <span className="inline-flex items-center gap-1 text-mist-400">
                       <Info className="w-3.5 h-3.5" />
                       <span>Détails</span>
-                    </button>
-                  </div>
-                </div>
+                    </span>
+                  </span>
+                </button>
               ))}
             </div>
           </div>
@@ -222,7 +230,12 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
       {/* Folder Detail Modal */}
       {activeFolderDetail && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
-          <div className="glass-panel bg-surface max-w-lg w-full rounded-2xl border border-surface-border p-6 space-y-4">
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${activeFolderDetail.collectionTitle} — ${activeFolderDetail.folder.title}`}
+            className="glass-panel bg-surface max-w-lg w-full rounded-2xl border border-surface-border p-6 space-y-4"
+          >
             <div className="flex items-start justify-between">
               <div>
                 <span className="text-xs text-gold-400 font-semibold uppercase tracking-wider">
@@ -234,6 +247,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
               </div>
               <button
                 onClick={() => setActiveFolderDetail(null)}
+                aria-label="Fermer le détail du dossier"
                 className="p-1 rounded-lg text-mist-400 hover:text-mist-100 hover:bg-surface-hover"
               >
                 <X className="w-5 h-5" />

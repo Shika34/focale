@@ -35,7 +35,7 @@ export function TorboxPromoBanner() {
             Le débrideur conseillé : TorBox
           </h3>
           <p className="mt-2 text-sm leading-relaxed text-mist-300">
-            Lecture instantanée en 4K HDR, sans buffering ni torrent local. La
+            Lecture instantanée en 4K HDR, sans attente ni torrent local. La
             clé API TorBox est indispensable pour regarder les films et les
             séries dans Nuvio.
           </p>

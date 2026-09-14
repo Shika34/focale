@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   X,
   Aperture,
@@ -15,7 +15,6 @@ import {
   Mail,
   ArrowLeft,
   ArrowRight,
-  Link2,
   UserPlus,
   BookOpen,
   HelpCircle,
@@ -243,6 +242,9 @@ function AioMetadataField({
         </label>
         <p className="text-xs text-mist-400 mt-1 leading-relaxed">
           Catalogues, affiches et métadonnées FR, créés avec vos clés TMDB / TVDB / MDBList.
+          Choisissez un mot de passe de protection, puis cliquez sur « Créer ma
+          configuration AIO Metadata » : elle est créée avec les clés saisies à
+          l&apos;étape 2.
         </p>
       </div>
 
@@ -310,7 +312,7 @@ function AioMetadataField({
               ) : (
                 <Sparkles className="w-3.5 h-3.5" />
               )}
-              <span>{status === "loading" ? "Création en cours..." : "Créer ma configuration AIO Metadata"}</span>
+              <span>{status === "loading" ? "Création en cours…" : "Créer ma configuration AIO Metadata"}</span>
             </button>
             {!manual && (
               <button
@@ -442,7 +444,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   }>({
     step: "Initialisation",
     percent: 0,
-    details: "Préparation des collections...",
+    details: "Préparation des collections…",
   });
 
   const [createdNewAccount, setCreatedNewAccount] = useState(false);
@@ -456,6 +458,23 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
   const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verifying' | 'verified' | 'error'>('idle');
   const totalSteps = 4;
+
+  // Fermeture au clavier (Échap) et blocage du défilement de la page derrière.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen, onClose]);
 
   /** Crée la configuration AIO Metadata côté serveur, avec les clés de l'étape 2. */
   const createAioMetadataConfig = async (): Promise<string> => {
@@ -530,7 +549,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Connexion ou création du compte Nuvio",
         percent: 20,
-        details: "Vérification sécurisée auprès de l'API officielle de Nuvio...",
+        details: "Vérification sécurisée auprès de l'API officielle de Nuvio…",
       });
 
       const authRes = await NuvioApi.autoAuth(email, password);
@@ -539,7 +558,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: authRes.isNewAccount ? "Compte Nuvio créé" : "Connexion Nuvio réussie",
         percent: 40,
-        details: "Préparation du profil Nuvio de destination...",
+        details: "Préparation du profil Nuvio de destination…",
       });
 
       const desiredName = profileName.trim() || "Nuvio France FR";
@@ -557,13 +576,13 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Préparation des addons personnalisés",
         percent: 60,
-        details: "Préparation de votre configuration AIO Metadata et de vos addons...",
+        details: "Préparation de votre configuration AIO Metadata et de vos addons…",
       });
 
       setProgressState({
         step: "Ajout des collections françaises",
         percent: 70,
-        details: "Envoi des 18 collections et 756 dossiers francophones...",
+        details: "Envoi des 18 collections et 756 dossiers francophones…",
       });
 
       const collRes = await fetch("/nuvio-collections-mitch.json");
@@ -573,7 +592,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Installation des addons sélectionnés",
         percent: 82,
-        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox...",
+        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox…",
       });
 
       const addons = NuvioApi.buildAddonsList(
@@ -654,12 +673,20 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in">
-      <div className="max-h-[92vh] w-full max-w-2xl overflow-hidden rounded-card border border-line bg-ink-800 shadow-panel flex flex-col">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="configurateur-nuvio-titre"
+        className="max-h-[92vh] w-full max-w-2xl overflow-hidden rounded-card border border-line bg-ink-800 shadow-panel flex flex-col"
+      >
         <div className="p-5 sm:p-6 border-b border-surface-border flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Aperture className="h-6 w-6 text-gold-400" strokeWidth={1.6} />
             <div>
-              <h3 className="display text-xl text-mist-100 sm:text-2xl">
+              <h3
+                id="configurateur-nuvio-titre"
+                className="display text-xl text-mist-100 sm:text-2xl"
+              >
                 Configurer mon Nuvio
               </h3>
               <p className="text-xs text-mist-400">
@@ -831,7 +858,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="TorBox (obligatoire)"
                     description="Indispensable pour regarder les films et les séries : débrite vos flux via votre compte TorBox."
                     value={torboxKey}
-                    placeholder="Collez votre clé API TorBox..."
+                    placeholder="Collez votre clé API TorBox…"
                     guide={PROVIDER_GUIDES.torbox}
                     onChange={(value) => {
                       setTorboxKey(value);
@@ -842,7 +869,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="TMDB (fortement recommandé)"
                     description="Affiches, résumés, notes et métadonnées de films en français. Clé reprise dans le profil : indispensable à l'application Nuvio Desktop, qui n'a pas de clé TMDB intégrée."
                     value={tmdbKey}
-                    placeholder="Collez votre clé API TMDB..."
+                    placeholder="Collez votre clé API TMDB…"
                     guide={PROVIDER_GUIDES.tmdb}
                     onChange={(value) => {
                       setTmdbKey(value);
@@ -853,7 +880,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="TVDB"
                     description="Métadonnées séries, saisons, épisodes et collections TV."
                     value={tvdbKey}
-                    placeholder="Collez votre clé API TVDB..."
+                    placeholder="Collez votre clé API TVDB…"
                     guide={PROVIDER_GUIDES.tvdb}
                     onChange={setTvdbKey}
                   />
@@ -861,7 +888,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="MDBList (optionnel)"
                     description="Croise les notes IMDb, Rotten Tomatoes (critiques et public), Metacritic, Letterboxd, Trakt et TMDB sur une seule fiche."
                     value={mdblistKey}
-                    placeholder="Collez votre clé API MDBList..."
+                    placeholder="Collez votre clé API MDBList…"
                     guide={PROVIDER_GUIDES.mdblist}
                     onChange={setMdblistKey}
                   />
@@ -940,10 +967,10 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       3. Vos addons personnalisés
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
-                      L&apos;assistant crée votre configuration AIO Metadata à
-                      votre place. Pour Lumio, la configuration se fait sur
-                      mylumio.tv : vous copiez le lien de manifest de votre profil
-                      et vous le collez ici.
+                      Votre configuration AIO Metadata se crée ici, en un clic,
+                      avec les clés de l&apos;étape 2. Pour Lumio, la
+                      configuration se fait sur mylumio.tv : vous copiez le lien
+                      de manifest de votre profil et vous le collez ici.
                     </p>
                   </div>
 
@@ -1115,7 +1142,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
               <div className="text-xs text-mist-500">
                 Envoi sécurisé vers Nuvio. Merci de patienter quelques
-                secondes...
+                secondes…
               </div>
             </div>
           )}
@@ -1146,7 +1173,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               <div className="p-4 rounded-2xl bg-surface-elevated/80 border border-surface-border text-xs text-mist-300 text-left space-y-2.5 max-w-md mx-auto">
                 <span className="font-bold text-mist-100 flex items-center gap-1.5">
                   <Tv className="w-4 h-4 text-gold-400" />
-                  <span>Connexion sur votre téléviseur ou smartphone :</span>
+                  <span>Connexion sur vos appareils :</span>
                 </span>
                 <ol className="list-decimal list-inside space-y-1.5 text-mist-400">
                   <li>Téléchargez et ouvrez l&apos;application Nuvio.</li>

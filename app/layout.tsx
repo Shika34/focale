@@ -30,6 +30,19 @@ export const metadata: Metadata = {
   description: SITE.description,
   keywords: [...SITE.keywords],
   authors: [{ name: SITE.name }],
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: SITE.name,
+    locale: "fr_FR",
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+  },
+  twitter: {
+    card: "summary",
+    title: `${SITE.name} — ${SITE.tagline}`,
+    description: SITE.description,
+  },
 };
 
 export default function RootLayout({

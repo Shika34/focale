@@ -40,6 +40,21 @@ const NUVIO_POINTS = [
   },
 ];
 
+const LUMIO_POINTS = [
+  {
+    title: "Un addon, pas un catalogue",
+    body: "Lumio ne stocke rien : il branche votre débrideur TorBox sur Nuvio et charge la vidéo en une fraction de seconde. Vous gardez vos habitudes de lecture, avec des résultats triés pour la VF.",
+  },
+  {
+    title: "Ce que votre profil Lumio décide",
+    body: "Les langues acceptées — la vôtre passe en tête des résultats —, le style de visionnage (L'Essentiel, Zen, Cinéphile, Nomade ou Mode Expert) et la présentation des liens : Direct, Netflix, Compact ou Détaillé.",
+  },
+  {
+    title: "Pourquoi un lien à copier à l'étape 3",
+    body: "Votre configuration Lumio vit sur mylumio.tv, pas dans Nuvio. Elle produit une adresse de manifest qui vous est propre, que l'assistant recopie dans votre profil. Sans ce lien, Lumio n'est pas installé — les autres addons, si.",
+  },
+];
+
 const SECTIONS = [
   {
     href: "/tutoriel",
@@ -157,6 +172,49 @@ export default function HomePage() {
             premier tutoriel
           </Link>{" "}
           détaille l&apos;installation et la connexion écran par écran.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">
+        <div className="flex flex-wrap items-end justify-between gap-5">
+          <div>
+            <p className="eyebrow">Focale sur Lumio</p>
+            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]">
+              Le français d&apos;abord
+            </h2>
+          </div>
+          <p className="max-w-md text-sm leading-relaxed text-mist-400">
+            Le seul addon du pack qui ne s&apos;installe pas tout seul :
+            voici ce qu&apos;il fait, et ce qu&apos;il attend de vous.
+          </p>
+        </div>
+
+        <div className="mt-8 grid gap-px overflow-hidden rounded-card border border-line bg-line lg:grid-cols-3">
+          {LUMIO_POINTS.map((point, index) => (
+            <article key={point.title} className="bg-ink-800 p-6">
+              <span className="font-mono text-[11px] text-mist-600">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h3 className="display mt-3 text-lg text-mist-100">
+                {point.title}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-mist-400">
+                {point.body}
+              </p>
+            </article>
+          ))}
+        </div>
+
+        <p className="mt-6 text-sm leading-relaxed text-mist-500">
+          Le{" "}
+          <Link
+            href="/tutoriel#lumio"
+            className="text-mist-300 underline decoration-line underline-offset-4 transition-colors hover:text-gold-300"
+          >
+            tutoriel Lumio
+          </Link>{" "}
+          reprend le parcours écran par écran, du choix du profil à la copie du
+          lien de manifest.
         </p>
       </section>
 

@@ -1,8 +1,8 @@
 {
   "0": "package.json",
   "1": "compilerOptions",
-  "2": "layout.tsx",
-  "3": "aiometadata/route.ts",
+  "2": "collections/page.tsx",
+  "3": "route.ts",
   "4": "site-nuvio",
   "5": "TutorialGuide.tsx",
   "6": "NuvioConfiguratorModal.tsx",
@@ -12,7 +12,6 @@
   "10": "CLAUDE.md — NUVIO Collection",
   "11": "Context Handoff — NUVIO Collection",
   "12": "next.config.mjs",
-  "13": "README.md",
-  "14": "nuvio-api.ts",
-  "15": "app/page.tsx"
+  "13": "Focale",
+  "15": "nuvio.ts"
 }

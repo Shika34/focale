@@ -77,7 +77,9 @@ export function Footer() {
         <p className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-mist-500">
           {SITE.name} n&apos;héberge ni ne diffuse aucun contenu : la
           configuration s&apos;appuie sur vos propres comptes et services
-          (Nuvio, TorBox, Lumio, AIO Metadata).
+          (Nuvio, TorBox, Lumio, AIO Metadata). Vos clés d&apos;API sont saisies
+          dans votre navigateur, transmises aux seuls services concernés et
+          conservées nulle part sur ce site.
         </p>
       </div>
     </footer>

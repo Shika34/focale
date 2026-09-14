@@ -1,7 +1,14 @@
 /**
  * Client API Nuvio Direct (Supabase)
- * Toutes les requêtes sont effectuées directement depuis le navigateur de l'utilisateur
- * vers https://api.nuvio.tv. Aucune donnée sensible n'est envoyée à un tiers.
+ * Les appels authentifiés partent directement du navigateur de l'utilisateur
+ * vers https://api.nuvio.tv, avec le jeton de session Nuvio : aucune donnée de
+ * compte ne transite par le site.
+ *
+ * Deux exceptions, assumées et documentées à l'écran :
+ * - les clés de métadonnées passent par la route serveur `/api/aiometadata`
+ *   pour créer la configuration AIO Metadata (voir app/api/aiometadata/route.ts) ;
+ * - la clé TorBox est intégrée aux URLs de manifest Torrentio et Comet, car
+ *   c'est le format imposé par ces addons.
  */
 
 import { buildLumioUrl, buildTorrentioUrl, buildCometUrl } from "./manifest-urls";
@@ -438,8 +445,8 @@ export const NuvioApi = {
         name: "AIO Metadata",
         url: aioMetadataUrl || "https://aiometadata.elfhosted.com/manifest.json",
         note: aioMetadataUrl
-          ? "Ta configuration AIO Metadata (clés + catalogues FR)"
-          : "Instance publique AIO Metadata, sans tes clés ni tes catalogues",
+          ? "Votre configuration AIO Metadata (clés + catalogues FR)"
+          : "Instance publique AIO Metadata, sans vos clés ni vos catalogues",
       },
     ];
 

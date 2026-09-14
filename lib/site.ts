@@ -9,7 +9,7 @@ export const SITE = {
   wordmark: "FOCALE",
   tagline: "Le pack français pour Nuvio",
   description:
-    "Focale prépare ton profil Nuvio en français : 18 collections (756 dossiers), configuration AIO Metadata créée automatiquement, Lumio avec ton débrideur TorBox, Torrentio et Comet.",
+    "Focale prépare votre profil Nuvio en français : 18 collections (756 dossiers), configuration AIO Metadata créée automatiquement, Lumio avec votre débrideur TorBox, Torrentio et Comet.",
   keywords: [
     "Nuvio",
     "Stremio",
