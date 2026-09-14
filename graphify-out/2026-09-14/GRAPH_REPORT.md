@@ -1,7 +1,7 @@
 # Graph Report - site-nuvio  (2026-09-14)
 
 ## Corpus Check
-- 30 files · ~338,943 words
+- 32 files · ~630,289 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .css 1)
 

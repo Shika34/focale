@@ -235,19 +235,6 @@ export const NuvioApi = {
   },
 
   /**
-   * Injecte la collection complète dans un profil Nuvio.
-   *
-   * @param token Jeton d'authentification Nuvio.
-   * @param profileId ID du profil cible.
-   * @returns Promise résolue une fois la collection envoyée.
-   */
-  async pushNuvioCollections(token: string, profileId: number): Promise<void> {
-    const res = await fetch("/nuvio-collections-shika34.json");
-    const collections = await res.json();
-    await this.pushCollections(token, profileId, collections);
-  },
-
-  /**
    * Récupère l'ID propriétaire du compte pour l'installation d'addons
    */
   async getOwnerId(token: string): Promise<string> {

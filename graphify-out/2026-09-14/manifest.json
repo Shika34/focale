@@ -12,9 +12,9 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1789387283.2881854,
-    "seen": 1789387491.3383162,
-    "ast_hash": "22af5a87abc838b07ceb7c3fd6622cd5",
+    "mtime": 1789386973.2566626,
+    "seen": 1789387045.3321307,
+    "ast_hash": "cf026334f76a09977c10f81df86095a0",
     "semantic_hash": ""
   },
   "app/tutoriel/page.tsx": {
@@ -72,9 +72,9 @@
     "semantic_hash": "674bc5cc1bb9f8d152788a128d90f0e4"
   },
   "lib/nuvio-api.ts": {
-    "mtime": 1789387450.8332307,
-    "seen": 1789387491.338627,
-    "ast_hash": "cf34e0c284bbae394cfce637e80c49b2",
+    "mtime": 1789320746.4830706,
+    "seen": 1789320839.677332,
+    "ast_hash": "76bb71c9559c370d94fde84b00415a85",
     "semantic_hash": ""
   },
   "lib/nuvio-data.ts": {
@@ -138,9 +138,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1789387487.2168317,
-    "seen": 1789387491.3389053,
-    "ast_hash": "c3520d52db5f4ad373f6b4bc8d31b390",
+    "mtime": 1789387039.5599992,
+    "seen": 1789387045.332736,
+    "ast_hash": "bca74b7382989bad0a609e3bc3eb8ddf",
     "semantic_hash": ""
   },
   "README.md": {
@@ -189,6 +189,12 @@
     "mtime": 1789328622.8779802,
     "seen": 1789328856.6794748,
     "ast_hash": "3aa42f5ac36cc7a627f50d84e5563c75",
+    "semantic_hash": ""
+  },
+  "public/aiometadata-config-shika34.json": {
+    "mtime": 1789300412.722533,
+    "seen": 1789386258.0325954,
+    "ast_hash": "5290232a5f051640e8d5550ad9b8ed8e",
     "semantic_hash": ""
   },
   "public/images/Nuvio-capture1.webp": {

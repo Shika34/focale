@@ -24,7 +24,7 @@ export function HeroSection() {
         <div className="grid gap-14 lg:grid-cols-[1.15fr_0.85fr] lg:gap-20">
           <div>
             <p className="eyebrow eyebrow-lg">
-              Assistant de configuration Nuvio · entièrement en français
+              Focale: l&apos;assistant de configuration Nuvio · en français
             </p>
             <h1 className="display mt-5 text-[40px] leading-[1.06] text-mist-100 sm:text-[62px]">
               Votre cinéma en VF,
