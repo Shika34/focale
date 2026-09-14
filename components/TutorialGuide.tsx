@@ -22,7 +22,7 @@ const NUVIO_TUTORIAL: ProviderGuide = {
     {
       title: "Se connecter sur l'appareil",
       detail:
-        "Ouvrez Nuvio, connectez-vous avec ces identifiants, puis sélectionnez le profil « Nuvio France FR » créé par l'assistant.",
+        "Ouvrez Nuvio, connectez-vous avec ces identifiants, puis sélectionnez le profil créé par l'assistant.",
     },
   ],
   signupUrl: "https://nuvio.tv",

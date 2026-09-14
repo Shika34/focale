@@ -1,40 +1,41 @@
 # Graph Report - site-nuvio  (2026-09-14)
 
 ## Corpus Check
-- 30 files · ~338,943 words
+- 31 files · ~532,413 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .css 1)
 
 ## Summary
-- 175 nodes · 232 edges · 15 communities (10 shown, 3 thin omitted)
+- 177 nodes · 235 edges · 16 communities (11 shown, 3 thin omitted)
 - Extraction: 95% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `97777ce9`
+- Built from commit: `03d22e33`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - package.json
 - compilerOptions
-- TutorialGuide.tsx
+- layout.tsx
 - aiometadata/route.ts
 - site-nuvio
-- app/page.tsx
+- TutorialGuide.tsx
+- NuvioConfiguratorModal.tsx
 - devDependencies
 - postcss.config.mjs
 - CLAUDE.md — NUVIO Collection
 - Context Handoff — NUVIO Collection
 - next.config.mjs
-- NuvioConfiguratorModal.tsx
-- collections/page.tsx
+- nuvio-api.ts
+- app/page.tsx
 
 ## God Nodes (most connected - your core abstractions)
 1. `compilerOptions` - 16 edges
 2. `lucide-react` - 9 edges
-3. `react` - 7 edges
-4. `NuvioConfiguratorModal()` - 6 edges
+3. `NuvioConfiguratorModal()` - 7 edges
+4. `react` - 7 edges
 5. `SITE` - 6 edges
 6. `CLAUDE.md — NUVIO Collection` - 6 edges
 7. `scripts` - 5 edges
@@ -57,7 +58,7 @@
 ## Import Cycles
 - None detected.
 
-## Communities (15 total, 3 thin omitted)
+## Communities (16 total, 3 thin omitted)
 
 ### Community 0 - "package.json"
 Cohesion: 0.08
@@ -67,17 +68,21 @@ Nodes (24): dependencies, lucide-react, next, react, react-dom, name, private, s
 Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
-### Community 2 - "TutorialGuide.tsx"
-Cohesion: 0.12
-Nodes (19): display, metadata, sans, viewport, metadata, Footer(), NAV_LINKS, Navbar() (+11 more)
+### Community 2 - "layout.tsx"
+Cohesion: 0.14
+Nodes (15): metadata, display, metadata, sans, viewport, CollectionBrowser(), CollectionBrowserProps, Footer() (+7 more)
 
 ### Community 4 - "site-nuvio"
 Cohesion: 0.15
 Nodes (13): Site NUVIO, lucide-react, react, react-dom, @types/node, @types/react, site-nuvio, @types/react-dom (+5 more)
 
-### Community 5 - "app/page.tsx"
-Cohesion: 0.28
-Nodes (6): NUVIO_POINTS, SECTIONS, SHOTS, HeroSection(), TorboxPromoBanner(), getStats()
+### Community 5 - "TutorialGuide.tsx"
+Cohesion: 0.20
+Nodes (9): metadata, BONUS, TorboxPromoBanner(), NUVIO_TUTORIAL, TutorialGuide(), TUTORIALS, GuideStep, PROVIDER_GUIDES (+1 more)
+
+### Community 6 - "NuvioConfiguratorModal.tsx"
+Cohesion: 0.15
+Nodes (9): AioMetadataFieldProps, formatFrenchList(), GuideFieldProps, NuvioConfiguratorModal(), NuvioConfiguratorModalProps, ViewState, WizardStep, buildLumioUrl() (+1 more)
 
 ### Community 7 - "devDependencies"
 Cohesion: 0.20
@@ -91,33 +96,33 @@ Nodes (7): CLAUDE.md — NUVIO Collection, Coding Principles (Karpathy Style), D
 Cohesion: 0.33
 Nodes (5): 1. TorBox Referral Data, 2. Project Status, 3. Next Steps, 4. End of Session Instructions (AI), Context Handoff — NUVIO Collection
 
-### Community 14 - "NuvioConfiguratorModal.tsx"
-Cohesion: 0.10
-Nodes (19): AioMetadataFieldProps, GuideFieldProps, NuvioConfiguratorModal(), NuvioConfiguratorModalProps, ViewState, WizardStep, base64ManifestUrl(), buildCometUrl() (+11 more)
+### Community 14 - "nuvio-api.ts"
+Cohesion: 0.18
+Nodes (12): base64ManifestUrl(), buildCometUrl(), buildTorrentioUrl(), ApiKeysConfig, authHeaders(), fetchWithRetry(), KEYLESS_INTEGRATIONS, NuvioAddonInstall (+4 more)
 
-### Community 15 - "collections/page.tsx"
-Cohesion: 0.20
-Nodes (11): CollectionsPage(), metadata, CollectionBrowser(), CollectionBrowserProps, CollectionSummaryItem, getCollectionsSummary(), AioMetadataConfig, NuvioCollection (+3 more)
+### Community 15 - "app/page.tsx"
+Cohesion: 0.15
+Nodes (12): CollectionsPage(), NUVIO_POINTS, SECTIONS, SHOTS, HeroSection(), getCollectionsSummary(), getStats(), AioMetadataConfig (+4 more)
 
 ## Knowledge Gaps
-- **86 isolated node(s):** `SaveRequest`, `metadata`, `sans`, `display`, `viewport` (+81 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 114 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **87 isolated node(s):** `SaveRequest`, `metadata`, `sans`, `display`, `viewport` (+82 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 115 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **3 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `lucide-react` connect `TutorialGuide.tsx` to `package.json`, `app/page.tsx`, `NuvioConfiguratorModal.tsx`, `collections/page.tsx`?**
-  _High betweenness centrality (0.104) - this node is a cross-community bridge._
-- **Why does `react` connect `TutorialGuide.tsx` to `package.json`, `app/page.tsx`, `NuvioConfiguratorModal.tsx`, `collections/page.tsx`?**
+- **Why does `lucide-react` connect `layout.tsx` to `package.json`, `TutorialGuide.tsx`, `NuvioConfiguratorModal.tsx`, `app/page.tsx`?**
+  _High betweenness centrality (0.105) - this node is a cross-community bridge._
+- **Why does `react` connect `layout.tsx` to `package.json`, `TutorialGuide.tsx`, `NuvioConfiguratorModal.tsx`, `app/page.tsx`?**
   _High betweenness centrality (0.071) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
   _High betweenness centrality (0.067) - this node is a cross-community bridge._
 - **What connects `SaveRequest`, `metadata`, `sans` to the rest of the system?**
-  _86 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _87 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `TutorialGuide.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.11822660098522167 - nodes in this community are weakly interconnected._
+- **Should `layout.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._

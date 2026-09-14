@@ -116,6 +116,12 @@ function DirectKeyLink({ guide }: { guide: ProviderGuide }) {
   );
 }
 
+/** Énumération française : « a », « a et b », « a, b et c ». */
+function formatFrenchList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} et ${items[items.length - 1]}`;
+}
+
 /** Tutoriel pas à pas : création du compte puis récupération de la clé. */
 function GuidePanel({
   guide,
@@ -440,6 +446,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   });
 
   const [createdNewAccount, setCreatedNewAccount] = useState(false);
+  /** Nom du profil Nuvio créé (et réutilisé s'il existe déjà) par l'assistant. */
+  const [profileName, setProfileName] = useState("Nuvio France FR");
+  const [targetProfileName, setTargetProfileName] = useState("Nuvio France FR");
+  const [settingsNotice, setSettingsNotice] = useState("");
+  /** Clés manquantes à l'étape 2, pour la demande de confirmation. */
+  const [missingKeysWarning, setMissingKeysWarning] = useState<string[] | null>(null);
   const [lumioUrlCopied, setLumioUrlCopied] = useState(false);
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
   const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verifying' | 'verified' | 'error'>('idle');
@@ -479,6 +491,18 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       return;
     }
 
+    if (step === 2) {
+      const missing: string[] = [];
+      if (!torboxKey.trim()) missing.push("TorBox");
+      if (!tmdbKey.trim()) missing.push("TMDB");
+      if (missing.length > 0) {
+        setMissingKeysWarning(missing);
+        return;
+      }
+    }
+
+    setMissingKeysWarning(null);
+
     if (step < totalSteps) {
       setStep((currentStep) => (currentStep + 1) as WizardStep);
     }
@@ -486,12 +510,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
   const goToPreviousStep = () => {
     setErrorMessage("");
+    setMissingKeysWarning(null);
     if (step > 1) {
       setStep((currentStep) => (currentStep - 1) as WizardStep);
     }
   };
 
-  
   const handleSendToNuvio = async () => {
     if (!email.trim() || !password.trim()) {
       setErrorMessage("Veuillez renseigner votre email et votre mot de passe Nuvio.");
@@ -515,15 +539,20 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: authRes.isNewAccount ? "Compte Nuvio créé" : "Connexion Nuvio réussie",
         percent: 40,
-        details: "Préparation du profil dédié « Nuvio France FR »...",
+        details: "Préparation du profil Nuvio de destination...",
       });
 
-      const profiles = await NuvioApi.getProfiles(authRes.token);
-      let targetProfile = profiles.find((p) => p.name.toLowerCase().includes("nuvio france"));
+      const desiredName = profileName.trim() || "Nuvio France FR";
+      const accountProfiles = await NuvioApi.getProfiles(authRes.token);
+      let targetProfile = accountProfiles.find(
+        (p) => p.name.trim().toLowerCase() === desiredName.toLowerCase(),
+      );
 
       if (!targetProfile) {
-        targetProfile = await NuvioApi.createProfile(authRes.token, "Nuvio France FR");
+        targetProfile = await NuvioApi.createProfile(authRes.token, desiredName);
       }
+
+      setTargetProfileName(targetProfile.name);
 
       setProgressState({
         step: "Préparation des addons personnalisés",
@@ -558,6 +587,40 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       );
       await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
 
+      const noticeParts: string[] = [];
+
+      // Nuvio Desktop n'utilise pas de clé TMDB intégrée : sans `tmdb_api_key`
+      // propre au profil, ses catalogues TMDB (la majorité des collections)
+      // restent vides, alors que les apps TV et mobile les affichent.
+      try {
+        const seededKeys = await NuvioApi.seedProviderCredentials(authRes.token, targetProfile.profile_index, {
+          tmdbApiKey: tmdbKey,
+          mdblistApiKey: mdblistKey,
+          torboxApiKey: torboxKey,
+        });
+        if (seededKeys.pushed === 0) {
+          noticeParts.push(
+            "Aucune clé API n'était renseignée à l'étape 2 : sans clé TMDB dans le profil, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
+          );
+        } else if (seededKeys.verificationError) {
+          noticeParts.push(
+            `Clés envoyées dans le profil (${seededKeys.providers.join(", ")}), mais sans confirmation : la relecture a échoué (${seededKeys.verificationError}).`,
+          );
+        } else if (seededKeys.unverified.length > 0) {
+          noticeParts.push(
+            `Clés envoyées dans le profil (${seededKeys.providers.join(", ")}) mais non retrouvées après relecture : ${seededKeys.unverified.join(", ")}. Vérifiez « API keys and provider credentials » dans l'Account Manager.`,
+          );
+        }
+      } catch (seedErr) {
+        noticeParts.push(
+          `Les clés de l'étape 2 n'ont pas pu être déposées dans le profil (${
+            seedErr instanceof Error ? seedErr.message : "erreur inconnue"
+          }). Nuvio Desktop en a besoin : saisissez-les dans Réglages → TMDB de l'application.`,
+        );
+      }
+
+      setSettingsNotice(noticeParts.join(" "));
+
       setProgressState({
         step: "Configuration terminée",
         percent: 100,
@@ -580,6 +643,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     3: "Addons",
     4: "Récapitulatif",
   };
+
+  /** Contenu réellement installé, pour un récapitulatif de fin exact. */
+  const installedContents = [
+    "la collection complète",
+    "les addons essentiels",
+    ...(aioMetadataUrl.trim() ? ["votre configuration AIO Metadata"] : []),
+    ...(lumioManifestUrl.trim() ? ["votre profil Lumio"] : []),
+  ];
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in">
@@ -705,6 +776,36 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       />
                     </div>
                   </div>
+
+                  <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                      <div>
+                        <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+                          <UserPlus className="w-4 h-4 text-gold-400" />
+                          <span>Nom du profil Nuvio à créer</span>
+                        </label>
+                        <p className="text-xs text-mist-400 mt-1 leading-relaxed">
+                          L&apos;assistant crée ce profil sur votre compte Nuvio — ou le
+                          réutilise s&apos;il porte déjà ce nom. Les clés de l&apos;étape 2 y
+                          sont enregistrées.
+                        </p>
+                      </div>
+                      <input
+                        type="text"
+                        value={profileName}
+                        onChange={(e) => setProfileName(e.target.value)}
+                        maxLength={30}
+                        placeholder="Nuvio France FR"
+                        aria-label="Nom du profil Nuvio à créer"
+                        className="w-full sm:w-64 shrink-0 px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
+                      />
+                    </div>
+
+                    <p className="text-[11px] text-mist-500 leading-relaxed">
+                      Ce nom est celui que vous retrouverez dans l&apos;application Nuvio,
+                      une fois connecté.
+                    </p>
+                  </div>
                 </section>
               )}
 
@@ -718,9 +819,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       La clé API TorBox est indispensable pour regarder les films
                       et les séries : elle débrite vos flux et sert aussi à
                       configurer Lumio, Torrentio et Comet. Les clés de
-                      métadonnées (TMDB, TheTVDB et MDBList) sont optionnelles :
-                      elles enrichissent les affiches, les fiches et les
-                      catalogues d&apos;AIO Metadata.
+                      métadonnées (TMDB, TheTVDB et MDBList) enrichissent les
+                      affiches, les fiches et les catalogues d&apos;AIO Metadata.
+                      La clé TMDB est enregistrée dans votre profil : elle est
+                      indispensable à l&apos;application Nuvio Desktop, qui
+                      n&apos;en a pas d&apos;intégrée.
                     </p>
                   </div>
 
@@ -730,15 +833,21 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     value={torboxKey}
                     placeholder="Collez votre clé API TorBox..."
                     guide={PROVIDER_GUIDES.torbox}
-                    onChange={setTorboxKey}
+                    onChange={(value) => {
+                      setTorboxKey(value);
+                      setMissingKeysWarning(null);
+                    }}
                   />
                   <GuideField
                     label="TMDB (fortement recommandé)"
-                    description="Affiches, résumés, notes et métadonnées de films en français."
+                    description="Affiches, résumés, notes et métadonnées de films en français. Clé reprise dans le profil : indispensable à l'application Nuvio Desktop, qui n'a pas de clé TMDB intégrée."
                     value={tmdbKey}
                     placeholder="Collez votre clé API TMDB..."
                     guide={PROVIDER_GUIDES.tmdb}
-                    onChange={setTmdbKey}
+                    onChange={(value) => {
+                      setTmdbKey(value);
+                      setMissingKeysWarning(null);
+                    }}
                   />
                   <GuideField
                     label="TVDB"
@@ -767,6 +876,60 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       configuration AIO Metadata lors de l&apos;envoi à Nuvio.
                     </p>
                   </div>
+
+                  {missingKeysWarning && (
+                    <div
+                      role="alert"
+                      className="p-4 rounded-2xl bg-gold-500/10 border border-gold-500/50 space-y-3"
+                    >
+                      <div className="flex items-start gap-2.5">
+                        <AlertCircle className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                        <div className="text-xs text-mist-200 leading-relaxed space-y-2">
+                          <p className="font-bold text-mist-100">
+                            Vous n&apos;avez pas renseigné{" "}
+                            {missingKeysWarning.length > 1 ? "vos clés API" : "votre clé API"}{" "}
+                            {formatFrenchList(missingKeysWarning)}. Voulez-vous
+                            continuer ?
+                          </p>
+                          {missingKeysWarning.includes("TorBox") && (
+                            <p>
+                              Sans clé API TorBox, aucun flux vidéo ne se lancera :
+                              c&apos;est elle qui débrite les liens trouvés par
+                              Torrentio et Comet, et qui alimente votre profil
+                              Lumio.
+                            </p>
+                          )}
+                          {missingKeysWarning.includes("TMDB") && (
+                            <p>
+                              Sans clé API TMDB, les catalogues des collections
+                              resteront vides dans l&apos;application Nuvio
+                              Desktop, et les affiches comme les fiches seront
+                              moins complètes sur mobile et TV.
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setMissingKeysWarning(null)}
+                          className="w-full sm:w-auto rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                        >
+                          Saisir ma clé
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMissingKeysWarning(null);
+                            setStep((currentStep) => (currentStep + 1) as WizardStep);
+                          }}
+                          className="w-full sm:w-auto rounded-lg border border-gold-500/40 bg-gold-500/20 px-4 py-2 text-[11px] font-bold text-gold-200 hover:bg-gold-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                        >
+                          Continuer quand même
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </section>
               )}
 
@@ -860,6 +1023,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     <strong className="text-mist-100 block font-semibold">
                       Ce qui sera envoyé :
                     </strong>
+                    <div>
+                      • <span className="text-mist-300">Profil créé</span> :{" "}
+                      « {profileName.trim() || "Nuvio France FR"} » — réutilisé s&apos;il
+                      existe déjà. Ses clés d&apos;API (TMDB, MDBList, TorBox) sont
+                      reprises de l&apos;étape 2 : Nuvio Desktop en a besoin.
+                    </div>
                     <div>
                       •{" "}
                       <span className="text-mist-300">
@@ -964,9 +1133,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     : "Configuration envoyée !"}
                 </h4>
                 <p className="text-sm text-mist-300 mt-2 max-w-md mx-auto">
-                  Votre profil Nuvio contient maintenant la collection complète,
-                  les addons essentiels et votre configuration Lumio.
+                  Votre profil Nuvio contient maintenant{" "}
+                  {formatFrenchList(installedContents)}.
                 </p>
+                {settingsNotice && (
+                  <p className="text-xs text-mist-400 mt-3 max-w-md mx-auto leading-relaxed">
+                    {settingsNotice}
+                  </p>
+                )}
               </div>
 
               <div className="p-4 rounded-2xl bg-surface-elevated/80 border border-surface-border text-xs text-mist-300 text-left space-y-2.5 max-w-md mx-auto">
@@ -982,10 +1156,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   </li>
                   <li>
                     Sélectionnez le profil{" "}
-                    <strong className="text-sage-400">
-                      Nuvio France FR
-                    </strong>
-                    .
+                    <strong className="text-sage-400">{targetProfileName}</strong>.
                   </li>
                   <li>Tout est prêt, bon visionnage !</li>
                 </ol>

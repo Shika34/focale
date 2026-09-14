@@ -98,6 +98,26 @@ async function rpc(path: string, token: string, body: Record<string, unknown>) {
   }
 }
 
+/**
+ * Identifiants des fournisseurs stockés par Nuvio hors des blobs de réglages
+ * (`provider` + `credential_json.api_key`, via les RPC `sync_*_provider_credentials`).
+ * Les identifiants de débrideur sont préfixés `debrid:`.
+ */
+const PROVIDER_CREDENTIAL_IDS = {
+  tmdb: "tmdb",
+  mdblist: "mdblist",
+  torbox: "debrid:torbox",
+} as const;
+
+/**
+ * Identifiant d'installation attendu par les RPC de synchronisation des
+ * identifiants : `sync_*_provider_credentials` refusent un appel sans
+ * `p_origin_client_id` (PostgREST répond alors « fonction introuvable »).
+ * Le serveur n'impose qu'un identifiant stable de 16 à 96 caractères
+ * alphanumériques, tirets et underscores autorisés.
+ */
+const ORIGIN_CLIENT_ID = "focale-configurator-web";
+
 export const NuvioApi = {
   /**
    * Connexion au compte Nuvio
@@ -232,6 +252,83 @@ export const NuvioApi = {
       p_profile_id: profileId,
       p_collections_json: Array.isArray(collections) ? collections : [],
     });
+  },
+
+  /**
+   * Dépose dans un profil les clés saisies à l'étape 2, au format d'identifiants
+   * fournisseurs Nuvio (`provider` + `credential_json.api_key`).
+   *
+   * C'est la seule voie possible : les clients Nuvio excluent volontairement les
+   * clés d'API des blobs de réglages qu'ils synchronisent. Nuvio Desktop en
+   * dépend directement — ses sources TMDB exigent un `tmdb_api_key` propre au
+   * profil — alors que les apps TV et mobile utilisent une clé TMDB intégrée à
+   * l'application.
+   *
+   * Les identifiants sont relus après envoi pour confirmer qu'ils sont bien
+   * stockés.
+   *
+   * @returns Le nombre de clés envoyées, celles dont la relecture n'a pas
+   *          confirmé la présence, et l'échec éventuel de la relecture.
+   */
+  async seedProviderCredentials(
+    token: string,
+    profileId: number,
+    keys: ApiKeysConfig,
+  ): Promise<{
+    pushed: number;
+    providers: string[];
+    unverified: string[];
+    verificationError: string;
+  }> {
+    const entries: { provider: string; credential_json: { api_key: string } }[] = [];
+    const add = (provider: string, value?: string) => {
+      const clean = value?.trim();
+      if (clean) entries.push({ provider, credential_json: { api_key: clean } });
+    };
+
+    add(PROVIDER_CREDENTIAL_IDS.tmdb, keys.tmdbApiKey);
+    add(PROVIDER_CREDENTIAL_IDS.mdblist, keys.mdblistApiKey);
+    add(PROVIDER_CREDENTIAL_IDS.torbox, keys.torboxApiKey);
+
+    if (entries.length === 0) {
+      return { pushed: 0, providers: [], unverified: [], verificationError: "" };
+    }
+
+    // L'application enregistre d'abord les fournisseurs du profil
+    // (`sync_seed_provider_credentials`) puis envoie les valeurs.
+    await rpc("/rest/v1/rpc/sync_seed_provider_credentials", token, {
+      p_profile_id: profileId,
+      p_credentials: entries,
+      p_origin_client_id: ORIGIN_CLIENT_ID,
+    });
+
+    await rpc("/rest/v1/rpc/sync_push_provider_credentials", token, {
+      p_profile_id: profileId,
+      p_credentials: entries,
+      p_origin_client_id: ORIGIN_CLIENT_ID,
+    });
+
+    const providers = entries.map((entry) => entry.provider);
+    let unverified: string[] = [];
+    let verificationError = "";
+
+    try {
+      const rows = await rpc("/rest/v1/rpc/sync_pull_provider_credentials", token, {
+        p_profile_id: profileId,
+      });
+      const stored = new Set<string>();
+      for (const row of Array.isArray(rows) ? rows : []) {
+        const record = row as { provider?: unknown; credential_json?: { api_key?: unknown } };
+        const provider = typeof record.provider === "string" ? record.provider.trim() : "";
+        const value = record.credential_json?.api_key;
+        if (provider && typeof value === "string" && value.trim()) stored.add(provider);
+      }
+      unverified = providers.filter((provider) => !stored.has(provider));
+    } catch (err) {
+      verificationError = err instanceof Error ? err.message : String(err);
+    }
+
+    return { pushed: entries.length, providers, unverified, verificationError };
   },
 
   /**
