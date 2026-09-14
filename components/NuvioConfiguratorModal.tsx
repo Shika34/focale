@@ -1,8 +1,9 @@
 "use client";
 
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import {
   X,
+  Aperture,
   Sparkles,
   Key,
   CheckCircle2,
@@ -14,13 +15,13 @@ import {
   Mail,
   ArrowLeft,
   ArrowRight,
-  Link2,
   UserPlus,
   BookOpen,
   HelpCircle,
 } from "lucide-react";
 import { NuvioApi } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
+import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
 
 interface NuvioConfiguratorModalProps {
   isOpen: boolean;
@@ -30,188 +31,6 @@ interface NuvioConfiguratorModalProps {
 type ViewState = "form" | "installing" | "success";
 type WizardStep = 1 | 2 | 3 | 4;
 
-interface GuideStep {
-  title: string;
-  detail: string;
-  bullets?: string[];
-}
-
-interface ProviderGuide {
-  question: string;
-  steps: GuideStep[];
-  signupUrl: string;
-  signupLabel: string;
-  keyUrl: string;
-  keyLabel: string;
-  note: string;
-}
-
-const TORBOX_REFERRAL_LINK = "https://torbox.app/subscription?referral=49a51e6d-dcf6-47ad-a98d-147f11c4268f";
-
-/** Tutoriels affichés dès que l'utilisateur n'a pas encore de compte ou de clé. */
-const PROVIDER_GUIDES: Record<
-  "tmdb" | "tvdb" | "mdblist" | "torbox" | "lumio",
-  ProviderGuide
-> = {
-  tmdb: {
-    question: "Avez-vous déjà un compte TMDB ?",
-    steps: [
-      {
-        title: "Créer un compte TMDB",
-        detail: "Ouvrez themoviedb.org et cliquez sur « S'inscrire ». C'est gratuit, et l'inscription se fait bien plus facilement depuis un ordinateur.",
-      },
-      {
-        title: "Ouvrir vos paramètres",
-        detail: "Une fois connecté, cliquez sur votre avatar en haut à droite, puis sur « Paramètres ».",
-      },
-      {
-        title: "Demander une clé API",
-        detail: "Dans le menu de gauche, cliquez sur « API », puis sur « Créer » et choisissez « Développeur ».",
-      },
-      {
-        title: "Remplir le formulaire",
-        detail: "Indiquez un usage personnel (par exemple « Nuvio — usage personnel »), acceptez les conditions puis validez le formulaire.",
-      },
-      {
-        title: "Copier la clé v3",
-        detail: "Copiez la valeur affichée à côté de « Clé API (v3 auth) » et collez-la dans le champ ci-dessous.",
-      },
-    ],
-    signupUrl: "https://www.themoviedb.org/signup",
-    signupLabel: "Créer mon compte TMDB",
-    keyUrl: "https://www.themoviedb.org/settings/api",
-    keyLabel: "Ouvrir la page des clés",
-    note: "Fortement recommandée : sans clé TMDB, les affiches et les fiches de films peuvent être incomplètes dans Nuvio. La clé est validée immédiatement après la demande.",
-  },
-  tvdb: {
-    question: "Avez-vous déjà un compte TheTVDB ?",
-    steps: [
-      {
-        title: "Créer un compte TheTVDB",
-        detail: "Sur thetvdb.com, cliquez sur « Register » en haut à droite. L'inscription est gratuite.",
-      },
-      {
-        title: "Ouvrir le Dashboard",
-        detail: "Dans le menu de votre profil (en haut à droite), cliquez sur « Dashboard ».",
-      },
-      {
-        title: "Aller dans API Keys",
-        detail: "Dans le menu de gauche, section « Account », cliquez sur « API Keys ».",
-      },
-      {
-        title: "Créer une clé v4",
-        detail: "Dans l'encadré « Developers », cliquez sur « Create a v4 API Key », puis renseignez le nom du projet (par exemple « Nuvio perso »), une description et vos coordonnées.",
-      },
-      {
-        title: "Copier la clé",
-        detail: "La clé v4 s'affiche dans votre dashboard : copiez-la et collez-la dans le champ ci-dessous.",
-      },
-    ],
-    signupUrl: "https://thetvdb.com/auth/register",
-    signupLabel: "Créer mon compte TheTVDB",
-    keyUrl: "https://thetvdb.com/dashboard/account/apikeys",
-    keyLabel: "Ouvrir mes clés API",
-    note: "Une clé TheTVDB fraîchement créée peut rester « inactive » quelques heures avant validation. Vous pouvez continuer : en attendant, AIO Metadata utilise les données publiques, puis basculera sur votre clé dès son activation.",
-  },
-  mdblist: {
-    question: "Avez-vous déjà un compte MDBList ?",
-    steps: [
-      {
-        title: "Créer un compte MDBList",
-        detail: "Sur mdblist.com, créez un compte gratuit (email, Google, GitHub ou Apple).",
-      },
-      {
-        title: "Ouvrir vos préférences",
-        detail: "Passez par le menu du site puis « Preferences », ou ouvrez directement mdblist.com/preferences/.",
-      },
-      {
-        title: "Trouver la clé API",
-        detail: "Descendez en bas de la page, à la rubrique « API Access » : votre clé s'y trouve. Si le champ est vide, cliquez sur le bouton pour la générer.",
-      },
-      {
-        title: "Copier la clé",
-        detail: "Copiez la clé et collez-la dans le champ ci-dessous.",
-      },
-    ],
-    signupUrl: "https://mdblist.com/",
-    signupLabel: "Créer mon compte MDBList",
-    keyUrl: "https://mdblist.com/preferences/#api_key_uid",
-    keyLabel: "Ouvrir mes préférences",
-    note: "Clé facultative : vous pouvez créer votre configuration AIO Metadata sans elle, les notes TMDB resteront disponibles.",
-  },
-  torbox: {
-    question: "Avez-vous déjà un compte TorBox ?",
-    steps: [
-      {
-        title: "Créer un compte TorBox",
-        detail: "Inscrivez-vous sur torbox.app via le lien de parrainage ci-dessous pour bénéficier des bonus de parrainage. Une formule payante est nécessaire : c'est elle qui donne accès à la clé API.",
-      },
-      {
-        title: "Confirmer votre email",
-        detail: "Validez l'email de confirmation, puis connectez-vous à votre compte TorBox.",
-      },
-      {
-        title: "Ouvrir les réglages",
-        detail: "Dans votre compte, ouvrez la page « Settings », puis la section « API ».",
-      },
-      {
-        title: "Créer la clé API",
-        detail: "Générez ou copiez votre clé API, puis collez-la dans le champ ci-dessous. Gardez-la privée : elle donne accès à votre quota.",
-      },
-    ],
-    signupUrl: TORBOX_REFERRAL_LINK,
-    signupLabel: "Créer mon compte TorBox (jours offerts)",
-    keyUrl: "https://torbox.app/settings",
-    keyLabel: "Ouvrir mes réglages TorBox",
-    note: "Votre clé TorBox sert à débriter vos flux : elle génère automatiquement vos manifests Torrentio et Comet, et alimente aussi votre profil Lumio.",
-  },
-  lumio: {
-    question: "Avez-vous déjà un compte Lumio et son URL de manifest ?",
-    steps: [
-      {
-        title: "Créer un profil",
-        detail: "Sur l'écran « À qui le tour ? », saisissez le nom de votre profil (ou sélectionnez-en un parmi les suggestions), puis cliquez sur Continuer.",
-      },
-      {
-        title: "Sélectionner TorBox",
-        detail: "Dans la section « Connectez votre débrideur », cliquez sur le logo TorBox.",
-      },
-      {
-        title: "Associer votre compte TorBox",
-        detail: "Choisissez votre méthode de connexion :",
-        bullets: [
-          "« Se connecter à TorBox » : valide directement la connexion depuis votre navigateur.",
-          "« Saisir la clé » : collez la clé API récupérée sur votre compte TorBox (torbox.app/settings), puis cliquez sur Vérifier.",
-        ],
-      },
-      {
-        title: "Définir votre style de visionnage",
-        detail: "Dans la section « Votre style de visionnage », sélectionnez la formule qui vous convient :",
-        bullets: [
-          "L'Essentiel : une liste épurée des 10 meilleures versions.",
-          "Zen : lancement automatique de la meilleure option (expérience type Netflix).",
-          "Cinéphile : qualité maximale sans compromis (4K REMUX, BluRay, HDR).",
-          "Nomade : fichiers légers pour une connexion limitée.",
-          "Mode Expert : réglage fin de la taille et des formats de fichiers.",
-        ],
-      },
-      {
-        title: "Ajuster l'affichage (facultatif)",
-        detail: "Dans le panneau de droite « Affichage », choisissez la présentation des liens : Direct, Netflix, Compact ou Détaillé.",
-      },
-      {
-        title: "Copier le lien du manifest",
-        detail: "Une fois la configuration terminée, cliquez sur le bouton d'icône de copie (en bas à droite, à côté de « Enregistrer les modifications »), puis collez le lien obtenu dans le champ ci-dessous.",
-      },
-    ],
-    signupUrl: "https://mylumio.tv",
-    signupLabel: "Ouvrir Lumio",
-    keyUrl: "https://mylumio.tv",
-    keyLabel: "Configurer mon profil Lumio",
-    note: "Votre lien de manifest est personnel : c'est lui qui active votre débrideur TorBox et vos préférences de langues dans Nuvio.",
-  },
-
-};
 
 interface GuideFieldProps {
   label: string;
@@ -235,23 +54,23 @@ function AccountQuestion({
   onAnswer: (hasAccount: boolean) => void;
 }) {
   return (
-    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-xl bg-surface/70 border border-indigo-500/25 px-3.5 py-3">
-      <span className="text-xs font-bold text-white flex items-center gap-2">
-        <HelpCircle className="w-4 h-4 text-indigo-400 shrink-0" />
+    <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-xl bg-surface/70 border border-gold-500/25 px-3.5 py-3">
+      <span className="text-xs font-bold text-mist-100 flex items-center gap-2">
+        <HelpCircle className="w-4 h-4 text-gold-400 shrink-0" />
         <span>{question}</span>
       </span>
       <span className="flex items-center gap-2 shrink-0">
         <button
           type="button"
           onClick={() => onAnswer(true)}
-          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 hover:bg-emerald-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-sage-500/15 border border-sage-500/40 text-sage-300 hover:bg-sage-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
         >
           Oui
         </button>
         <button
           type="button"
           onClick={() => onAnswer(false)}
-          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-indigo-500/15 border border-indigo-500/40 text-indigo-300 hover:bg-indigo-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-gold-500/15 border border-gold-500/40 text-gold-300 hover:bg-gold-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           Non
         </button>
@@ -273,7 +92,7 @@ function GuideToggle({
       type="button"
       onClick={onClick}
       aria-expanded={open}
-      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-300 hover:text-cyan-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 shrink-0"
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-gold-300 hover:text-gold-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 shrink-0"
     >
       <BookOpen className="w-3 h-3" />
       <span>{open ? "Masquer le tutoriel" : "Voir le tutoriel"}</span>
@@ -288,12 +107,18 @@ function DirectKeyLink({ guide }: { guide: ProviderGuide }) {
       href={guide.keyUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-300 hover:text-emerald-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 shrink-0"
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-sage-300 hover:text-sage-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 shrink-0"
     >
       <span>{guide.keyLabel}</span>
       <ExternalLink className="w-3 h-3" />
     </a>
   );
+}
+
+/** Énumération française : « a », « a et b », « a, b et c ». */
+function formatFrenchList(items: string[]): string {
+  if (items.length <= 1) return items[0] ?? "";
+  return `${items.slice(0, -1).join(", ")} et ${items[items.length - 1]}`;
 }
 
 /** Tutoriel pas à pas : création du compte puis récupération de la clé. */
@@ -307,8 +132,8 @@ function GuidePanel({
   onReady: () => void;
 }) {
   return (
-    <div className="rounded-2xl bg-[#080B10]/80 border border-cyan-500/25 p-4 space-y-3.5">
-      <span className="flex items-center gap-2 text-xs font-bold text-cyan-300">
+    <div className="rounded-2xl bg-ink-900/80 border border-gold-500/25 p-4 space-y-3.5">
+      <span className="flex items-center gap-2 text-xs font-bold text-gold-300">
         <BookOpen className="w-4 h-4" />
         <span>Tutoriel pas à pas</span>
       </span>
@@ -316,17 +141,17 @@ function GuidePanel({
       <ol className="space-y-3">
         {guide.steps.map((item, index) => (
           <li key={item.title} className="flex gap-3">
-            <span className="w-5 h-5 shrink-0 rounded-full bg-cyan-500/15 border border-cyan-500/30 text-[11px] font-bold text-cyan-300 flex items-center justify-center">
+            <span className="w-5 h-5 shrink-0 rounded-full bg-gold-500/15 border border-gold-500/30 text-[11px] font-bold text-gold-300 flex items-center justify-center">
               {index + 1}
             </span>
             <div className="text-xs leading-relaxed">
-              <strong className="text-white">{item.title}</strong>
-              <p className="text-slate-400 mt-0.5">{item.detail}</p>
+              <strong className="text-mist-100">{item.title}</strong>
+              <p className="text-mist-400 mt-0.5">{item.detail}</p>
               {item.bullets && (
                 <ul className="mt-1.5 space-y-1">
                   {item.bullets.map((bullet) => (
-                    <li key={bullet} className="text-slate-400 flex gap-1.5">
-                      <span className="text-cyan-400/80">•</span>
+                    <li key={bullet} className="text-mist-400 flex gap-1.5">
+                      <span className="text-gold-400/80">•</span>
                       <span>{bullet}</span>
                     </li>
                   ))}
@@ -337,7 +162,7 @@ function GuidePanel({
         ))}
       </ol>
 
-      <p className="text-[11px] text-slate-400 leading-relaxed border-t border-surface-border/60 pt-3">
+      <p className="text-[11px] text-mist-400 leading-relaxed border-t border-surface-border/60 pt-3">
         {guide.note}
       </p>
 
@@ -346,7 +171,7 @@ function GuidePanel({
           href={guide.signupUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
         >
           <span>{guide.signupLabel}</span>
           <UserPlus className="w-3 h-3" />
@@ -355,7 +180,7 @@ function GuidePanel({
           href={guide.keyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           <span>{guide.keyLabel}</span>
           <ExternalLink className="w-3 h-3" />
@@ -363,7 +188,7 @@ function GuidePanel({
         <button
           type="button"
           onClick={onReady}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-white bg-indigo-600 border border-indigo-500 hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           <span>{readyLabel}</span>
           <ArrowRight className="w-3 h-3" />
@@ -411,18 +236,21 @@ function AioMetadataField({
   return (
     <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
       <div>
-        <label className="text-sm font-bold text-white flex items-center gap-2">
-          <Key className="w-4 h-4 text-cyan-400" />
+        <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+          <Key className="w-4 h-4 text-gold-400" />
           <span>AIO Metadata</span>
         </label>
-        <p className="text-xs text-slate-400 mt-1 leading-relaxed">
+        <p className="text-xs text-mist-400 mt-1 leading-relaxed">
           Catalogues, affiches et métadonnées FR, créés avec vos clés TMDB / TVDB / MDBList.
+          Choisissez un mot de passe de protection, puis cliquez sur « Créer ma
+          configuration AIO Metadata » : elle est créée avec les clés saisies à
+          l&apos;étape 2.
         </p>
       </div>
 
-      <div className="space-y-2 p-4 rounded-2xl bg-indigo-950/25 border border-indigo-500/30">
-        <label className="text-xs font-bold text-white flex items-center gap-1.5">
-          <Lock className="w-3.5 h-3.5 text-indigo-400" />
+      <div className="space-y-2 p-4 rounded-2xl bg-gold-950/25 border border-gold-500/30">
+        <label className="text-xs font-bold text-mist-100 flex items-center gap-1.5">
+          <Lock className="w-3.5 h-3.5 text-gold-400" />
           <span>Mot de passe de protection AIO Metadata</span>
         </label>
         <input
@@ -430,9 +258,9 @@ function AioMetadataField({
           value={password}
           onChange={(e) => onPasswordChange(e.target.value)}
           placeholder="6 caractères minimum"
-          className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-indigo-500 focus:outline-none"
+          className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
         />
-        <p className="text-[11px] text-slate-400 leading-relaxed">
+        <p className="text-[11px] text-mist-400 leading-relaxed">
           Il protège votre configuration AIO Metadata et servira à la modifier plus
           tard : notez-le. C&apos;est un mot de passe différent de celui de votre
           compte Nuvio.
@@ -441,12 +269,12 @@ function AioMetadataField({
 
       {created ? (
         <div className="space-y-2">
-          <p className="text-[11px] font-semibold text-emerald-300 flex items-center gap-1.5">
+          <p className="text-[11px] font-semibold text-sage-300 flex items-center gap-1.5">
             <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
             <span>Configuration prête : elle sera installée avec le profil Nuvio.</span>
           </p>
           <div className="flex flex-wrap items-center gap-2">
-            <code className="flex-1 min-w-0 break-all text-[11px] text-slate-300 bg-surface px-3 py-2 rounded-xl border border-surface-border">
+            <code className="flex-1 min-w-0 break-all text-[11px] text-mist-300 bg-surface px-3 py-2 rounded-xl border border-surface-border">
               {value}
             </code>
             <button
@@ -457,14 +285,14 @@ function AioMetadataField({
                   setTimeout(() => setCopied(false), 2000);
                 });
               }}
-              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
             >
               {copied ? "Copié !" : "Copier"}
             </button>
             <button
               type="button"
               onClick={() => onChange("")}
-              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-slate-300 glass-panel border border-surface-border hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/70 transition-colors"
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-300 glass-panel border border-surface-border hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mist-400/70 transition-colors"
             >
               Recommencer
             </button>
@@ -477,20 +305,20 @@ function AioMetadataField({
               type="button"
               onClick={handleGenerate}
               disabled={status === "loading" || passwordTooShort}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-white bg-indigo-600 border border-indigo-500 hover:bg-indigo-500 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-indigo-400/70 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
             >
               {status === "loading" ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
               ) : (
                 <Sparkles className="w-3.5 h-3.5" />
               )}
-              <span>{status === "loading" ? "Création en cours..." : "Créer ma configuration AIO Metadata"}</span>
+              <span>{status === "loading" ? "Création en cours…" : "Créer ma configuration AIO Metadata"}</span>
             </button>
             {!manual && (
               <button
                 type="button"
                 onClick={() => setManual(true)}
-                className="text-[11px] font-semibold text-slate-400 hover:text-slate-200 underline decoration-dotted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-400/70 rounded-lg px-1"
+                className="text-[11px] font-semibold text-mist-400 hover:text-mist-200 underline decoration-dotted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mist-400/70 rounded-lg px-1"
               >
                 J&apos;ai déjà une configuration, saisir mon lien
               </button>
@@ -498,7 +326,7 @@ function AioMetadataField({
           </div>
 
           {passwordTooShort && (
-            <p className="text-[11px] text-amber-300 leading-relaxed">
+            <p className="text-[11px] text-gold-300 leading-relaxed">
               Choisissez d&apos;abord un mot de passe de protection (6 caractères minimum) ci-dessus.
             </p>
           )}
@@ -509,7 +337,7 @@ function AioMetadataField({
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder="https://aiometadata.elfhosted.com/stremio/xxxxxxxx/manifest.json"
-              className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
             />
           )}
         </div>
@@ -543,11 +371,11 @@ function GuideField({
     <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
       <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
         <div>
-          <label className="text-sm font-bold text-white flex items-center gap-2">
-            <Key className="w-4 h-4 text-cyan-400" />
+          <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+            <Key className="w-4 h-4 text-gold-400" />
             <span>{label}</span>
           </label>
-          <p className="text-xs text-slate-400 mt-1 leading-relaxed">{description}</p>
+          <p className="text-xs text-mist-400 mt-1 leading-relaxed">{description}</p>
         </div>
         {answer !== "unset" && (
           <div className="flex flex-col items-start sm:items-end gap-1.5 shrink-0">
@@ -585,7 +413,7 @@ function GuideField({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm placeholder-slate-500 focus:border-cyan-500 focus:outline-none"
+            className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
           />
           {children}
         </>
@@ -616,14 +444,37 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   }>({
     step: "Initialisation",
     percent: 0,
-    details: "Préparation des collections...",
+    details: "Préparation des collections…",
   });
 
   const [createdNewAccount, setCreatedNewAccount] = useState(false);
+  /** Nom du profil Nuvio créé (et réutilisé s'il existe déjà) par l'assistant. */
+  const [profileName, setProfileName] = useState("Nuvio France FR");
+  const [targetProfileName, setTargetProfileName] = useState("Nuvio France FR");
+  const [settingsNotice, setSettingsNotice] = useState("");
+  /** Clés manquantes à l'étape 2, pour la demande de confirmation. */
+  const [missingKeysWarning, setMissingKeysWarning] = useState<string[] | null>(null);
   const [lumioUrlCopied, setLumioUrlCopied] = useState(false);
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
-  const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verifying' | 'verified' | 'error'>('idle');
+  const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verified' | 'error'>('idle');
   const totalSteps = 4;
+
+  // Fermeture au clavier (Échap) et blocage du défilement de la page derrière.
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [isOpen, onClose]);
 
   /** Crée la configuration AIO Metadata côté serveur, avec les clés de l'étape 2. */
   const createAioMetadataConfig = async (): Promise<string> => {
@@ -659,6 +510,18 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       return;
     }
 
+    if (step === 2) {
+      const missing: string[] = [];
+      if (!torboxKey.trim()) missing.push("TorBox");
+      if (!tmdbKey.trim()) missing.push("TMDB");
+      if (missing.length > 0) {
+        setMissingKeysWarning(missing);
+        return;
+      }
+    }
+
+    setMissingKeysWarning(null);
+
     if (step < totalSteps) {
       setStep((currentStep) => (currentStep + 1) as WizardStep);
     }
@@ -666,12 +529,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
   const goToPreviousStep = () => {
     setErrorMessage("");
+    setMissingKeysWarning(null);
     if (step > 1) {
       setStep((currentStep) => (currentStep - 1) as WizardStep);
     }
   };
 
-  
   const handleSendToNuvio = async () => {
     if (!email.trim() || !password.trim()) {
       setErrorMessage("Veuillez renseigner votre email et votre mot de passe Nuvio.");
@@ -686,7 +549,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Connexion ou création du compte Nuvio",
         percent: 20,
-        details: "Vérification sécurisée auprès de l'API officielle de Nuvio...",
+        details: "Vérification sécurisée auprès de l'API officielle de Nuvio…",
       });
 
       const authRes = await NuvioApi.autoAuth(email, password);
@@ -695,26 +558,31 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: authRes.isNewAccount ? "Compte Nuvio créé" : "Connexion Nuvio réussie",
         percent: 40,
-        details: "Préparation du profil dédié « Nuvio France FR »...",
+        details: "Préparation du profil Nuvio de destination…",
       });
 
-      const profiles = await NuvioApi.getProfiles(authRes.token);
-      let targetProfile = profiles.find((p) => p.name.toLowerCase().includes("nuvio france"));
+      const desiredName = profileName.trim() || "Nuvio France FR";
+      const accountProfiles = await NuvioApi.getProfiles(authRes.token);
+      let targetProfile = accountProfiles.find(
+        (p) => p.name.trim().toLowerCase() === desiredName.toLowerCase(),
+      );
 
       if (!targetProfile) {
-        targetProfile = await NuvioApi.createProfile(authRes.token, "Nuvio France FR");
+        targetProfile = await NuvioApi.createProfile(authRes.token, desiredName);
       }
+
+      setTargetProfileName(targetProfile.name);
 
       setProgressState({
         step: "Préparation des addons personnalisés",
         percent: 60,
-        details: "Préparation de votre configuration AIO Metadata et de vos addons...",
+        details: "Préparation de votre configuration AIO Metadata et de vos addons…",
       });
 
       setProgressState({
         step: "Ajout des collections françaises",
         percent: 70,
-        details: "Envoi des 18 collections et 756 dossiers francophones...",
+        details: "Envoi des 18 collections et 756 dossiers francophones…",
       });
 
       const collRes = await fetch("/nuvio-collections-mitch.json");
@@ -724,7 +592,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Installation des addons sélectionnés",
         percent: 82,
-        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox...",
+        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox…",
       });
 
       const addons = NuvioApi.buildAddonsList(
@@ -737,6 +605,40 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         { aioMetadataUrl, lumioManifestUrl },
       );
       await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
+
+      const noticeParts: string[] = [];
+
+      // Nuvio Desktop n'utilise pas de clé TMDB intégrée : sans `tmdb_api_key`
+      // propre au profil, ses catalogues TMDB (la majorité des collections)
+      // restent vides, alors que les apps TV et mobile les affichent.
+      try {
+        const seededKeys = await NuvioApi.seedProviderCredentials(authRes.token, targetProfile.profile_index, {
+          tmdbApiKey: tmdbKey,
+          mdblistApiKey: mdblistKey,
+          torboxApiKey: torboxKey,
+        });
+        if (seededKeys.pushed === 0) {
+          noticeParts.push(
+            "Aucune clé API n'était renseignée à l'étape 2 : sans clé TMDB dans le profil, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
+          );
+        } else if (seededKeys.verificationError) {
+          noticeParts.push(
+            `Clés envoyées dans le profil (${seededKeys.providers.join(", ")}), mais sans confirmation : la relecture a échoué (${seededKeys.verificationError}).`,
+          );
+        } else if (seededKeys.unverified.length > 0) {
+          noticeParts.push(
+            `Clés envoyées dans le profil (${seededKeys.providers.join(", ")}) mais non retrouvées après relecture : ${seededKeys.unverified.join(", ")}. Vérifiez « API keys and provider credentials » dans l'Account Manager.`,
+          );
+        }
+      } catch (seedErr) {
+        noticeParts.push(
+          `Les clés de l'étape 2 n'ont pas pu être déposées dans le profil (${
+            seedErr instanceof Error ? seedErr.message : "erreur inconnue"
+          }). Nuvio Desktop en a besoin : saisissez-les dans Réglages → TMDB de l'application.`,
+        );
+      }
+
+      setSettingsNotice(noticeParts.join(" "));
 
       setProgressState({
         step: "Configuration terminée",
@@ -761,26 +663,40 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     4: "Récapitulatif",
   };
 
+  /** Contenu réellement installé, pour un récapitulatif de fin exact. */
+  const installedContents = [
+    "la collection complète",
+    "les addons essentiels",
+    ...(aioMetadataUrl.trim() ? ["votre configuration AIO Metadata"] : []),
+    ...(lumioManifestUrl.trim() ? ["votre profil Lumio"] : []),
+  ];
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/85 backdrop-blur-md animate-in fade-in">
-      <div className="glass-panel bg-[#0e121d] max-w-2xl w-full rounded-3xl border border-indigo-500/40 shadow-glow-lg overflow-hidden flex flex-col max-h-[92vh]">
+      <div
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="configurateur-nuvio-titre"
+        className="max-h-[92vh] w-full max-w-2xl overflow-hidden rounded-card border border-line bg-ink-800 shadow-panel flex flex-col"
+      >
         <div className="p-5 sm:p-6 border-b border-surface-border flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-glow">
-              <Sparkles className="w-5 h-5" />
-            </div>
+            <Aperture className="h-6 w-6 text-gold-400" strokeWidth={1.6} />
             <div>
-              <h3 className="text-lg sm:text-xl font-extrabold text-white">
-                Set Up & Send to Nuvio
+              <h3
+                id="configurateur-nuvio-titre"
+                className="display text-xl text-mist-100 sm:text-2xl"
+              >
+                Configurer mon Nuvio
               </h3>
-              <p className="text-xs text-slate-400">
-                Assistant guidé, clair et 100% en français
+              <p className="text-xs text-mist-400">
+                Assistant guidé · quatre étapes · tout en français
               </p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-surface-hover transition-colors"
+            className="p-2 rounded-xl text-mist-400 hover:text-mist-100 hover:bg-surface-hover transition-colors"
             aria-label="Fermer le configurateur"
           >
             <X className="w-5 h-5" />
@@ -791,32 +707,32 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           {viewState === "form" && (
             <div className="space-y-6 animate-in fade-in">
               <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs text-slate-400">
+                <div className="flex items-center justify-between text-xs text-mist-400">
                   <span>
                     Étape {step} sur {totalSteps}
                   </span>
-                  <span className="font-semibold text-indigo-300">
+                  <span className="font-semibold text-gold-300">
                     {stepTitles[step]}
                   </span>
                 </div>
                 <div className="h-2 rounded-full bg-surface-elevated border border-surface-border overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-emerald-500 via-indigo-500 to-cyan-400 transition-all duration-300"
+                    className="h-full rounded-full bg-gold-400 transition-all duration-300"
                     style={{ width: `${(step / totalSteps) * 100}%` }}
                   />
                 </div>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="flex gap-2 overflow-x-auto no-scrollbar sm:grid sm:grid-cols-4">
                   {([1, 2, 3, 4] as WizardStep[]).map((item) => (
                     <button
                       key={item}
                       type="button"
                       onClick={() => (item < step ? setStep(item) : undefined)}
-                      className={`rounded-xl px-2 py-2 text-[11px] font-bold border transition-colors ${
+                      className={`shrink-0 whitespace-nowrap rounded-xl px-3 py-2 text-[11px] font-bold border transition-colors sm:shrink sm:px-2 ${
                         item === step
-                          ? "bg-indigo-500/20 border-indigo-400 text-white"
+                          ? "bg-gold-500/20 border-gold-400 text-mist-100"
                           : item < step
-                            ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-300 hover:bg-emerald-500/15"
-                            : "bg-surface/60 border-surface-border text-slate-500"
+                            ? "bg-sage-500/10 border-sage-500/30 text-sage-300 hover:bg-sage-500/15"
+                            : "bg-surface/60 border-surface-border text-mist-500"
                       }`}
                     >
                       {item}. {stepTitles[item]}
@@ -835,31 +751,31 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 1 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">
+                    <h4 className="display text-2xl text-mist-100">
                       1. Connectez ou créez votre compte Nuvio
                     </h4>
-                    <p className="text-sm text-slate-400 mt-2 leading-relaxed">
+                    <p className="text-sm text-mist-400 mt-2 leading-relaxed">
                       Entrez l&apos;email et le mot de passe que vous voulez utiliser
                       sur Nuvio. Si le compte n&apos;existe pas encore, il sera créé
                       automatiquement au moment de l&apos;envoi.
                     </p>
                   </div>
 
-                  <div className="bg-indigo-950/25 border border-indigo-500/30 rounded-2xl p-4 flex items-start gap-3">
-                    <Lock className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
-                    <div className="text-xs text-slate-300 leading-relaxed">
-                      <strong className="text-white block mb-0.5">
+                  <div className="bg-gold-950/25 border border-gold-500/30 rounded-2xl p-4 flex items-start gap-3">
+                    <Lock className="w-4 h-4 text-sage-400 shrink-0 mt-0.5" />
+                    <div className="text-xs text-mist-300 leading-relaxed">
+                      <strong className="text-mist-100 block mb-0.5">
                         Vos identifiants restent côté Nuvio
                       </strong>
                       Ils sont utilisés uniquement pour appeler l&apos;API officielle{" "}
-                      <code className="text-cyan-300">api.nuvio.tv</code>.
+                      <code className="text-gold-300">api.nuvio.tv</code>.
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-white flex items-center gap-1.5">
-                        <Mail className="w-3.5 h-3.5 text-indigo-400" />
+                      <label className="text-xs font-bold text-mist-100 flex items-center gap-1.5">
+                        <Mail className="w-3.5 h-3.5 text-gold-400" />
                         <span>Email Nuvio</span>
                       </label>
                       <input
@@ -868,13 +784,13 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         placeholder="votre-email@exemple.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm focus:border-indigo-500 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
                       />
                     </div>
 
                     <div className="space-y-1.5">
-                      <label className="text-xs font-bold text-white flex items-center gap-1.5">
-                        <Lock className="w-3.5 h-3.5 text-indigo-400" />
+                      <label className="text-xs font-bold text-mist-100 flex items-center gap-1.5">
+                        <Lock className="w-3.5 h-3.5 text-gold-400" />
                         <span>Mot de passe</span>
                       </label>
                       <input
@@ -883,9 +799,39 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         placeholder="Votre mot de passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-white text-sm focus:border-indigo-500 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
                       />
                     </div>
+                  </div>
+
+                  <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
+                      <div>
+                        <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+                          <UserPlus className="w-4 h-4 text-gold-400" />
+                          <span>Nom du profil Nuvio à créer</span>
+                        </label>
+                        <p className="text-xs text-mist-400 mt-1 leading-relaxed">
+                          L&apos;assistant crée ce profil sur votre compte Nuvio — ou le
+                          réutilise s&apos;il porte déjà ce nom. Les clés de l&apos;étape 2 y
+                          sont enregistrées.
+                        </p>
+                      </div>
+                      <input
+                        type="text"
+                        value={profileName}
+                        onChange={(e) => setProfileName(e.target.value)}
+                        maxLength={30}
+                        placeholder="Nuvio France FR"
+                        aria-label="Nom du profil Nuvio à créer"
+                        className="w-full sm:w-64 shrink-0 px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
+                      />
+                    </div>
+
+                    <p className="text-[11px] text-mist-500 leading-relaxed">
+                      Ce nom est celui que vous retrouverez dans l&apos;application Nuvio,
+                      une fois connecté.
+                    </p>
                   </div>
                 </section>
               )}
@@ -893,16 +839,18 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 2 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">
+                    <h4 className="display text-2xl text-mist-100">
                       2. Ajoutez vos clés API
                     </h4>
-                    <p className="text-sm text-slate-400 mt-2 leading-relaxed">
+                    <p className="text-sm text-mist-400 mt-2 leading-relaxed">
                       La clé API TorBox est indispensable pour regarder les films
                       et les séries : elle débrite vos flux et sert aussi à
                       configurer Lumio, Torrentio et Comet. Les clés de
-                      métadonnées (TMDB, TheTVDB et MDBList) sont optionnelles :
-                      elles enrichissent les affiches, les fiches et les
-                      catalogues d&apos;AIO Metadata.
+                      métadonnées (TMDB, TheTVDB et MDBList) enrichissent les
+                      affiches, les fiches et les catalogues d&apos;AIO Metadata.
+                      La clé TMDB est enregistrée dans votre profil : elle est
+                      indispensable à l&apos;application Nuvio Desktop, qui
+                      n&apos;en a pas d&apos;intégrée.
                     </p>
                   </div>
 
@@ -910,23 +858,29 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="TorBox (obligatoire)"
                     description="Indispensable pour regarder les films et les séries : débrite vos flux via votre compte TorBox."
                     value={torboxKey}
-                    placeholder="Collez votre clé API TorBox..."
+                    placeholder="Collez votre clé API TorBox…"
                     guide={PROVIDER_GUIDES.torbox}
-                    onChange={setTorboxKey}
+                    onChange={(value) => {
+                      setTorboxKey(value);
+                      setMissingKeysWarning(null);
+                    }}
                   />
                   <GuideField
                     label="TMDB (fortement recommandé)"
-                    description="Affiches, résumés, notes et métadonnées de films en français."
+                    description="Affiches, résumés, notes et métadonnées de films en français. Clé reprise dans le profil : indispensable à l'application Nuvio Desktop, qui n'a pas de clé TMDB intégrée."
                     value={tmdbKey}
-                    placeholder="Collez votre clé API TMDB..."
+                    placeholder="Collez votre clé API TMDB…"
                     guide={PROVIDER_GUIDES.tmdb}
-                    onChange={setTmdbKey}
+                    onChange={(value) => {
+                      setTmdbKey(value);
+                      setMissingKeysWarning(null);
+                    }}
                   />
                   <GuideField
                     label="TVDB"
                     description="Métadonnées séries, saisons, épisodes et collections TV."
                     value={tvdbKey}
-                    placeholder="Collez votre clé API TVDB..."
+                    placeholder="Collez votre clé API TVDB…"
                     guide={PROVIDER_GUIDES.tvdb}
                     onChange={setTvdbKey}
                   />
@@ -934,14 +888,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     label="MDBList (optionnel)"
                     description="Croise les notes IMDb, Rotten Tomatoes (critiques et public), Metacritic, Letterboxd, Trakt et TMDB sur une seule fiche."
                     value={mdblistKey}
-                    placeholder="Collez votre clé API MDBList..."
+                    placeholder="Collez votre clé API MDBList…"
                     guide={PROVIDER_GUIDES.mdblist}
                     onChange={setMdblistKey}
                   />
 
-                  <div className="p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 text-xs text-slate-300 leading-relaxed">
+                  <div className="p-4 rounded-2xl bg-gold-500/10 border border-gold-500/20 text-xs text-mist-300 leading-relaxed">
                     <p>
-                      <strong className="text-white">
+                      <strong className="text-mist-100">
                         Configuration automatique :
                       </strong>{" "}
                       votre clé TorBox personnalise Torrentio et Comet, et vos clés
@@ -949,20 +903,74 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       configuration AIO Metadata lors de l&apos;envoi à Nuvio.
                     </p>
                   </div>
+
+                  {missingKeysWarning && (
+                    <div
+                      role="alert"
+                      className="p-4 rounded-2xl bg-gold-500/10 border border-gold-500/50 space-y-3"
+                    >
+                      <div className="flex items-start gap-2.5">
+                        <AlertCircle className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
+                        <div className="text-xs text-mist-200 leading-relaxed space-y-2">
+                          <p className="font-bold text-mist-100">
+                            Vous n&apos;avez pas renseigné{" "}
+                            {missingKeysWarning.length > 1 ? "vos clés API" : "votre clé API"}{" "}
+                            {formatFrenchList(missingKeysWarning)}. Voulez-vous
+                            continuer ?
+                          </p>
+                          {missingKeysWarning.includes("TorBox") && (
+                            <p>
+                              Sans clé API TorBox, aucun flux vidéo ne se lancera :
+                              c&apos;est elle qui débrite les liens trouvés par
+                              Torrentio et Comet, et qui alimente votre profil
+                              Lumio.
+                            </p>
+                          )}
+                          {missingKeysWarning.includes("TMDB") && (
+                            <p>
+                              Sans clé API TMDB, les catalogues des collections
+                              resteront vides dans l&apos;application Nuvio
+                              Desktop, et les affiches comme les fiches seront
+                              moins complètes sur mobile et TV.
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                      <div className="flex flex-col sm:flex-row sm:justify-end gap-2">
+                        <button
+                          type="button"
+                          onClick={() => setMissingKeysWarning(null)}
+                          className="w-full sm:w-auto rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                        >
+                          Saisir ma clé
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setMissingKeysWarning(null);
+                            setStep((currentStep) => (currentStep + 1) as WizardStep);
+                          }}
+                          className="w-full sm:w-auto rounded-lg border border-gold-500/40 bg-gold-500/20 px-4 py-2 text-[11px] font-bold text-gold-200 hover:bg-gold-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                        >
+                          Continuer quand même
+                        </button>
+                      </div>
+                    </div>
+                  )}
                 </section>
               )}
 
               {step === 3 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">
+                    <h4 className="display text-2xl text-mist-100">
                       3. Vos addons personnalisés
                     </h4>
-                    <p className="text-sm text-slate-400 mt-2 leading-relaxed">
-                      L&apos;assistant crée votre configuration AIO Metadata à
-                      votre place. Pour Lumio, la configuration se fait sur
-                      mylumio.tv : vous copiez le lien de manifest de votre profil
-                      et vous le collez ici.
+                    <p className="text-sm text-mist-400 mt-2 leading-relaxed">
+                      Votre configuration AIO Metadata se crée ici, en un clic,
+                      avec les clés de l&apos;étape 2. Pour Lumio, la
+                      configuration se fait sur mylumio.tv : vous copiez le lien
+                      de manifest de votre profil et vous le collez ici.
                     </p>
                   </div>
 
@@ -991,7 +999,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                             setLumioManifestId(resolvedUrl || null);
                             setLumioVerificationStatus(resolvedUrl ? "verified" : "error");
                           }}
-                          className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-emerald-300 bg-emerald-500/10 border border-emerald-500/30 hover:bg-emerald-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/70 transition-colors"
+                          className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
                         >
                           Vérifier mon lien Lumio
                         </button>
@@ -1004,14 +1012,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                                 setTimeout(() => setLumioUrlCopied(false), 2000);
                               });
                             }}
-                            className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-cyan-300 bg-cyan-500/10 border border-cyan-500/30 hover:bg-cyan-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400/70 transition-colors"
+                            className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
                           >
                             {lumioUrlCopied ? "Copié !" : "Copier le lien"}
                           </button>
                         )}
                       </div>
                       {lumioVerificationStatus === "verified" && lumioManifestId && (
-                        <p className="text-[11px] text-emerald-300 break-all">
+                        <p className="text-[11px] text-sage-300 break-all">
                           Lien Lumio validé : {lumioManifestId}
                         </p>
                       )}
@@ -1028,43 +1036,49 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               {step === 4 && (
                 <section className="space-y-5">
                   <div>
-                    <h4 className="text-xl font-black text-white">
+                    <h4 className="display text-2xl text-mist-100">
                       4. Vérifiez puis envoyez à Nuvio
                     </h4>
-                    <p className="text-sm text-slate-400 mt-2 leading-relaxed">
+                    <p className="text-sm text-mist-400 mt-2 leading-relaxed">
                       Dernière vérification avant d&apos;ajouter les collections
                       françaises et les addons essentiels dans votre profil
                       Nuvio.
                     </p>
                   </div>
 
-                  <div className="p-4 rounded-2xl bg-[#080B10]/80 border border-surface-border/40 text-xs text-slate-400 space-y-2">
-                    <strong className="text-white block font-semibold">
+                  <div className="p-4 rounded-2xl bg-ink-900/80 border border-surface-border/40 text-xs text-mist-400 space-y-2">
+                    <strong className="text-mist-100 block font-semibold">
                       Ce qui sera envoyé :
                     </strong>
                     <div>
+                      • <span className="text-mist-300">Profil créé</span> :{" "}
+                      « {profileName.trim() || "Nuvio France FR"} » — réutilisé s&apos;il
+                      existe déjà. Ses clés d&apos;API (TMDB, MDBList, TorBox) sont
+                      reprises de l&apos;étape 2 : Nuvio Desktop en a besoin.
+                    </div>
+                    <div>
                       •{" "}
-                      <span className="text-slate-300">
+                      <span className="text-mist-300">
                         Collection complète
                       </span>{" "}
                       : 18 catégories et 756 dossiers francophones.
                     </div>
                     <div>
-                      • <span className="text-slate-300">AIO Metadata</span> :{" "}
+                      • <span className="text-mist-300">AIO Metadata</span> :{" "}
                       {aioMetadataUrl.trim()
                         ? "votre configuration (créée par l'assistant)"
                         : "instance publique, sans vos clés ni vos catalogues"}
                       .
                     </div>
                     <div>
-                      • <span className="text-slate-300">Lumio</span> :{" "}
+                      • <span className="text-mist-300">Lumio</span> :{" "}
                       {lumioManifestUrl.trim()
                         ? "votre profil (lien fourni)"
                         : "non installé — aucun lien fourni"}
                       .
                     </div>
                     <div>
-                      • <span className="text-slate-300">Addons</span> :
+                      • <span className="text-mist-300">Addons</span> :
                       Cinemeta, OpenSubtitles v3, Torrentio (TorBox) et Comet
                       (TorBox).
                     </div>
@@ -1073,7 +1087,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <button
                     type="button"
                     onClick={handleSendToNuvio}
-                    className="w-full py-3.5 rounded-2xl text-sm font-black text-white bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 hover:from-emerald-400 hover:to-purple-500 shadow-glow hover:shadow-glow-lg transition-all active:scale-98 flex items-center justify-center gap-2"
+                    className="flex w-full items-center justify-center gap-2 rounded-lg bg-gold-400 py-3.5 text-sm font-semibold text-ink transition-colors hover:bg-gold-300"
                   >
                     <Sparkles className="w-4 h-4" />
                     <span>Envoyer à Nuvio</span>
@@ -1085,7 +1099,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   type="button"
                   onClick={goToPreviousStep}
                   disabled={step === 1}
-                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-slate-300 glass-panel hover:bg-surface-hover disabled:opacity-40 disabled:cursor-not-allowed border border-surface-border transition-colors"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold text-mist-300 glass-panel hover:bg-surface-hover disabled:opacity-40 disabled:cursor-not-allowed border border-surface-border transition-colors"
                 >
                   <ArrowLeft className="w-3.5 h-3.5" />
                   <span>Précédent</span>
@@ -1094,7 +1108,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <button
                     type="button"
                     onClick={goToNextStep}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-glow transition-colors"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-mist-100 bg-gold-600 hover:bg-gold-500 shadow-glow transition-colors"
                   >
                     <span>Suivant</span>
                     <ArrowRight className="w-3.5 h-3.5" />
@@ -1106,68 +1120,70 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
           {viewState === "installing" && (
             <div className="py-12 text-center space-y-6 animate-in fade-in">
-              <div className="w-16 h-16 rounded-2xl bg-indigo-600/20 border border-indigo-500/40 flex items-center justify-center mx-auto shadow-glow text-indigo-400 animate-pulse">
+              <div className="w-16 h-16 rounded-2xl bg-gold-600/20 border border-gold-500/40 flex items-center justify-center mx-auto shadow-glow text-gold-400 animate-pulse">
                 <Loader2 className="w-8 h-8 animate-spin" />
               </div>
 
               <div>
-                <h4 className="text-xl font-extrabold text-white">
+                <h4 className="display text-2xl text-mist-100">
                   {progressState.step}
                 </h4>
-                <p className="text-xs text-slate-400 mt-1.5">
+                <p className="text-xs text-mist-400 mt-1.5">
                   {progressState.details}
                 </p>
               </div>
 
               <div className="max-w-md mx-auto w-full bg-surface-elevated h-3 rounded-full overflow-hidden border border-surface-border p-[1px]">
                 <div
-                  className="bg-gradient-to-r from-emerald-500 via-indigo-500 to-cyan-400 h-full rounded-full transition-all duration-500"
+                  className="h-full rounded-full bg-gold-400 transition-all duration-500"
                   style={{ width: `${progressState.percent}%` }}
                 />
               </div>
 
-              <div className="text-xs text-slate-500">
+              <div className="text-xs text-mist-500">
                 Envoi sécurisé vers Nuvio. Merci de patienter quelques
-                secondes...
+                secondes…
               </div>
             </div>
           )}
 
           {viewState === "success" && (
             <div className="py-8 text-center space-y-6 animate-in fade-in">
-              <div className="w-16 h-16 rounded-2xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center mx-auto text-emerald-400 shadow-glow">
+              <div className="w-16 h-16 rounded-2xl bg-sage-500/20 border border-sage-500/40 flex items-center justify-center mx-auto text-sage-400 shadow-glow">
                 <CheckCircle2 className="w-9 h-9" />
               </div>
 
               <div>
-                <h4 className="text-2xl font-black text-white">
+                <h4 className="display text-3xl text-mist-100">
                   {createdNewAccount
                     ? "Compte créé et configuré !"
                     : "Configuration envoyée !"}
                 </h4>
-                <p className="text-sm text-slate-300 mt-2 max-w-md mx-auto">
-                  Votre profil Nuvio contient maintenant la collection complète,
-                  les addons essentiels et votre configuration Lumio.
+                <p className="text-sm text-mist-300 mt-2 max-w-md mx-auto">
+                  Votre profil Nuvio contient maintenant{" "}
+                  {formatFrenchList(installedContents)}.
                 </p>
+                {settingsNotice && (
+                  <p className="text-xs text-mist-400 mt-3 max-w-md mx-auto leading-relaxed">
+                    {settingsNotice}
+                  </p>
+                )}
               </div>
 
-              <div className="p-4 rounded-2xl bg-surface-elevated/80 border border-surface-border text-xs text-slate-300 text-left space-y-2.5 max-w-md mx-auto">
-                <span className="font-bold text-white flex items-center gap-1.5">
-                  <Tv className="w-4 h-4 text-cyan-400" />
-                  <span>Connexion sur votre téléviseur ou smartphone :</span>
+              <div className="p-4 rounded-2xl bg-surface-elevated/80 border border-surface-border text-xs text-mist-300 text-left space-y-2.5 max-w-md mx-auto">
+                <span className="font-bold text-mist-100 flex items-center gap-1.5">
+                  <Tv className="w-4 h-4 text-gold-400" />
+                  <span>Connexion sur vos appareils :</span>
                 </span>
-                <ol className="list-decimal list-inside space-y-1.5 text-slate-400">
+                <ol className="list-decimal list-inside space-y-1.5 text-mist-400">
                   <li>Téléchargez et ouvrez l&apos;application Nuvio.</li>
                   <li>
                     Connectez-vous avec :{" "}
-                    <strong className="text-white">{email}</strong>.
+                    <strong className="text-mist-100">{email}</strong>.
                   </li>
                   <li>
                     Sélectionnez le profil{" "}
-                    <strong className="text-emerald-400">
-                      Nuvio France FR
-                    </strong>
-                    .
+                    <strong className="text-sage-400">{targetProfileName}</strong>.
                   </li>
                   <li>Tout est prêt, bon visionnage !</li>
                 </ol>
@@ -1176,7 +1192,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               <button
                 type="button"
                 onClick={onClose}
-                className="px-8 py-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-500 shadow-glow transition-all"
+                className="px-8 py-3 rounded-xl font-bold text-mist-100 bg-gold-600 hover:bg-gold-500 shadow-glow transition-all"
               >
                 Fermer
               </button>

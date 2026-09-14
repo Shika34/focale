@@ -1,17 +1,19 @@
 import { CollectionBrowser } from "@/components/CollectionBrowser";
 import { getCollectionsSummary } from "@/lib/nuvio-data";
+import { SITE } from "@/lib/site";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Collections Nuvio — 756 Dossiers en Français",
-  description: "Explorez, filtrez et personnalisez votre pack de collections Nuvio avec 756 dossiers organisés.",
+  title: `Collections — 756 dossiers en français | ${SITE.name}`,
+  description:
+    "Parcourez les 18 collections francophones (756 dossiers) installées dans votre profil Nuvio par l'assistant.",
 };
 
 export default function CollectionsPage() {
   const collections = getCollectionsSummary();
 
   return (
-    <div className="pt-6">
+    <div>
       <CollectionBrowser collections={collections} />
     </div>
   );

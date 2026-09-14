@@ -1,191 +1,169 @@
 "use client";
 
 import { useState } from "react";
+import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
-import {
-  Sparkles,
-  Tv,
-  Zap,
-  Key,
-  Layers,
-  Box,
-  ExternalLink,
-  CheckCircle2,
-  ArrowRight,
-  ShieldCheck,
-  Film,
-  Globe,
-  Radio,
-  UserCheck,
-} from "lucide-react";
+import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
+
+const NUVIO_TUTORIAL: ProviderGuide = {
+  question: "Avez-vous déjà un compte Nuvio ?",
+  steps: [
+    {
+      title: "Installer Nuvio",
+      detail:
+        "Installez l'application Nuvio sur votre téléviseur, votre box, votre smartphone ou votre navigateur.",
+    },
+    {
+      title: "Choisir vos identifiants",
+      detail:
+        "L'assistant crée le compte pour vous : il suffit d'indiquer l'email et le mot de passe que vous voulez utiliser sur Nuvio.",
+    },
+    {
+      title: "Se connecter sur l'appareil",
+      detail:
+        "Ouvrez Nuvio, connectez-vous avec ces identifiants, puis sélectionnez le profil créé par l'assistant.",
+    },
+  ],
+  signupUrl: "https://nuvio.tv",
+  signupLabel: "Ouvrir Nuvio",
+  keyUrl: "https://nuvio.tv",
+  keyLabel: "Voir Nuvio",
+  note: "Aucune inscription préalable n'est nécessaire : si le compte n'existe pas encore, il est créé au moment de l'envoi.",
+};
+
+const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
+  { key: "nuvio", label: "Compte Nuvio", guide: NUVIO_TUTORIAL },
+  { key: "torbox", label: "Débrideur TorBox", guide: PROVIDER_GUIDES.torbox },
+  { key: "tmdb", label: "Clé TMDB", guide: PROVIDER_GUIDES.tmdb },
+  { key: "tvdb", label: "Clé TheTVDB", guide: PROVIDER_GUIDES.tvdb },
+  { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
+  { key: "lumio", label: "Profil Lumio", guide: PROVIDER_GUIDES.lumio },
+];
 
 export function TutorialGuide() {
   const [configModalOpen, setConfigModalOpen] = useState(false);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-      {/* Header */}
-      <div className="text-center max-w-3xl mx-auto space-y-4">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs font-semibold">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Guide Ultime Nuvio France</span>
-        </div>
-
-        <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
-          Configuration Automatique &{" "}
-          <span className="bg-gradient-to-r from-emerald-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">
-            100% en Français
-          </span>
+    <div className="mx-auto max-w-5xl px-5 py-16 sm:px-8 sm:py-24">
+      <header className="max-w-2xl">
+        <p className="eyebrow">Tutoriels</p>
+        <h1 className="display mt-4 text-4xl leading-[1.08] text-mist-100 sm:text-[52px]">
+          Créer les comptes, récupérer les clés, tout brancher.
         </h1>
-
-        <p className="text-base sm:text-lg text-slate-300 leading-relaxed">
-          L&apos;assistant vous guide étape par étape : compte Nuvio, clés API, manifest Lumio avec TorBox,
-          puis envoi final vers votre profil Nuvio.
+        <p className="mt-5 text-base leading-relaxed text-mist-300">
+          Six tutoriels courts, dans l&apos;ordre : le compte Nuvio, le
+          débrideur TorBox, puis les trois clés de métadonnées et le profil
+          Lumio. L&apos;assistant pose chaque question au bon moment et applique
+          ces réglages à votre place.
         </p>
-
-        <div className="pt-2">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
             onClick={() => setConfigModalOpen(true)}
-            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-extrabold text-white bg-gradient-to-r from-emerald-500 via-indigo-600 to-purple-600 hover:from-emerald-400 hover:to-purple-500 shadow-glow hover:shadow-glow-lg transition-all active:scale-95"
+            className="inline-flex items-center gap-2 rounded-lg bg-gold-400 px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-gold-300"
           >
-            <Sparkles className="w-4 h-4" />
-            <span>Ouvrir l&apos;assistant de configuration</span>
-            <ArrowRight className="w-4 h-4 ml-1" />
+            Configurer mon Nuvio
+            <ArrowRight className="h-4 w-4" />
           </button>
-        </div>
-      </div>
-
-      {/* STEP 1: COMPTE NUVIO (Création Automatique) */}
-      <section className="glass-card p-6 sm:p-8 rounded-3xl border border-surface-border space-y-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center font-black text-indigo-400">
-            1
-          </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">Votre compte Nuvio en toute simplicité</h2>
-            <span className="text-xs text-slate-400">Création automatique ou connexion instantanée</span>
-          </div>
-        </div>
-
-        <div className="p-4 rounded-2xl bg-indigo-950/20 border border-indigo-500/30 flex items-start gap-3">
-          <UserCheck className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
-          <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
-            <strong className="text-white block mb-0.5">Aucune inscription préalable nécessaire !</strong>
-            Si vous n&apos;avez pas encore de compte Nuvio, le configurateur automatique va le créer pour vous en
-            arrière-plan dès que vous indiquez votre email et votre mot de passe. Vous pourrez ensuite vous connecter
-            directement sur l&apos;application Nuvio de votre téléviseur avec ces identifiants.
-          </p>
-        </div>
-
-        <div className="flex flex-wrap gap-4 pt-1">
           <a
-            href="https://nuvio.tv"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-semibold glass-panel hover:bg-surface-hover text-white border border-surface-border"
+            href="#torbox"
+            className="inline-flex items-center gap-2 rounded-lg border border-line px-5 py-3 text-sm text-mist-200 transition-colors hover:border-mist-600 hover:text-mist-100"
           >
-            <span>Découvrir l&apos;application Nuvio TV</span>
-            <ExternalLink className="w-3.5 h-3.5 text-indigo-400" />
+            Commencer par TorBox
           </a>
         </div>
-      </section>
+      </header>
 
-      {/* STEP 2: DEBRIDEUR TORBOX */}
-      <section className="space-y-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center font-black text-emerald-400">
-            2
-          </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">S&apos;inscrire chez le débrideur : TorBox</h2>
-            <span className="text-xs text-slate-400">Flux 4K instantanés, sans attente et sans risque</span>
-          </div>
-        </div>
-
-        <p className="text-sm text-slate-300 leading-relaxed">
-          Pour streamer des vidéos en très haute définition (4K HDR, Dolby Atmos) avec des pistes audio en
-          français (VFF / Multi) sans aucun ralentissement, un compte débrideur est indispensable. TorBox est
-          le partenaire recommandé et s&apos;intègre nativement à Nuvio.
-        </p>
-
-        {/* Torbox banner component */}
-        <TorboxPromoBanner />
-      </section>
-
-      {/* STEP 3: CONFIGURATEUR AUTOMATIQUE */}
-      <section className="glass-card p-6 sm:p-8 rounded-3xl border border-emerald-500/40 shadow-glow space-y-6">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center font-black text-emerald-400">
-            3
-          </div>
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-white">
-              Set Up &amp; Send to Nuvio : étape par étape
-            </h2>
-            <span className="text-xs text-slate-400">
-              Collection complète 756 dossiers + Addons streaming indispensables
-            </span>
-          </div>
-        </div>
-
-        {/* Auto-installed services info */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {[
-            {
-              name: "AIO Metadata",
-              desc: "Configuration personnalisable avec vos clés TMDB, TVDB et MDBList.",
-              color: "text-cyan-400",
-              border: "border-cyan-500/20",
-              bg: "bg-cyan-500/5",
-            },
-            {
-              name: "Lumio + TorBox",
-              desc: "Ajout de votre manifest Lumio personnalisé généré avec TorBox.",
-              color: "text-indigo-400",
-              border: "border-indigo-500/20",
-              bg: "bg-indigo-500/5",
-            },
-            {
-              name: "BingeCat",
-              desc: "Recommandations intelligentes via l'instance publique.",
-              color: "text-emerald-400",
-              border: "border-emerald-500/20",
-              bg: "bg-emerald-500/5",
-            },
-          ].map(({ name, desc, color, border, bg }) => (
-            <div key={name} className={`p-4 rounded-2xl ${bg} border ${border} flex flex-col gap-2`}>
-              <div className="flex items-center gap-2">
-                <CheckCircle2 className={`w-4 h-4 ${color} shrink-0`} />
-                <span className={`font-bold text-sm ${color}`}>{name}</span>
-              </div>
-              <p className="text-xs text-slate-400 leading-relaxed">{desc}</p>
+      <div className="mt-16 space-y-14">
+        {TUTORIALS.map(({ key, label, guide }, index) => (
+          <section key={key} id={key} className="scroll-mt-24">
+            <div className="flex items-baseline gap-4">
+              <span className="font-mono text-xs text-gold-400">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h2 className="display text-2xl text-mist-100 sm:text-3xl">{label}</h2>
+              <span className="rule hidden flex-1 sm:block" />
             </div>
-          ))}
-        </div>
 
-        <p className="text-sm text-slate-300 leading-relaxed">
-          Ouvrez l&apos;assistant : indiquez votre compte Nuvio, votre clé API TorBox (indispensable pour regarder),
-          et laissez-le créer votre configuration AIO Metadata. Vos clés TMDB / TheTVDB / MDBList sont optionnelles ;
-          pour Lumio, collez le lien de manifest de votre profil. Chaque étape explique où récupérer les clés et comment créer un compte.
+            <ol className="mt-6 space-y-5 border-l border-line pl-6">
+              {guide.steps.map((step) => (
+                <li key={step.title} className="relative">
+                  <span className="absolute -left-[27px] top-2 h-1.5 w-1.5 rounded-full bg-gold-400" />
+                  <h3 className="text-sm font-semibold text-mist-100">{step.title}</h3>
+                  <p className="mt-1 text-sm leading-relaxed text-mist-400">
+                    {step.detail}
+                  </p>
+                  {step.bullets ? (
+                    <ul className="mt-2 space-y-1.5">
+                      {step.bullets.map((bullet) => (
+                        <li
+                          key={bullet}
+                          className="flex gap-2 text-sm leading-relaxed text-mist-400"
+                        >
+                          <span className="text-mist-600">—</span>
+                          <span>{bullet}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+            </ol>
+
+            {key === "torbox" ? (
+              <div className="mt-8">
+                <TorboxPromoBanner />
+              </div>
+            ) : null}
+
+            <p className="mt-6 border-l-2 border-gold-700/60 pl-4 text-sm leading-relaxed text-mist-400">
+              {guide.note}
+            </p>
+
+            <div className="mt-5 flex flex-wrap gap-3">
+              <a
+                href={guide.signupUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-sm font-medium text-gold-300 hover:text-gold-200"
+              >
+                {guide.signupLabel}
+                <ArrowUpRight className="h-3.5 w-3.5" />
+              </a>
+              {guide.keyUrl !== guide.signupUrl ? (
+                <a
+                  href={guide.keyUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-mist-400 hover:text-mist-200"
+                >
+                  {guide.keyLabel}
+                  <ArrowUpRight className="h-3.5 w-3.5" />
+                </a>
+              ) : null}
+            </div>
+          </section>
+        ))}
+      </div>
+
+      <section className="mt-20 border-t border-line pt-10">
+        <h2 className="display text-2xl text-mist-100">
+          Vous avez tout ? Laissez l&apos;assistant faire le reste.
+        </h2>
+        <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist-400">
+          Compte Nuvio, clé TorBox, clés de métadonnées, lien Lumio : l&apos;assistant
+          installe les collections francophones, crée votre configuration AIO
+          Metadata et ajoute Torrentio et Comet avec votre débrideur.
         </p>
-
-        <div className="p-5 rounded-2xl bg-indigo-950/30 border border-indigo-500/30 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-xs text-slate-300">
-            <strong className="text-white block mb-0.5">Prêt à démarrer ?</strong>
-            Chaque information est demandée au bon moment, avec des liens directs vers les sites nécessaires.
-          </div>
-          <button
-            onClick={() => setConfigModalOpen(true)}
-            className="w-full sm:w-auto px-7 py-3.5 rounded-xl text-xs font-black text-white bg-gradient-to-r from-emerald-500 to-indigo-600 hover:from-emerald-400 hover:to-indigo-500 shadow-glow transition-all shrink-0"
-          >
-            Ouvrir l&apos;assistant de configuration
-          </button>
-        </div>
+        <button
+          onClick={() => setConfigModalOpen(true)}
+          className="mt-6 inline-flex items-center gap-2 rounded-lg bg-gold-400 px-5 py-3 text-sm font-semibold text-ink transition-colors hover:bg-gold-300"
+        >
+          Configurer mon Nuvio
+          <ArrowRight className="h-4 w-4" />
+        </button>
       </section>
 
-
-      {/* Modal */}
       <NuvioConfiguratorModal
         isOpen={configModalOpen}
         onClose={() => setConfigModalOpen(false)}

@@ -1,44 +1,86 @@
 import Link from "next/link";
-import { Layers, Heart, ExternalLink } from "lucide-react";
+import { Aperture } from "lucide-react";
+import { SITE } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="border-t border-surface-border/50 bg-[#080B10]/80 py-12 px-4 sm:px-6 lg:px-8 mt-20">
-      <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-surface flex items-center justify-center border border-surface-border">
-            <Layers className="w-4 h-4 text-indigo-400" />
+    <footer className="mt-24 border-t border-line px-5 py-12 sm:px-8">
+      <div className="mx-auto max-w-6xl">
+        <div className="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <div className="max-w-sm">
+            <div className="flex items-center gap-2.5">
+              <Aperture className="h-5 w-5 text-gold-400" strokeWidth={1.6} />
+              <span className="display text-[20px] leading-none text-mist-100">
+                {SITE.wordmark}
+              </span>
+            </div>
+            <p className="mt-3 text-sm leading-relaxed text-mist-400">
+              {SITE.tagline} — collections francophones, métadonnées en français
+              et débridage TorBox, configurés depuis un seul assistant.
+            </p>
           </div>
-          <div>
-            <span className="font-bold tracking-wider text-slate-200">NUVIO FRANCE</span>
-            <p className="text-xs text-slate-500">Catalogue, Collections personnalisées & AIO Metadata</p>
+
+          <div className="flex gap-14">
+            <div>
+              <p className="eyebrow">Parcourir</p>
+              <div className="mt-3 flex flex-col gap-2 text-sm">
+                <Link href="/" className="text-mist-300 transition-colors hover:text-gold-300">
+                  Accueil
+                </Link>
+                <Link
+                  href="/collections"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  Collections
+                </Link>
+                <Link
+                  href="/tutoriel"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  Tutoriels
+                </Link>
+              </div>
+            </div>
+
+            <div>
+              <p className="eyebrow">Services</p>
+              <div className="mt-3 flex flex-col gap-2 text-sm">
+                <a
+                  href="https://torbox.app/subscription?referral=49a51e6d-dcf6-47ad-a98d-147f11c4268f"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  TorBox
+                </a>
+                <a
+                  href="https://mylumio.tv"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  Lumio
+                </a>
+                <a
+                  href="https://imkaptain.github.io/Kaptain-Collection/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  Inspiré de Kaptain
+                </a>
+              </div>
+            </div>
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-6 text-sm text-slate-400">
-          <Link href="/collections" className="hover:text-indigo-400 transition-colors">
-            Collections (756)
-          </Link>
-          <Link href="/aiometadata" className="hover:text-indigo-400 transition-colors">
-            AIO Metadata
-          </Link>
-          <Link href="/addons" className="hover:text-indigo-400 transition-colors">
-            Addons Recommandés
-          </Link>
-          <a
-            href="https://imkaptain.github.io/Kaptain-Collection/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 hover:text-cyan-400 transition-colors"
-          >
-            <span>Inspiré de Kaptain</span>
-            <ExternalLink className="w-3.5 h-3.5" />
-          </a>
-        </div>
-
-        <div className="text-xs text-slate-500 text-center md:text-right">
-          <span>Configuré pour l&apos;écosystème Nuvio & Stremio en Français.</span>
-        </div>
+        <p className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-mist-500">
+          {SITE.name} n&apos;héberge ni ne diffuse aucun contenu : la
+          configuration s&apos;appuie sur vos propres comptes et services
+          (Nuvio, TorBox, Lumio, AIO Metadata). Vos clés d&apos;API sont saisies
+          dans votre navigateur, transmises aux seuls services concernés et
+          conservées nulle part sur ce site.
+        </p>
       </div>
     </footer>
   );

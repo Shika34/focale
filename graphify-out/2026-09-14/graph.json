@@ -4,6 +4,71 @@
   "graph": {},
   "nodes": [
     {
+      "id": "types_nuvio_aiometadataconfig",
+      "label": "AioMetadataConfig",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "nuvio.ts",
+      "file_type": "code",
+      "norm_label": "aiometadataconfig",
+      "source_file": "types/nuvio.ts",
+      "source_location": "L46"
+    },
+    {
+      "id": "types_nuvio_nuviocollection",
+      "label": "NuvioCollection",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "nuvio.ts",
+      "file_type": "code",
+      "norm_label": "nuviocollection",
+      "source_file": "types/nuvio.ts",
+      "source_location": "L35"
+    },
+    {
+      "id": "types_nuvio_nuviofolder",
+      "label": "NuvioFolder",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "nuvio.ts",
+      "file_type": "code",
+      "norm_label": "nuviofolder",
+      "source_file": "types/nuvio.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "types_nuvio_nuviosource",
+      "label": "NuvioSource",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "nuvio.ts",
+      "file_type": "code",
+      "norm_label": "nuviosource",
+      "source_file": "types/nuvio.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "types_nuvio_nuviosourcefilters",
+      "label": "NuvioSourceFilters",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "nuvio.ts",
+      "file_type": "code",
+      "norm_label": "nuviosourcefilters",
+      "source_file": "types/nuvio.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "components_collectionbrowser_collectionbrowserprops",
       "label": "CollectionBrowserProps",
       "_callable": true,
@@ -173,30 +238,6 @@
       "source_location": "L14"
     },
     {
-      "id": "app_page_homepage",
-      "label": "HomePage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "homepage()",
-      "source_file": "app/page.tsx",
-      "source_location": "L77"
-    },
-    {
-      "id": "components_torboxpromobanner_torboxpromobanner",
-      "label": "TorboxPromoBanner()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "torboxpromobanner()",
-      "source_file": "components/TorboxPromoBanner.tsx",
-      "source_location": "L17"
-    },
-    {
       "id": "app_collections_page_collectionspage",
       "label": "CollectionsPage()",
       "_callable": true,
@@ -293,6 +334,18 @@
       "source_location": "L48"
     },
     {
+      "id": "app_page_homepage",
+      "label": "HomePage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "homepage()",
+      "source_file": "app/page.tsx",
+      "source_location": "L77"
+    },
+    {
       "id": "app_tutoriel_page_tutorielpage",
       "label": "TutorielPage()",
       "_callable": true,
@@ -327,6 +380,18 @@
       "norm_label": "navbar()",
       "source_file": "components/Navbar.tsx",
       "source_location": "L16"
+    },
+    {
+      "id": "components_torboxpromobanner_torboxpromobanner",
+      "label": "TorboxPromoBanner()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "torboxpromobanner()",
+      "source_file": "components/TorboxPromoBanner.tsx",
+      "source_location": "L17"
     },
     {
       "id": "components_tutorialguide_tutorialguide",
@@ -398,7 +463,7 @@
       "file_type": "code",
       "norm_label": "guidefield()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L356"
+      "source_location": "L353"
     },
     {
       "id": "components_nuvioconfiguratormodal_guidepanel",
@@ -434,7 +499,7 @@
       "file_type": "code",
       "norm_label": "nuvioconfiguratormodal()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L425"
+      "source_location": "L422"
     },
     {
       "id": "lib_manifest_urls_base64manifesturl",
@@ -494,7 +559,7 @@
       "file_type": "code",
       "norm_label": "anonheaders()",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L42"
+      "source_location": "L61"
     },
     {
       "id": "lib_nuvio_api_authheaders",
@@ -506,7 +571,7 @@
       "file_type": "code",
       "norm_label": "authheaders()",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L49"
+      "source_location": "L68"
     },
     {
       "id": "lib_nuvio_api_fetchwithretry",
@@ -518,7 +583,7 @@
       "file_type": "code",
       "norm_label": "fetchwithretry()",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L57"
+      "source_location": "L76"
     },
     {
       "id": "lib_nuvio_api_rpc",
@@ -530,7 +595,7 @@
       "file_type": "code",
       "norm_label": "rpc()",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L70"
+      "source_location": "L89"
     },
     {
       "id": "package",
@@ -1169,7 +1234,7 @@
       "node_kind": "heading",
       "norm_label": "3. next steps",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L49"
+      "source_location": "L46"
     },
     {
       "id": "context_handoff_4_end_of_session_instructions_ai",
@@ -1181,7 +1246,7 @@
       "node_kind": "heading",
       "norm_label": "4. end of session instructions (ai)",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L60"
+      "source_location": "L57"
     },
     {
       "id": "context_handoff_context_handoff_nuvio_collection",
@@ -1335,59 +1400,15 @@
       "source_location": "L8"
     },
     {
-      "id": "app_page",
-      "label": "app/page.tsx",
+      "id": "types_nuvio",
+      "label": "nuvio.ts",
       "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
+      "community": 15,
+      "community_name": "nuvio.ts",
       "file_type": "code",
-      "norm_label": "app/page.tsx",
-      "source_file": "app/page.tsx",
+      "norm_label": "nuvio.ts",
+      "source_file": "types/nuvio.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "app_page_lumio_points",
-      "label": "LUMIO_POINTS",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "lumio_points",
-      "source_file": "app/page.tsx",
-      "source_location": "L43"
-    },
-    {
-      "id": "app_page_nuvio_points",
-      "label": "NUVIO_POINTS",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "nuvio_points",
-      "source_file": "app/page.tsx",
-      "source_location": "L28"
-    },
-    {
-      "id": "app_page_sections",
-      "label": "SECTIONS",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "sections",
-      "source_file": "app/page.tsx",
-      "source_location": "L58"
-    },
-    {
-      "id": "app_page_shots",
-      "label": "SHOTS",
-      "_origin": "ast",
-      "community": 14,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "shots",
-      "source_file": "app/page.tsx",
-      "source_location": "L7"
     },
     {
       "id": "app_collections_page",
@@ -1456,6 +1477,17 @@
       "source_location": "L13"
     },
     {
+      "id": "ref_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
       "id": "app_api_aiometadata_route",
       "label": "route.ts",
       "_origin": "ast",
@@ -1520,6 +1552,61 @@
       "norm_label": "viewport",
       "source_file": "app/layout.tsx",
       "source_location": "L21"
+    },
+    {
+      "id": "app_page",
+      "label": "app/page.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "app/page.tsx",
+      "source_file": "app/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_page_lumio_points",
+      "label": "LUMIO_POINTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "lumio_points",
+      "source_file": "app/page.tsx",
+      "source_location": "L43"
+    },
+    {
+      "id": "app_page_nuvio_points",
+      "label": "NUVIO_POINTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "nuvio_points",
+      "source_file": "app/page.tsx",
+      "source_location": "L28"
+    },
+    {
+      "id": "app_page_sections",
+      "label": "SECTIONS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "sections",
+      "source_file": "app/page.tsx",
+      "source_location": "L58"
+    },
+    {
+      "id": "app_page_shots",
+      "label": "SHOTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "shots",
+      "source_file": "app/page.tsx",
+      "source_location": "L7"
     },
     {
       "id": "app_tutoriel_page",
@@ -1698,17 +1785,6 @@
       "source_location": "L12"
     },
     {
-      "id": "ref_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "TutorialGuide.tsx",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
       "id": "components_nuvioconfiguratormodal",
       "label": "NuvioConfiguratorModal.tsx",
       "_origin": "ast",
@@ -1742,6 +1818,17 @@
       "source_location": "L1"
     },
     {
+      "id": "lib_nuvio_api_keyless_integrations",
+      "label": "KEYLESS_INTEGRATIONS",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "keyless_integrations",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L43"
+    },
+    {
       "id": "lib_nuvio_api_nuvioapi",
       "label": "NuvioApi",
       "_origin": "ast",
@@ -1750,7 +1837,7 @@
       "file_type": "code",
       "norm_label": "nuvioapi",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L109"
+      "source_location": "L128"
     },
     {
       "id": "lib_nuvio_api_provider_credential_ids",
@@ -1761,7 +1848,7 @@
       "file_type": "code",
       "norm_label": "provider_credential_ids",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L94"
+      "source_location": "L113"
     },
     {
       "id": "package_devdependencies",
@@ -2172,7 +2259,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L500",
+      "source_location": "L497",
       "weight": 1.0
     },
     {
@@ -2184,7 +2271,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L918",
+      "source_location": "L915",
       "weight": 1.0
     },
     {
@@ -2208,7 +2295,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L71",
+      "source_location": "L90",
       "weight": 1.0
     },
     {
@@ -2220,7 +2307,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L73",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -3744,7 +3831,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L356",
+      "source_location": "L353",
       "weight": 1.0
     },
     {
@@ -3755,7 +3842,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L425",
+      "source_location": "L422",
       "weight": 1.0
     },
     {
@@ -3865,7 +3952,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L49",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -3876,7 +3963,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L60",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -3936,13 +4023,24 @@
     },
     {
       "source": "lib_nuvio_api",
+      "target": "lib_nuvio_api_provider_credential_ids",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L113",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_nuvio_api",
       "target": "lib_nuvio_api_nuvioapi",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L109",
+      "source_location": "L128",
       "weight": 1.0
     },
     {
@@ -3980,13 +4078,24 @@
     },
     {
       "source": "lib_nuvio_api",
+      "target": "lib_nuvio_api_keyless_integrations",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "lib_nuvio_api",
       "target": "lib_nuvio_api_anonheaders",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L42",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -3997,7 +4106,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L49",
+      "source_location": "L68",
       "weight": 1.0
     },
     {
@@ -4008,7 +4117,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L57",
+      "source_location": "L76",
       "weight": 1.0
     },
     {
@@ -4019,18 +4128,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "lib/nuvio-api.ts",
-      "source_location": "L70",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_nuvio_api",
-      "target": "lib_nuvio_api_provider_credential_ids",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L94",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -4694,6 +4792,61 @@
       "weight": 1.0
     },
     {
+      "source": "types_nuvio",
+      "target": "types_nuvio_nuviosourcefilters",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "types/nuvio.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "types_nuvio",
+      "target": "types_nuvio_nuviosource",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "types/nuvio.ts",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "types_nuvio",
+      "target": "types_nuvio_nuviofolder",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "types/nuvio.ts",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "types_nuvio",
+      "target": "types_nuvio_nuviocollection",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "types/nuvio.ts",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "types_nuvio",
+      "target": "types_nuvio_aiometadataconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "types/nuvio.ts",
+      "source_location": "L46",
+      "weight": 1.0
+    },
+    {
       "source": "next_config",
       "target": "next",
       "relation": "dynamic_import",
@@ -4881,5 +5034,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "8d31835e744091598b5e1c5361ee5714a5c8d6f0"
+  "built_at_commit": "4eea8a209550e6bf04043cd593d864a941663e6f"
 }

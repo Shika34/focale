@@ -1,7 +1,6 @@
 # Fichiers de données volumineux (évite le gaspillage de tokens)
-nuvio-collections-shika34.json
-aiometadata-config-shika34.json
-temp_content.txt
+nuvio-collections-mitch.json
+aiometadata-config-mitch.json
 
 # Caches et builds
 .next/
