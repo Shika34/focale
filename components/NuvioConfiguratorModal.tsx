@@ -456,7 +456,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [missingKeysWarning, setMissingKeysWarning] = useState<string[] | null>(null);
   const [lumioUrlCopied, setLumioUrlCopied] = useState(false);
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
-  const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verifying' | 'verified' | 'error'>('idle');
+  const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verified' | 'error'>('idle');
   const totalSteps = 4;
 
   // Fermeture au clavier (Échap) et blocage du défilement de la page derrière.

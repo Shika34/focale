@@ -77,11 +77,8 @@ const config: Config = {
         mono: ["ui-monospace", "SFMono-Regular", "Menlo", "monospace"],
       },
       boxShadow: {
-        // Anciens noms conservés pour ne rien casser : rendus volontairement sobres.
+        // Un seul halo, volontairement sobre : la lumière du projecteur.
         glow: "0 1px 0 0 rgba(255,255,255,0.03), 0 12px 32px -24px rgba(0,0,0,0.9)",
-        "glow-lg": "0 1px 0 0 rgba(255,255,255,0.04), 0 24px 60px -32px rgba(0,0,0,0.95)",
-        "glow-cyan": "0 1px 0 0 rgba(255,255,255,0.03), 0 12px 32px -24px rgba(0,0,0,0.9)",
-        "glow-purple": "0 1px 0 0 rgba(255,255,255,0.03), 0 12px 32px -24px rgba(0,0,0,0.9)",
         panel: "0 1px 0 0 rgba(255,255,255,0.03) inset, 0 20px 50px -40px rgba(0,0,0,1)",
       },
       borderRadius: {

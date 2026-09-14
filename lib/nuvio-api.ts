@@ -39,25 +39,6 @@ export interface NuvioAddonInstall {
   note?: string;
 }
 
-/** Intégrations publiques, sans clé ni compte utilisateur. */
-export const KEYLESS_INTEGRATIONS = {
-  tmdb: {
-    name: "The Movie Database (TMDB)",
-    url: "https://94c8cb9f702d-tmdb-addon.baby-beamup.club/manifest.json",
-    note: "Métadonnées & affiches FR via l'instance officielle (aucune clé TMDB)",
-  },
-  lumio: {
-    name: "Lumio",
-    url: "https://mylumio.tv/manifest.json",
-    note: "Flux francophones — profil public Lumio, zéro clé API",
-  },
-  bingecat: {
-    name: "Bingecat",
-    url: "https://bingecat.strem.fun/manifest.json",
-    note: "Catalogues & recommandations IA — instance publique, sans inscription",
-  },
-} as const;
-
 function anonHeaders() {
   return {
     "Content-Type": "application/json",
