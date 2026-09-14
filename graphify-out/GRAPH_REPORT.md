@@ -1,9 +1,9 @@
 # Graph Report - site-nuvio  (2026-09-14)
 
 ## Corpus Check
-- 29 files · ~343,460 words
+- 29 files · ~344,006 words
 - Verdict: corpus is large enough that graph structure adds value.
-- Unclassified: 3 file(s) not represented in the graph (top: (none) 2, .css 1)
+- Unclassified: 4 file(s) not represented in the graph (top: (none) 2, .ico 1, .css 1)
 
 ## Summary
 - 180 nodes · 238 edges · 15 communities (13 shown, 1 thin omitted)
@@ -11,7 +11,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `c4547728`
+- Built from commit: `6715ed7a`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 

@@ -132,9 +132,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1789403175.9185479,
-    "seen": 1789403179.1045287,
-    "ast_hash": "2c921741ddbaa2d9580d7e5ce47470d7",
+    "mtime": 1789404288.3689492,
+    "seen": 1789404290.7617307,
+    "ast_hash": "c0a9c5a6914b586fe7cfc793982236f4",
     "semantic_hash": ""
   },
   "README.md": {
@@ -201,6 +201,18 @@
     "mtime": 1789403032.6809735,
     "seen": 1789403179.1045697,
     "ast_hash": "fb5772e3a5effc2ebe83b7670ac6dbf3",
+    "semantic_hash": ""
+  },
+  "app/apple-icon.png": {
+    "mtime": 1789404214.7615705,
+    "seen": 1789404290.761789,
+    "ast_hash": "6eae95abfe633f2d637baf553d27655a",
+    "semantic_hash": ""
+  },
+  "app/icon.svg": {
+    "mtime": 1789404207.6702182,
+    "seen": 1789404290.7617912,
+    "ast_hash": "b27295fb5a63337503349fe89209cfa7",
     "semantic_hash": ""
   }
 }

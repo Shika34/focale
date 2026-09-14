@@ -1169,7 +1169,7 @@
       "node_kind": "heading",
       "norm_label": "3. next steps",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L51"
+      "source_location": "L52"
     },
     {
       "id": "context_handoff_4_end_of_session_instructions_ai",
@@ -1181,7 +1181,7 @@
       "node_kind": "heading",
       "norm_label": "4. end of session instructions (ai)",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L62"
+      "source_location": "L63"
     },
     {
       "id": "context_handoff_context_handoff_nuvio_collection",
@@ -3865,7 +3865,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L51",
+      "source_location": "L52",
       "weight": 1.0
     },
     {
@@ -3876,7 +3876,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L62",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -4881,5 +4881,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "c454772863e7c751cac917ca6e99d5831f5314f9"
+  "built_at_commit": "6715ed7adaa410c1bdc2b1b0ba14ec3b11edb15d"
 }
