@@ -33,6 +33,51 @@ const NUVIO_TUTORIAL: ProviderGuide = {
   note: "Aucune inscription préalable n'est nécessaire : si le compte n'existe pas encore, il est créé au moment de l'envoi.",
 };
 
+const TRAKT_TUTORIAL: ProviderGuide = {
+  question: "Avez-vous déjà un compte Trakt ?",
+  steps: [
+    {
+      title: "Créer un compte Trakt",
+      detail:
+        "Ouvrez trakt.tv et choisissez « Join Trakt » : l'inscription est gratuite (email, Google, Apple ou X). Trakt est un carnet de suivi — il n'héberge aucun film ni aucune série — et son usage dans Nuvio ne demande aucune clé API, contrairement à TMDB, TheTVDB ou MDBList.",
+    },
+    {
+      title: "Ouvrir l'intégration Trakt",
+      detail:
+        "Dans Nuvio, ouvrez Réglages → Intégrations → Trakt, puis lancez la connexion. Nuvio affiche un code ou une page d'autorisation Trakt.",
+    },
+    {
+      title: "Autoriser Nuvio",
+      detail:
+        "Connectez-vous à Trakt si besoin, puis validez l'autorisation : Nuvio apparaît dans vos applications connectées et le statut affiche votre pseudo Trakt.",
+    },
+    {
+      title: "Choisir la source de progression",
+      detail:
+        "Si vous gardez « Nuvio Sync » comme source de progression, Nuvio reste maître de votre avancement et continue d'envoyer en arrière-plan ce que vous regardez vers Trakt : les deux fonctionnent ensemble.",
+    },
+    {
+      title: "Surveiller vos applications connectées",
+      detail:
+        "Ouvrez Trakt → votre avatar → Settings → Apps → Connected Apps (lien ci-dessous) : Trakt y liste les applications tierces autorisées et vous prévient lorsque la limite du compte gratuit est atteinte. Si la place est prise, retirez une application inutilisée avant de rebrancher Nuvio.",
+    },
+    {
+      title: "Ce que Trakt ne fait pas",
+      detail: "Trois choses à garder en tête :",
+      bullets: [
+        "Trakt ne fournit ni catalogue ni fichier : vos collections francophones restent alimentées par TMDB et par les listes Trakt publiques déjà incluses dans le pack.",
+        "Trakt ne remplace pas votre profil Nuvio : il suit ce que vous regardez, il ne configure rien.",
+        "Déconnecter Nuvio côté Trakt oblige à une nouvelle autorisation, qui compte comme une nouvelle connexion.",
+      ],
+    },
+  ],
+  signupUrl: "https://app.trakt.tv/",
+  signupLabel: "Créer mon compte Trakt",
+  keyUrl: "https://app.trakt.tv/settings/apps/connected",
+  keyLabel: "Ouvrir mes applications connectées",
+  note: "Facultatif, et hors assistant : l'assistant ne vous demandera jamais rien pour Trakt, parce que Nuvio l'intègre nativement. Depuis août 2026, Trakt réserve la création d'une application API à ses membres VIP (environ 5 $ par mois) — inutile d'y passer : c'est Nuvio qui porte l'intégration, pas ce site.",
+};
+
 const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "nuvio", label: "Compte Nuvio", guide: NUVIO_TUTORIAL },
   { key: "torbox", label: "Débrideur TorBox", guide: PROVIDER_GUIDES.torbox },
@@ -41,6 +86,7 @@ const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "tvdb", label: "Clé TheTVDB", guide: PROVIDER_GUIDES.tvdb },
   { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
   { key: "lumio", label: "Profil Lumio", guide: PROVIDER_GUIDES.lumio },
+  { key: "trakt", label: "Suivi Trakt (facultatif)", guide: TRAKT_TUTORIAL },
 ];
 
 export function TutorialGuide() {
@@ -54,10 +100,12 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Sept tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
+          Huit tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
           débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), puis les
           trois clés de métadonnées et le profil Lumio. L&apos;assistant pose
           chaque question au bon moment et applique ces réglages à votre place.
+          Le dernier, Trakt, est facultatif : il ne concerne que le suivi de ce
+          que vous regardez.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button

@@ -1,17 +1,17 @@
 # Graph Report - site-nuvio  (2026-09-15)
 
 ## Corpus Check
-- 30 files · ~346,795 words
+- 30 files · ~347,532 words
 - Verdict: corpus is large enough that graph structure adds value.
 - Unclassified: 4 file(s) not represented in the graph (top: (none) 2, .ico 1, .css 1)
 
 ## Summary
-- 193 nodes · 259 edges · 16 communities (14 shown, 1 thin omitted)
+- 194 nodes · 260 edges · 16 communities (14 shown, 1 thin omitted)
 - Extraction: 95% EXTRACTED · 0% INFERRED · 0% AMBIGUOUS
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `bcfe163f`
+- Built from commit: `001c8120`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -70,8 +70,8 @@ Cohesion: 0.11
 Nodes (18): compilerOptions, allowJs, esModuleInterop, incremental, isolatedModules, jsx, lib, module (+10 more)
 
 ### Community 2 - "collections/page.tsx"
-Cohesion: 0.30
-Nodes (8): CollectionsPage(), metadata, CollectionBrowser(), CollectionBrowserProps, HeroSection(), CollectionSummaryItem, getCollectionsSummary(), getStats()
+Cohesion: 0.27
+Nodes (9): CollectionsPage(), metadata, CollectionBrowser(), CollectionBrowserProps, HeroSection(), CollectionSummaryItem, getCollectionsSummary(), getStats() (+1 more)
 
 ### Community 3 - "route.ts"
 Cohesion: 0.67
@@ -82,8 +82,8 @@ Cohesion: 0.15
 Nodes (13): Site NUVIO, lucide-react, react, react-dom, @types/node, @types/react, site-nuvio, @types/react-dom (+5 more)
 
 ### Community 5 - "TutorialGuide.tsx"
-Cohesion: 0.20
-Nodes (10): LUMIO_POINTS, NUVIO_POINTS, SECTIONS, SHOTS, AlldebridPromoBanner(), PLANS, TorboxPromoBanner(), NUVIO_TUTORIAL (+2 more)
+Cohesion: 0.14
+Nodes (13): LUMIO_POINTS, NUVIO_POINTS, SECTIONS, SHOTS, metadata, AlldebridPromoBanner(), PLANS, TorboxPromoBanner() (+5 more)
 
 ### Community 6 - "NuvioConfiguratorModal.tsx"
 Cohesion: 0.13
@@ -114,28 +114,28 @@ Cohesion: 0.12
 Nodes (18): base64ManifestUrl(), buildCometUrl(), buildTorrentioUrl(), debridEntries(), DebridEntry, DEBRIDERS, DebridKeys, debridNames() (+10 more)
 
 ### Community 15 - "layout.tsx"
-Cohesion: 0.14
-Nodes (14): display, metadata, sans, viewport, metadata, Footer(), NAV_LINKS, Navbar() (+6 more)
+Cohesion: 0.18
+Nodes (11): display, metadata, sans, viewport, Footer(), NAV_LINKS, Navbar(), BONUS (+3 more)
 
 ## Knowledge Gaps
-- **96 isolated node(s):** `SaveRequest`, `metadata`, `sans`, `display`, `viewport` (+91 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 126 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **97 isolated node(s):** `SaveRequest`, `metadata`, `sans`, `display`, `viewport` (+92 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 127 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **1 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
 - **Why does `lucide-react` connect `TutorialGuide.tsx` to `package.json`, `collections/page.tsx`, `NuvioConfiguratorModal.tsx`, `layout.tsx`?**
-  _High betweenness centrality (0.107) - this node is a cross-community bridge._
+  _High betweenness centrality (0.108) - this node is a cross-community bridge._
 - **Why does `react` connect `layout.tsx` to `package.json`, `collections/page.tsx`, `TutorialGuide.tsx`, `NuvioConfiguratorModal.tsx`?**
-  _High betweenness centrality (0.064) - this node is a cross-community bridge._
+  _High betweenness centrality (0.065) - this node is a cross-community bridge._
 - **Why does `devDependencies` connect `devDependencies` to `package.json`?**
   _High betweenness centrality (0.059) - this node is a cross-community bridge._
 - **What connects `SaveRequest`, `metadata`, `sans` to the rest of the system?**
-  _96 weakly-connected nodes found - possible documentation gaps or missing edges._
+  _97 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.07692307692307693 - nodes in this community are weakly interconnected._
 - **Should `compilerOptions` be split into smaller, more focused modules?**
   _Cohesion score 0.10526315789473684 - nodes in this community are weakly interconnected._
-- **Should `NuvioConfiguratorModal.tsx` be split into smaller, more focused modules?**
-  _Cohesion score 0.13450292397660818 - nodes in this community are weakly interconnected._
+- **Should `TutorialGuide.tsx` be split into smaller, more focused modules?**
+  _Cohesion score 0.14035087719298245 - nodes in this community are weakly interconnected._

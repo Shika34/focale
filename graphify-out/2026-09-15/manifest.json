@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "components/NuvioConfiguratorModal.tsx": {
-    "mtime": 1789476695.1584382,
-    "seen": 1789476763.6241183,
-    "ast_hash": "b259a702424eeae5cfc091a974e7c7c6",
+    "mtime": 1789477817.1109183,
+    "seen": 1789477860.0337877,
+    "ast_hash": "e745043925b7b0a4f5b9b2423e7290c0",
     "semantic_hash": ""
   },
   "components/TorboxPromoBanner.tsx": {
@@ -72,9 +72,9 @@
     "semantic_hash": "674bc5cc1bb9f8d152788a128d90f0e4"
   },
   "lib/nuvio-api.ts": {
-    "mtime": 1789475389.9456875,
-    "seen": 1789475846.2775042,
-    "ast_hash": "d046f300caebd65e3f6ed9e3c953baa8",
+    "mtime": 1789477797.24861,
+    "seen": 1789477860.033939,
+    "ast_hash": "99d5bad99f17104b7aabb24dbd0325d7",
     "semantic_hash": ""
   },
   "lib/nuvio-data.ts": {
@@ -132,9 +132,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1789476757.5970423,
-    "seen": 1789476763.6244874,
-    "ast_hash": "8f139d4058bec7cd1d040877e81adbfb",
+    "mtime": 1789477859.0831027,
+    "seen": 1789477860.0341995,
+    "ast_hash": "d49be0c7dbbff3dc49c654536725ad7f",
     "semantic_hash": ""
   },
   "README.md": {

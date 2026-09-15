@@ -12,15 +12,15 @@
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1789476700.890317,
-    "seen": 1789476763.623958,
-    "ast_hash": "05e3f10ef9067afe53921cc2c976602e",
+    "mtime": 1789486192.990366,
+    "seen": 1789486265.1074216,
+    "ast_hash": "03e8e549bca2a623772b0ef8e65974ca",
     "semantic_hash": ""
   },
   "app/tutoriel/page.tsx": {
-    "mtime": 1789475531.0369706,
-    "seen": 1789475846.2773962,
-    "ast_hash": "6e6866eec95854d5688fe7b2ebf4cb5b",
+    "mtime": 1789486197.328325,
+    "seen": 1789486265.1074243,
+    "ast_hash": "d769bfa678c078c1c9ba41bde1badeef",
     "semantic_hash": ""
   },
   "components/CollectionBrowser.tsx": {
@@ -30,14 +30,14 @@
     "semantic_hash": ""
   },
   "components/Footer.tsx": {
-    "mtime": 1789475563.9273703,
-    "seen": 1789475846.2774246,
+    "mtime": 1789480541.7279172,
+    "seen": 1789486265.1074631,
     "ast_hash": "38d0ad546aaf530720fd0b149631cd7b",
     "semantic_hash": ""
   },
   "components/HeroSection.tsx": {
-    "mtime": 1789475511.535614,
-    "seen": 1789475846.277425,
+    "mtime": 1789480541.7279172,
+    "seen": 1789486265.107464,
     "ast_hash": "475d0281af68291f79b50033faf27e8c",
     "semantic_hash": ""
   },
@@ -48,21 +48,21 @@
     "semantic_hash": ""
   },
   "components/NuvioConfiguratorModal.tsx": {
-    "mtime": 1789477817.1109183,
-    "seen": 1789477860.0337877,
+    "mtime": 1789480541.7279172,
+    "seen": 1789486265.1074967,
     "ast_hash": "e745043925b7b0a4f5b9b2423e7290c0",
     "semantic_hash": ""
   },
   "components/TorboxPromoBanner.tsx": {
-    "mtime": 1789476657.4648418,
-    "seen": 1789476763.6241193,
+    "mtime": 1789480541.7279172,
+    "seen": 1789486265.1074975,
     "ast_hash": "97debe7d6178689fa7a8a872eb11fe7b",
     "semantic_hash": ""
   },
   "components/TutorialGuide.tsx": {
-    "mtime": 1789476703.3404858,
-    "seen": 1789476763.6241202,
-    "ast_hash": "1d59b756ef721b9173fcf05d05eb7cb6",
+    "mtime": 1789486197.2913187,
+    "seen": 1789486265.1074984,
+    "ast_hash": "d7fb337e15bd4e7a11a3ab23789b0d33",
     "semantic_hash": ""
   },
   "lib/collections-summary.json": {
@@ -72,8 +72,8 @@
     "semantic_hash": "674bc5cc1bb9f8d152788a128d90f0e4"
   },
   "lib/nuvio-api.ts": {
-    "mtime": 1789477797.24861,
-    "seen": 1789477860.033939,
+    "mtime": 1789480541.732052,
+    "seen": 1789486265.1075642,
     "ast_hash": "99d5bad99f17104b7aabb24dbd0325d7",
     "semantic_hash": ""
   },
@@ -132,9 +132,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1789477859.0831027,
-    "seen": 1789477860.0341995,
-    "ast_hash": "d49be0c7dbbff3dc49c654536725ad7f",
+    "mtime": 1789486257.646301,
+    "seen": 1789486265.107802,
+    "ast_hash": "6969677cbcc8eb29c2fe035ea800552a",
     "semantic_hash": ""
   },
   "README.md": {
@@ -144,8 +144,8 @@
     "semantic_hash": ""
   },
   "lib/manifest-urls.ts": {
-    "mtime": 1789475364.1641133,
-    "seen": 1789475846.2775037,
+    "mtime": 1789480541.732052,
+    "seen": 1789486265.1075633,
     "ast_hash": "7b3c465ef8b7995e6a12ef57b6528f24",
     "semantic_hash": ""
   },
@@ -168,14 +168,14 @@
     "semantic_hash": ""
   },
   "lib/provider-guides.ts": {
-    "mtime": 1789476661.9133291,
-    "seen": 1789476763.6242642,
+    "mtime": 1789480541.732052,
+    "seen": 1789486265.1075957,
     "ast_hash": "6ade2c5e51884347df045d825217d714",
     "semantic_hash": ""
   },
   "lib/site.ts": {
-    "mtime": 1789475418.4957178,
-    "seen": 1789475846.2775314,
+    "mtime": 1789480541.732052,
+    "seen": 1789486265.1075978,
     "ast_hash": "3e9334c9f216b983ed32d2cd5d77dfab",
     "semantic_hash": ""
   },
@@ -216,8 +216,8 @@
     "semantic_hash": ""
   },
   "components/AlldebridPromoBanner.tsx": {
-    "mtime": 1789476645.2951443,
-    "seen": 1789476763.6239963,
+    "mtime": 1789480541.7279172,
+    "seen": 1789486265.1074257,
     "ast_hash": "4e3c021f3bb201c589c2ae867a1c09f2",
     "semantic_hash": ""
   }

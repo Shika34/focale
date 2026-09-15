@@ -368,18 +368,6 @@
       "source_location": "L48"
     },
     {
-      "id": "app_tutoriel_page_tutorielpage",
-      "label": "TutorielPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "tutorielpage()",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L11"
-    },
-    {
       "id": "components_footer_footer",
       "label": "Footer()",
       "_callable": true,
@@ -402,18 +390,6 @@
       "norm_label": "navbar()",
       "source_file": "components/Navbar.tsx",
       "source_location": "L16"
-    },
-    {
-      "id": "components_tutorialguide_tutorialguide",
-      "label": "TutorialGuide()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "tutorialguide()",
-      "source_file": "components/TutorialGuide.tsx",
-      "source_location": "L46"
     },
     {
       "id": "app_collections_page_collectionspage",
@@ -512,6 +488,18 @@
       "source_location": "L79"
     },
     {
+      "id": "app_tutoriel_page_tutorielpage",
+      "label": "TutorielPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "tutorielpage()",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L11"
+    },
+    {
       "id": "components_alldebridpromobanner_alldebridpromobanner",
       "label": "AlldebridPromoBanner()",
       "_callable": true,
@@ -534,6 +522,18 @@
       "norm_label": "torboxpromobanner()",
       "source_file": "components/TorboxPromoBanner.tsx",
       "source_location": "L17"
+    },
+    {
+      "id": "components_tutorialguide_tutorialguide",
+      "label": "TutorialGuide()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "tutorialguide()",
+      "source_file": "components/TutorialGuide.tsx",
+      "source_location": "L92"
     },
     {
       "id": "components_nuvioconfiguratormodal_accountquestion",
@@ -1280,7 +1280,7 @@
       "node_kind": "heading",
       "norm_label": "3. next steps",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L54"
+      "source_location": "L55"
     },
     {
       "id": "context_handoff_4_end_of_session_instructions_ai",
@@ -1292,7 +1292,7 @@
       "node_kind": "heading",
       "norm_label": "4. end of session instructions (ai)",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L65"
+      "source_location": "L67"
     },
     {
       "id": "context_handoff_context_handoff_nuvio_collection",
@@ -1567,28 +1567,6 @@
       "source_location": "L21"
     },
     {
-      "id": "app_tutoriel_page",
-      "label": "tutoriel/page.tsx",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "tutoriel/page.tsx",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_tutoriel_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L5"
-    },
-    {
       "id": "components_footer",
       "label": "Footer.tsx",
       "_origin": "ast",
@@ -1677,17 +1655,6 @@
       "source_location": "L5"
     },
     {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "layout.tsx",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
       "id": "ref_react",
       "label": "react",
       "_origin": "ast",
@@ -1752,6 +1719,17 @@
       "norm_label": "nuvio-data.ts",
       "source_file": "lib/nuvio-data.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L13"
     },
     {
       "id": "app_api_aiometadata_route",
@@ -1820,6 +1798,28 @@
       "source_location": "L7"
     },
     {
+      "id": "app_tutoriel_page",
+      "label": "tutoriel/page.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "tutoriel/page.tsx",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_tutoriel_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L5"
+    },
+    {
       "id": "components_alldebridpromobanner",
       "label": "AlldebridPromoBanner.tsx",
       "_origin": "ast",
@@ -1864,6 +1864,17 @@
       "source_location": "L10"
     },
     {
+      "id": "components_tutorialguide_trakt_tutorial",
+      "label": "TRAKT_TUTORIAL",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "trakt_tutorial",
+      "source_file": "components/TutorialGuide.tsx",
+      "source_location": "L36"
+    },
+    {
       "id": "components_tutorialguide_tutorials",
       "label": "TUTORIALS",
       "_origin": "ast",
@@ -1872,7 +1883,7 @@
       "file_type": "code",
       "norm_label": "tutorials",
       "source_file": "components/TutorialGuide.tsx",
-      "source_location": "L36"
+      "source_location": "L81"
     },
     {
       "id": "ref_lucide_react",
@@ -4100,7 +4111,7 @@
     },
     {
       "source": "components_tutorialguide",
-      "target": "components_tutorialguide_tutorials",
+      "target": "components_tutorialguide_trakt_tutorial",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4111,13 +4122,24 @@
     },
     {
       "source": "components_tutorialguide",
+      "target": "components_tutorialguide_tutorials",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "components/TutorialGuide.tsx",
+      "source_location": "L81",
+      "weight": 1.0
+    },
+    {
+      "source": "components_tutorialguide",
       "target": "components_tutorialguide_tutorialguide",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "components/TutorialGuide.tsx",
-      "source_location": "L46",
+      "source_location": "L92",
       "weight": 1.0
     },
     {
@@ -4150,7 +4172,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L54",
+      "source_location": "L55",
       "weight": 1.0
     },
     {
@@ -4161,7 +4183,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L65",
+      "source_location": "L67",
       "weight": 1.0
     },
     {
@@ -5276,5 +5298,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "bcfe163f042e7e68be3b60a2f3eca72735d7b4e5"
+  "built_at_commit": "001c8120575637beda31648841128f0cc3f91306"
 }
