@@ -13,8 +13,8 @@ export function HeroSection() {
   const facts = [
     { label: "Collections francophones", value: String(stats.totalCollections) },
     { label: "Dossiers inclus", value: String(stats.totalFolders) },
-    { label: "Clés API prises en charge", value: "4" },
-    { label: "Débrideur", value: "TorBox" },
+    { label: "Clés API prises en charge", value: "5" },
+    { label: "Débrideurs", value: "TorBox · AllDebrid" },
     { label: "Étapes dans l'assistant", value: "4" },
   ];
 
@@ -33,10 +33,10 @@ export function HeroSection() {
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-mist-300">
               L&apos;assistant vous guide pas à pas, une question à la fois :
-              votre compte Nuvio, votre clé TorBox, vos clés de métadonnées,
-              votre lien Lumio. Il se charge du reste et branche dans votre
-              profil Nuvio vos 18 collections francophones, AIO Metadata, Lumio,
-              Torrentio et Comet.
+              votre compte Nuvio, votre débrideur TorBox ou AllDebrid, vos clés
+              de métadonnées, votre lien Lumio. Il se charge du reste et branche
+              dans votre profil Nuvio vos 18 collections francophones, AIO
+              Metadata, Lumio, Torrentio et Comet.
             </p>
             <p className="mt-4 max-w-xl text-sm leading-relaxed text-mist-400">
               Vous ouvrez Nuvio et vos films et séries en VF sont là.

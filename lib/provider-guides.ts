@@ -24,7 +24,7 @@ export interface ProviderGuide {
 
 /** Tutoriels affichés dès que l'utilisateur n'a pas encore de compte ou de clé. */
 export const PROVIDER_GUIDES: Record<
-  "tmdb" | "tvdb" | "mdblist" | "torbox" | "lumio",
+  "tmdb" | "tvdb" | "mdblist" | "torbox" | "alldebrid" | "lumio",
   ProviderGuide
 > = {
   tmdb: {
@@ -137,7 +137,33 @@ export const PROVIDER_GUIDES: Record<
     signupLabel: "Créer mon compte TorBox (jours offerts)",
     keyUrl: "https://torbox.app/settings",
     keyLabel: "Ouvrir mes réglages TorBox",
-    note: "Votre clé TorBox sert à débriter vos flux : elle génère automatiquement vos manifests Torrentio et Comet, et alimente aussi votre profil Lumio.",
+    note: "Nuvio l'intègre nativement (Services connectés), et le parrainage offre jusqu'à 84 jours. Votre clé TorBox débrite vos flux : elle génère automatiquement vos manifests Torrentio et Comet, et alimente aussi votre profil Lumio.",
+  },
+  alldebrid: {
+    question: "Avez-vous déjà un compte AllDebrid ?",
+    steps: [
+      {
+        title: "Créer un compte AllDebrid",
+        detail: "Inscrivez-vous sur alldebrid.fr : le débrideur est français, les tarifs sont en euros, et un essai gratuit de 7 jours est proposé sur vérification SMS (gratuite). Ensuite, comptez 2,99 € par tranche de 30 jours, ou un achat unique de 300 jours à 24,99 €.",
+      },
+      {
+        title: "Ouvrir la page des clés API",
+        detail: "Une fois connecté, ouvrez alldebrid.fr/apikeys : c'est la page des clés qui donnent accès à votre compte.",
+      },
+      {
+        title: "Créer la clé",
+        detail: "Saisissez le nom que vous voulez pour reconnaître la clé (par exemple « Nuvio »), puis validez avec le bouton vert « Créer ». La clé s'affiche juste en dessous.",
+      },
+      {
+        title: "Copier la clé",
+        detail: "AllDebrid envoie généralement un email de sécurité pour autoriser cette nouvelle connexion : ouvrez-le si vous le recevez, puis collez la clé dans le champ ci-dessous. Gardez-la privée : comme un mot de passe, elle donne accès à votre compte.",
+      },
+    ],
+    signupUrl: "https://alldebrid.fr/register/",
+    signupLabel: "Créer mon compte AllDebrid",
+    keyUrl: "https://alldebrid.fr/apikeys/",
+    keyLabel: "Ouvrir mes clés API",
+    note: "AllDebrid n'est pas intégré nativement à Nuvio — les services connectés de l'application ne connaissent que TorBox et Premiumize. Ici, c'est Torrentio et Comet qui débrident, avec votre clé : l'assistant les configure pour vous, et le résultat est le même à l'écran.",
   },
   lumio: {
     question: "Avez-vous déjà un compte Lumio et son URL de manifest ?",
@@ -147,15 +173,15 @@ export const PROVIDER_GUIDES: Record<
         detail: "Sur l'écran « À qui le tour ? », saisissez le nom de votre profil (ou sélectionnez-en un parmi les suggestions), puis cliquez sur Continuer.",
       },
       {
-        title: "Sélectionner TorBox",
-        detail: "Dans la section « Connectez votre débrideur », cliquez sur le logo TorBox.",
+        title: "Sélectionner votre débrideur",
+        detail: "Dans la section « Connectez votre débrideur », cliquez sur le logo AllDebrid ou TorBox : Lumio gère les deux, et vous pourrez ajouter l'autre plus tard.",
       },
       {
-        title: "Associer votre compte TorBox",
+        title: "Associer votre compte",
         detail: "Choisissez votre méthode de connexion :",
         bullets: [
-          "« Se connecter à TorBox » : valide directement la connexion depuis votre navigateur.",
-          "« Saisir la clé » : collez la clé API récupérée sur votre compte TorBox (torbox.app/settings), puis cliquez sur Vérifier.",
+          "« Se connecter à TorBox » / « Se connecter à AllDebrid » : valide directement la connexion depuis votre navigateur.",
+          "« Saisir la clé » : collez la clé API récupérée sur votre compte — torbox.app/settings pour TorBox, alldebrid.fr/apikeys pour AllDebrid — puis cliquez sur Vérifier.",
         ],
       },
       {
@@ -182,7 +208,7 @@ export const PROVIDER_GUIDES: Record<
     signupLabel: "Ouvrir Lumio",
     keyUrl: "https://mylumio.tv",
     keyLabel: "Configurer mon profil Lumio",
-    note: "Votre lien de manifest est personnel : c'est lui qui active votre débrideur TorBox et vos préférences de langues dans Nuvio.",
+    note: "Votre lien de manifest est personnel : c'est lui qui active votre débrideur et vos préférences de langues dans Nuvio.",
   },
 
 };

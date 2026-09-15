@@ -31,13 +31,11 @@ export function TorboxPromoBanner() {
             <Gift className="h-3.5 w-3.5" />
             <span>Jusqu&apos;à +84 jours offerts avec le parrainage</span>
           </div>
-          <h3 className="display mt-3 text-2xl text-mist-100">
-            Le débrideur conseillé : TorBox
-          </h3>
+          <h3 className="display mt-3 text-2xl text-mist-100">TorBox</h3>
           <p className="mt-2 text-sm leading-relaxed text-mist-300">
-            Lecture instantanée en 4K HDR, sans attente ni torrent local. La
-            clé API TorBox est indispensable pour regarder les films et les
-            séries dans Nuvio.
+            Lecture instantanée en 4K HDR, sans attente ni torrent local. Votre
+            clé API TorBox débrite les flux trouvés par Torrentio et Comet, et
+            alimente aussi votre profil Lumio.
           </p>
         </div>
 
