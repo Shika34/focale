@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { ArrowUpRight, ArrowRight } from "lucide-react";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
+import { AlldebridPromoBanner } from "@/components/AlldebridPromoBanner";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
 
@@ -35,6 +36,7 @@ const NUVIO_TUTORIAL: ProviderGuide = {
 const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "nuvio", label: "Compte Nuvio", guide: NUVIO_TUTORIAL },
   { key: "torbox", label: "Débrideur TorBox", guide: PROVIDER_GUIDES.torbox },
+  { key: "alldebrid", label: "Débrideur AllDebrid", guide: PROVIDER_GUIDES.alldebrid },
   { key: "tmdb", label: "Clé TMDB", guide: PROVIDER_GUIDES.tmdb },
   { key: "tvdb", label: "Clé TheTVDB", guide: PROVIDER_GUIDES.tvdb },
   { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
@@ -52,10 +54,10 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Six tutoriels courts, dans l&apos;ordre : le compte Nuvio, le
-          débrideur TorBox, puis les trois clés de métadonnées et le profil
-          Lumio. L&apos;assistant pose chaque question au bon moment et applique
-          ces réglages à votre place.
+          Sept tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
+          débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), puis les
+          trois clés de métadonnées et le profil Lumio. L&apos;assistant pose
+          chaque question au bon moment et applique ces réglages à votre place.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
@@ -116,6 +118,12 @@ export function TutorialGuide() {
               </div>
             ) : null}
 
+            {key === "alldebrid" ? (
+              <div className="mt-8">
+                <AlldebridPromoBanner />
+              </div>
+            ) : null}
+
             <p className="mt-6 border-l-2 border-gold-700/60 pl-4 text-sm leading-relaxed text-mist-400">
               {guide.note}
             </p>
@@ -151,9 +159,10 @@ export function TutorialGuide() {
           Vous avez tout ? Laissez l&apos;assistant faire le reste.
         </h2>
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist-400">
-          Compte Nuvio, clé TorBox, clés de métadonnées, lien Lumio : l&apos;assistant
-          installe les collections francophones, crée votre configuration AIO
-          Metadata et ajoute Torrentio et Comet avec votre débrideur.
+          Compte Nuvio, clé de débrideur (TorBox ou AllDebrid), clés de
+          métadonnées, lien Lumio : l&apos;assistant installe les collections
+          francophones, crée votre configuration AIO Metadata et ajoute
+          Torrentio et Comet avec votre débrideur.
         </p>
         <button
           onClick={() => setConfigModalOpen(true)}

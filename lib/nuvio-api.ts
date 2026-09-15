@@ -7,11 +7,17 @@
  * Deux exceptions, assumées et documentées à l'écran :
  * - les clés de métadonnées passent par la route serveur `/api/aiometadata`
  *   pour créer la configuration AIO Metadata (voir app/api/aiometadata/route.ts) ;
- * - la clé TorBox est intégrée aux URLs de manifest Torrentio et Comet, car
- *   c'est le format imposé par ces addons.
+ * - les clés de débrideur (TorBox et/ou AllDebrid) sont intégrées aux URLs de
+ *   manifest Torrentio et Comet, car c'est le format imposé par ces addons.
  */
 
-import { buildLumioUrl, buildTorrentioUrl, buildCometUrl } from "./manifest-urls";
+import {
+  buildLumioUrl,
+  buildTorrentioUrl,
+  buildCometUrl,
+  debridEntries,
+  debridNames,
+} from "./manifest-urls";
 
 const SUPABASE_BASE = "https://api.nuvio.tv";
 const SUPABASE_ANON_KEY =
@@ -28,6 +34,7 @@ export interface NuvioProfile {
 
 export interface ApiKeysConfig {
   torboxApiKey?: string;
+  alldebridApiKey?: string;
   tmdbApiKey?: string;
   tvdbApiKey?: string;
   mdblistApiKey?: string;
@@ -105,6 +112,59 @@ const PROVIDER_CREDENTIAL_IDS = {
  * alphanumériques, tirets et underscores autorisés.
  */
 const ORIGIN_CLIENT_ID = "focale-configurator-web";
+
+/**
+ * Plateformes de synchronisation des réglages (`SyncPlatform.kt` de chaque
+ * client) : chacune lit et écrit sa propre ligne de `profile_settings_blobs`.
+ * Le téléviseur utilise la constante `SETTINGS_SYNC_PLATFORM = "tv"` de son
+ * `ProfileSettingsSyncService`, l'application mobile `MOBILE_SYNC_PLATFORM` et
+ * l'application desktop `DESKTOP_SYNC_PLATFORM`.
+ */
+const SETTINGS_PLATFORMS = ["tv", "mobile", "desktop"] as const;
+
+/** Section du blob de réglages qui porte la langue des métadonnées TMDB. */
+const TMDB_SETTINGS_FEATURE = "tmdb_settings";
+const TMDB_LANGUAGE_KEY = "tmdb_language";
+
+/**
+ * Valeur d'un réglage dans le blob : les clients Nuvio encodent chaque
+ * préférence en `{ "type": "string" | "boolean" | "int" | "float" | "string_set",
+ * "value": … }` (`SyncPreferenceJson.kt`, `encodePreferenceValue`).
+ */
+interface SyncPreference {
+  type: string;
+  value: unknown;
+}
+
+function readBlobLanguage(blob: unknown): string | null {
+  if (!blob || typeof blob !== "object") return null;
+  const features = (blob as { features?: Record<string, Record<string, SyncPreference>> }).features;
+  const value = features?.[TMDB_SETTINGS_FEATURE]?.[TMDB_LANGUAGE_KEY]?.value;
+  return typeof value === "string" ? value : null;
+}
+
+/**
+ * Complète un blob de réglages avec la langue demandée, sans toucher au reste :
+ * les clients Nuvio vident la section qu'ils importent avant d'y réécrire ce
+ * qu'elle contient (`importSettingsBlob`, `replaceFromSyncPayload`), donc un
+ * blob partiel effacerait les autres réglages du profil.
+ */
+function withTmdbLanguage(blob: unknown, language: string): Record<string, unknown> {
+  const base = blob && typeof blob === "object" ? (blob as Record<string, unknown>) : {};
+  const features = { ...(base.features as Record<string, unknown> | undefined) };
+  const tmdb = { ...(features[TMDB_SETTINGS_FEATURE] as Record<string, unknown> | undefined) };
+  tmdb[TMDB_LANGUAGE_KEY] = { type: "string", value: language } satisfies SyncPreference;
+  features[TMDB_SETTINGS_FEATURE] = tmdb;
+  return { ...base, version: base.version ?? 1, features };
+}
+
+/** Extrait `settings_json` d'une réponse de `sync_pull_profile_settings_blob`. */
+function settingsBlobValue(rows: unknown): unknown {
+  const row = Array.isArray(rows) ? rows[0] : rows;
+  if (!row || typeof row !== "object") return null;
+  const record = row as { settings_json?: unknown; settingsJson?: unknown };
+  return record.settings_json ?? record.settingsJson ?? null;
+}
 
 export const NuvioApi = {
   /**
@@ -252,6 +312,10 @@ export const NuvioApi = {
    * profil — alors que les apps TV et mobile utilisent une clé TMDB intégrée à
    * l'application.
    *
+   * AllDebrid n'a pas d'entrée ici : les services connectés de Nuvio ne
+   * connaissent que TorBox et Premiumize. Sa clé ne sert donc que dans les
+   * manifests Torrentio et Comet générés à l'étape 3.
+   *
    * Les identifiants sont relus après envoi pour confirmer qu'ils sont bien
    * stockés.
    *
@@ -317,6 +381,70 @@ export const NuvioApi = {
     }
 
     return { pushed: entries.length, providers, unverified, verificationError };
+  },
+
+  /**
+   * Règle la langue des métadonnées TMDB enrichies (« Intégrations → TMDB
+   * Enrichment → Language », en anglais par défaut) dans les réglages du profil,
+   * pour les trois plateformes Nuvio : téléviseur, mobile et ordinateur.
+   *
+   * Le blob de réglages existant de chaque plateforme est relu puis complété :
+   * les clients Nuvio vident la section qu'ils importent avant d'y réécrire ce
+   * qu'elle contient, donc pousser un blob partiel effacerait les autres
+   * réglages du profil. La valeur écrite est relue pour confirmation.
+   *
+   * @returns Les plateformes mises à jour, celles déjà en français, celles dont
+   *          la relecture n'a rien confirmé, et les échecs par plateforme.
+   */
+  async setTmdbLanguageFrench(
+    token: string,
+    profileId: number,
+    language = "fr",
+  ): Promise<{
+    updated: string[];
+    already: string[];
+    unverified: string[];
+    errors: string[];
+  }> {
+    const pull = (platform: string) =>
+      rpc("/rest/v1/rpc/sync_pull_profile_settings_blob", token, {
+        p_profile_id: profileId,
+        p_platform: platform,
+      });
+
+    const updated: string[] = [];
+    const already: string[] = [];
+    const unverified: string[] = [];
+    const errors: string[] = [];
+
+    for (const platform of SETTINGS_PLATFORMS) {
+      try {
+        const blob = settingsBlobValue(await pull(platform));
+
+        if (blob && readBlobLanguage(blob) === language) {
+          already.push(platform);
+          continue;
+        }
+
+        await rpc("/rest/v1/rpc/sync_push_profile_settings_blob", token, {
+          p_profile_id: profileId,
+          p_settings_json: withTmdbLanguage(blob, language),
+          p_platform: platform,
+          p_origin_client_id: ORIGIN_CLIENT_ID,
+        });
+
+        const readBack = settingsBlobValue(await pull(platform));
+        if (readBack && readBlobLanguage(readBack) === language) {
+          updated.push(platform);
+        } else {
+          unverified.push(platform);
+        }
+      } catch (err) {
+        errors.push(`${platform} (${err instanceof Error ? err.message : String(err)})`);
+      }
+    }
+
+    return { updated, already, unverified, errors };
   },
 
   /**
@@ -407,15 +535,21 @@ export const NuvioApi = {
   /**
    * Génère la liste des addons du pack France.
    *
-   * Torrentio et Comet sont générés à partir de la clé TorBox (formats d'URL
-   * stables). AIO Metadata, AIOStreams et Lumio ont une configuration stockée
-   * côté service : leur URL de manifest est fournie par l'utilisateur.
+   * Torrentio et Comet sont générés à partir des clés de débrideur saisies
+   * (TorBox et AllDebrid, dont les formats d'URL sont stables). AIO Metadata et
+   * Lumio ont une configuration stockée côté service : leur URL de manifest est
+   * fournie par l'utilisateur.
    */
   buildAddonsList(
     keys: ApiKeysConfig,
     manifests: { aioMetadataUrl?: string; lumioManifestUrl?: string } = {},
   ): NuvioAddonInstall[] {
-    const torboxKey = keys.torboxApiKey?.trim();
+    const debridKeys = {
+      torboxApiKey: keys.torboxApiKey,
+      alldebridApiKey: keys.alldebridApiKey,
+    };
+    const debrid = debridNames(debridKeys);
+    const hasDebrid = debridEntries(debridKeys).length > 0;
     const aioMetadataUrl = manifests.aioMetadataUrl?.trim();
     const lumioUrl = buildLumioUrl(manifests.lumioManifestUrl);
 
@@ -432,19 +566,25 @@ export const NuvioApi = {
     ];
 
     if (lumioUrl) {
-      addons.push({ name: "Lumio", url: lumioUrl, note: "Profil Lumio (débrideur TorBox, préférences FR)" });
+      addons.push({
+        name: "Lumio",
+        url: lumioUrl,
+        note: debrid
+          ? `Profil Lumio (débrideur ${debrid}, préférences FR)`
+          : "Profil Lumio (préférences FR)",
+      });
     }
 
     addons.push(
       {
         name: "Torrentio",
-        url: torboxKey ? buildTorrentioUrl(torboxKey) : "https://torrentio.strem.fun/manifest.json",
-        note: torboxKey ? "Scraper principal avec débrideur TorBox" : "Scraper sans débrideur",
+        url: hasDebrid ? buildTorrentioUrl(debridKeys) : "https://torrentio.strem.fun/manifest.json",
+        note: hasDebrid ? `Scraper principal avec débrideur ${debrid}` : "Scraper sans débrideur",
       },
       {
         name: "Comet",
-        url: torboxKey ? buildCometUrl(torboxKey) : "https://comet.elfhosted.com/manifest.json",
-        note: torboxKey ? "Scraper rapide avec débrideur TorBox" : "Scraper sans débrideur",
+        url: hasDebrid ? buildCometUrl(debridKeys) : "https://comet.elfhosted.com/manifest.json",
+        note: hasDebrid ? `Scraper rapide avec débrideur ${debrid}` : "Scraper sans débrideur",
       },
     );
 

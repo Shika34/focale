@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HeroSection } from "@/components/HeroSection";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
+import { AlldebridPromoBanner } from "@/components/AlldebridPromoBanner";
 import { ArrowUpRight } from "lucide-react";
 
 const SHOTS = [
@@ -44,7 +45,7 @@ const NUVIO_POINTS = [
 const LUMIO_POINTS = [
   {
     title: "Un addon, pas un catalogue",
-    body: "Lumio ne stocke rien : il branche votre débrideur TorBox sur Nuvio et charge la vidéo en une fraction de seconde. Vous gardez vos habitudes de lecture, avec des résultats triés pour la VF.",
+    body: "Lumio ne stocke rien : il branche votre débrideur — TorBox ou AllDebrid — sur Nuvio et charge la vidéo en une fraction de seconde. Vous gardez vos habitudes de lecture, avec des résultats triés pour la VF.",
   },
   {
     title: "Ce que votre profil Lumio décide",
@@ -62,8 +63,8 @@ const SECTIONS = [
     label: "Tutoriels",
     title: "Comptes, clés API, Lumio",
     description:
-      "Six tutoriels courts pour créer vos comptes et récupérer chaque clé, dans l'ordre où l'assistant vous les demande.",
-    meta: "6 tutoriels",
+      "Sept tutoriels courts pour créer vos comptes et récupérer chaque clé — Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio — dans l'ordre où l'assistant vous les demande.",
+    meta: "7 tutoriels",
   },
   {
     href: "/collections",
@@ -140,6 +141,10 @@ export default function HomePage() {
 
       <section className="mx-auto mb-20 max-w-6xl px-5 sm:px-8">
         <TorboxPromoBanner />
+      </section>
+
+      <section className="mx-auto mb-20 max-w-6xl px-5 sm:px-8">
+        <AlldebridPromoBanner />
       </section>
 
       <section className="mx-auto max-w-6xl px-5 pb-20 sm:px-8">

@@ -54,6 +54,14 @@ export function Footer() {
                   TorBox
                 </a>
                 <a
+                  href="https://alldebrid.fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  AllDebrid
+                </a>
+                <a
                   href="https://mylumio.tv"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -77,9 +85,9 @@ export function Footer() {
         <p className="mt-10 border-t border-line pt-6 text-xs leading-relaxed text-mist-500">
           {SITE.name} n&apos;héberge ni ne diffuse aucun contenu : la
           configuration s&apos;appuie sur vos propres comptes et services
-          (Nuvio, TorBox, Lumio, AIO Metadata). Vos clés d&apos;API sont saisies
-          dans votre navigateur, transmises aux seuls services concernés et
-          conservées nulle part sur ce site.
+          (Nuvio, TorBox ou AllDebrid, Lumio, AIO Metadata). Vos clés
+          d&apos;API sont saisies dans votre navigateur, transmises aux seuls
+          services concernés et conservées nulle part sur ce site.
         </p>
       </div>
     </footer>

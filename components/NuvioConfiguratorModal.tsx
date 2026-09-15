@@ -432,6 +432,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [tvdbKey, setTvdbKey] = useState("");
   const [mdblistKey, setMdblistKey] = useState("");
   const [torboxKey, setTorboxKey] = useState("");
+  const [alldebridKey, setAlldebridKey] = useState("");
   const [protectionPassword, setProtectionPassword] = useState("");
   const [aioMetadataUrl, setAioMetadataUrl] = useState("");
   const [lumioManifestUrl, setLumioManifestUrl] = useState("");
@@ -452,8 +453,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [profileName, setProfileName] = useState("Nuvio France FR");
   const [targetProfileName, setTargetProfileName] = useState("Nuvio France FR");
   const [settingsNotice, setSettingsNotice] = useState("");
-  /** Clés manquantes à l'étape 2, pour la demande de confirmation. */
-  const [missingKeysWarning, setMissingKeysWarning] = useState<string[] | null>(null);
+  /** Informations manquantes à l'étape 2, pour la demande de confirmation. */
+  const [missingKeysWarning, setMissingKeysWarning] = useState<{
+    debrid: boolean;
+    tmdb: boolean;
+  } | null>(null);
   const [lumioUrlCopied, setLumioUrlCopied] = useState(false);
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
   const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verified' | 'error'>('idle');
@@ -511,10 +515,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     }
 
     if (step === 2) {
-      const missing: string[] = [];
-      if (!torboxKey.trim()) missing.push("TorBox");
-      if (!tmdbKey.trim()) missing.push("TMDB");
-      if (missing.length > 0) {
+      // Un seul débrideur suffit : TorBox ou AllDebrid.
+      const missing = {
+        debrid: !torboxKey.trim() && !alldebridKey.trim(),
+        tmdb: !tmdbKey.trim(),
+      };
+      if (missing.debrid || missing.tmdb) {
         setMissingKeysWarning(missing);
         return;
       }
@@ -592,7 +598,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Installation des addons sélectionnés",
         percent: 82,
-        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur TorBox…",
+        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur…",
       });
 
       const addons = NuvioApi.buildAddonsList(
@@ -601,6 +607,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           tvdbApiKey: tvdbKey,
           mdblistApiKey: mdblistKey,
           torboxApiKey: torboxKey,
+          alldebridApiKey: alldebridKey,
         },
         { aioMetadataUrl, lumioManifestUrl },
       );
@@ -619,7 +626,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         });
         if (seededKeys.pushed === 0) {
           noticeParts.push(
-            "Aucune clé API n'était renseignée à l'étape 2 : sans clé TMDB dans le profil, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
+            "Aucune clé de métadonnées ni clé TorBox n'a été déposée dans ce profil : sans clé TMDB, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
           );
         } else if (seededKeys.verificationError) {
           noticeParts.push(
@@ -639,6 +646,44 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       }
 
       setSettingsNotice(noticeParts.join(" "));
+
+      setProgressState({
+        step: "Réglages du profil",
+        percent: 92,
+        details:
+          "Langue des métadonnées TMDB réglée sur le français (téléviseur, mobile, ordinateur)…",
+      });
+
+      // Les clients Nuvio démarrent avec « Language : English » : on règle le
+      // réglage du profil pour les trois plateformes avant de rendre la main.
+      try {
+        const tmdbLanguage = await NuvioApi.setTmdbLanguageFrench(
+          authRes.token,
+          targetProfile.profile_index,
+        );
+        if (tmdbLanguage.errors.length > 0) {
+          noticeParts.push(
+            `La langue TMDB n'a pas pu être passée en français sur ${formatFrenchList(
+              tmdbLanguage.errors,
+            )}. Réglez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+          );
+        }
+        if (tmdbLanguage.unverified.length > 0) {
+          noticeParts.push(
+            `Langue TMDB envoyée mais non confirmée sur ${formatFrenchList(
+              tmdbLanguage.unverified,
+            )}. Vérifiez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+          );
+        }
+        setSettingsNotice(noticeParts.join(" "));
+      } catch (languageErr) {
+        noticeParts.push(
+          `La langue TMDB n'a pas pu être passée en français (${
+            languageErr instanceof Error ? languageErr.message : "erreur inconnue"
+          }). Réglez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+        );
+        setSettingsNotice(noticeParts.join(" "));
+      }
 
       setProgressState({
         step: "Configuration terminée",
@@ -843,9 +888,10 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       2. Ajoutez vos clés API
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
-                      La clé API TorBox est indispensable pour regarder les films
-                      et les séries : elle débrite vos flux et sert aussi à
-                      configurer Lumio, Torrentio et Comet. Les clés de
+                      Il vous faut au moins une clé de débrideur — TorBox ou
+                      AllDebrid, les deux si vous avez les deux comptes : elle
+                      débrite vos flux et sert aussi à configurer Lumio,
+                      Torrentio et Comet. Les clés de
                       métadonnées (TMDB, TheTVDB et MDBList) enrichissent les
                       affiches, les fiches et les catalogues d&apos;AIO Metadata.
                       La clé TMDB est enregistrée dans votre profil : elle est
@@ -855,13 +901,26 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   </div>
 
                   <GuideField
-                    label="TorBox (obligatoire)"
-                    description="Indispensable pour regarder les films et les séries : débrite vos flux via votre compte TorBox."
+                    label="TorBox"
+                    description="Débrite vos flux via votre compte TorBox. Nuvio l'intègre nativement, et le parrainage offre jusqu'à 84 jours."
                     value={torboxKey}
                     placeholder="Collez votre clé API TorBox…"
                     guide={PROVIDER_GUIDES.torbox}
+                    secret
                     onChange={(value) => {
                       setTorboxKey(value);
+                      setMissingKeysWarning(null);
+                    }}
+                  />
+                  <GuideField
+                    label="AllDebrid"
+                    description="Votre clé AllDebrid alimente Torrentio, Comet et votre profil Lumio, exactement comme celle de TorBox. Vous pouvez renseigner les deux débrideurs si vous avez les deux comptes."
+                    value={alldebridKey}
+                    placeholder="Collez votre clé API AllDebrid…"
+                    guide={PROVIDER_GUIDES.alldebrid}
+                    secret
+                    onChange={(value) => {
+                      setAlldebridKey(value);
                       setMissingKeysWarning(null);
                     }}
                   />
@@ -871,6 +930,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     value={tmdbKey}
                     placeholder="Collez votre clé API TMDB…"
                     guide={PROVIDER_GUIDES.tmdb}
+                    secret
                     onChange={(value) => {
                       setTmdbKey(value);
                       setMissingKeysWarning(null);
@@ -882,6 +942,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     value={tvdbKey}
                     placeholder="Collez votre clé API TVDB…"
                     guide={PROVIDER_GUIDES.tvdb}
+                    secret
                     onChange={setTvdbKey}
                   />
                   <GuideField
@@ -890,6 +951,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     value={mdblistKey}
                     placeholder="Collez votre clé API MDBList…"
                     guide={PROVIDER_GUIDES.mdblist}
+                    secret
                     onChange={setMdblistKey}
                   />
 
@@ -898,8 +960,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <strong className="text-mist-100">
                         Configuration automatique :
                       </strong>{" "}
-                      votre clé TorBox personnalise Torrentio et Comet, et vos clés
-                      TMDB, TheTVDB et MDBList sont injectées dans votre
+                      votre clé de débrideur personnalise Torrentio et Comet, et
+                      vos clés TMDB, TheTVDB et MDBList sont injectées dans votre
                       configuration AIO Metadata lors de l&apos;envoi à Nuvio.
                     </p>
                   </div>
@@ -913,20 +975,21 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         <AlertCircle className="w-4 h-4 text-gold-400 shrink-0 mt-0.5" />
                         <div className="text-xs text-mist-200 leading-relaxed space-y-2">
                           <p className="font-bold text-mist-100">
-                            Vous n&apos;avez pas renseigné{" "}
-                            {missingKeysWarning.length > 1 ? "vos clés API" : "votre clé API"}{" "}
-                            {formatFrenchList(missingKeysWarning)}. Voulez-vous
-                            continuer ?
+                            {missingKeysWarning.debrid && missingKeysWarning.tmdb
+                              ? "Vous n'avez renseigné ni clé de débrideur, ni clé TMDB. Voulez-vous continuer ?"
+                              : missingKeysWarning.debrid
+                                ? "Vous n'avez renseigné aucune clé de débrideur. Voulez-vous continuer ?"
+                                : "Vous n'avez pas renseigné votre clé API TMDB. Voulez-vous continuer ?"}
                           </p>
-                          {missingKeysWarning.includes("TorBox") && (
+                          {missingKeysWarning.debrid && (
                             <p>
-                              Sans clé API TorBox, aucun flux vidéo ne se lancera :
-                              c&apos;est elle qui débrite les liens trouvés par
-                              Torrentio et Comet, et qui alimente votre profil
-                              Lumio.
+                              Sans clé de débrideur (TorBox ou AllDebrid), aucun
+                              flux vidéo ne se lancera : c&apos;est elle qui
+                              débrite les liens trouvés par Torrentio et Comet,
+                              et qui alimente votre profil Lumio.
                             </p>
                           )}
-                          {missingKeysWarning.includes("TMDB") && (
+                          {missingKeysWarning.tmdb && (
                             <p>
                               Sans clé API TMDB, les catalogues des collections
                               resteront vides dans l&apos;application Nuvio
@@ -984,7 +1047,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
                   <GuideField
                     label="Lumio"
-                    description="Films et séries en français via votre profil Lumio (débrideur TorBox)."
+                    description="Films et séries en français via votre profil Lumio, branché sur votre débrideur TorBox ou AllDebrid."
                     value={lumioManifestUrl}
                     placeholder="https://mylumio.tv/xxxxxx/manifest.json"
                     guide={PROVIDER_GUIDES.lumio}
@@ -1053,8 +1116,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     <div>
                       • <span className="text-mist-300">Profil créé</span> :{" "}
                       « {profileName.trim() || "Nuvio France FR"} » — réutilisé s&apos;il
-                      existe déjà. Ses clés d&apos;API (TMDB, MDBList, TorBox) sont
-                      reprises de l&apos;étape 2 : Nuvio Desktop en a besoin.
+                      existe déjà. Vos clés TMDB et MDBList y sont reprises de
+                      l&apos;étape 2, ainsi que votre clé TorBox si vous en avez
+                      une : Nuvio Desktop en a besoin.
+                    </div>
+                    <div>
+                      • <span className="text-mist-300">Réglages</span> : langue
+                      des métadonnées TMDB passée en français, sur téléviseur,
+                      mobile et ordinateur (English par défaut dans Nuvio).
                     </div>
                     <div>
                       •{" "}
@@ -1078,9 +1147,20 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       .
                     </div>
                     <div>
+                      • <span className="text-mist-300">Débrideur</span> :{" "}
+                      {torboxKey.trim() && alldebridKey.trim()
+                        ? "TorBox et AllDebrid — les deux clés placées dans Torrentio, Comet et Lumio"
+                        : torboxKey.trim()
+                          ? "TorBox — placé dans Torrentio, Comet et Lumio"
+                          : alldebridKey.trim()
+                            ? "AllDebrid — placé dans Torrentio, Comet et Lumio"
+                            : "aucune clé fournie : Torrentio et Comet seront installés sans débrideur"}
+                      .
+                    </div>
+                    <div>
                       • <span className="text-mist-300">Addons</span> :
-                      Cinemeta, OpenSubtitles v3, Torrentio (TorBox) et Comet
-                      (TorBox).
+                      Cinemeta, OpenSubtitles v3, Torrentio et Comet, réglés sur
+                      votre débrideur.
                     </div>
                   </div>
 
