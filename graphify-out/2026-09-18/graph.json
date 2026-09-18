@@ -9,7 +9,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "debridentry",
@@ -22,7 +22,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "debridkeys",
@@ -35,7 +35,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "apikeysconfig",
@@ -48,7 +48,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "nuvioaddoninstall",
@@ -61,7 +61,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "nuvioprofile",
@@ -74,7 +74,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "syncpreference",
@@ -82,116 +82,12 @@
       "source_location": "L134"
     },
     {
-      "id": "app_api_aiometadata_route_saverequest",
-      "label": "SaveRequest",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "route.ts",
-      "file_type": "code",
-      "norm_label": "saverequest",
-      "source_file": "app/api/aiometadata/route.ts",
-      "source_location": "L24"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_aiometadatafieldprops",
-      "label": "AioMetadataFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "aiometadatafieldprops",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L201"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_guidefieldprops",
-      "label": "GuideFieldProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "guidefieldprops",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L35"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_nuvioconfiguratormodalprops",
-      "label": "NuvioConfiguratorModalProps",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "nuvioconfiguratormodalprops",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L26"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_viewstate",
-      "label": "ViewState",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "viewstate",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L31"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_wizardstep",
-      "label": "WizardStep",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "wizardstep",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L32"
-    },
-    {
-      "id": "lib_provider_guides_guidestep",
-      "label": "GuideStep",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "guidestep",
-      "source_file": "lib/provider-guides.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "lib_provider_guides_providerguide",
-      "label": "ProviderGuide",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "providerguide",
-      "source_file": "lib/provider-guides.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "components_collectionbrowser_collectionbrowserprops",
       "label": "CollectionBrowserProps",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 7,
+      "community": 2,
       "community_name": "collections/page.tsx",
       "file_type": "code",
       "norm_label": "collectionbrowserprops",
@@ -204,7 +100,7 @@
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
-      "community": 7,
+      "community": 2,
       "community_name": "collections/page.tsx",
       "file_type": "code",
       "norm_label": "collectionsummaryitem",
@@ -212,11 +108,115 @@
       "source_location": "L3"
     },
     {
+      "id": "app_api_aiometadata_route_saverequest",
+      "label": "SaveRequest",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "saverequest",
+      "source_file": "app/api/aiometadata/route.ts",
+      "source_location": "L24"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_aiometadatafieldprops",
+      "label": "AioMetadataFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "aiometadatafieldprops",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L201"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_guidefieldprops",
+      "label": "GuideFieldProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "guidefieldprops",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L35"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_nuvioconfiguratormodalprops",
+      "label": "NuvioConfiguratorModalProps",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "nuvioconfiguratormodalprops",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L26"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_viewstate",
+      "label": "ViewState",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "viewstate",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L31"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_wizardstep",
+      "label": "WizardStep",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "wizardstep",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L32"
+    },
+    {
+      "id": "lib_provider_guides_guidestep",
+      "label": "GuideStep",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "guidestep",
+      "source_file": "lib/provider-guides.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "lib_provider_guides_providerguide",
+      "label": "ProviderGuide",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "providerguide",
+      "source_file": "lib/provider-guides.ts",
+      "source_location": "L14"
+    },
+    {
       "id": "lib_manifest_urls_base64manifesturl",
       "label": "base64ManifestUrl()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "base64manifesturl()",
@@ -228,7 +228,7 @@
       "label": "buildCometUrl()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "buildcometurl()",
@@ -240,7 +240,7 @@
       "label": "buildTorrentioUrl()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "buildtorrentiourl()",
@@ -252,7 +252,7 @@
       "label": "debridEntries()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "debridentries()",
@@ -260,11 +260,23 @@
       "source_location": "L39"
     },
     {
+      "id": "lib_manifest_urls_debridnames",
+      "label": "debridNames()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "debridnames()",
+      "source_file": "lib/manifest-urls.ts",
+      "source_location": "L47"
+    },
+    {
       "id": "lib_nuvio_api_anonheaders",
       "label": "anonHeaders()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "anonheaders()",
@@ -276,7 +288,7 @@
       "label": "authHeaders()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "authheaders()",
@@ -288,7 +300,7 @@
       "label": "fetchWithRetry()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "fetchwithretry()",
@@ -300,7 +312,7 @@
       "label": "readBlobLanguage()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "readbloblanguage()",
@@ -312,7 +324,7 @@
       "label": "rpc()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "rpc()",
@@ -324,7 +336,7 @@
       "label": "settingsBlobValue()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "settingsblobvalue()",
@@ -336,7 +348,7 @@
       "label": "withTmdbLanguage()",
       "_callable": true,
       "_origin": "ast",
-      "community": 1,
+      "community": 14,
       "community_name": "nuvio-api.ts",
       "file_type": "code",
       "norm_label": "withtmdblanguage()",
@@ -344,167 +356,23 @@
       "source_location": "L152"
     },
     {
-      "id": "app_api_aiometadata_route_post",
-      "label": "POST()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "route.ts",
-      "file_type": "code",
-      "norm_label": "post()",
-      "source_file": "app/api/aiometadata/route.ts",
-      "source_location": "L39"
-    },
-    {
-      "id": "app_api_aiometadata_route_readkey",
-      "label": "readKey()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "route.ts",
-      "file_type": "code",
-      "norm_label": "readkey()",
-      "source_file": "app/api/aiometadata/route.ts",
-      "source_location": "L32"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_accountquestion",
-      "label": "AccountQuestion()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "accountquestion()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L49"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_aiometadatafield",
-      "label": "AioMetadataField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "aiometadatafield()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L210"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_directkeylink",
-      "label": "DirectKeyLink()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "directkeylink()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L104"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_formatfrenchlist",
-      "label": "formatFrenchList()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "formatfrenchlist()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L119"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_guidefield",
-      "label": "GuideField()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "guidefield()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L356"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_guidepanel",
-      "label": "GuidePanel()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "guidepanel()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L125"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_guidetoggle",
-      "label": "GuideToggle()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "guidetoggle()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L83"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_nuvioconfiguratormodal",
-      "label": "NuvioConfiguratorModal()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "nuvioconfiguratormodal()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L425"
-    },
-    {
-      "id": "lib_manifest_urls_buildlumiourl",
-      "label": "buildLumioUrl()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "buildlumiourl()",
-      "source_file": "lib/manifest-urls.ts",
-      "source_location": "L62"
-    },
-    {
-      "id": "lib_manifest_urls_debridnames",
-      "label": "debridNames()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "debridnames()",
-      "source_file": "lib/manifest-urls.ts",
-      "source_location": "L47"
-    },
-    {
       "id": "app_layout_rootlayout",
       "label": "RootLayout()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "rootlayout()",
       "source_file": "app/layout.tsx",
-      "source_location": "L49"
+      "source_location": "L48"
     },
     {
       "id": "components_footer_footer",
       "label": "Footer()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "footer()",
@@ -516,12 +384,108 @@
       "label": "Navbar()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "navbar()",
       "source_file": "components/Navbar.tsx",
       "source_location": "L16"
+    },
+    {
+      "id": "app_collections_page_collectionspage",
+      "label": "CollectionsPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "collectionspage()",
+      "source_file": "app/collections/page.tsx",
+      "source_location": "L12"
+    },
+    {
+      "id": "components_collectionbrowser_collectionbrowser",
+      "label": "CollectionBrowser()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "collectionbrowser()",
+      "source_file": "components/CollectionBrowser.tsx",
+      "source_location": "L20"
+    },
+    {
+      "id": "components_herosection_herosection",
+      "label": "HeroSection()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "herosection()",
+      "source_file": "components/HeroSection.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "lib_nuvio_data_getcollectionssummary",
+      "label": "getCollectionsSummary()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "getcollectionssummary()",
+      "source_file": "lib/nuvio-data.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "lib_nuvio_data_getstats",
+      "label": "getStats()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "getstats()",
+      "source_file": "lib/nuvio-data.ts",
+      "source_location": "L23"
+    },
+    {
+      "id": "app_api_aiometadata_route_post",
+      "label": "POST()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "post()",
+      "source_file": "app/api/aiometadata/route.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "app_api_aiometadata_route_readkey",
+      "label": "readKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "readkey()",
+      "source_file": "app/api/aiometadata/route.ts",
+      "source_location": "L32"
+    },
+    {
+      "id": "app_page_homepage",
+      "label": "HomePage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "homepage()",
+      "source_file": "app/page.tsx",
+      "source_location": "L79"
     },
     {
       "id": "app_tutoriel_page_tutorielpage",
@@ -534,6 +498,18 @@
       "norm_label": "tutorielpage()",
       "source_file": "app/tutoriel/page.tsx",
       "source_location": "L11"
+    },
+    {
+      "id": "components_alldebridpromobanner_alldebridpromobanner",
+      "label": "AlldebridPromoBanner()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "alldebridpromobanner()",
+      "source_file": "components/AlldebridPromoBanner.tsx",
+      "source_location": "L15"
     },
     {
       "id": "components_torboxpromobanner_torboxpromobanner",
@@ -560,88 +536,112 @@
       "source_location": "L92"
     },
     {
-      "id": "app_page_homepage",
-      "label": "HomePage()",
+      "id": "components_nuvioconfiguratormodal_accountquestion",
+      "label": "AccountQuestion()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "app/page.tsx",
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "homepage()",
-      "source_file": "app/page.tsx",
-      "source_location": "L79"
+      "norm_label": "accountquestion()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L49"
     },
     {
-      "id": "components_alldebridpromobanner_alldebridpromobanner",
-      "label": "AlldebridPromoBanner()",
+      "id": "components_nuvioconfiguratormodal_aiometadatafield",
+      "label": "AioMetadataField()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "app/page.tsx",
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "alldebridpromobanner()",
-      "source_file": "components/AlldebridPromoBanner.tsx",
-      "source_location": "L15"
+      "norm_label": "aiometadatafield()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L210"
     },
     {
-      "id": "components_herosection_herosection",
-      "label": "HeroSection()",
+      "id": "components_nuvioconfiguratormodal_directkeylink",
+      "label": "DirectKeyLink()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "app/page.tsx",
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "herosection()",
-      "source_file": "components/HeroSection.tsx",
-      "source_location": "L9"
+      "norm_label": "directkeylink()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L104"
     },
     {
-      "id": "lib_nuvio_data_getstats",
-      "label": "getStats()",
+      "id": "components_nuvioconfiguratormodal_formatfrenchlist",
+      "label": "formatFrenchList()",
       "_callable": true,
       "_origin": "ast",
       "community": 6,
-      "community_name": "app/page.tsx",
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "getstats()",
-      "source_file": "lib/nuvio-data.ts",
-      "source_location": "L23"
+      "norm_label": "formatfrenchlist()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L119"
     },
     {
-      "id": "app_collections_page_collectionspage",
-      "label": "CollectionsPage()",
+      "id": "components_nuvioconfiguratormodal_guidefield",
+      "label": "GuideField()",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "collectionspage()",
-      "source_file": "app/collections/page.tsx",
-      "source_location": "L12"
+      "norm_label": "guidefield()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L356"
     },
     {
-      "id": "components_collectionbrowser_collectionbrowser",
-      "label": "CollectionBrowser()",
+      "id": "components_nuvioconfiguratormodal_guidepanel",
+      "label": "GuidePanel()",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "collectionbrowser()",
-      "source_file": "components/CollectionBrowser.tsx",
-      "source_location": "L20"
+      "norm_label": "guidepanel()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L125"
     },
     {
-      "id": "lib_nuvio_data_getcollectionssummary",
-      "label": "getCollectionsSummary()",
+      "id": "components_nuvioconfiguratormodal_guidetoggle",
+      "label": "GuideToggle()",
       "_callable": true,
       "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
-      "norm_label": "getcollectionssummary()",
-      "source_file": "lib/nuvio-data.ts",
-      "source_location": "L19"
+      "norm_label": "guidetoggle()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L83"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_nuvioconfiguratormodal",
+      "label": "NuvioConfiguratorModal()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "nuvioconfiguratormodal()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L425"
+    },
+    {
+      "id": "lib_manifest_urls_buildlumiourl",
+      "label": "buildLumioUrl()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "buildlumiourl()",
+      "source_file": "lib/manifest-urls.ts",
+      "source_location": "L62"
     },
     {
       "id": "package",
@@ -674,7 +674,7 @@
       "file_type": "code",
       "norm_label": "lucide-react",
       "source_file": "package.json",
-      "source_location": "L13"
+      "source_location": "L12"
     },
     {
       "id": "package_dependencies_next",
@@ -685,7 +685,7 @@
       "file_type": "code",
       "norm_label": "next",
       "source_file": "package.json",
-      "source_location": "L14"
+      "source_location": "L13"
     },
     {
       "id": "package_dependencies_react",
@@ -696,7 +696,7 @@
       "file_type": "code",
       "norm_label": "react",
       "source_file": "package.json",
-      "source_location": "L15"
+      "source_location": "L14"
     },
     {
       "id": "package_dependencies_react_dom",
@@ -707,18 +707,7 @@
       "file_type": "code",
       "norm_label": "react-dom",
       "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "package_dependencies_vercel_analytics",
-      "label": "@vercel/analytics",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "code",
-      "norm_label": "@vercel/analytics",
-      "source_file": "package.json",
-      "source_location": "L12"
+      "source_location": "L15"
     },
     {
       "id": "package_name",
@@ -839,7 +828,7 @@
       "file_type": "concept",
       "norm_label": "autoprefixer",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L21"
     },
     {
       "id": "ref_eslint",
@@ -850,7 +839,7 @@
       "file_type": "concept",
       "norm_label": "eslint",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L22"
     },
     {
       "id": "ref_eslint_config_next",
@@ -861,7 +850,7 @@
       "file_type": "concept",
       "norm_label": "eslint-config-next",
       "source_file": "package.json",
-      "source_location": "L24"
+      "source_location": "L23"
     },
     {
       "id": "ref_postcss",
@@ -872,7 +861,7 @@
       "file_type": "concept",
       "norm_label": "postcss",
       "source_file": "package.json",
-      "source_location": "L25"
+      "source_location": "L24"
     },
     {
       "id": "ref_react_dom",
@@ -883,7 +872,7 @@
       "file_type": "concept",
       "norm_label": "react-dom",
       "source_file": "package.json",
-      "source_location": "L16"
+      "source_location": "L15"
     },
     {
       "id": "ref_tailwindcss",
@@ -894,7 +883,7 @@
       "file_type": "concept",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L26"
+      "source_location": "L25"
     },
     {
       "id": "ref_types_node",
@@ -905,7 +894,7 @@
       "file_type": "concept",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L19"
+      "source_location": "L18"
     },
     {
       "id": "ref_types_react",
@@ -916,7 +905,7 @@
       "file_type": "concept",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L20"
+      "source_location": "L19"
     },
     {
       "id": "ref_types_react_dom",
@@ -927,7 +916,7 @@
       "file_type": "concept",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L20"
     },
     {
       "id": "ref_typescript",
@@ -938,185 +927,318 @@
       "file_type": "concept",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L27"
+      "source_location": "L26"
     },
     {
-      "id": "ref_vercel_analytics",
-      "label": "@vercel/analytics",
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "package.json",
-      "file_type": "concept",
-      "norm_label": "@vercel/analytics",
-      "source_file": "package.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "lib_manifest_urls",
-      "label": "manifest-urls.ts",
+      "id": "tsconfig",
+      "label": "tsconfig.json",
       "_origin": "ast",
       "community": 1,
-      "community_name": "nuvio-api.ts",
+      "community_name": "compilerOptions",
       "file_type": "code",
-      "norm_label": "manifest-urls.ts",
-      "source_file": "lib/manifest-urls.ts",
+      "norm_label": "tsconfig.json",
+      "source_file": "tsconfig.json",
       "source_location": "L1"
     },
     {
-      "id": "lib_manifest_urls_debriders",
-      "label": "DEBRIDERS",
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
       "_origin": "ast",
       "community": 1,
-      "community_name": "nuvio-api.ts",
+      "community_name": "compilerOptions",
       "file_type": "code",
-      "norm_label": "debriders",
-      "source_file": "lib/manifest-urls.ts",
-      "source_location": "L33"
+      "norm_label": "compileroptions",
+      "source_file": "tsconfig.json",
+      "source_location": "L2"
     },
     {
-      "id": "lib_nuvio_api",
-      "label": "nuvio-api.ts",
+      "id": "tsconfig_compileroptions_allowjs",
+      "label": "allowJs",
       "_origin": "ast",
       "community": 1,
-      "community_name": "nuvio-api.ts",
+      "community_name": "compilerOptions",
       "file_type": "code",
-      "norm_label": "nuvio-api.ts",
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L1"
+      "norm_label": "allowjs",
+      "source_file": "tsconfig.json",
+      "source_location": "L9"
     },
     {
-      "id": "lib_nuvio_api_nuvioapi",
-      "label": "NuvioApi",
+      "id": "tsconfig_compileroptions_esmoduleinterop",
+      "label": "esModuleInterop",
       "_origin": "ast",
       "community": 1,
-      "community_name": "nuvio-api.ts",
+      "community_name": "compilerOptions",
       "file_type": "code",
-      "norm_label": "nuvioapi",
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L169"
-    },
-    {
-      "id": "lib_nuvio_api_provider_credential_ids",
-      "label": "PROVIDER_CREDENTIAL_IDS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "nuvio-api.ts",
-      "file_type": "code",
-      "norm_label": "provider_credential_ids",
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L101"
-    },
-    {
-      "id": "lib_nuvio_api_settings_platforms",
-      "label": "SETTINGS_PLATFORMS",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "nuvio-api.ts",
-      "file_type": "code",
-      "norm_label": "settings_platforms",
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L123"
-    },
-    {
-      "id": "readme",
-      "label": "README.md",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Focale",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "readme.md",
-      "source_file": "README.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "readme_commandes",
-      "label": "Commandes",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Focale",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "commandes",
-      "source_file": "README.md",
+      "norm_label": "esmoduleinterop",
+      "source_file": "tsconfig.json",
       "source_location": "L13"
     },
     {
-      "id": "readme_d\u00e9ploiement_vercel",
-      "label": "D\u00e9ploiement (Vercel)",
+      "id": "tsconfig_compileroptions_incremental",
+      "label": "incremental",
       "_origin": "ast",
-      "community": 10,
-      "community_name": "Focale",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "deploiement (vercel)",
-      "source_file": "README.md",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "incremental",
+      "source_file": "tsconfig.json",
+      "source_location": "L19"
+    },
+    {
+      "id": "tsconfig_compileroptions_isolatedmodules",
+      "label": "isolatedModules",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "isolatedmodules",
+      "source_file": "tsconfig.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "tsconfig_compileroptions_jsx",
+      "label": "jsx",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "jsx",
+      "source_file": "tsconfig.json",
+      "source_location": "L18"
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "lib",
+      "source_file": "tsconfig.json",
+      "source_location": "L4"
+    },
+    {
+      "id": "tsconfig_compileroptions_module",
+      "label": "module",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "module",
+      "source_file": "tsconfig.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "tsconfig_compileroptions_moduleresolution",
+      "label": "moduleResolution",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "moduleresolution",
+      "source_file": "tsconfig.json",
+      "source_location": "L15"
+    },
+    {
+      "id": "tsconfig_compileroptions_noemit",
+      "label": "noEmit",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "noemit",
+      "source_file": "tsconfig.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "tsconfig_compileroptions_paths",
+      "label": "paths",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "paths",
+      "source_file": "tsconfig.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "tsconfig_compileroptions_plugins",
+      "label": "plugins",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "plugins",
+      "source_file": "tsconfig.json",
+      "source_location": "L20"
+    },
+    {
+      "id": "tsconfig_compileroptions_resolvejsonmodule",
+      "label": "resolveJsonModule",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "resolvejsonmodule",
+      "source_file": "tsconfig.json",
+      "source_location": "L16"
+    },
+    {
+      "id": "tsconfig_compileroptions_skiplibcheck",
+      "label": "skipLibCheck",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "skiplibcheck",
+      "source_file": "tsconfig.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "tsconfig_compileroptions_strict",
+      "label": "strict",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "strict",
+      "source_file": "tsconfig.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "tsconfig_compileroptions_target",
+      "label": "target",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "target",
+      "source_file": "tsconfig.json",
+      "source_location": "L3"
+    },
+    {
+      "id": "tsconfig_exclude",
+      "label": "exclude",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "exclude",
+      "source_file": "tsconfig.json",
+      "source_location": "L38"
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "compilerOptions",
+      "file_type": "code",
+      "norm_label": "include",
+      "source_file": "tsconfig.json",
       "source_location": "L31"
     },
     {
-      "id": "readme_focale",
-      "label": "Focale",
+      "id": "claude",
+      "label": "CLAUDE.md",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Focale",
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
       "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "focale",
-      "source_file": "README.md",
+      "node_kind": "page",
+      "norm_label": "claude.md",
+      "source_file": "CLAUDE.md",
       "source_location": "L1"
     },
     {
-      "id": "readme_notes_d_exploitation",
-      "label": "Notes d'exploitation",
+      "id": "claude_claude_md_nuvio_collection",
+      "label": "CLAUDE.md \u2014 NUVIO Collection",
       "_origin": "ast",
       "community": 10,
-      "community_name": "Focale",
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "notes d'exploitation",
-      "source_file": "README.md",
-      "source_location": "L41"
-    },
-    {
-      "id": "readme_routes",
-      "label": "Routes",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Focale",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "routes",
-      "source_file": "README.md",
-      "source_location": "L22"
-    },
-    {
-      "id": "readme_stack",
-      "label": "Stack",
-      "_origin": "ast",
-      "community": 10,
-      "community_name": "Focale",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "stack",
-      "source_file": "README.md",
-      "source_location": "L8"
-    },
-    {
-      "id": "app_api_aiometadata_route",
-      "label": "route.ts",
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "route.ts",
-      "file_type": "code",
-      "norm_label": "route.ts",
-      "source_file": "app/api/aiometadata/route.ts",
+      "norm_label": "claude.md \u2014 nuvio collection",
+      "source_file": "CLAUDE.md",
       "source_location": "L1"
+    },
+    {
+      "id": "claude_coding_principles_karpathy_style",
+      "label": "Coding Principles (Karpathy Style)",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "coding principles (karpathy style)",
+      "source_file": "CLAUDE.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "claude_development_directives",
+      "label": "Development Directives",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "development directives",
+      "source_file": "CLAUDE.md",
+      "source_location": "L19"
+    },
+    {
+      "id": "claude_graphify_tool",
+      "label": "Graphify Tool",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "graphify tool",
+      "source_file": "CLAUDE.md",
+      "source_location": "L27"
+    },
+    {
+      "id": "claude_stack_commands",
+      "label": "Stack & Commands",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "stack & commands",
+      "source_file": "CLAUDE.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "claude_this_is_not_the_next_js_you_know",
+      "label": "This is NOT the Next.js you know",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "this is not the next.js you know",
+      "source_file": "CLAUDE.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "claude_workflow_startup",
+      "label": "Workflow & Startup",
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "workflow & startup",
+      "source_file": "CLAUDE.md",
+      "source_location": "L3"
     },
     {
       "id": "context_handoff",
       "label": "CONTEXT_HANDOFF.md",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "community_name": "Context Handoff \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "page",
@@ -1128,7 +1250,7 @@
       "id": "context_handoff_1_torbox_referral_data",
       "label": "1. TorBox Referral Data",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "community_name": "Context Handoff \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "heading",
@@ -1137,10 +1259,22 @@
       "source_location": "L3"
     },
     {
+      "id": "context_handoff_2_project_status",
+      "label": "2. Project Status",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Context Handoff \u2014 NUVIO Collection",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. project status",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L8"
+    },
+    {
       "id": "context_handoff_3_next_steps",
       "label": "3. Next Steps",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "community_name": "Context Handoff \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "heading",
@@ -1152,7 +1286,7 @@
       "id": "context_handoff_4_end_of_session_instructions_ai",
       "label": "4. End of Session Instructions (AI)",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "community_name": "Context Handoff \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "heading",
@@ -1164,7 +1298,7 @@
       "id": "context_handoff_context_handoff_nuvio_collection",
       "label": "Context Handoff \u2014 NUVIO Collection",
       "_origin": "ast",
-      "community": 12,
+      "community": 11,
       "community_name": "Context Handoff \u2014 NUVIO Collection",
       "file_type": "document",
       "node_kind": "heading",
@@ -1176,7 +1310,7 @@
       "id": "next",
       "label": "next",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "community_name": "next.config.mjs",
       "confidence": "EXTRACTED",
       "file_type": "code",
@@ -1187,7 +1321,7 @@
       "id": "next_config",
       "label": "next.config.mjs",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "community_name": "next.config.mjs",
       "file_type": "code",
       "norm_label": "next.config.mjs",
@@ -1198,7 +1332,7 @@
       "id": "next_config_contentsecuritypolicy",
       "label": "contentSecurityPolicy",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "community_name": "next.config.mjs",
       "file_type": "code",
       "norm_label": "contentsecuritypolicy",
@@ -1209,7 +1343,7 @@
       "id": "next_config_nextconfig",
       "label": "nextConfig",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "community_name": "next.config.mjs",
       "file_type": "code",
       "norm_label": "nextconfig",
@@ -1220,7 +1354,7 @@
       "id": "next_config_securityheaders",
       "label": "securityHeaders",
       "_origin": "ast",
-      "community": 13,
+      "community": 12,
       "community_name": "next.config.mjs",
       "file_type": "code",
       "norm_label": "securityheaders",
@@ -1228,286 +1362,160 @@
       "source_location": "L22"
     },
     {
-      "id": "eslint_config",
-      "label": "eslint.config.mjs",
+      "id": "readme",
+      "label": "README.md",
       "_origin": "ast",
-      "community": 14,
-      "community_name": "eslint.config.mjs",
-      "file_type": "code",
-      "norm_label": "eslint.config.mjs",
-      "source_file": "eslint.config.mjs",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "readme.md",
+      "source_file": "README.md",
       "source_location": "L1"
     },
     {
-      "id": "postcss_load_config",
-      "label": "postcss-load-config",
+      "id": "readme_commandes",
+      "label": "Commandes",
       "_origin": "ast",
-      "community": 15,
-      "community_name": "postcss.config.mjs",
-      "confidence": "EXTRACTED",
-      "file_type": "code",
-      "norm_label": "postcss-load-config",
-      "source_file": "postcss-load-config"
-    },
-    {
-      "id": "postcss_config",
-      "label": "postcss.config.mjs",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "postcss.config.mjs",
-      "file_type": "code",
-      "norm_label": "postcss.config.mjs",
-      "source_file": "postcss.config.mjs",
-      "source_location": "L1"
-    },
-    {
-      "id": "postcss_config_config",
-      "label": "config",
-      "_origin": "ast",
-      "community": 15,
-      "community_name": "postcss.config.mjs",
-      "file_type": "code",
-      "norm_label": "config",
-      "source_file": "postcss.config.mjs",
-      "source_location": "L2"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal",
-      "label": "NuvioConfiguratorModal.tsx",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
-      "file_type": "code",
-      "norm_label": "nuvioconfiguratormodal.tsx",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "context_handoff_2_project_status",
-      "label": "2. Project Status",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "NuvioConfiguratorModal.tsx",
+      "community": 13,
+      "community_name": "Focale",
       "file_type": "document",
       "node_kind": "heading",
-      "norm_label": "2. project status",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L8"
-    },
-    {
-      "id": "tsconfig",
-      "label": "tsconfig.json",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "tsconfig.json",
-      "source_file": "tsconfig.json",
-      "source_location": "L1"
-    },
-    {
-      "id": "tsconfig_compileroptions",
-      "label": "compilerOptions",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "compileroptions",
-      "source_file": "tsconfig.json",
-      "source_location": "L2"
-    },
-    {
-      "id": "tsconfig_compileroptions_allowjs",
-      "label": "allowJs",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "allowjs",
-      "source_file": "tsconfig.json",
-      "source_location": "L9"
-    },
-    {
-      "id": "tsconfig_compileroptions_esmoduleinterop",
-      "label": "esModuleInterop",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "esmoduleinterop",
-      "source_file": "tsconfig.json",
+      "norm_label": "commandes",
+      "source_file": "README.md",
       "source_location": "L13"
     },
     {
-      "id": "tsconfig_compileroptions_incremental",
-      "label": "incremental",
+      "id": "readme_d\u00e9ploiement_vercel",
+      "label": "D\u00e9ploiement (Vercel)",
       "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "incremental",
-      "source_file": "tsconfig.json",
-      "source_location": "L19"
-    },
-    {
-      "id": "tsconfig_compileroptions_isolatedmodules",
-      "label": "isolatedModules",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "isolatedmodules",
-      "source_file": "tsconfig.json",
-      "source_location": "L17"
-    },
-    {
-      "id": "tsconfig_compileroptions_jsx",
-      "label": "jsx",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "jsx",
-      "source_file": "tsconfig.json",
-      "source_location": "L18"
-    },
-    {
-      "id": "tsconfig_compileroptions_lib",
-      "label": "lib",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "lib",
-      "source_file": "tsconfig.json",
-      "source_location": "L4"
-    },
-    {
-      "id": "tsconfig_compileroptions_module",
-      "label": "module",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "module",
-      "source_file": "tsconfig.json",
-      "source_location": "L14"
-    },
-    {
-      "id": "tsconfig_compileroptions_moduleresolution",
-      "label": "moduleResolution",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "moduleresolution",
-      "source_file": "tsconfig.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "tsconfig_compileroptions_noemit",
-      "label": "noEmit",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "noemit",
-      "source_file": "tsconfig.json",
-      "source_location": "L12"
-    },
-    {
-      "id": "tsconfig_compileroptions_paths",
-      "label": "paths",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "paths",
-      "source_file": "tsconfig.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "tsconfig_compileroptions_plugins",
-      "label": "plugins",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "plugins",
-      "source_file": "tsconfig.json",
-      "source_location": "L20"
-    },
-    {
-      "id": "tsconfig_compileroptions_resolvejsonmodule",
-      "label": "resolveJsonModule",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "resolvejsonmodule",
-      "source_file": "tsconfig.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "tsconfig_compileroptions_skiplibcheck",
-      "label": "skipLibCheck",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "skiplibcheck",
-      "source_file": "tsconfig.json",
-      "source_location": "L10"
-    },
-    {
-      "id": "tsconfig_compileroptions_strict",
-      "label": "strict",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "strict",
-      "source_file": "tsconfig.json",
-      "source_location": "L11"
-    },
-    {
-      "id": "tsconfig_compileroptions_target",
-      "label": "target",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "target",
-      "source_file": "tsconfig.json",
-      "source_location": "L3"
-    },
-    {
-      "id": "tsconfig_exclude",
-      "label": "exclude",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "exclude",
-      "source_file": "tsconfig.json",
-      "source_location": "L38"
-    },
-    {
-      "id": "tsconfig_include",
-      "label": "include",
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "compilerOptions",
-      "file_type": "code",
-      "norm_label": "include",
-      "source_file": "tsconfig.json",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "deploiement (vercel)",
+      "source_file": "README.md",
       "source_location": "L31"
+    },
+    {
+      "id": "readme_focale",
+      "label": "Focale",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "focale",
+      "source_file": "README.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "readme_notes_d_exploitation",
+      "label": "Notes d'exploitation",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "notes d'exploitation",
+      "source_file": "README.md",
+      "source_location": "L41"
+    },
+    {
+      "id": "readme_routes",
+      "label": "Routes",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "routes",
+      "source_file": "README.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "readme_stack",
+      "label": "Stack",
+      "_origin": "ast",
+      "community": 13,
+      "community_name": "Focale",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "stack",
+      "source_file": "README.md",
+      "source_location": "L8"
+    },
+    {
+      "id": "lib_manifest_urls",
+      "label": "manifest-urls.ts",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "manifest-urls.ts",
+      "source_file": "lib/manifest-urls.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_manifest_urls_debriders",
+      "label": "DEBRIDERS",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "debriders",
+      "source_file": "lib/manifest-urls.ts",
+      "source_location": "L33"
+    },
+    {
+      "id": "lib_nuvio_api",
+      "label": "nuvio-api.ts",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "nuvio-api.ts",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_nuvio_api_nuvioapi",
+      "label": "NuvioApi",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "nuvioapi",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L169"
+    },
+    {
+      "id": "lib_nuvio_api_provider_credential_ids",
+      "label": "PROVIDER_CREDENTIAL_IDS",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "provider_credential_ids",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L101"
+    },
+    {
+      "id": "lib_nuvio_api_settings_platforms",
+      "label": "SETTINGS_PLATFORMS",
+      "_origin": "ast",
+      "community": 14,
+      "community_name": "nuvio-api.ts",
+      "file_type": "code",
+      "norm_label": "settings_platforms",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L123"
     },
     {
       "id": "app_layout",
       "label": "layout.tsx",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "layout.tsx",
@@ -1518,51 +1526,51 @@
       "id": "app_layout_display",
       "label": "display",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "display",
       "source_file": "app/layout.tsx",
-      "source_location": "L15"
+      "source_location": "L14"
     },
     {
       "id": "app_layout_metadata",
       "label": "metadata",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "metadata",
       "source_file": "app/layout.tsx",
-      "source_location": "L29"
+      "source_location": "L28"
     },
     {
       "id": "app_layout_sans",
       "label": "sans",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "sans",
       "source_file": "app/layout.tsx",
-      "source_location": "L9"
+      "source_location": "L8"
     },
     {
       "id": "app_layout_viewport",
       "label": "viewport",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "viewport",
       "source_file": "app/layout.tsx",
-      "source_location": "L22"
+      "source_location": "L21"
     },
     {
       "id": "components_footer",
       "label": "Footer.tsx",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "footer.tsx",
@@ -1573,7 +1581,7 @@
       "id": "components_navbar",
       "label": "Navbar.tsx",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "navbar.tsx",
@@ -1584,7 +1592,7 @@
       "id": "components_navbar_nav_links",
       "label": "NAV_LINKS",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "nav_links",
@@ -1592,14 +1600,201 @@
       "source_location": "L10"
     },
     {
+      "id": "components_torboxpromobanner",
+      "label": "TorboxPromoBanner.tsx",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "torboxpromobanner.tsx",
+      "source_file": "components/TorboxPromoBanner.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_torboxpromobanner_bonus",
+      "label": "BONUS",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "bonus",
+      "source_file": "components/TorboxPromoBanner.tsx",
+      "source_location": "L10"
+    },
+    {
+      "id": "lib_site",
+      "label": "site.ts",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "site.ts",
+      "source_file": "lib/site.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_site_site",
       "label": "SITE",
       "_origin": "ast",
-      "community": 4,
+      "community": 15,
       "community_name": "layout.tsx",
       "file_type": "code",
       "norm_label": "site",
       "source_file": "lib/site.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "lib_site_torbox_referral_link",
+      "label": "TORBOX_REFERRAL_LINK",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "layout.tsx",
+      "file_type": "code",
+      "norm_label": "torbox_referral_link",
+      "source_file": "lib/site.ts",
+      "source_location": "L5"
+    },
+    {
+      "id": "ref_react",
+      "label": "react",
+      "_origin": "ast",
+      "community": 15,
+      "community_name": "layout.tsx",
+      "file_type": "concept",
+      "norm_label": "react",
+      "source_file": "package.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "app_collections_page",
+      "label": "collections/page.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "collections/page.tsx",
+      "source_file": "app/collections/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_collections_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/collections/page.tsx",
+      "source_location": "L6"
+    },
+    {
+      "id": "components_collectionbrowser",
+      "label": "CollectionBrowser.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "collectionbrowser.tsx",
+      "source_file": "components/CollectionBrowser.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_herosection",
+      "label": "HeroSection.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "herosection.tsx",
+      "source_file": "components/HeroSection.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_nuvio_data",
+      "label": "nuvio-data.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "code",
+      "norm_label": "nuvio-data.ts",
+      "source_file": "lib/nuvio-data.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "collections/page.tsx",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "app_api_aiometadata_route",
+      "label": "route.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "route.ts",
+      "file_type": "code",
+      "norm_label": "route.ts",
+      "source_file": "app/api/aiometadata/route.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_page",
+      "label": "app/page.tsx",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "app/page.tsx",
+      "source_file": "app/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_page_lumio_points",
+      "label": "LUMIO_POINTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "lumio_points",
+      "source_file": "app/page.tsx",
+      "source_location": "L45"
+    },
+    {
+      "id": "app_page_nuvio_points",
+      "label": "NUVIO_POINTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "nuvio_points",
+      "source_file": "app/page.tsx",
+      "source_location": "L30"
+    },
+    {
+      "id": "app_page_sections",
+      "label": "SECTIONS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "sections",
+      "source_file": "app/page.tsx",
+      "source_location": "L60"
+    },
+    {
+      "id": "app_page_shots",
+      "label": "SHOTS",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "shots",
+      "source_file": "app/page.tsx",
       "source_location": "L7"
     },
     {
@@ -1625,26 +1820,26 @@
       "source_location": "L5"
     },
     {
-      "id": "components_torboxpromobanner",
-      "label": "TorboxPromoBanner.tsx",
+      "id": "components_alldebridpromobanner",
+      "label": "AlldebridPromoBanner.tsx",
       "_origin": "ast",
       "community": 5,
       "community_name": "TutorialGuide.tsx",
       "file_type": "code",
-      "norm_label": "torboxpromobanner.tsx",
-      "source_file": "components/TorboxPromoBanner.tsx",
+      "norm_label": "alldebridpromobanner.tsx",
+      "source_file": "components/AlldebridPromoBanner.tsx",
       "source_location": "L1"
     },
     {
-      "id": "components_torboxpromobanner_bonus",
-      "label": "BONUS",
+      "id": "components_alldebridpromobanner_plans",
+      "label": "PLANS",
       "_origin": "ast",
       "community": 5,
       "community_name": "TutorialGuide.tsx",
       "file_type": "code",
-      "norm_label": "bonus",
-      "source_file": "components/TorboxPromoBanner.tsx",
-      "source_location": "L10"
+      "norm_label": "plans",
+      "source_file": "components/AlldebridPromoBanner.tsx",
+      "source_location": "L6"
     },
     {
       "id": "components_tutorialguide",
@@ -1691,11 +1886,33 @@
       "source_location": "L81"
     },
     {
-      "id": "lib_provider_guides",
-      "label": "provider-guides.ts",
+      "id": "ref_lucide_react",
+      "label": "lucide-react",
       "_origin": "ast",
       "community": 5,
       "community_name": "TutorialGuide.tsx",
+      "file_type": "concept",
+      "norm_label": "lucide-react",
+      "source_file": "package.json",
+      "source_location": "L12"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal",
+      "label": "NuvioConfiguratorModal.tsx",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "nuvioconfiguratormodal.tsx",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_provider_guides",
+      "label": "provider-guides.ts",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
       "norm_label": "provider-guides.ts",
       "source_file": "lib/provider-guides.ts",
@@ -1705,526 +1922,374 @@
       "id": "lib_provider_guides_provider_guides",
       "label": "PROVIDER_GUIDES",
       "_origin": "ast",
-      "community": 5,
-      "community_name": "TutorialGuide.tsx",
+      "community": 6,
+      "community_name": "NuvioConfiguratorModal.tsx",
       "file_type": "code",
       "norm_label": "provider_guides",
       "source_file": "lib/provider-guides.ts",
       "source_location": "L26"
     },
     {
-      "id": "lib_site",
-      "label": "site.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "TutorialGuide.tsx",
-      "file_type": "code",
-      "norm_label": "site.ts",
-      "source_file": "lib/site.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_site_torbox_referral_link",
-      "label": "TORBOX_REFERRAL_LINK",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "TutorialGuide.tsx",
-      "file_type": "code",
-      "norm_label": "torbox_referral_link",
-      "source_file": "lib/site.ts",
-      "source_location": "L5"
-    },
-    {
-      "id": "ref_react",
-      "label": "react",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "TutorialGuide.tsx",
-      "file_type": "concept",
-      "norm_label": "react",
-      "source_file": "package.json",
-      "source_location": "L15"
-    },
-    {
-      "id": "app_page",
-      "label": "app/page.tsx",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "app/page.tsx",
-      "source_file": "app/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_page_lumio_points",
-      "label": "LUMIO_POINTS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "lumio_points",
-      "source_file": "app/page.tsx",
-      "source_location": "L45"
-    },
-    {
-      "id": "app_page_nuvio_points",
-      "label": "NUVIO_POINTS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "nuvio_points",
-      "source_file": "app/page.tsx",
-      "source_location": "L30"
-    },
-    {
-      "id": "app_page_sections",
-      "label": "SECTIONS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "sections",
-      "source_file": "app/page.tsx",
-      "source_location": "L60"
-    },
-    {
-      "id": "app_page_shots",
-      "label": "SHOTS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "shots",
-      "source_file": "app/page.tsx",
-      "source_location": "L7"
-    },
-    {
-      "id": "components_alldebridpromobanner",
-      "label": "AlldebridPromoBanner.tsx",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "alldebridpromobanner.tsx",
-      "source_file": "components/AlldebridPromoBanner.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_alldebridpromobanner_plans",
-      "label": "PLANS",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "plans",
-      "source_file": "components/AlldebridPromoBanner.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "components_herosection",
-      "label": "HeroSection.tsx",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "code",
-      "norm_label": "herosection.tsx",
-      "source_file": "components/HeroSection.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_lucide_react",
-      "label": "lucide-react",
-      "_origin": "ast",
-      "community": 6,
-      "community_name": "app/page.tsx",
-      "file_type": "concept",
-      "norm_label": "lucide-react",
-      "source_file": "package.json",
-      "source_location": "L13"
-    },
-    {
-      "id": "app_collections_page",
-      "label": "collections/page.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "file_type": "code",
-      "norm_label": "collections/page.tsx",
-      "source_file": "app/collections/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_collections_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/collections/page.tsx",
-      "source_location": "L6"
-    },
-    {
-      "id": "components_collectionbrowser",
-      "label": "CollectionBrowser.tsx",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "file_type": "code",
-      "norm_label": "collectionbrowser.tsx",
-      "source_file": "components/CollectionBrowser.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_nuvio_data",
-      "label": "nuvio-data.ts",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "file_type": "code",
-      "norm_label": "nuvio-data.ts",
-      "source_file": "lib/nuvio-data.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L14"
-    },
-    {
       "id": "package_devdependencies",
       "label": "devDependencies",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "devdependencies",
       "source_file": "package.json",
-      "source_location": "L18"
+      "source_location": "L17"
     },
     {
       "id": "package_devdependencies_autoprefixer",
       "label": "autoprefixer",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "autoprefixer",
       "source_file": "package.json",
-      "source_location": "L22"
+      "source_location": "L21"
     },
     {
       "id": "package_devdependencies_eslint",
       "label": "eslint",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "eslint",
       "source_file": "package.json",
-      "source_location": "L23"
+      "source_location": "L22"
     },
     {
       "id": "package_devdependencies_eslint_config_next",
       "label": "eslint-config-next",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "eslint-config-next",
       "source_file": "package.json",
-      "source_location": "L24"
+      "source_location": "L23"
     },
     {
       "id": "package_devdependencies_postcss",
       "label": "postcss",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "postcss",
       "source_file": "package.json",
-      "source_location": "L25"
+      "source_location": "L24"
     },
     {
       "id": "package_devdependencies_tailwindcss",
       "label": "tailwindcss",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "tailwindcss",
       "source_file": "package.json",
-      "source_location": "L26"
+      "source_location": "L25"
     },
     {
       "id": "package_devdependencies_types_node",
       "label": "@types/node",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "@types/node",
       "source_file": "package.json",
-      "source_location": "L19"
+      "source_location": "L18"
     },
     {
       "id": "package_devdependencies_types_react",
       "label": "@types/react",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "@types/react",
       "source_file": "package.json",
-      "source_location": "L20"
+      "source_location": "L19"
     },
     {
       "id": "package_devdependencies_types_react_dom",
       "label": "@types/react-dom",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "@types/react-dom",
       "source_file": "package.json",
-      "source_location": "L21"
+      "source_location": "L20"
     },
     {
       "id": "package_devdependencies_typescript",
       "label": "typescript",
       "_origin": "ast",
-      "community": 8,
+      "community": 7,
       "community_name": "devDependencies",
       "file_type": "code",
       "norm_label": "typescript",
       "source_file": "package.json",
-      "source_location": "L27"
+      "source_location": "L26"
     },
     {
-      "id": "claude",
-      "label": "CLAUDE.md",
+      "id": "eslint_config",
+      "label": "eslint.config.mjs",
       "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "claude.md",
-      "source_file": "CLAUDE.md",
+      "community": 8,
+      "community_name": "eslint.config.mjs",
+      "file_type": "code",
+      "norm_label": "eslint.config.mjs",
+      "source_file": "eslint.config.mjs",
       "source_location": "L1"
     },
     {
-      "id": "claude_claude_md_nuvio_collection",
-      "label": "CLAUDE.md \u2014 NUVIO Collection",
+      "id": "postcss_load_config",
+      "label": "postcss-load-config",
       "_origin": "ast",
       "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "claude.md \u2014 nuvio collection",
-      "source_file": "CLAUDE.md",
+      "community_name": "postcss.config.mjs",
+      "confidence": "EXTRACTED",
+      "file_type": "code",
+      "norm_label": "postcss-load-config",
+      "source_file": "postcss-load-config"
+    },
+    {
+      "id": "postcss_config",
+      "label": "postcss.config.mjs",
+      "_origin": "ast",
+      "community": 9,
+      "community_name": "postcss.config.mjs",
+      "file_type": "code",
+      "norm_label": "postcss.config.mjs",
+      "source_file": "postcss.config.mjs",
       "source_location": "L1"
     },
     {
-      "id": "claude_coding_principles_karpathy_style",
-      "label": "Coding Principles (Karpathy Style)",
+      "id": "postcss_config_config",
+      "label": "config",
       "_origin": "ast",
       "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "coding principles (karpathy style)",
-      "source_file": "CLAUDE.md",
-      "source_location": "L7"
+      "community_name": "postcss.config.mjs",
+      "file_type": "code",
+      "norm_label": "config",
+      "source_file": "postcss.config.mjs",
+      "source_location": "L2"
     },
     {
-      "id": "claude_development_directives",
-      "label": "Development Directives",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "development directives",
-      "source_file": "CLAUDE.md",
-      "source_location": "L19"
-    },
-    {
-      "id": "claude_graphify_tool",
-      "label": "Graphify Tool",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "graphify tool",
-      "source_file": "CLAUDE.md",
-      "source_location": "L27"
-    },
-    {
-      "id": "claude_stack_commands",
-      "label": "Stack & Commands",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "stack & commands",
-      "source_file": "CLAUDE.md",
-      "source_location": "L14"
-    },
-    {
-      "id": "claude_this_is_not_the_next_js_you_know",
-      "label": "This is NOT the Next.js you know",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "this is not the next.js you know",
-      "source_file": "CLAUDE.md",
-      "source_location": "L33"
-    },
-    {
-      "id": "claude_workflow_startup",
-      "label": "Workflow & Startup",
-      "_origin": "ast",
-      "community": 9,
-      "community_name": "CLAUDE.md \u2014 NUVIO Collection",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "workflow & startup",
-      "source_file": "CLAUDE.md",
-      "source_location": "L3"
-    },
-    {
-      "id": "public_aiometadata_config_mitch",
-      "label": "public_aiometadata_config_mitch",
-      "community": 11,
-      "community_name": "route.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "public_aiometadata_config_mitch",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_next_server",
-      "label": "ref_next_server",
-      "community": 11,
-      "community_name": "route.ts",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_next_server",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_eslint_config",
-      "label": "ref_eslint_config",
-      "community": 14,
-      "community_name": "eslint.config.mjs",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_eslint_config",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_eslint_config_next_core_web_vitals",
-      "label": "ref_eslint_config_next_core_web_vitals",
-      "community": 14,
-      "community_name": "eslint.config.mjs",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_eslint_config_next_core_web_vitals",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "ref_eslint_config_next_typescript",
-      "label": "ref_eslint_config_next_typescript",
-      "community": 14,
-      "community_name": "eslint.config.mjs",
-      "external": true,
-      "file_type": "concept",
-      "norm_label": "ref_eslint_config_next_typescript",
-      "source_file": "",
-      "type": "external"
-    },
-    {
-      "id": "app_globals",
-      "label": "app_globals",
+      "id": "README.md:1:Project",
+      "label": "Site NUVIO",
+      "_origin": "semantic",
       "community": 4,
-      "community_name": "layout.tsx",
-      "external": true,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "app_globals",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "site nuvio",
+      "properties": {
+        "description": "A Next.js application for NUVIO collection",
+        "category": "Web Application"
+      },
+      "source_location": "README.md:1",
+      "type": "Project"
     },
     {
-      "id": "ref_next_font_google",
-      "label": "ref_next_font_google",
+      "id": "package.json:12:Dependency",
+      "label": "lucide-react",
+      "_origin": "semantic",
       "community": 4,
-      "community_name": "layout.tsx",
-      "external": true,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "ref_next_font_google",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "lucide-react",
+      "properties": {
+        "description": "React icon library",
+        "category": "UI"
+      },
+      "source_location": "package.json:12",
+      "type": "Dependency"
     },
     {
-      "id": "ref_next_link",
-      "label": "ref_next_link",
+      "id": "package.json:14:Dependency",
+      "label": "react",
+      "_origin": "semantic",
       "community": 4,
-      "community_name": "layout.tsx",
-      "external": true,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "ref_next_link",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "react",
+      "properties": {
+        "description": "React library",
+        "category": "Library"
+      },
+      "source_location": "package.json:14",
+      "type": "Dependency"
     },
     {
-      "id": "ref_next_navigation",
-      "label": "ref_next_navigation",
+      "id": "package.json:15:Dependency",
+      "label": "react-dom",
+      "_origin": "semantic",
       "community": 4,
-      "community_name": "layout.tsx",
-      "external": true,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "ref_next_navigation",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "react-dom",
+      "properties": {
+        "description": "React DOM library",
+        "category": "Library"
+      },
+      "source_location": "package.json:15",
+      "type": "Dependency"
     },
     {
-      "id": "ref_vercel_analytics_react",
-      "label": "ref_vercel_analytics_react",
+      "id": "package.json:18:DevDependency",
+      "label": "@types/node",
+      "_origin": "semantic",
       "community": 4,
-      "community_name": "layout.tsx",
-      "external": true,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "ref_vercel_analytics_react",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "@types/node",
+      "properties": {
+        "description": "TypeScript types for Node.js",
+        "category": "Type Definitions"
+      },
+      "source_location": "package.json:18",
+      "type": "DevDependency"
     },
     {
-      "id": "lib_collections_summary",
-      "label": "lib_collections_summary",
-      "community": 7,
-      "community_name": "collections/page.tsx",
-      "external": true,
+      "id": "package.json:19:DevDependency",
+      "label": "@types/react",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
       "file_type": "concept",
-      "norm_label": "lib_collections_summary",
-      "source_file": "",
-      "type": "external"
+      "norm_label": "@types/react",
+      "properties": {
+        "description": "TypeScript types for React",
+        "category": "Type Definitions"
+      },
+      "source_location": "package.json:19",
+      "type": "DevDependency"
+    },
+    {
+      "id": "package.json:1:Project",
+      "label": "site-nuvio",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "site-nuvio",
+      "properties": {
+        "description": "Next.js project configuration",
+        "category": "Configuration"
+      },
+      "source_location": "package.json:1",
+      "type": "Project"
+    },
+    {
+      "id": "package.json:20:DevDependency",
+      "label": "@types/react-dom",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "@types/react-dom",
+      "properties": {
+        "description": "TypeScript types for React DOM",
+        "category": "Type Definitions"
+      },
+      "source_location": "package.json:20",
+      "type": "DevDependency"
+    },
+    {
+      "id": "package.json:21:DevDependency",
+      "label": "autoprefixer",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "autoprefixer",
+      "properties": {
+        "description": "PostCSS plugin to parse CSS and add vendor prefixes",
+        "category": "CSS"
+      },
+      "source_location": "package.json:21",
+      "type": "DevDependency"
+    },
+    {
+      "id": "package.json:22:DevDependency",
+      "label": "postcss",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "postcss",
+      "properties": {
+        "description": "Tool for transforming styles with JS plugins",
+        "category": "CSS"
+      },
+      "source_location": "package.json:22",
+      "type": "DevDependency"
+    },
+    {
+      "id": "package.json:23:DevDependency",
+      "label": "tailwindcss",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "tailwindcss",
+      "properties": {
+        "description": "Utility-first CSS framework",
+        "category": "CSS"
+      },
+      "source_location": "package.json:23",
+      "type": "DevDependency"
+    },
+    {
+      "id": "package.json:24:DevDependency",
+      "label": "typescript",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "typescript",
+      "properties": {
+        "description": "TypeScript compiler",
+        "category": "Compiler"
+      },
+      "source_location": "package.json:24",
+      "type": "DevDependency"
+    },
+    {
+      "id": "tsconfig.json:1:Configuration",
+      "label": "TypeScript Configuration",
+      "_origin": "semantic",
+      "community": 4,
+      "community_name": "site-nuvio",
+      "confidence": "high",
+      "file_type": "concept",
+      "norm_label": "typescript configuration",
+      "properties": {
+        "description": "TypeScript configuration for the project",
+        "category": "Configuration"
+      },
+      "source_location": "tsconfig.json:1",
+      "type": "Configuration"
     }
   ],
   "links": [
@@ -2794,7 +2859,7 @@
     },
     {
       "source": "package",
-      "target": "ref_vercel_analytics",
+      "target": "ref_lucide_react",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -2806,7 +2871,7 @@
     },
     {
       "source": "package",
-      "target": "ref_lucide_react",
+      "target": "ref_next",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -2818,7 +2883,7 @@
     },
     {
       "source": "package",
-      "target": "ref_next",
+      "target": "ref_react",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -2830,7 +2895,7 @@
     },
     {
       "source": "package",
-      "target": "ref_react",
+      "target": "ref_react_dom",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -2842,18 +2907,6 @@
     },
     {
       "source": "package",
-      "target": "ref_react_dom",
-      "relation": "imports",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "package.json",
-      "source_location": "L16",
-      "weight": 1.0
-    },
-    {
-      "source": "package",
       "target": "ref_types_node",
       "relation": "imports",
       "_origin": "ast",
@@ -2861,7 +2914,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -2873,7 +2926,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -2885,7 +2938,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -2897,7 +2950,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -2909,7 +2962,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -2921,7 +2974,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -2933,7 +2986,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -2945,7 +2998,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -2957,31 +3010,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "package.json",
-      "source_location": "L27",
-      "weight": 1.0
-    },
-    {
-      "source": "app_api_aiometadata_route",
-      "target": "ref_next_server",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/api/aiometadata/route.ts",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "app_api_aiometadata_route",
-      "target": "public_aiometadata_config_mitch",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/api/aiometadata/route.ts",
-      "source_location": "L2",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -3048,30 +3077,6 @@
     },
     {
       "source": "app_layout",
-      "target": "ref_next_font_google",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/layout.tsx",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "app_layout",
-      "target": "app_globals",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/layout.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "app_layout",
       "target": "components_navbar",
       "relation": "imports_from",
       "_origin": "ast",
@@ -3104,30 +3109,6 @@
       "context": "import",
       "source_file": "app/layout.tsx",
       "source_location": "L6",
-      "weight": 1.0
-    },
-    {
-      "source": "app_layout",
-      "target": "ref_vercel_analytics_react",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/layout.tsx",
-      "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "app_page",
-      "target": "ref_next_link",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "app/page.tsx",
-      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -3277,18 +3258,6 @@
     },
     {
       "source": "components_footer",
-      "target": "ref_next_link",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "components_footer",
       "target": "ref_lucide_react",
       "relation": "imports_from",
       "_origin": "ast",
@@ -3308,18 +3277,6 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "components/Footer.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "components_herosection",
-      "target": "ref_next_link",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/HeroSection.tsx",
       "source_location": "L3",
       "weight": 1.0
     },
@@ -3369,30 +3326,6 @@
       "context": "import",
       "source_file": "components/HeroSection.tsx",
       "source_location": "L7",
-      "weight": 1.0
-    },
-    {
-      "source": "components_navbar",
-      "target": "ref_next_link",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
-      "source": "components_navbar",
-      "target": "ref_next_navigation",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3612,42 +3545,6 @@
       "weight": 1.0
     },
     {
-      "source": "eslint_config",
-      "target": "ref_eslint_config",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "eslint.config.mjs",
-      "source_location": "L1",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config",
-      "target": "ref_eslint_config_next_core_web_vitals",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "eslint.config.mjs",
-      "source_location": "L2",
-      "weight": 1.0
-    },
-    {
-      "source": "eslint_config",
-      "target": "ref_eslint_config_next_typescript",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "eslint.config.mjs",
-      "source_location": "L3",
-      "weight": 1.0
-    },
-    {
       "source": "lib_nuvio_api",
       "target": "lib_manifest_urls",
       "relation": "imports_from",
@@ -3657,18 +3554,6 @@
       "context": "import",
       "source_file": "lib/nuvio-api.ts",
       "source_location": "L14",
-      "weight": 1.0
-    },
-    {
-      "source": "lib_nuvio_data",
-      "target": "lib_collections_summary",
-      "relation": "imports_from",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "import",
-      "source_file": "lib/nuvio-data.ts",
-      "source_location": "L1",
       "weight": 1.0
     },
     {
@@ -3759,7 +3644,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L15",
+      "source_location": "L14",
       "weight": 1.0
     },
     {
@@ -3770,7 +3655,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L22",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -3781,7 +3666,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L29",
+      "source_location": "L28",
       "weight": 1.0
     },
     {
@@ -3792,7 +3677,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L49",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -3803,7 +3688,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L9",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -4705,7 +4590,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L18",
+      "source_location": "L17",
       "weight": 1.0
     },
     {
@@ -4754,7 +4639,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_vercel_analytics",
+      "target": "package_dependencies_lucide_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4765,7 +4650,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_lucide_react",
+      "target": "package_dependencies_next",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4776,7 +4661,7 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_next",
+      "target": "package_dependencies_react",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4787,24 +4672,13 @@
     },
     {
       "source": "package_dependencies",
-      "target": "package_dependencies_react",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "package.json",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "package_dependencies",
       "target": "package_dependencies_react_dom",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L16",
+      "source_location": "L15",
       "weight": 1.0
     },
     {
@@ -4815,7 +4689,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L19",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -4826,7 +4700,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L20",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -4837,7 +4711,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L21",
+      "source_location": "L20",
       "weight": 1.0
     },
     {
@@ -4848,7 +4722,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L22",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -4859,7 +4733,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L23",
+      "source_location": "L22",
       "weight": 1.0
     },
     {
@@ -4870,7 +4744,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L24",
+      "source_location": "L23",
       "weight": 1.0
     },
     {
@@ -4881,7 +4755,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L25",
+      "source_location": "L24",
       "weight": 1.0
     },
     {
@@ -4892,7 +4766,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L26",
+      "source_location": "L25",
       "weight": 1.0
     },
     {
@@ -4903,7 +4777,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "package.json",
-      "source_location": "L27",
+      "source_location": "L26",
       "weight": 1.0
     },
     {
@@ -5255,102 +5129,174 @@
       "source_file": "postcss.config.mjs"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "components_nuvioconfiguratormodal_aiometadatafield",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "AioMetadataField",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L24",
-      "weight": 1.0
+      "source": "package.json:23:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "CSS framework used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:23"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "components_nuvioconfiguratormodal_directkeylink",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "DirectKeyLink",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L16",
-      "weight": 1.0
+      "source": "package.json:21:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "CSS tool used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:21"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "lib_provider_guides_guidestep",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "GuideStep",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L17",
-      "weight": 1.0
+      "source": "package.json:22:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "CSS tool used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:22"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "components_navbar_navbar",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "Navbar",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L49",
-      "weight": 1.0
+      "source": "package.json:24:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Compiler used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:24"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "lib_manifest_urls_debridentries",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "debridEntries",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L50",
-      "weight": 1.0
+      "source": "package.json:12:Dependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Icon library used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:12"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "lib_manifest_urls_debridnames",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "debridNames",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L50",
-      "weight": 1.0
+      "source": "package.json:14:Dependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Library used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:14"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "components_nuvioconfiguratormodal_formatfrenchlist",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "formatFrenchList()",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L43",
-      "weight": 1.0
+      "source": "package.json:15:Dependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Library used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:15"
     },
     {
-      "source": "context_handoff_2_project_status",
-      "target": "lib_nuvio_data_getstats",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "INFERRED",
-      "confidence_score": 0.95,
-      "context": "getStats()",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L29",
-      "weight": 1.0
+      "source": "package.json:1:Project",
+      "target": "README.md:1:Project",
+      "relation": "DependsOn",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Project configuration",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:1"
+    },
+    {
+      "source": "package.json:18:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Type definitions used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:18"
+    },
+    {
+      "source": "package.json:19:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Type definitions used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:19"
+    },
+    {
+      "source": "package.json:20:DevDependency",
+      "target": "package.json:1:Project",
+      "relation": "UsedBy",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "Type definitions used by the project",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "package.json:20"
+    },
+    {
+      "source": "tsconfig.json:1:Configuration",
+      "target": "package.json:1:Project",
+      "relation": "Configures",
+      "_origin": "semantic",
+      "confidence": "high",
+      "confidence_score": 1.0,
+      "properties": {
+        "description": "TypeScript configuration",
+        "weight": 1.0
+      },
+      "source_file": "",
+      "source_location": "tsconfig.json:1"
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "5b42494dfc2cd248b0057b1eb5d0a69512dcf158"
+  "built_at_commit": "001c8120575637beda31648841128f0cc3f91306"
 }
