@@ -27,7 +27,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: `${SITE.name} — ${SITE.tagline}`,
+  title: `${SITE.name} : ${SITE.tagline}`,
   description: SITE.description,
   keywords: [...SITE.keywords],
   authors: [{ name: SITE.name }],
@@ -36,12 +36,12 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE.name,
     locale: "fr_FR",
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} : ${SITE.tagline}`,
     description: SITE.description,
   },
   twitter: {
     card: "summary",
-    title: `${SITE.name} — ${SITE.tagline}`,
+    title: `${SITE.name} : ${SITE.tagline}`,
     description: SITE.description,
   },
 };

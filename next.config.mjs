@@ -11,8 +11,9 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://image.tmdb.org",
   "font-src 'self' data:",
-  // Seuls appels sortants du navigateur : l'API Nuvio (comptes, collections, addons).
-  "connect-src 'self' https://api.nuvio.tv",
+  // Appels sortants du navigateur : l'API Nuvio (comptes, collections, addons)
+  // et l'API AllDebrid (test de la clé et de l'IP, cf. lib/debrid-key-test.ts).
+  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

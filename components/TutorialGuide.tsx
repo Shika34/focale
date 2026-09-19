@@ -39,7 +39,7 @@ const TRAKT_TUTORIAL: ProviderGuide = {
     {
       title: "Créer un compte Trakt",
       detail:
-        "Ouvrez trakt.tv et choisissez « Join Trakt » : l'inscription est gratuite (email, Google, Apple ou X). Trakt est un carnet de suivi — il n'héberge aucun film ni aucune série — et son usage dans Nuvio ne demande aucune clé API, contrairement à TMDB, TheTVDB ou MDBList.",
+        "Ouvrez trakt.tv et choisissez « Join Trakt » : l'inscription est gratuite (email, Google, Apple ou X). Trakt est un carnet de suivi (il n'héberge aucun film ni aucune série) et son usage dans Nuvio ne demande aucune clé API, contrairement à TMDB, TheTVDB ou MDBList.",
     },
     {
       title: "Ouvrir l'intégration Trakt",
@@ -75,7 +75,62 @@ const TRAKT_TUTORIAL: ProviderGuide = {
   signupLabel: "Créer mon compte Trakt",
   keyUrl: "https://app.trakt.tv/settings/apps/connected",
   keyLabel: "Ouvrir mes applications connectées",
-  note: "Facultatif, et hors assistant : l'assistant ne vous demandera jamais rien pour Trakt, parce que Nuvio l'intègre nativement. Depuis août 2026, Trakt réserve la création d'une application API à ses membres VIP (environ 5 $ par mois) — inutile d'y passer : c'est Nuvio qui porte l'intégration, pas ce site.",
+  note: "Facultatif, et hors assistant : l'assistant ne vous demandera jamais rien pour Trakt, parce que Nuvio l'intègre nativement. Depuis août 2026, Trakt réserve la création d'une application API à ses membres VIP (environ 5 $ par mois), inutile d'y passer : c'est Nuvio qui porte l'intégration, pas ce site.",
+};
+
+const VOSTFR_TUTORIAL: ProviderGuide = {
+  question: "Avez-vous activé le VOSTFR dans votre profil Lumio ?",
+  steps: [
+    {
+      title: "Ouvrir votre profil Lumio",
+      detail:
+        "Sur mylumio.tv, choisissez le profil que vous utilisez dans Nuvio (écran « Qui regarde ? ») : la configuration du profil s'ouvre. Elle est enregistrée dans votre compte Lumio, vous la retrouvez telle quelle à chaque visite.",
+    },
+    {
+      title: "Déplier le Mode Expert",
+      detail:
+        "Dans « Votre style de visionnage », dépliez « Mode Expert » : c'est le seul endroit où se règlent les langues, les filtres de qualité et le tri. Important : choisir une formule (L'Essentiel, Zen, Cinéphile, Nomade) repart d'un profil vierge et remet les langues sur Français et Multi ; réglez donc votre formule avant de toucher aux langues.",
+    },
+    {
+      title: "Ajouter le VOSTFR à côté du Français",
+      detail:
+        "Sous « Langues », ouvrez le sélecteur « Séries et films » et cochez « VOSTFR » (💬) en plus de « Français » (🇫🇷). Les cinq choix sont Français, Multi (plusieurs langues dans le même fichier), VFQ, VOSTFR et Anglais ; une langue cochée se décoche en la recliquant, et il en reste toujours au moins une.",
+    },
+    {
+      title: "Désigner la langue préférée",
+      detail:
+        "L'étoile à droite de chaque langue désigne la préférée : c'est elle que le sélecteur affiche en grand (« Français + 1 langue ») et qui passe en tête des résultats. Cliquez sur l'étoile de la langue que vous voulez voir arriver d'abord (le VOSTFR, si c'est votre habitude), l'autre langue reste acceptée, simplement plus bas dans la liste.",
+    },
+    {
+      title: "Régler les animés séparément",
+      detail:
+        "« Animés » a sa propre liste : Français (version doublée), VOSTFR, VO japonaise, Multi et Anglais. Le réglage des séries et films ne s'y applique pas. Sur les animés, la VO japonaise est présente partout et la VF reste rare : l'étoile y est donc le plus souvent posée sur le VOSTFR.",
+    },
+    {
+      title: "Choisir le tri des résultats (facultatif)",
+      detail:
+        "Toujours dans le Mode Expert, « Trier par » propose Qualité (la meilleure version d'abord), Langue (les sources dans vos langues cochées d'abord, la qualité restant triée à l'intérieur de chaque groupe) et Léger (les fichiers les plus légers d'abord).",
+    },
+    {
+      title: "Enregistrer les modifications",
+      detail:
+        "Cliquez sur « Enregistrer les modifications » en bas de la page. Votre lien de manifest ne change pas : il est lié au profil, pas à ses réglages ; rien à réinstaller dans Nuvio, et l'adresse déjà installée reste la bonne.",
+    },
+    {
+      title: "Ce que ce réglage ne fait pas",
+      detail: "Trois choses à garder en tête :",
+      bullets: [
+        "Il ne crée aucun sous-titre : le VOSTFR désigne les fichiers en version originale accompagnés de sous-titres français. Cocher les deux langues laisse les deux familles de fichiers remonter, l'étoile décidant seulement laquelle arrive en tête.",
+        "Il ne remplace pas l'addon OpenSubtitles v3 du pack, qui ajoute une piste de sous-titres externe à n'importe quel fichier, quelles que soient les langues cochées ici.",
+        "« Français » couvre les fichiers VF, VFF, VFI et TRUEFRENCH ; « Multi » ceux qui contiennent plusieurs langues dans le même fichier ; la VFQ (version québécoise) reste un choix à part.",
+      ],
+    },
+  ],
+  signupUrl: "https://mylumio.tv",
+  signupLabel: "Ouvrir Lumio",
+  keyUrl: "https://mylumio.tv/configure",
+  keyLabel: "Ouvrir la configuration Lumio",
+  note: "Réglage de profil, hors assistant : l'assistant ne coche aucune langue à votre place, il installe le lien du profil Lumio que vous avez créé (voir le tutoriel Profil Lumio). Le choix des langues se fait une fois, chez Lumio, et vaut pour toutes vos recherches de sources dans Nuvio.",
 };
 
 const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
@@ -86,6 +141,7 @@ const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "tvdb", label: "Clé TheTVDB", guide: PROVIDER_GUIDES.tvdb },
   { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
   { key: "lumio", label: "Profil Lumio", guide: PROVIDER_GUIDES.lumio },
+  { key: "vostfr", label: "VF + VOSTFR (Lumio)", guide: VOSTFR_TUTORIAL },
   { key: "trakt", label: "Suivi Trakt (facultatif)", guide: TRAKT_TUTORIAL },
 ];
 
@@ -100,12 +156,12 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Huit tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
-          débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), puis les
-          trois clés de métadonnées et le profil Lumio. L&apos;assistant pose
-          chaque question au bon moment et applique ces réglages à votre place.
-          Le dernier, Trakt, est facultatif : il ne concerne que le suivi de ce
-          que vous regardez.
+          Neuf tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
+          débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), les
+          trois clés de métadonnées, le profil Lumio et le réglage VF + VOSTFR.
+          L&apos;assistant pose chaque question au bon moment et applique ces
+          réglages à votre place. Le dernier, Trakt, est facultatif : il ne
+          concerne que le suivi de ce que vous regardez.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
@@ -150,7 +206,7 @@ export function TutorialGuide() {
                           key={bullet}
                           className="flex gap-2 text-sm leading-relaxed text-mist-400"
                         >
-                          <span className="text-mist-600">—</span>
+                          <span className="text-mist-600">·</span>
                           <span>{bullet}</span>
                         </li>
                       ))}

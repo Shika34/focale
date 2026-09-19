@@ -62,7 +62,7 @@ export function AlldebridPromoBanner() {
           Saisissez un nom pour reconnaître la clé (par exemple « Nuvio »), puis
           validez avec le bouton vert « Créer » : la clé s&apos;affiche en dessous.
           AllDebrid envoie généralement un email de sécurité pour autoriser cette
-          nouvelle connexion — ouvrez-le si vous le recevez, puis collez la clé à
+          nouvelle connexion : ouvrez-le si vous le recevez, puis collez la clé à
           l&apos;étape 2 du configurateur.
         </p>
       </div>
@@ -72,21 +72,21 @@ export function AlldebridPromoBanner() {
           <span className="eyebrow">Où votre clé est utilisée</span>
           <ul className="mt-3 space-y-2 text-sm leading-relaxed text-mist-400">
             <li className="flex gap-2">
-              <span className="text-mist-600">—</span>
+              <span className="text-mist-600">·</span>
               <span>
                 <strong className="font-medium text-mist-200">Torrentio</strong> :
                 manifest personnalisé, filtre qualité, français prioritaire.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-mist-600">—</span>
+              <span className="text-mist-600">·</span>
               <span>
                 <strong className="font-medium text-mist-200">Comet</strong> :
                 manifest personnalisé, résultats en français.
               </span>
             </li>
             <li className="flex gap-2">
-              <span className="text-mist-600">—</span>
+              <span className="text-mist-600">·</span>
               <span>
                 <strong className="font-medium text-mist-200">Lumio</strong> : la
                 clé à coller dans votre profil Lumio, au moment de le configurer.
@@ -124,7 +124,7 @@ export function AlldebridPromoBanner() {
         <p className="text-xs leading-relaxed text-mist-300">
           AllDebrid n&apos;est pas intégré nativement à Nuvio : les services
           connectés de l&apos;application ne connaissent que TorBox et Premiumize.
-          Avec AllDebrid, ce sont Torrentio et Comet qui débrident — l&apos;assistant
+          Avec AllDebrid, ce sont Torrentio et Comet qui débrident : l&apos;assistant
           les configure pour vous, et le résultat est le même à l&apos;écran. Aucun
           lien d&apos;affiliation : cette section existe parce que l&apos;assistant
           accepte aussi AllDebrid.

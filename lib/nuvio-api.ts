@@ -308,8 +308,8 @@ export const NuvioApi = {
    *
    * C'est la seule voie possible : les clients Nuvio excluent volontairement les
    * clés d'API des blobs de réglages qu'ils synchronisent. Nuvio Desktop en
-   * dépend directement — ses sources TMDB exigent un `tmdb_api_key` propre au
-   * profil — alors que les apps TV et mobile utilisent une clé TMDB intégrée à
+   * dépend directement (ses sources TMDB exigent un `tmdb_api_key` propre au
+   * profil), alors que les apps TV et mobile utilisent une clé TMDB intégrée à
    * l'application.
    *
    * AllDebrid n'a pas d'entrée ici : les services connectés de Nuvio ne

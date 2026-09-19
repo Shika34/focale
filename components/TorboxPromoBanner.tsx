@@ -119,7 +119,7 @@ export function TorboxPromoBanner() {
           </dl>
           <p className="mt-3 text-xs leading-relaxed text-mist-500">
             Barème affiché par TorBox en mensuel : Essential 3 $/mois, Standard
-            5 $/mois, Pro 10 $/mois — compté ici sur 12 mois.
+            5 $/mois, Pro 10 $/mois (compté ici sur 12 mois).
           </p>
         </div>
       </div>

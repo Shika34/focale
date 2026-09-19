@@ -44,7 +44,7 @@ export const PROVIDER_GUIDES: Record<
       },
       {
         title: "Remplir le formulaire",
-        detail: "Indiquez un usage personnel (par exemple « Nuvio — usage personnel »), acceptez les conditions puis validez le formulaire.",
+        detail: "Indiquez un usage personnel (par exemple « Nuvio, usage personnel »), acceptez les conditions puis validez le formulaire.",
       },
       {
         title: "Copier la clé v3",
@@ -163,7 +163,7 @@ export const PROVIDER_GUIDES: Record<
     signupLabel: "Créer mon compte AllDebrid",
     keyUrl: "https://alldebrid.fr/apikeys/",
     keyLabel: "Ouvrir mes clés API",
-    note: "AllDebrid n'est pas intégré nativement à Nuvio — les services connectés de l'application ne connaissent que TorBox et Premiumize. Ici, c'est Torrentio et Comet qui débrident, avec votre clé : l'assistant les configure pour vous, et le résultat est le même à l'écran.",
+    note: "AllDebrid n'est pas intégré nativement à Nuvio : les services connectés de l'application ne connaissent que TorBox et Premiumize. Ici, c'est Torrentio et Comet qui débrident, avec votre clé : l'assistant les configure pour vous, et le résultat est le même à l'écran.",
   },
   lumio: {
     question: "Avez-vous déjà un compte Lumio et son URL de manifest ?",
@@ -181,7 +181,7 @@ export const PROVIDER_GUIDES: Record<
         detail: "Choisissez votre méthode de connexion :",
         bullets: [
           "« Se connecter à TorBox » / « Se connecter à AllDebrid » : valide directement la connexion depuis votre navigateur.",
-          "« Saisir la clé » : collez la clé API récupérée sur votre compte — torbox.app/settings pour TorBox, alldebrid.fr/apikeys pour AllDebrid — puis cliquez sur Vérifier.",
+          "« Saisir la clé » : collez la clé API récupérée sur votre compte (torbox.app/settings pour TorBox, alldebrid.fr/apikeys pour AllDebrid) puis cliquez sur Vérifier.",
         ],
       },
       {
