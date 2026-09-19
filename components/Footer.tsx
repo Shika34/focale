@@ -15,7 +15,7 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-3 text-sm leading-relaxed text-mist-400">
-              {SITE.tagline} — collections francophones, métadonnées en français
+              {SITE.tagline} · collections francophones, métadonnées en français
               et débridage TorBox, configurés depuis un seul assistant.
             </p>
           </div>

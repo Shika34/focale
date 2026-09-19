@@ -39,6 +39,7 @@
       "lib_manifest_urls_debridentry",
       "lib_manifest_urls_debriders",
       "lib_manifest_urls_debridkeys",
+      "lib_manifest_urls_debridnames",
       "lib_nuvio_api",
       "lib_nuvio_api_anonheaders",
       "lib_nuvio_api_apikeysconfig",
@@ -61,7 +62,6 @@
       "components_nuvioconfiguratormodal_accountquestion",
       "components_nuvioconfiguratormodal_aiometadatafield",
       "components_nuvioconfiguratormodal_aiometadatafieldprops",
-      "components_nuvioconfiguratormodal_alldebridkeytest",
       "components_nuvioconfiguratormodal_directkeylink",
       "components_nuvioconfiguratormodal_formatfrenchlist",
       "components_nuvioconfiguratormodal_guidefield",
@@ -72,22 +72,13 @@
       "components_nuvioconfiguratormodal_nuvioconfiguratormodalprops",
       "components_nuvioconfiguratormodal_viewstate",
       "components_nuvioconfiguratormodal_wizardstep",
-      "context_handoff",
-      "context_handoff_1_torbox_referral_data",
       "context_handoff_2_project_status",
-      "context_handoff_3_next_steps",
-      "context_handoff_4_end_of_session_instructions_ai",
-      "context_handoff_context_handoff_nuvio_collection",
-      "lib_debrid_key_test",
-      "lib_debrid_key_test_alldebriduser",
-      "lib_debrid_key_test_asrecord",
-      "lib_debrid_key_test_checkalldebridkey",
-      "lib_debrid_key_test_debridkeycheck",
-      "lib_debrid_key_test_messageforerrorcode",
-      "lib_debrid_key_test_readuser",
       "lib_manifest_urls_buildlumiourl",
-      "lib_manifest_urls_debridnames",
-      "lib_provider_guides_providerguide"
+      "lib_provider_guides",
+      "lib_provider_guides_guidestep",
+      "lib_provider_guides_provider_guides",
+      "lib_provider_guides_providerguide",
+      "lib_site_torbox_referral_link"
     ],
     "3": [
       "tsconfig",
@@ -118,20 +109,12 @@
       "app_layout_rootlayout",
       "app_layout_sans",
       "app_layout_viewport",
-      "app_tutoriel_page",
-      "app_tutoriel_page_metadata",
-      "app_tutoriel_page_tutorielpage",
       "components_footer",
       "components_footer_footer",
       "components_navbar",
       "components_navbar_nav_links",
-      "components_tutorialguide_tutorialguide",
-      "lib_provider_guides",
-      "lib_provider_guides_guidestep",
       "lib_site",
       "lib_site_site",
-      "lib_site_torbox_referral_link",
-      "ref_next",
       "ref_next_font_google",
       "ref_next_link",
       "ref_next_navigation",
@@ -144,6 +127,9 @@
       "app_page_nuvio_points",
       "app_page_sections",
       "app_page_shots",
+      "app_tutoriel_page",
+      "app_tutoriel_page_metadata",
+      "app_tutoriel_page_tutorielpage",
       "components_alldebridpromobanner",
       "components_alldebridpromobanner_alldebridpromobanner",
       "components_alldebridpromobanner_plans",
@@ -153,9 +139,9 @@
       "components_tutorialguide",
       "components_tutorialguide_nuvio_tutorial",
       "components_tutorialguide_trakt_tutorial",
+      "components_tutorialguide_tutorialguide",
       "components_tutorialguide_tutorials",
       "components_tutorialguide_vostfr_tutorial",
-      "lib_provider_guides_provider_guides",
       "ref_lucide_react",
       "ref_react"
     ],
@@ -172,7 +158,8 @@
       "lib_nuvio_data",
       "lib_nuvio_data_collectionsummaryitem",
       "lib_nuvio_data_getcollectionssummary",
-      "lib_nuvio_data_getstats"
+      "lib_nuvio_data_getstats",
+      "ref_next"
     ],
     "8": [
       "package_devdependencies",
@@ -213,6 +200,13 @@
       "public_aiometadata_config_mitch",
       "ref_next_server"
     ],
+    "12": [
+      "context_handoff",
+      "context_handoff_1_torbox_referral_data",
+      "context_handoff_3_next_steps",
+      "context_handoff_4_end_of_session_instructions_ai",
+      "context_handoff_context_handoff_nuvio_collection"
+    ],
     "13": [
       "next",
       "next_config",
@@ -234,16 +228,17 @@
   },
   "cohesion": {
     "0": 0.07142857142857142,
-    "1": 0.11857707509881422,
-    "2": 0.08870967741935484,
+    "1": 0.11594202898550725,
+    "2": 0.12554112554112554,
     "3": 0.10526315789473684,
-    "4": 0.11333333333333333,
-    "5": 0.14736842105263157,
-    "7": 0.2692307692307692,
+    "4": 0.16911764705882354,
+    "5": 0.12648221343873517,
+    "7": 0.24175824175824176,
     "8": 0.2,
     "9": 0.25,
     "10": 0.2857142857142857,
     "11": 0.4,
+    "12": 0.4,
     "13": 0.4,
     "14": 0.5,
     "15": 0.6666666666666666
@@ -275,11 +270,6 @@
       "degree": 7
     },
     {
-      "id": "lib_debrid_key_test_checkalldebridkey",
-      "label": "checkAlldebridKey()",
-      "degree": 6
-    },
-    {
       "id": "readme_focale",
       "label": "Focale",
       "degree": 6
@@ -298,6 +288,11 @@
       "id": "lib_manifest_urls_debridentries",
       "label": "debridEntries()",
       "degree": 5
+    },
+    {
+      "id": "lib_nuvio_data_getstats",
+      "label": "getStats()",
+      "degree": 5
     }
   ],
   "surprises": [
@@ -310,11 +305,22 @@
       ],
       "confidence": "INFERRED",
       "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities; peripheral node `GuideStep` unexpectedly reaches hub `2. Project Status`"
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; peripheral node `GuideStep` unexpectedly reaches hub `2. Project Status`"
     },
     {
       "source": "2. Project Status",
       "target": "debridEntries()",
+      "source_files": [
+        "CONTEXT_HANDOFF.md",
+        "lib/manifest-urls.ts"
+      ],
+      "confidence": "INFERRED",
+      "relation": "references",
+      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "2. Project Status",
+      "target": "debridNames()",
       "source_files": [
         "CONTEXT_HANDOFF.md",
         "lib/manifest-urls.ts"
@@ -344,34 +350,23 @@
       "confidence": "INFERRED",
       "relation": "references",
       "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; peripheral node `DirectKeyLink()` unexpectedly reaches hub `2. Project Status`"
-    },
-    {
-      "source": "2. Project Status",
-      "target": "getStats()",
-      "source_files": [
-        "CONTEXT_HANDOFF.md",
-        "lib/nuvio-data.ts"
-      ],
-      "confidence": "INFERRED",
-      "relation": "references",
-      "why": "inferred connection - not explicitly stated in source; crosses file types (code ↔ doc); connects across different repos/directories; bridges separate communities"
     }
   ],
   "questions": [
     {
       "type": "bridge_node",
-      "question": "Why does `lucide-react` connect `Landing Page Content` to `Project Dependencies`, `Configuration UI Components`, `Global Layout Structure`, `Collection Browser Interface`?",
+      "question": "Why does `lucide-react` connect `Frontend Pages & UI` to `Package Dependencies`, `UI Components & Navigation`, `Global Layout & Styles`, `Collections Page & Browser`?",
       "why": "High betweenness centrality (0.122) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `react` connect `Landing Page Content` to `Project Dependencies`, `Configuration UI Components`, `Global Layout Structure`, `Collection Browser Interface`?",
-      "why": "High betweenness centrality (0.079) - this node is a cross-community bridge."
+      "question": "Why does `react` connect `Frontend Pages & UI` to `Package Dependencies`, `UI Components & Navigation`, `Global Layout & Styles`, `Collections Page & Browser`?",
+      "why": "High betweenness centrality (0.077) - this node is a cross-community bridge."
     },
     {
       "type": "bridge_node",
-      "question": "Why does `devDependencies` connect `Development Tooling Suite` to `Project Dependencies`?",
-      "why": "High betweenness centrality (0.064) - this node is a cross-community bridge."
+      "question": "Why does `devDependencies` connect `Dev Dependencies & Tooling` to `Package Dependencies`?",
+      "why": "High betweenness centrality (0.066) - this node is a cross-community bridge."
     },
     {
       "type": "verify_inferred",
@@ -385,13 +380,13 @@
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Project Dependencies` be split into smaller, more focused modules?",
+      "question": "Should `Package Dependencies` be split into smaller, more focused modules?",
       "why": "Cohesion score 0.07142857142857142 - nodes in this community are weakly interconnected."
     },
     {
       "type": "low_cohesion",
-      "question": "Should `Debrid API Configuration` be split into smaller, more focused modules?",
-      "why": "Cohesion score 0.11857707509881422 - nodes in this community are weakly interconnected."
+      "question": "Should `Debrid Service Config` be split into smaller, more focused modules?",
+      "why": "Cohesion score 0.11594202898550725 - nodes in this community are weakly interconnected."
     }
   ]
 }

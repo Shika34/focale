@@ -40,5 +40,5 @@ Les en-têtes de sécurité (CSP, HSTS, `X-Frame-Options`, `Referrer-Policy`,
 
 ## Notes d'exploitation
 
-- `CONTEXT_HANDOFF.md` : état du projet et tâches en cours — à lire en début de session.
+- `CONTEXT_HANDOFF.md` : état du projet et tâches en cours ; à lire en début de session.
 - `CLAUDE.md` : conventions de code (UI en français, vouvoiement).

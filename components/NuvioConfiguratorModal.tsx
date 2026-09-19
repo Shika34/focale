@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import { NuvioApi } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
+import { checkAlldebridKey, type DebridKeyCheck } from "@/lib/debrid-key-test";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
 
 interface NuvioConfiguratorModalProps {
@@ -417,6 +418,75 @@ function GuideField({
           />
           {children}
         </>
+      )}
+    </div>
+  );
+}
+
+/**
+ * Test d'une clé AllDebrid, affiché sous le champ de saisie.
+ *
+ * Le test part du navigateur de l'utilisateur (voir `checkAlldebridKey`) : il
+ * valide la clé et, si AllDebrid refuse à cause de l'IP ou du pays, le dit en
+ * français au lieu de laisser l'utilisateur découvrir le problème dans Nuvio.
+ */
+function AlldebridKeyTest({ apiKey }: { apiKey: string }) {
+  const [tested, setTested] = useState<{ key: string; check: DebridKeyCheck } | null>(null);
+  const [testing, setTesting] = useState(false);
+  const key = apiKey.trim();
+
+  // Un verdict ne vaut que pour la clé testée : la modifier le retire.
+  const check = tested?.key === key ? tested.check : null;
+
+  if (!key) {
+    return null;
+  }
+
+  const run = async () => {
+    setTesting(true);
+    setTested({ key, check: await checkAlldebridKey(key) });
+    setTesting(false);
+  };
+
+  const resultColor =
+    check?.status === "valid"
+      ? "text-sage-300"
+      : check?.status === "invalid"
+        ? "text-red-300"
+        : "text-gold-300";
+
+  return (
+    <div className="space-y-2">
+      <button
+        type="button"
+        onClick={run}
+        disabled={testing}
+        className="inline-flex items-center gap-2 rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+      >
+        {testing ? (
+          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+        ) : (
+          <CheckCircle2 className="w-3.5 h-3.5 text-gold-400" />
+        )}
+        {testing ? "Vérification…" : "Tester ma clé AllDebrid"}
+      </button>
+      <p className="text-[11px] text-mist-500 leading-relaxed">
+        Le test part de votre navigateur : il vérifie la clé et que votre connexion
+        n&apos;est pas bloquée par AllDebrid. Votre clé n&apos;est envoyée qu&apos;à
+        AllDebrid.
+      </p>
+      {check && (
+        <p
+          role="status"
+          className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${resultColor}`}
+        >
+          {check.status === "valid" ? (
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          ) : (
+            <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+          )}
+          <span>{check.message}</span>
+        </p>
       )}
     </div>
   );
@@ -857,7 +927,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                           <span>Nom du profil Nuvio à créer</span>
                         </label>
                         <p className="text-xs text-mist-400 mt-1 leading-relaxed">
-                          L&apos;assistant crée ce profil sur votre compte Nuvio — ou le
+                          L&apos;assistant crée ce profil sur votre compte Nuvio, ou le
                           réutilise s&apos;il porte déjà ce nom. Les clés de l&apos;étape 2 y
                           sont enregistrées.
                         </p>
@@ -888,8 +958,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       2. Ajoutez vos clés API
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
-                      Il vous faut au moins une clé de débrideur — TorBox ou
-                      AllDebrid, les deux si vous avez les deux comptes : elle
+                      Il vous faut au moins une clé de débrideur (TorBox ou
+                      AllDebrid, les deux si vous avez les deux comptes) : elle
                       débrite vos flux et sert aussi à configurer Lumio,
                       Torrentio et Comet. Les clés de
                       métadonnées (TMDB, TheTVDB et MDBList) enrichissent les
@@ -923,7 +993,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       setAlldebridKey(value);
                       setMissingKeysWarning(null);
                     }}
-                  />
+                  >
+                    <AlldebridKeyTest apiKey={alldebridKey} />
+                  </GuideField>
                   <GuideField
                     label="TMDB (fortement recommandé)"
                     description="Affiches, résumés, notes et métadonnées de films en français. Clé reprise dans le profil : indispensable à l'application Nuvio Desktop, qui n'a pas de clé TMDB intégrée."
@@ -1115,7 +1187,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </strong>
                     <div>
                       • <span className="text-mist-300">Profil créé</span> :{" "}
-                      « {profileName.trim() || "Nuvio France FR"} » — réutilisé s&apos;il
+                      « {profileName.trim() || "Nuvio France FR"} », réutilisé s&apos;il
                       existe déjà. Vos clés TMDB et MDBList y sont reprises de
                       l&apos;étape 2, ainsi que votre clé TorBox si vous en avez
                       une : Nuvio Desktop en a besoin.
@@ -1143,17 +1215,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       • <span className="text-mist-300">Lumio</span> :{" "}
                       {lumioManifestUrl.trim()
                         ? "votre profil (lien fourni)"
-                        : "non installé — aucun lien fourni"}
+                        : "non installé (aucun lien fourni)"}
                       .
                     </div>
                     <div>
                       • <span className="text-mist-300">Débrideur</span> :{" "}
                       {torboxKey.trim() && alldebridKey.trim()
-                        ? "TorBox et AllDebrid — les deux clés placées dans Torrentio, Comet et Lumio"
+                        ? "TorBox et AllDebrid : les deux clés placées dans Torrentio, Comet et Lumio"
                         : torboxKey.trim()
-                          ? "TorBox — placé dans Torrentio, Comet et Lumio"
+                          ? "TorBox : placé dans Torrentio, Comet et Lumio"
                           : alldebridKey.trim()
-                            ? "AllDebrid — placé dans Torrentio, Comet et Lumio"
+                            ? "AllDebrid : placé dans Torrentio, Comet et Lumio"
                             : "aucune clé fournie : Torrentio et Comet seront installés sans débrideur"}
                       .
                     </div>

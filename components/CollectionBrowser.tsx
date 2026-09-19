@@ -233,7 +233,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
           <div
             role="dialog"
             aria-modal="true"
-            aria-label={`${activeFolderDetail.collectionTitle} — ${activeFolderDetail.folder.title}`}
+            aria-label={`${activeFolderDetail.collectionTitle} : ${activeFolderDetail.folder.title}`}
             className="glass-panel bg-surface max-w-lg w-full rounded-2xl border border-surface-border p-6 space-y-4"
           >
             <div className="flex items-start justify-between">

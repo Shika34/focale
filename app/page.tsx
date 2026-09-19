@@ -34,7 +34,7 @@ const NUVIO_POINTS = [
   },
   {
     title: "Ce à quoi il sert",
-    body: "Vous parcourez films et séries dans une interface habillée par TMDB — affiches, notes, bandes-annonces, sous-titres — puis vous lancez la lecture sans quitter l'application. Votre progression et votre liste de suivi vous suivent d'un écran à l'autre, comme le reste de vos réglages.",
+    body: "Vous parcourez films et séries dans une interface habillée par TMDB (affiches, notes, bandes-annonces, sous-titres), puis vous lancez la lecture sans quitter l'application. Votre progression et votre liste de suivi vous suivent d'un écran à l'autre, comme le reste de vos réglages.",
   },
   {
     title: "Pourquoi ce choix",
@@ -45,15 +45,15 @@ const NUVIO_POINTS = [
 const LUMIO_POINTS = [
   {
     title: "Un addon, pas un catalogue",
-    body: "Lumio ne stocke rien : il branche votre débrideur — TorBox ou AllDebrid — sur Nuvio et charge la vidéo en une fraction de seconde. Vous gardez vos habitudes de lecture, avec des résultats triés pour la VF.",
+    body: "Lumio ne stocke rien : il branche votre débrideur (TorBox ou AllDebrid) sur Nuvio et charge la vidéo en une fraction de seconde. Vous gardez vos habitudes de lecture, avec des résultats triés pour la VF.",
   },
   {
     title: "Ce que votre profil Lumio décide",
-    body: "Les langues acceptées — la vôtre passe en tête des résultats —, le style de visionnage (L'Essentiel, Zen, Cinéphile, Nomade ou Mode Expert) et la présentation des liens : Direct, Netflix, Compact ou Détaillé.",
+    body: "Les langues acceptées (la vôtre passe en tête des résultats), le style de visionnage (L'Essentiel, Zen, Cinéphile, Nomade ou Mode Expert) et la présentation des liens : Direct, Netflix, Compact ou Détaillé.",
   },
   {
     title: "Pourquoi un lien à copier à l'étape 3",
-    body: "Votre configuration Lumio vit sur mylumio.tv, pas dans Nuvio. Elle produit une adresse de manifest qui vous est propre, que l'assistant recopie dans votre profil. Sans ce lien, Lumio n'est pas installé — les autres addons, si.",
+    body: "Votre configuration Lumio vit sur mylumio.tv, pas dans Nuvio. Elle produit une adresse de manifest qui vous est propre, que l'assistant recopie dans votre profil. Sans ce lien, Lumio n'est pas installé ; les autres addons, si.",
   },
 ];
 
@@ -63,8 +63,8 @@ const SECTIONS = [
     label: "Tutoriels",
     title: "Comptes, clés API, Lumio",
     description:
-      "Huit tutoriels courts pour créer vos comptes et récupérer chaque clé — Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio — dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
-    meta: "8 tutoriels",
+      "Neuf tutoriels courts pour créer vos comptes et récupérer chaque clé (Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio et le réglage VF + VOSTFR) dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
+    meta: "9 tutoriels",
   },
   {
     href: "/collections",
@@ -231,7 +231,14 @@ export default function HomePage() {
             tutoriel Lumio
           </Link>{" "}
           reprend le parcours écran par écran, du choix du profil à la copie du
-          lien de manifest.
+          lien de manifest ; le tutoriel{" "}
+          <Link
+            href="/tutoriel#vostfr"
+            className="text-mist-300 underline decoration-line underline-offset-4 transition-colors hover:text-gold-300"
+          >
+            VF + VOSTFR
+          </Link>{" "}
+          montre où cocher les langues.
         </p>
       </section>
 

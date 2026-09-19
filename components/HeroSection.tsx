@@ -85,7 +85,7 @@ export function HeroSection() {
               <p className="mt-5 text-xs leading-relaxed text-mist-500">
                 Collections et addons sont installés dans votre profil Nuvio via
                 son API officielle. Vos clés ne servent qu&apos;aux services
-                concernés — Nuvio, AIO Metadata, Torrentio, Comet — et ne sont
+                concernés (Nuvio, AIO Metadata, Torrentio, Comet) et ne sont
                 pas conservées ici.
               </p>
             </div>
