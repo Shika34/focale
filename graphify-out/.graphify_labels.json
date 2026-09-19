@@ -1,18 +1,1 @@
-{
-  "0": "package.json",
-  "1": "nuvio-api.ts",
-  "2": "NuvioConfiguratorModal.tsx",
-  "3": "compilerOptions",
-  "4": "layout.tsx",
-  "5": "TutorialGuide.tsx",
-  "6": "app/page.tsx",
-  "7": "collections/page.tsx",
-  "8": "devDependencies",
-  "9": "CLAUDE.md — NUVIO Collection",
-  "10": "Focale",
-  "11": "route.ts",
-  "12": "Context Handoff — NUVIO Collection",
-  "13": "next.config.mjs",
-  "14": "eslint.config.mjs",
-  "15": "postcss.config.mjs"
-}
+{"0": "Project Dependencies", "1": "Debrid Service Integration", "2": "Configuration UI Components", "3": "TypeScript Compiler Config", "4": "Site Layout & Navigation", "5": "Tutorial & Guide Pages", "6": "Homepage Components", "7": "Collection Browser UI", "8": "Development Dependencies", "9": "Project Documentation", "10": "Deployment Operations Guide", "11": "API Route Handlers", "12": "AI Context Handoff", "13": "Next.js Security Config", "14": "ESLint Configuration", "15": "PostCSS Configuration"}

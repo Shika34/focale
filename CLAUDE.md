@@ -27,6 +27,8 @@
 ## Graphify Tool
 - Read `graphify-out/GRAPH_REPORT.md` or `graphify-out/wiki/index.md` before analyzing architecture.
 - After code modifications, run `graphify update .`.
+- `--update` / `--cluster-only` sont des commandes d'assistant (`/graphify <chemin> --update`) ; en terminal, utiliser les sous-commandes `graphify update .`, `graphify cluster-only .`, `graphify query "..."`.
+- Les étapes LLM (étiquetage des communautés, extraction sémantique des docs) tournent sur Ollama en local : `OLLAMA_HOST` + `OLLAMA_MODEL` sont définis dans `~/.config/environment.d/50-graphify-ollama.conf`. Forcer explicitement si besoin : `graphify label . --backend=ollama`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
