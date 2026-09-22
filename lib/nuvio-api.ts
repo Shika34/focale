@@ -13,8 +13,12 @@
 
 import {
   buildLumioUrl,
+  buildStreamFusionUrl,
   buildTorrentioUrl,
   buildCometUrl,
+  buildLoostreamUrl,
+  buildFrenchioUrl,
+  buildUwuFrUrl,
   debridEntries,
   debridNames,
 } from "./manifest-urls";
@@ -166,6 +170,24 @@ function settingsBlobValue(rows: unknown): unknown {
   return record.settings_json ?? record.settingsJson ?? null;
 }
 
+/**
+ * Message d'erreur d'authentification utilisable tel quel à l'écran : les
+ * erreurs techniques renvoyées par Supabase (« Failed to fetch », « Invalid
+ * login credentials ») sont traduites, les messages déjà rédigés sont rendus
+ * inchangés.
+ */
+export function authErrorMessage(err: unknown): string {
+  const raw = err instanceof Error ? err.message : String(err);
+  const lower = raw.toLowerCase();
+  if (lower.includes("failed to fetch") || lower.includes("load failed") || lower.includes("network")) {
+    return "Impossible de joindre Nuvio pour vérifier votre compte. Vérifiez votre connexion internet, puis réessayez.";
+  }
+  if (lower.includes("invalid login credentials") || lower.includes("invalid credentials")) {
+    return "Email ou mot de passe Nuvio refusé. Vérifiez votre saisie, puis réessayez.";
+  }
+  return raw;
+}
+
 export const NuvioApi = {
   /**
    * Connexion au compte Nuvio
@@ -236,10 +258,10 @@ export const NuvioApi = {
           if (sMsg.includes("already registered") || sMsg.includes("already exists")) {
             throw new Error("Ce compte Nuvio existe déjà, mais le mot de passe est erroné. Veuillez vérifier votre mot de passe.");
           }
-          throw signupErr;
+          throw new Error(authErrorMessage(signupErr));
         }
       }
-      throw err;
+      throw new Error(authErrorMessage(err));
     }
   },
 
@@ -535,14 +557,23 @@ export const NuvioApi = {
   /**
    * Génère la liste des addons du pack France.
    *
-   * Torrentio et Comet sont générés à partir des clés de débrideur saisies
-   * (TorBox et AllDebrid, dont les formats d'URL sont stables). AIO Metadata et
-   * Lumio ont une configuration stockée côté service : leur URL de manifest est
-   * fournie par l'utilisateur.
+   * Torrentio, Comet, Loostream, Frenchio et UwU-FR sont générés à partir des
+   * clés saisies (débrideur et TMDB), dont les formats d'URL sont stables.
+   * AIO Metadata, Lumio et StreamFusion ont une configuration stockée côté
+   * service : leur URL de manifest est fournie par l'utilisateur.
    */
   buildAddonsList(
     keys: ApiKeysConfig,
-    manifests: { aioMetadataUrl?: string; lumioManifestUrl?: string } = {},
+    manifests: {
+      aioMetadataUrl?: string;
+      lumioManifestUrl?: string;
+      streamFusionManifestUrl?: string;
+      /** Nom du profil Nuvio, utilisé comme pseudo Loostream. */
+      loostreamPseudo?: string;
+      loostream?: boolean;
+      frenchio?: boolean;
+      uwuFr?: boolean;
+    } = {},
   ): NuvioAddonInstall[] {
     const debridKeys = {
       torboxApiKey: keys.torboxApiKey,
@@ -552,6 +583,15 @@ export const NuvioApi = {
     const hasDebrid = debridEntries(debridKeys).length > 0;
     const aioMetadataUrl = manifests.aioMetadataUrl?.trim();
     const lumioUrl = buildLumioUrl(manifests.lumioManifestUrl);
+    const streamFusionUrl = buildStreamFusionUrl(manifests.streamFusionManifestUrl);
+    const loostreamUrl =
+      manifests.loostream === false
+        ? ""
+        : buildLoostreamUrl(keys.tmdbApiKey, manifests.loostreamPseudo ?? "");
+    const frenchioUrl =
+      manifests.frenchio === false ? "" : buildFrenchioUrl(debridKeys, keys.tmdbApiKey);
+    const uwuFrUrl =
+      manifests.uwuFr === true ? buildUwuFrUrl(debridKeys, keys.tmdbApiKey) : "";
 
     const addons: NuvioAddonInstall[] = [
       { name: "Cinemeta", url: "https://v3-cinemeta.strem.io/manifest.json", note: "Métadonnées officielles" },
@@ -587,6 +627,40 @@ export const NuvioApi = {
         note: hasDebrid ? `Scraper rapide avec débrideur ${debrid}` : "Scraper sans débrideur",
       },
     );
+
+    if (frenchioUrl) {
+      addons.push({
+        name: "Frenchio",
+        url: frenchioUrl,
+        note: `Trackers francophones avec débrideur ${debrid}`,
+      });
+    }
+
+    if (loostreamUrl) {
+      addons.push({
+        name: "Loostream",
+        url: loostreamUrl,
+        note: "Sources francophones directes (VF/VOSTFR), sans débrideur",
+      });
+    }
+
+    if (uwuFrUrl) {
+      addons.push({
+        name: "UwU-FR",
+        url: uwuFrUrl,
+        note: `Animés VF et VOSTFR avec débrideur ${debrid}`,
+      });
+    }
+
+    if (streamFusionUrl) {
+      addons.push({
+        name: "StreamFusion",
+        url: streamFusionUrl,
+        note: debrid
+          ? `Votre configuration StreamFusion (débrideur ${debrid})`
+          : "Votre configuration StreamFusion",
+      });
+    }
 
     return addons;
   },

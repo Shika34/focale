@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
 import {
   X,
   Aperture,
@@ -19,7 +19,7 @@ import {
   BookOpen,
   HelpCircle,
 } from "lucide-react";
-import { NuvioApi } from "@/lib/nuvio-api";
+import { NuvioApi, authErrorMessage } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
 import { checkAlldebridKey, type DebridKeyCheck } from "@/lib/debrid-key-test";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
@@ -423,6 +423,64 @@ function GuideField({
   );
 }
 
+interface AddonToggleProps {
+  name: string;
+  description: string;
+  checked: boolean;
+  onChange: (checked: boolean) => void;
+  /** Clé manquante à l'étape 2 : l'addon ne peut pas être généré. */
+  blockedReason?: string;
+}
+
+/** Addon du pack français configuré automatiquement par l'assistant. */
+function AddonToggle({
+  name,
+  description,
+  checked,
+  onChange,
+  blockedReason,
+}: AddonToggleProps) {
+  const disabled = Boolean(blockedReason);
+
+  return (
+    <label
+      className={`flex items-start gap-3 rounded-xl border px-3.5 py-3 transition-colors ${
+        disabled
+          ? "border-surface-border/40 bg-surface/40"
+          : "border-surface-border/60 bg-surface/60 hover:border-gold-500/40 cursor-pointer"
+      }`}
+    >
+      <input
+        type="checkbox"
+        checked={!disabled && checked}
+        disabled={disabled}
+        onChange={(event) => onChange(event.target.checked)}
+        className="mt-0.5 h-4 w-4 shrink-0 accent-gold-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70"
+      />
+      <span className="space-y-1">
+        <span className="flex flex-wrap items-center gap-2">
+          <span
+            className={`text-sm font-bold ${disabled ? "text-mist-400" : "text-mist-100"}`}
+          >
+            {name}
+          </span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.08em] text-sage-300 bg-sage-500/10 border border-sage-500/30 rounded-full px-2 py-0.5">
+            Configuration automatique
+          </span>
+        </span>
+        <span className="block text-[11px] leading-relaxed text-mist-400">
+          {description}
+        </span>
+        {blockedReason && (
+          <span className="block text-[11px] leading-relaxed text-gold-300">
+            {blockedReason}
+          </span>
+        )}
+      </span>
+    </label>
+  );
+}
+
 /**
  * Test d'une clé AllDebrid, affiché sous le champ de saisie.
  *
@@ -506,6 +564,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [protectionPassword, setProtectionPassword] = useState("");
   const [aioMetadataUrl, setAioMetadataUrl] = useState("");
   const [lumioManifestUrl, setLumioManifestUrl] = useState("");
+  const [streamFusionManifestUrl, setStreamFusionManifestUrl] = useState("");
+  /** Addons français configurés automatiquement, activés par défaut. */
+  const [includeLoostream, setIncludeLoostream] = useState(true);
+  const [includeFrenchio, setIncludeFrenchio] = useState(true);
+  const [includeUwuFr, setIncludeUwuFr] = useState(false);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [progressState, setProgressState] = useState<{
@@ -519,6 +582,22 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   });
 
   const [createdNewAccount, setCreatedNewAccount] = useState(false);
+  /** Vérification du compte Nuvio en cours (bouton « Suivant » de l'étape 1). */
+  const [verifyingAccount, setVerifyingAccount] = useState(false);
+  /** Garde synchrone contre les doubles clics sur « Suivant ». */
+  const verifyingAccountRef = useRef(false);
+  /**
+   * Session Nuvio validée à l'étape 1 : le mot de passe saisi a été accepté par
+   * l'API. Conservée avec l'email et le mot de passe testés, afin d'être
+   * réutilisée à l'envoi tant que l'utilisateur ne modifie pas ses identifiants.
+   */
+  const [verifiedAuth, setVerifiedAuth] = useState<{
+    token: string;
+    userId: string;
+    isNewAccount: boolean;
+    email: string;
+    password: string;
+  } | null>(null);
   /** Nom du profil Nuvio créé (et réutilisé s'il existe déjà) par l'assistant. */
   const [profileName, setProfileName] = useState("Nuvio France FR");
   const [targetProfileName, setTargetProfileName] = useState("Nuvio France FR");
@@ -576,12 +655,49 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
   if (!isOpen) return null;
 
-  const goToNextStep = () => {
+  /**
+   * Vérifie le compte Nuvio auprès de l'API officielle : connexion si le compte
+   * existe, création avec le mot de passe saisi sinon (messages d'erreur en
+   * français affichés dans le bandeau de l'assistant).
+   */
+  const verifyNuvioAccount = async (): Promise<boolean> => {
+    // Garde synchrone : un double clic ne doit pas déclencher deux appels
+    // d'authentification (l'état React n'est pas encore relu dans ce tour).
+    if (verifyingAccountRef.current) return false;
+    verifyingAccountRef.current = true;
+    const cleanEmail = email.trim();
+    setVerifyingAccount(true);
+    try {
+      const auth = await NuvioApi.autoAuth(cleanEmail, password);
+      setVerifiedAuth({ ...auth, email: cleanEmail, password });
+      return true;
+    } catch (err) {
+      setVerifiedAuth(null);
+      setErrorMessage(authErrorMessage(err));
+      return false;
+    } finally {
+      verifyingAccountRef.current = false;
+      setVerifyingAccount(false);
+    }
+  };
+
+  /** Session Nuvio déjà validée pour les identifiants actuellement saisis. */
+  const currentVerifiedAuth =
+    verifiedAuth && verifiedAuth.email === email.trim() && verifiedAuth.password === password
+      ? verifiedAuth
+      : null;
+
+  const goToNextStep = async () => {
     setErrorMessage("");
 
     if (step === 1 && (!email.trim() || !password.trim())) {
       setErrorMessage("Veuillez renseigner votre email et votre mot de passe Nuvio avant de continuer.");
       return;
+    }
+
+    if (step === 1 && !currentVerifiedAuth) {
+      // Aucun passage à l'étape 2 sans mot de passe confirmé par Nuvio.
+      if (!(await verifyNuvioAccount())) return;
     }
 
     if (step === 2) {
@@ -628,7 +744,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         details: "Vérification sécurisée auprès de l'API officielle de Nuvio…",
       });
 
-      const authRes = await NuvioApi.autoAuth(email, password);
+      // Le compte a déjà été vérifié à l'étape 1 : sa session est réutilisée
+      // tant que l'email et le mot de passe n'ont pas changé.
+      const authRes = currentVerifiedAuth ?? (await NuvioApi.autoAuth(email, password));
       setCreatedNewAccount(authRes.isNewAccount);
 
       setProgressState({
@@ -679,7 +797,15 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           torboxApiKey: torboxKey,
           alldebridApiKey: alldebridKey,
         },
-        { aioMetadataUrl, lumioManifestUrl },
+        {
+          aioMetadataUrl,
+          lumioManifestUrl,
+          streamFusionManifestUrl,
+          loostreamPseudo: profileName.trim() || "Nuvio France FR",
+          loostream: includeLoostream,
+          frenchio: includeFrenchio,
+          uwuFr: includeUwuFr,
+        },
       );
       await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
 
@@ -778,12 +904,27 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     4: "Récapitulatif",
   };
 
+  /** Clés dont dépendent les addons générés automatiquement. */
+  const hasDebridKey = Boolean(torboxKey.trim() || alldebridKey.trim());
+  const hasTmdbKey = Boolean(tmdbKey.trim());
+
+  /** Addons français retenus, pour un récapitulatif et un écran de fin exacts. */
+  const frenchAddons = [
+    ...(includeLoostream && hasTmdbKey ? ["Loostream"] : []),
+    ...(includeFrenchio && hasDebridKey && hasTmdbKey ? ["Frenchio"] : []),
+    ...(includeUwuFr && hasDebridKey && hasTmdbKey ? ["UwU-FR"] : []),
+    ...(streamFusionManifestUrl.trim() ? ["StreamFusion"] : []),
+  ];
+
   /** Contenu réellement installé, pour un récapitulatif de fin exact. */
   const installedContents = [
     "la collection complète",
     "les addons essentiels",
     ...(aioMetadataUrl.trim() ? ["votre configuration AIO Metadata"] : []),
     ...(lumioManifestUrl.trim() ? ["votre profil Lumio"] : []),
+    ...(frenchAddons.length > 0
+      ? [`les addons français (${formatFrenchList(frenchAddons)})`]
+      : []),
   ];
 
   return (
@@ -870,9 +1011,10 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       1. Connectez ou créez votre compte Nuvio
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
-                      Entrez l&apos;email et le mot de passe que vous voulez utiliser
-                      sur Nuvio. Si le compte n&apos;existe pas encore, il sera créé
-                      automatiquement au moment de l&apos;envoi.
+                      Entrez l&apos;email et le mot de passe que vous utilisez (ou voulez
+                      utiliser) sur Nuvio. La vérification se fait dès « Suivant » :
+                      si le compte existe, le mot de passe est contrôlé ; s&apos;il
+                      n&apos;existe pas encore, il est créé avec ce mot de passe.
                     </p>
                   </div>
 
@@ -918,6 +1060,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       />
                     </div>
                   </div>
+
+                  {currentVerifiedAuth && (
+                    <p className="flex items-start gap-2 text-xs text-sage-400 leading-relaxed">
+                      <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                      <span>
+                        {currentVerifiedAuth.isNewAccount
+                          ? "Compte Nuvio créé : ce mot de passe est désormais celui de votre compte."
+                          : "Compte Nuvio vérifié : ce mot de passe correspond bien à ce compte."}
+                      </span>
+                    </p>
+                  )}
 
                   <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
                     <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
@@ -1099,13 +1252,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                 <section className="space-y-5">
                   <div>
                     <h4 className="display text-2xl text-mist-100">
-                      3. Vos addons personnalisés
+                      3. Vos addons
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
                       Votre configuration AIO Metadata se crée ici, en un clic,
-                      avec les clés de l&apos;étape 2. Pour Lumio, la
-                      configuration se fait sur mylumio.tv : vous copiez le lien
-                      de manifest de votre profil et vous le collez ici.
+                      avec les clés de l&apos;étape 2. Pour Lumio et StreamFusion,
+                      la configuration se fait chez eux : vous copiez leur lien de
+                      manifest et vous le collez ici. Les autres addons français
+                      se configurent automatiquement, sans rien à coller.
                     </p>
                   </div>
 
@@ -1165,6 +1319,72 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       )}
                     </div>
                   </GuideField>
+
+                  <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
+                    <div>
+                      <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-gold-400" />
+                        <span>Addons français complémentaires</span>
+                      </label>
+                      <p className="text-xs text-mist-400 mt-1 leading-relaxed">
+                        Les addons francophones de la communauté StremioFR, en
+                        plus de Torrentio et Comet. Les trois premiers lisent les
+                        clés saisies à l&apos;étape 2 : l&apos;assistant écrit
+                        leur lien de manifest à votre place, vous n&apos;avez rien
+                        à ouvrir ni à coller.
+                      </p>
+                    </div>
+
+                    <div className="space-y-2">
+                      <AddonToggle
+                        name="Loostream"
+                        description="Sources francophones lues en direct (miroirs Netflix, Prime et Disney+, StreamFlix, Movix) en VF et VOSTFR, sans débrideur."
+                        checked={includeLoostream}
+                        onChange={setIncludeLoostream}
+                        blockedReason={
+                          hasTmdbKey ? undefined : "Clé TMDB requise : saisissez-la à l'étape 2."
+                        }
+                      />
+                      <AddonToggle
+                        name="Frenchio"
+                        description="Trackers francophones (YGG, C411, Tr4ker…) débridés par votre compte : les mêmes sources que Torrentio, orientées France."
+                        checked={includeFrenchio}
+                        onChange={setIncludeFrenchio}
+                        blockedReason={
+                          hasDebridKey && hasTmdbKey
+                            ? undefined
+                            : "Clé de débrideur et clé TMDB requises à l'étape 2."
+                        }
+                      />
+                      <AddonToggle
+                        name="UwU-FR"
+                        description="Animés en VF et VOSTFR, depuis les trackers francophones et Nyaa. À activer si vous regardez des animés."
+                        checked={includeUwuFr}
+                        onChange={setIncludeUwuFr}
+                        blockedReason={
+                          hasDebridKey && hasTmdbKey
+                            ? undefined
+                            : "Clé de débrideur et clé TMDB requises à l'étape 2."
+                        }
+                      />
+                    </div>
+
+                    <p className="text-[11px] text-mist-500 leading-relaxed">
+                      Loostream affiche « {profileName.trim() || "Nuvio France FR"} » — le nom
+                      de votre profil Nuvio — comme pseudo : changez ce nom à
+                      l&apos;étape 1 pour le modifier. Torrentio est déjà installé
+                      par l&apos;assistant, avec votre clé de débrideur.
+                    </p>
+                  </div>
+
+                  <GuideField
+                    label="StreamFusion (facultatif)"
+                    description="Agrégateur de trackers français et de services de débridage. Sa configuration vit chez StreamFusion (compte et mot de passe) : l'assistant ne peut pas la créer, il recopie le lien de manifest que vous lui donnez."
+                    value={streamFusionManifestUrl}
+                    placeholder="https://streamfusion.stremio-epsilon.ca/xxxxxx/manifest.json"
+                    guide={PROVIDER_GUIDES.streamfusion}
+                    onChange={setStreamFusionManifestUrl}
+                  />
                 </section>
               )}
 
@@ -1219,6 +1439,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       .
                     </div>
                     <div>
+                      • <span className="text-mist-300">Addons français</span> :{" "}
+                      {frenchAddons.length > 0
+                        ? `${formatFrenchList(frenchAddons)} — configurés automatiquement${
+                            streamFusionManifestUrl.trim()
+                              ? ", sauf StreamFusion (votre lien)"
+                              : ""
+                          }`
+                        : "aucun addon complémentaire sélectionné"}
+                      .
+                    </div>
+                    <div>
                       • <span className="text-mist-300">Débrideur</span> :{" "}
                       {torboxKey.trim() && alldebridKey.trim()
                         ? "TorBox et AllDebrid : les deux clés placées dans Torrentio, Comet et Lumio"
@@ -1230,9 +1461,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       .
                     </div>
                     <div>
-                      • <span className="text-mist-300">Addons</span> :
-                      Cinemeta, OpenSubtitles v3, Torrentio et Comet, réglés sur
-                      votre débrideur.
+                      • <span className="text-mist-300">Addons</span> : Cinemeta,
+                      OpenSubtitles v3, AIO Metadata, Torrentio et Comet, réglés sur
+                      votre débrideur
+                      {frenchAddons.length > 0
+                        ? `, plus ${formatFrenchList(frenchAddons)}.`
+                        : "."}
                     </div>
                   </div>
 
@@ -1260,10 +1494,20 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <button
                     type="button"
                     onClick={goToNextStep}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-mist-100 bg-gold-600 hover:bg-gold-500 shadow-glow transition-colors"
+                    disabled={step === 1 && verifyingAccount}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl text-xs font-bold text-mist-100 bg-gold-600 hover:bg-gold-500 shadow-glow transition-colors disabled:opacity-60 disabled:cursor-wait"
                   >
-                    <span>Suivant</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    {step === 1 && verifyingAccount ? (
+                      <>
+                        <span>Vérification du compte…</span>
+                        <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        <span>Suivant</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </>
+                    )}
                   </button>
                 )}
               </div>

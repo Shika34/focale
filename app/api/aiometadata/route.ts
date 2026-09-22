@@ -40,8 +40,10 @@ export async function POST(request: Request) {
   // L'instance AIO Metadata est publique et sans authentification : on refuse
   // les appels déclenchés depuis un autre site (le navigateur envoie toujours
   // `Origin` sur une requête POST), pour que la route ne serve pas de relais.
+  // L'en-tête est exigé : sans cette exigence, un client qui omet `Origin`
+  // (curl, script, serveur) contournait le contrôle — vérifié en production.
   const origin = request.headers.get("origin");
-  if (origin && origin !== new URL(request.url).origin) {
+  if (!origin || origin !== new URL(request.url).origin) {
     return NextResponse.json({ error: "Origine non autorisée." }, { status: 403 });
   }
 
