@@ -1,5 +1,7 @@
-# dependencies
+# Dépendances
 /node_modules
+node_modules/
+jspm_packages/
 /.pnp
 .pnp.js
 .yarn/*
@@ -7,157 +9,56 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
+.yarn-integrity
+.npm
 
-# testing
+# Couverture de tests
 /coverage
 
-# next.js
+# Next.js et sorties de build
 /.next/
+.next
 /out/
-
-# production
+out
 /build
+build
+.nuxt
+.dist
+.cache
+.cache/
+.parcel-cache
+.vuepress/dist
+.serverless/
+.fusebox/
+.dynamodb/
+.tern-port
+.vscode-test
+.vercel
 
-# misc
-.DS_Store
-*.pem
+# Variables d'environnement
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
 
-# debug
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Journaux et caches d'outils
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-
-# local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# typescript
-*.tsbuildinfo
-next-env.d.ts
-
-# Local development files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Claude Code
-.claude/settings.local.json
-.claude/worktrees/
-debug_context.txt
-
-# Build output
-.next
-out
-build
-
-# IDE and editor files
-.idea
-.vscode
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
-!.vscode/extensions.json
-!.vscode/settings.json
-
-# Logs and diagnostics
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-*.log
-
-# Graphify - cache local uniquement
-graphify-out/cache/
-graphify-out/transcripts/
-graphify-out/.graphify_python
-graphify-out/needs_update
-
-# Runtime data
 pnpm-debug.log*
-yarn-debug.log*
-*.pnpm-debug.log
-
-# Dependency directories
-node_modules/
-jspm_packages/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
+*.log
 .eslintcache
-
-# Optional REPL history
 .node_repl_history
-
-# Output of 'npm pack'
 *.tgz
 
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-.env*.local
-
-# vercel
-.vercel
-
-# parcel-bundler cache (https://parceljs.org/)
-.cache
-.parcel-cache
-
-# Next.js build output
-.next
-out
-
-# Nuxt.js build / generate output
-.nuxt
-.dist
-
-# Gatsby files
-.cache/
-# Comment in the public line in if your project uses Gatsby and not Next.js
-# https://nextjs.org/blog/next-9-1#public-directory-support
-# public
-
-# vuepress build output
-.vuepress/dist
-
-# Serverless directories
-.serverless/
-
-# FuseBox cache
-.fusebox/
-
-# DynamoDB Local files
-.dynamodb/
-
-# TernJS port file
-.tern-port
-
-# Stores VSCode versions used for testing VSCode extensions
-.vscode-test
-
-# Local history for Visual Studio Code
-.history
-
-# IDE and editor metadata file
-.idea
-.vscode
-
-# IDE folder settings
-.idea/
-.vscode/
-
-# User-specific files
+# Système, IDE et éditeurs
 .DS_Store
 .DS_Store?
 ._*
@@ -165,13 +66,29 @@ out
 .Trashes
 ehthumbs.db
 Thumbs.db
-
-# Files that might appear in the project
-# Windows image file cache
-Thumbs.db
-
-# KDE directory preferences
 .directory
-
-# Linux trash folder which might appear on any partition or disk
 *~
+.idea
+.idea/
+.vscode
+.vscode/
+!.vscode/extensions.json
+!.vscode/settings.json
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history
+*.pem
+
+# Fichiers locaux de développement (Claude Code)
+.claude/settings.local.json
+.claude/worktrees/
+debug_context.txt
+
+# Graphify — cache local uniquement
+graphify-out/cache/
+graphify-out/transcripts/
+graphify-out/.graphify_python
+graphify-out/needs_update

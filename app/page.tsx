@@ -63,8 +63,8 @@ const SECTIONS = [
     label: "Tutoriels",
     title: "Comptes, clés API, Lumio",
     description:
-      "Neuf tutoriels courts pour créer vos comptes et récupérer chaque clé (Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio et le réglage VF + VOSTFR) dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
-    meta: "9 tutoriels",
+      "Dix tutoriels courts pour créer vos comptes et récupérer chaque clé (Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio et le réglage VF + VOSTFR, StreamFusion en option) dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
+    meta: "10 tutoriels",
   },
   {
     href: "/collections",
@@ -201,8 +201,9 @@ export default function HomePage() {
             </h2>
           </div>
           <p className="max-w-md text-sm leading-relaxed text-mist-400">
-            Le seul addon du pack qui ne s&apos;installe pas tout seul :
-            voici ce qu&apos;il fait, et ce qu&apos;il attend de vous.
+            Lumio et StreamFusion sont les deux addons du pack qui ne
+            s&apos;installent pas tout seuls : voici ce que le premier fait, et
+            ce qu&apos;il attend de vous.
           </p>
         </div>
 
@@ -238,7 +239,17 @@ export default function HomePage() {
           >
             VF + VOSTFR
           </Link>{" "}
-          montre où cocher les langues.
+          montre où cocher les langues. Les autres addons français du pack
+          (Loostream, Frenchio et UwU-FR) ne demandent aucune manipulation :
+          l&apos;assistant écrit leur lien de manifest à partir de vos clés.
+          StreamFusion, lui, se configure chez son hébergeur : le{" "}
+          <Link
+            href="/tutoriel#streamfusion"
+            className="text-mist-300 underline decoration-line underline-offset-4 transition-colors hover:text-gold-300"
+          >
+            tutoriel StreamFusion
+          </Link>{" "}
+          en donne les étapes.
         </p>
       </section>
 

@@ -9,7 +9,7 @@ export const SITE = {
   wordmark: "FOCALE",
   tagline: "Le pack français pour Nuvio",
   description:
-    "Focale prépare votre profil Nuvio en français : 18 collections (756 dossiers), configuration AIO Metadata créée automatiquement, Lumio, Torrentio et Comet, avec votre débrideur TorBox ou AllDebrid.",
+    "Focale prépare votre profil Nuvio en français : 18 collections (756 dossiers), configuration AIO Metadata créée automatiquement, Lumio, Torrentio, Comet et les addons français Loostream, Frenchio et UwU-FR, avec votre débrideur TorBox ou AllDebrid.",
   keywords: [
     "Nuvio",
     "Stremio",
@@ -21,5 +21,9 @@ export const SITE = {
     "AllDebrid",
     "Torrentio",
     "Comet",
+    "StreamFusion",
+    "Loostream",
+    "Frenchio",
+    "UwU-FR",
   ],
 } as const;

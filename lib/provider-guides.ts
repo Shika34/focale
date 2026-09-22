@@ -24,7 +24,7 @@ export interface ProviderGuide {
 
 /** Tutoriels affichés dès que l'utilisateur n'a pas encore de compte ou de clé. */
 export const PROVIDER_GUIDES: Record<
-  "tmdb" | "tvdb" | "mdblist" | "torbox" | "alldebrid" | "lumio",
+  "tmdb" | "tvdb" | "mdblist" | "torbox" | "alldebrid" | "lumio" | "streamfusion",
   ProviderGuide
 > = {
   tmdb: {
@@ -209,6 +209,44 @@ export const PROVIDER_GUIDES: Record<
     keyUrl: "https://mylumio.tv",
     keyLabel: "Configurer mon profil Lumio",
     note: "Votre lien de manifest est personnel : c'est lui qui active votre débrideur et vos préférences de langues dans Nuvio.",
+  },
+  streamfusion: {
+    question: "Avez-vous déjà un lien de manifest StreamFusion ?",
+    steps: [
+      {
+        title: "Ouvrir la configuration StreamFusion",
+        detail: "Rendez-vous sur streamfusion.stremio-epsilon.ca/configure : la configuration se fait en sept petites étapes, toutes en français.",
+      },
+      {
+        title: "Choisir votre service de débridage",
+        detail: "À l'étape « Service de Débridage », activez TorBox, AllDebrid ou l'un des autres services proposés, puis collez la clé API correspondante et validez avec « Vérifier ». C'est ce service qui transforme les torrents trouvés en lecture instantanée.",
+      },
+      {
+        title: "Choisir vos sources (facultatif)",
+        detail: "À l'étape « Sources », les trackers publics et le cache StreamFusion sont déjà actifs. Les indexeurs privés (C411, YggReborn, Tr4ker, Generation Free, ABN, G3MINI, TheOldSchool, Nostradamus) demandent une clé ou une passkey propre à chacun : laissez-les désactivés si vous n'en avez pas.",
+      },
+      {
+        title: "Régler les langues et les filtres",
+        detail: "Aux étapes « Services & contenu » et « Filtres & scoring », cochez « Français » (et « MULTi » si vous le souhaitez) pour faire remonter les versions françaises en premier, puis ajustez les limites de taille et le nombre de résultats par résolution.",
+      },
+      {
+        title: "Créer votre compte StreamFusion",
+        detail: "À l'étape « Configuration », choisissez un pseudo et un mot de passe : votre configuration est enregistrée sur leur serveur, et c'est ce couple qui permet de la retrouver ou de la modifier plus tard. Notez l'identifiant (UUID) et le mot de passe affichés à la création.",
+      },
+      {
+        title: "Générer puis copier le lien de manifest",
+        detail: "Cliquez sur « Générer le manifest » : le lien apparaît dans l'encadré vert, avec un bouton « Copier ». Il ressemble à https://streamfusion.stremio-epsilon.ca/xxxxxx/manifest.json.",
+      },
+      {
+        title: "Coller le lien dans l'assistant",
+        detail: "Revenez ici et collez ce lien dans le champ StreamFusion : l'assistant l'ajoute à votre profil Nuvio en même temps que les autres addons.",
+      },
+    ],
+    signupUrl: "https://streamfusion.stremio-epsilon.ca/configure",
+    signupLabel: "Ouvrir la configuration StreamFusion",
+    keyUrl: "https://streamfusion.stremio-epsilon.ca/configure",
+    keyLabel: "Ouvrir la configuration StreamFusion",
+    note: "Facultatif : StreamFusion couvre les mêmes familles de sources que Torrentio, Comet, Frenchio et Loostream, déjà installés par l'assistant. Contrairement à eux, sa configuration vit chez StreamFusion (compte + mot de passe) : l'assistant ne peut pas la créer à votre place, il recopie le lien que vous lui donnez. Sans ce lien, StreamFusion n'est pas installé ; les autres addons, si.",
   },
 
 };

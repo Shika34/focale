@@ -1,12 +1,12 @@
 {
   "0": "package.json",
   "1": "nuvio-api.ts",
-  "2": "TutorialGuide.tsx",
+  "2": "NuvioConfiguratorModal.tsx",
   "3": "TypeScript Configuration",
   "4": "layout.tsx",
-  "5": "NuvioConfiguratorModal.tsx",
+  "5": "debrid-key-test.ts",
   "6": "AGENTS.md — Focale",
-  "7": "2. Project Status",
+  "7": "collections/page.tsx",
   "8": "devDependencies",
   "9": "CLAUDE.md",
   "10": "Deployment & Operational Documentation",
@@ -14,6 +14,5 @@
   "12": "vitest.config.mts",
   "13": "Next.js Security Configuration",
   "14": "Code Linting Configuration",
-  "15": "PostCSS Configuration",
-  "16": "nuvio-api-settings.test.ts"
+  "15": "PostCSS Configuration"
 }

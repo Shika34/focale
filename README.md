@@ -2,8 +2,9 @@
 
 Guide en français et assistant de configuration pour [Nuvio](https://nuvio.tv) :
 18 collections francophones (756 dossiers) et les addons Stremio essentiels
-(AIO Metadata, Lumio, Torrentio, Comet) installés dans un profil Nuvio en
-quatre étapes, sans ligne de commande.
+(AIO Metadata, Lumio, Torrentio, Comet) plus les addons français Loostream,
+Frenchio, UwU-FR et StreamFusion, installés dans un profil Nuvio en quatre
+étapes, sans ligne de commande.
 
 ## Stack
 
@@ -25,7 +26,7 @@ pnpm lint    # ESLint 9 (flat config)
 | --- | --- |
 | `/` | Accueil : assistant de configuration, aperçu, présentation de Nuvio et de Lumio |
 | `/collections` | Catalogue des 18 collections, parcourable dossier par dossier |
-| `/tutoriel` | Six tutoriels : compte Nuvio, TorBox, TMDB, TheTVDB, MDBList, Lumio |
+| `/tutoriel` | Les tutoriels : compte Nuvio, débrideurs, clés de métadonnées, Lumio, VF + VOSTFR, StreamFusion, Trakt |
 | `/api/aiometadata` | Route serveur : crée la configuration AIO Metadata avec les clés de l'utilisateur |
 
 ## Déploiement (Vercel)

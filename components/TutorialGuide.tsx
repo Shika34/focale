@@ -142,6 +142,11 @@ const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
   { key: "lumio", label: "Profil Lumio", guide: PROVIDER_GUIDES.lumio },
   { key: "vostfr", label: "VF + VOSTFR (Lumio)", guide: VOSTFR_TUTORIAL },
+  {
+    key: "streamfusion",
+    label: "StreamFusion (facultatif)",
+    guide: PROVIDER_GUIDES.streamfusion,
+  },
   { key: "trakt", label: "Suivi Trakt (facultatif)", guide: TRAKT_TUTORIAL },
 ];
 
@@ -156,12 +161,14 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Neuf tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
+          Dix tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
           débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), les
-          trois clés de métadonnées, le profil Lumio et le réglage VF + VOSTFR.
-          L&apos;assistant pose chaque question au bon moment et applique ces
-          réglages à votre place. Le dernier, Trakt, est facultatif : il ne
-          concerne que le suivi de ce que vous regardez.
+          trois clés de métadonnées, le profil Lumio, le réglage VF + VOSTFR,
+          puis StreamFusion si vous voulez cet addon en plus. L&apos;assistant
+          pose chaque question au bon moment et applique ces réglages à votre
+          place : les autres addons français (Loostream, Frenchio, UwU-FR) ne
+          demandent, eux, aucune manipulation. Le dernier, Trakt, est facultatif :
+          il ne concerne que le suivi de ce que vous regardez.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
@@ -265,8 +272,9 @@ export function TutorialGuide() {
         <p className="mt-3 max-w-2xl text-sm leading-relaxed text-mist-400">
           Compte Nuvio, clé de débrideur (TorBox ou AllDebrid), clés de
           métadonnées, lien Lumio : l&apos;assistant installe les collections
-          francophones, crée votre configuration AIO Metadata et ajoute
-          Torrentio et Comet avec votre débrideur.
+          francophones, crée votre configuration AIO Metadata, ajoute Torrentio
+          et Comet avec votre débrideur, et configure pour vous les addons
+          français Loostream, Frenchio et UwU-FR.
         </p>
         <button
           onClick={() => setConfigModalOpen(true)}
