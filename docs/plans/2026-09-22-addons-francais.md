@@ -19,7 +19,25 @@ supplémentaire pour l'utilisateur.
 - [x] Tests vitest de `lib/manifest-urls.ts` (clés, ordre des fournisseurs, prérequis, accents des pseudos)
 - [x] Tests vitest de la fusion des blobs de réglages dans `lib/nuvio-api.ts`
 
-## Reste à faire
+## Chantier du 04/10/2026
+
+Demande : rendre le profil Nuvio créé utilisable tel quel en français (sous-titres
+forcés, VF), intégrer les addons FR utiles de StremioFR, corriger l'onglet
+« En vedette » figé sur un nom périmé, trancher Trakt, et nommer le profil FOCALE
+par défaut.
+
+- [x] `NuvioApi.applyFrenchDefaults` (remplace `setTmdbLanguageFrench`) : sous-titres français en mode forcé + piste audio française, avec le nom de clé propre à chaque client, fusion dans le blob existant et relecture de confirmation
+- [x] VF Trailer ajouté au pack (`buildVfTrailerUrl`, activé par défaut, clé TMDB requise), case dans l'étape 3, récapitulatif et écran de succès ajustés
+- [x] Noms de rôle génériques pour les huit dossiers « En vedette » (plus aucun nom propre) + `lib/spotlight-art.ts` qui versionne les visuels à l'envoi
+- [x] Nom de profil par défaut passé à « FOCALE »
+- [x] Trakt : vérifié non automatisable (OAuth exclu des identifiants fournisseurs) ; renvoi vers le tutoriel depuis l'écran de succès
+- [x] Tests : `spotlight-art`, `spotlight-collection`, `nuvio-addons-pack`, `nuvio-api-settings` réécrit (53 tests)
+- [ ] Confirmer les réglages français contre `api.nuvio.tv` avec un compte réel, puis à l'écran (Réglages → Lecture, film sans VF)
+- [ ] Voir une bande-annonce VF dans Nuvio sur une fiche de film récent
+- [ ] Recontrôler la rotation des visuels « En vedette » au prochain cycle de quatorze jours
+- [ ] Trancher l'ajout des addons FR à configuration serveur (WAStream, WACustom, Kast, Ciné Cloud, SubSense, Int. Debrid Search) : demanderait une route serveur dédiée, comme AIO Metadata
+
+## Reste à faire (chantier du 22/09/2026)
 
 - [ ] **Flèche de test n° 1 :** avec une vraie clé TMDB et un vrai débrideur, vérifier que les sources Frenchio et UwU-FR apparaissent dans Nuvio sur un film récent. Si un addon change le schéma de sa page `/configure`, ajuster la fonction `build*Url` correspondante (`lib/manifest-urls.ts`).
 - [ ] **Pseudo Loostream :** le pseudo installé est le nom du profil Nuvio et n'est pas revendiqué auprès du service (`POST /api/pseudo/claim`). À surveiller ; si Loostream refuse un pseudo non revendiqué, soit revendiquer depuis `lib/debrid-key-test.ts`, soit demander le pseudo à l'utilisateur à l'étape 3.

@@ -19,6 +19,7 @@ import {
   buildLoostreamUrl,
   buildFrenchioUrl,
   buildUwuFrUrl,
+  buildVfTrailerUrl,
   debridEntries,
   debridNames,
 } from "./manifest-urls";
@@ -130,6 +131,24 @@ const SETTINGS_PLATFORMS = ["tv", "mobile", "desktop"] as const;
 const TMDB_SETTINGS_FEATURE = "tmdb_settings";
 const TMDB_LANGUAGE_KEY = "tmdb_language";
 
+/** Section du blob de réglages qui porte les préférences de lecture (audio, sous-titres). */
+const PLAYER_SETTINGS_FEATURE = "player_settings";
+
+/** Langue poussée par défaut : métadonnées TMDB, sous-titres et piste audio. */
+const FRENCH_LANGUAGE = "fr";
+
+/**
+ * Nom réel de la clé « sous-titres préférés » dans chaque client : NuvioTV
+ * utilise `subtitle_preferred_language` (`PlayerSettingsDataStore.kt`), les
+ * applications mobile et desktop `preferred_subtitle_language`
+ * (`PlayerSettingsStorage` de NuvioMobile et NuvioDesktop).
+ */
+const SUBTITLE_LANGUAGE_KEYS: Record<(typeof SETTINGS_PLATFORMS)[number], string> = {
+  tv: "subtitle_preferred_language",
+  mobile: "preferred_subtitle_language",
+  desktop: "preferred_subtitle_language",
+};
+
 /**
  * Valeur d'un réglage dans le blob : les clients Nuvio encodent chaque
  * préférence en `{ "type": "string" | "boolean" | "int" | "float" | "string_set",
@@ -140,25 +159,54 @@ interface SyncPreference {
   value: unknown;
 }
 
-function readBlobLanguage(blob: unknown): string | null {
+/**
+ * Réglages de lecture poussés par défaut : sous-titres français (mode forcé) et
+ * piste audio française d'abord. La clé des sous-titres dépend du client, toutes
+ * les autres sont communes aux trois plateformes.
+ */
+function frenchPlaybackPreferences(
+  platform: (typeof SETTINGS_PLATFORMS)[number],
+): Record<string, SyncPreference> {
+  return {
+    [SUBTITLE_LANGUAGE_KEYS[platform]]: { type: "string", value: FRENCH_LANGUAGE },
+    subtitle_use_forced_subtitles: { type: "boolean", value: true },
+    preferred_audio_language: { type: "string", value: FRENCH_LANGUAGE },
+  };
+}
+
+/** Valeur d'un réglage du blob, ou `null` quand il est absent. */
+function readPreference(blob: unknown, feature: string, key: string): unknown {
   if (!blob || typeof blob !== "object") return null;
   const features = (blob as { features?: Record<string, Record<string, SyncPreference>> }).features;
-  const value = features?.[TMDB_SETTINGS_FEATURE]?.[TMDB_LANGUAGE_KEY]?.value;
-  return typeof value === "string" ? value : null;
+  return features?.[feature]?.[key]?.value ?? null;
+}
+
+/** Vrai quand la langue TMDB et les préférences de lecture sont déjà en français. */
+function isFrenchConfigured(blob: unknown, platform: (typeof SETTINGS_PLATFORMS)[number]): boolean {
+  if (readPreference(blob, TMDB_SETTINGS_FEATURE, TMDB_LANGUAGE_KEY) !== FRENCH_LANGUAGE) {
+    return false;
+  }
+  return Object.entries(frenchPlaybackPreferences(platform)).every(
+    ([key, preference]) => readPreference(blob, PLAYER_SETTINGS_FEATURE, key) === preference.value,
+  );
 }
 
 /**
- * Complète un blob de réglages avec la langue demandée, sans toucher au reste :
- * les clients Nuvio vident la section qu'ils importent avant d'y réécrire ce
- * qu'elle contient (`importSettingsBlob`, `replaceFromSyncPayload`), donc un
- * blob partiel effacerait les autres réglages du profil.
+ * Complète un blob de réglages avec les préférences demandées, sans toucher au
+ * reste : les clients Nuvio vident la section qu'ils importent avant d'y
+ * réécrire ce qu'elle contient (`importSettingsBlob`, `replaceFromSyncPayload`),
+ * donc un blob partiel effacerait les autres réglages du profil.
  */
-function withTmdbLanguage(blob: unknown, language: string): Record<string, unknown> {
+function withPreferences(
+  blob: unknown,
+  feature: string,
+  entries: Record<string, SyncPreference>,
+): Record<string, unknown> {
   const base = blob && typeof blob === "object" ? (blob as Record<string, unknown>) : {};
   const features = { ...(base.features as Record<string, unknown> | undefined) };
-  const tmdb = { ...(features[TMDB_SETTINGS_FEATURE] as Record<string, unknown> | undefined) };
-  tmdb[TMDB_LANGUAGE_KEY] = { type: "string", value: language } satisfies SyncPreference;
-  features[TMDB_SETTINGS_FEATURE] = tmdb;
+  const section = { ...(features[feature] as Record<string, unknown> | undefined) };
+  Object.assign(section, entries);
+  features[feature] = section;
   return { ...base, version: base.version ?? 1, features };
 }
 
@@ -406,22 +454,30 @@ export const NuvioApi = {
   },
 
   /**
-   * Règle la langue des métadonnées TMDB enrichies (« Intégrations → TMDB
-   * Enrichment → Language », en anglais par défaut) dans les réglages du profil,
-   * pour les trois plateformes Nuvio : téléviseur, mobile et ordinateur.
+   * Règle les réglages français par défaut du profil, sur les trois plateformes
+   * Nuvio : téléviseur, mobile et ordinateur.
+   *
+   * Trois réglages sont posés, ceux que chaque client laisse en anglais ou en
+   * automatique à la création d'un profil :
+   * - `tmdb_settings.tmdb_language` = « fr » (« Intégrations → TMDB Enrichment →
+   *   Language », en anglais par défaut) ;
+   * - `player_settings` : sous-titres préférés en français, mode forcé activé
+   *   (`subtitle_use_forced_subtitles`) et piste audio française d'abord ;
+   * - le nom de la clé des sous-titres diffère selon le client
+   *   (`subtitle_preferred_language` sur TV, `preferred_subtitle_language` sur
+   *   mobile et desktop) : chaque plateforme reçoit le sien.
    *
    * Le blob de réglages existant de chaque plateforme est relu puis complété :
    * les clients Nuvio vident la section qu'ils importent avant d'y réécrire ce
    * qu'elle contient, donc pousser un blob partiel effacerait les autres
-   * réglages du profil. La valeur écrite est relue pour confirmation.
+   * réglages du profil. Les valeurs écrites sont relues pour confirmation.
    *
    * @returns Les plateformes mises à jour, celles déjà en français, celles dont
    *          la relecture n'a rien confirmé, et les échecs par plateforme.
    */
-  async setTmdbLanguageFrench(
+  async applyFrenchDefaults(
     token: string,
     profileId: number,
-    language = "fr",
   ): Promise<{
     updated: string[];
     already: string[];
@@ -443,20 +499,27 @@ export const NuvioApi = {
       try {
         const blob = settingsBlobValue(await pull(platform));
 
-        if (blob && readBlobLanguage(blob) === language) {
+        if (isFrenchConfigured(blob, platform)) {
           already.push(platform);
           continue;
         }
 
+        const withTmdbLanguage = withPreferences(blob, TMDB_SETTINGS_FEATURE, {
+          [TMDB_LANGUAGE_KEY]: { type: "string", value: FRENCH_LANGUAGE },
+        });
         await rpc("/rest/v1/rpc/sync_push_profile_settings_blob", token, {
           p_profile_id: profileId,
-          p_settings_json: withTmdbLanguage(blob, language),
+          p_settings_json: withPreferences(
+            withTmdbLanguage,
+            PLAYER_SETTINGS_FEATURE,
+            frenchPlaybackPreferences(platform),
+          ),
           p_platform: platform,
           p_origin_client_id: ORIGIN_CLIENT_ID,
         });
 
         const readBack = settingsBlobValue(await pull(platform));
-        if (readBack && readBlobLanguage(readBack) === language) {
+        if (isFrenchConfigured(readBack, platform)) {
           updated.push(platform);
         } else {
           unverified.push(platform);
@@ -557,10 +620,10 @@ export const NuvioApi = {
   /**
    * Génère la liste des addons du pack France.
    *
-   * Torrentio, Comet, Loostream, Frenchio et UwU-FR sont générés à partir des
-   * clés saisies (débrideur et TMDB), dont les formats d'URL sont stables.
-   * AIO Metadata, Lumio et StreamFusion ont une configuration stockée côté
-   * service : leur URL de manifest est fournie par l'utilisateur.
+   * Torrentio, Comet, Loostream, Frenchio, UwU-FR et VF Trailer sont générés à
+   * partir des clés saisies (débrideur et TMDB), dont les formats d'URL sont
+   * stables. AIO Metadata, Lumio et StreamFusion ont une configuration stockée
+   * côté service : leur URL de manifest est fournie par l'utilisateur.
    */
   buildAddonsList(
     keys: ApiKeysConfig,
@@ -568,11 +631,12 @@ export const NuvioApi = {
       aioMetadataUrl?: string;
       lumioManifestUrl?: string;
       streamFusionManifestUrl?: string;
-      /** Nom du profil Nuvio, utilisé comme pseudo Loostream. */
-      loostreamPseudo?: string;
+      /** Nom du profil Nuvio, repris comme pseudo par Loostream et VF Trailer. */
+      profileName?: string;
       loostream?: boolean;
       frenchio?: boolean;
       uwuFr?: boolean;
+      vfTrailer?: boolean;
     } = {},
   ): NuvioAddonInstall[] {
     const debridKeys = {
@@ -584,14 +648,15 @@ export const NuvioApi = {
     const aioMetadataUrl = manifests.aioMetadataUrl?.trim();
     const lumioUrl = buildLumioUrl(manifests.lumioManifestUrl);
     const streamFusionUrl = buildStreamFusionUrl(manifests.streamFusionManifestUrl);
+    const profileName = manifests.profileName ?? "";
     const loostreamUrl =
-      manifests.loostream === false
-        ? ""
-        : buildLoostreamUrl(keys.tmdbApiKey, manifests.loostreamPseudo ?? "");
+      manifests.loostream === false ? "" : buildLoostreamUrl(keys.tmdbApiKey, profileName);
     const frenchioUrl =
       manifests.frenchio === false ? "" : buildFrenchioUrl(debridKeys, keys.tmdbApiKey);
     const uwuFrUrl =
       manifests.uwuFr === true ? buildUwuFrUrl(debridKeys, keys.tmdbApiKey) : "";
+    const vfTrailerUrl =
+      manifests.vfTrailer === false ? "" : buildVfTrailerUrl(keys.tmdbApiKey, profileName);
 
     const addons: NuvioAddonInstall[] = [
       { name: "Cinemeta", url: "https://v3-cinemeta.strem.io/manifest.json", note: "Métadonnées officielles" },
@@ -641,6 +706,14 @@ export const NuvioApi = {
         name: "Loostream",
         url: loostreamUrl,
         note: "Sources francophones directes (VF/VOSTFR), sans débrideur",
+      });
+    }
+
+    if (vfTrailerUrl) {
+      addons.push({
+        name: "VF Trailer",
+        url: vfTrailerUrl,
+        note: "Bandes-annonces officielles en français (Allociné, YouTube)",
       });
     }
 

@@ -6,8 +6,9 @@
  * - Torrentio : les clés de débrideur passent en paramètres de requête ;
  * - Comet : la configuration JSON est encodée en base64 dans le chemin
  *   (format produit par la page /configure de Comet, btoa(JSON.stringify(settings))) ;
- * - Loostream, Frenchio et UwU-FR : même principe, la configuration complète est
- *   encodée en base64 dans le chemin (formats relevés sur leur page /configure) ;
+ * - Loostream, Frenchio, UwU-FR et VF Trailer : même principe, la configuration
+ *   complète est encodée dans le chemin (base64 pour les trois premiers,
+ *   base64url pour VF Trailer, formats relevés sur leur page /configure) ;
  * - StreamFusion : configuration stockée côté serveur (compte + mot de passe),
  *   l'URL de manifest est fournie par l'utilisateur, comme Lumio.
  *
@@ -26,6 +27,8 @@ const FRENCHIO_BASE = "https://frenchio.elfhosted.com";
 const UWU_FR_BASE = "https://uwu.creepso.com";
 /** Hôte inscrit dans la configuration UwU-FR (l'addon le réutilise pour ses liens). */
 const UWU_FR_HOST = "uwu.creepso.com";
+/** Bandes-annonces VF (Allociné, YouTube, TMDB) : configuration base64url dans le chemin. */
+const VF_TRAILER_BASE = "https://vf-trailer-off.vercel.app";
 
 
 /** Clés de débrideur saisies à l'étape 2 de l'assistant. */
@@ -90,6 +93,15 @@ function base64Utf8Config(config: Record<string, unknown>): string {
   let binary = "";
   for (const byte of bytes) binary += String.fromCharCode(byte);
   return btoa(binary);
+}
+
+/**
+ * Même encodage en base64url, pour un segment d'URL : le résultat ne contient
+ * ni « + », ni « / », ni « = » de remplissage (format de la page /configure de
+ * VF Trailer).
+ */
+function base64UrlUtf8Config(config: Record<string, unknown>): string {
+  return base64Utf8Config(config).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
 }
 
 /**
@@ -214,6 +226,20 @@ export function buildUwuFrUrl(keys: DebridKeys, tmdbApiKey: string | undefined):
     subs_languages: ["fre"],
     subs_limits: { fre: 6 },
     adjust_mode: true,
+  })}/manifest.json`;
+}
+
+/**
+ * Manifest VF Trailer : bandes-annonces officielles en français (Allociné,
+ * YouTube, TMDB), proposées dans la fiche du film et de la série. La
+ * configuration reprend les champs de sa page /configure, encodés en base64url.
+ */
+export function buildVfTrailerUrl(tmdbApiKey: string | undefined, pseudo: string): string {
+  const tmdbKey = tmdbApiKey?.trim();
+  if (!tmdbKey) return "";
+  return `${VF_TRAILER_BASE}/${base64UrlUtf8Config({
+    pseudo: pseudo.trim().slice(0, 40) || "Focale",
+    tmdbKey,
   })}/manifest.json`;
 }
 
