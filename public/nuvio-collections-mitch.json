@@ -27122,7 +27122,7 @@
             "name": "À la une",
             "type": null,
             "genre": "Tout",
-            "title": "La vedette : Pedro Pascal",
+            "title": "La vedette",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687275,
             "addonId": null,
@@ -27148,13 +27148,13 @@
       },
       {
         "id": "folder-SPOTVISI",
-        "title": "Le Visionnaire",
+        "title": "Le visionnaire",
         "sources": [
           {
-            "name": "Le Visionnaire",
+            "name": "Le visionnaire",
             "type": null,
             "genre": "Tout",
-            "title": "Le visionnaire : Denis Villeneuve",
+            "title": "Le visionnaire",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687276,
             "addonId": null,
@@ -27180,13 +27180,13 @@
       },
       {
         "id": "folder-SPOTPOWE",
-        "title": "La Force",
+        "title": "Le titan",
         "sources": [
           {
-            "name": "La Force",
+            "name": "Le titan",
             "type": null,
             "genre": "Tout",
-            "title": "Le titan : A24",
+            "title": "Le titan",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687277,
             "addonId": null,
@@ -27212,13 +27212,13 @@
       },
       {
         "id": "folder-SPOTSAGA",
-        "title": "La Saga",
+        "title": "La saga",
         "sources": [
           {
-            "name": "La Saga",
+            "name": "La saga",
             "type": null,
             "genre": "Tout",
-            "title": "La Saga : Collection Alien",
+            "title": "La saga",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687278,
             "addonId": null,
@@ -27250,7 +27250,7 @@
             "name": "Le pouls culturel",
             "type": null,
             "genre": "Tout",
-            "title": "Le pouls culturel : Blockbusters de l'été",
+            "title": "Le pouls culturel",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687279,
             "addonId": null,
@@ -27276,13 +27276,13 @@
       },
       {
         "id": "folder-SPOTPRES",
-        "title": "Le favori Le Prestige",
+        "title": "Le chouchou des critiques",
         "sources": [
           {
-            "name": "Le favori Le Prestige",
+            "name": "Le chouchou des critiques",
             "type": null,
             "genre": "Tout",
-            "title": "Les chouchous de The Prestige : Cinéma prestige",
+            "title": "Le chouchou des critiques",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687280,
             "addonId": null,
@@ -27314,7 +27314,7 @@
             "name": "La légende vivante",
             "type": null,
             "genre": "Tout",
-            "title": "La légende vivante : Denzel Washington",
+            "title": "La légende vivante",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687281,
             "addonId": null,
@@ -27340,13 +27340,13 @@
       },
       {
         "id": "folder-SPOTRETR",
-        "title": "Rétro Rembobinage",
+        "title": "Retour en arrière",
         "sources": [
           {
-            "name": "Rétro Rembobinage",
+            "name": "Retour en arrière",
             "type": null,
             "genre": "Tout",
-            "title": "Rétro Rembobinage : Nostalgie SF des années 80",
+            "title": "Retour en arrière",
             "sortBy": "vote_average.desc",
             "tmdbId": 8687282,
             "addonId": null,

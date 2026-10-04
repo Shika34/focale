@@ -9,6 +9,7 @@ import {
   buildStreamFusionUrl,
   buildTorrentioUrl,
   buildUwuFrUrl,
+  buildVfTrailerUrl,
   debridEntries,
   debridNames,
 } from "@/lib/manifest-urls";
@@ -16,6 +17,12 @@ import {
 /** Décode une config base64 UTF-8 prise dans le chemin d'un manifest. */
 function decodePathConfig(url: string): Record<string, unknown> {
   const encoded = url.split("/").at(-2) ?? "";
+  return JSON.parse(Buffer.from(encoded, "base64").toString("utf8")) as Record<string, unknown>;
+}
+
+/** Décode une config base64url UTF-8 (VF Trailer). */
+function decodeBase64UrlConfig(url: string): Record<string, unknown> {
+  const encoded = (url.split("/").at(-2) ?? "").replace(/-/g, "+").replace(/_/g, "/");
   return JSON.parse(Buffer.from(encoded, "base64").toString("utf8")) as Record<string, unknown>;
 }
 
@@ -164,5 +171,31 @@ describe("buildUwuFrUrl", () => {
   it("renvoie une chaîne vide sans clé TMDB ou sans débrideur", () => {
     expect(buildUwuFrUrl(BOTH_KEYS, "  ")).toBe("");
     expect(buildUwuFrUrl({}, "TMDB-KEY")).toBe("");
+  });
+});
+
+describe("buildVfTrailerUrl", () => {
+  it("encode la clé TMDB et le pseudo dans une config base64url", () => {
+    const url = buildVfTrailerUrl("TMDB-KEY", "FOCALE");
+    expect(url.startsWith("https://vf-trailer-off.vercel.app/")).toBe(true);
+    expect(url.endsWith("/manifest.json")).toBe(true);
+    expect(decodeBase64UrlConfig(url)).toEqual({ pseudo: "FOCALE", tmdbKey: "TMDB-KEY" });
+  });
+
+  it("retombe sur le pseudo « Focale » et tronque à quarante caractères", () => {
+    expect(decodeBase64UrlConfig(buildVfTrailerUrl("K", "   ")).pseudo).toBe("Focale");
+    expect(
+      String(decodeBase64UrlConfig(buildVfTrailerUrl("K", "P".repeat(60))).pseudo),
+    ).toHaveLength(40);
+  });
+
+  it("n'utilise que des caractères compatibles avec un segment d'URL", () => {
+    const encoded = buildVfTrailerUrl("K", "Cinéma Français").split("/").at(-2) ?? "";
+    expect(encoded).toMatch(/^[A-Za-z0-9_-]+$/);
+  });
+
+  it("renvoie une chaîne vide sans clé TMDB (prérequis de l'addon)", () => {
+    expect(buildVfTrailerUrl(undefined, "FOCALE")).toBe("");
+    expect(buildVfTrailerUrl("   ", "FOCALE")).toBe("");
   });
 });

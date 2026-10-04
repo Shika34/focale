@@ -244,31 +244,31 @@
         "title": "À la une",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "La vedette : Pedro Pascal"
+          "La vedette"
         ]
       },
       {
         "id": "folder-SPOTVISI",
-        "title": "Le Visionnaire",
+        "title": "Le visionnaire",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "Le visionnaire : Denis Villeneuve"
+          "Le visionnaire"
         ]
       },
       {
         "id": "folder-SPOTPOWE",
-        "title": "La Force",
+        "title": "Le titan",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "Le titan : A24"
+          "Le titan"
         ]
       },
       {
         "id": "folder-SPOTSAGA",
-        "title": "La Saga",
+        "title": "La saga",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "La Saga : Collection Alien"
+          "La saga"
         ]
       },
       {
@@ -276,15 +276,15 @@
         "title": "Le pouls culturel",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "Le pouls culturel : Blockbusters de l'été"
+          "Le pouls culturel"
         ]
       },
       {
         "id": "folder-SPOTPRES",
-        "title": "Le favori Le Prestige",
+        "title": "Le chouchou des critiques",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "Les chouchous de The Prestige : Cinéma prestige"
+          "Le chouchou des critiques"
         ]
       },
       {
@@ -292,15 +292,15 @@
         "title": "La légende vivante",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "La légende vivante : Denzel Washington"
+          "La légende vivante"
         ]
       },
       {
         "id": "folder-SPOTRETR",
-        "title": "Rétro Rembobinage",
+        "title": "Retour en arrière",
         "sourcesCount": 1,
         "sourcesPreview": [
-          "Rétro Rembobinage : Nostalgie SF des années 80"
+          "Retour en arrière"
         ]
       }
     ]

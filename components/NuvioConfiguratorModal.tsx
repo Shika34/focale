@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
+import Link from "next/link";
 import {
   X,
   Aperture,
@@ -21,6 +22,7 @@ import {
 } from "lucide-react";
 import { NuvioApi, authErrorMessage } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
+import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
 import { checkAlldebridKey, type DebridKeyCheck } from "@/lib/debrid-key-test";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
 
@@ -569,6 +571,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [includeLoostream, setIncludeLoostream] = useState(true);
   const [includeFrenchio, setIncludeFrenchio] = useState(true);
   const [includeUwuFr, setIncludeUwuFr] = useState(false);
+  const [includeVfTrailer, setIncludeVfTrailer] = useState(true);
 
   const [errorMessage, setErrorMessage] = useState("");
   const [progressState, setProgressState] = useState<{
@@ -599,8 +602,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     password: string;
   } | null>(null);
   /** Nom du profil Nuvio créé (et réutilisé s'il existe déjà) par l'assistant. */
-  const [profileName, setProfileName] = useState("Nuvio France FR");
-  const [targetProfileName, setTargetProfileName] = useState("Nuvio France FR");
+  const [profileName, setProfileName] = useState("FOCALE");
+  const [targetProfileName, setTargetProfileName] = useState("FOCALE");
   const [settingsNotice, setSettingsNotice] = useState("");
   /** Informations manquantes à l'étape 2, pour la demande de confirmation. */
   const [missingKeysWarning, setMissingKeysWarning] = useState<{
@@ -755,7 +758,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         details: "Préparation du profil Nuvio de destination…",
       });
 
-      const desiredName = profileName.trim() || "Nuvio France FR";
+      const desiredName = profileName.trim() || "FOCALE";
       const accountProfiles = await NuvioApi.getProfiles(authRes.token);
       let targetProfile = accountProfiles.find(
         (p) => p.name.trim().toLowerCase() === desiredName.toLowerCase(),
@@ -781,7 +784,14 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
       const collRes = await fetch("/nuvio-collections-mitch.json");
       const fullCollections = await collRes.json();
-      await NuvioApi.pushCollections(authRes.token, targetProfile.profile_index, fullCollections);
+      // Les visuels « En vedette » de Kaptain sont remplacés sur place tous les
+      // quatorze jours : une version par cycle évite que Nuvio resserve l'ancienne
+      // affiche depuis son cache d'images.
+      await NuvioApi.pushCollections(
+        authRes.token,
+        targetProfile.profile_index,
+        versionSpotlightArt(fullCollections, spotlightArtVersion()),
+      );
 
       setProgressState({
         step: "Installation des addons sélectionnés",
@@ -801,10 +811,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           aioMetadataUrl,
           lumioManifestUrl,
           streamFusionManifestUrl,
-          loostreamPseudo: profileName.trim() || "Nuvio France FR",
+          profileName: profileName.trim() || "FOCALE",
           loostream: includeLoostream,
           frenchio: includeFrenchio,
           uwuFr: includeUwuFr,
+          vfTrailer: includeVfTrailer,
         },
       );
       await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
@@ -847,36 +858,36 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         step: "Réglages du profil",
         percent: 92,
         details:
-          "Langue des métadonnées TMDB réglée sur le français (téléviseur, mobile, ordinateur)…",
+          "Français par défaut : métadonnées, sous-titres forcés et piste audio (téléviseur, mobile, ordinateur)…",
       });
 
-      // Les clients Nuvio démarrent avec « Language : English » : on règle le
-      // réglage du profil pour les trois plateformes avant de rendre la main.
+      // Les clients Nuvio démarrent en anglais et sans préférence de langue : on
+      // règle le profil pour les trois plateformes avant de rendre la main.
       try {
-        const tmdbLanguage = await NuvioApi.setTmdbLanguageFrench(
+        const frenchDefaults = await NuvioApi.applyFrenchDefaults(
           authRes.token,
           targetProfile.profile_index,
         );
-        if (tmdbLanguage.errors.length > 0) {
+        if (frenchDefaults.errors.length > 0) {
           noticeParts.push(
-            `La langue TMDB n'a pas pu être passée en français sur ${formatFrenchList(
-              tmdbLanguage.errors,
-            )}. Réglez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+            `Les réglages français n'ont pas pu être posés sur ${formatFrenchList(
+              frenchDefaults.errors,
+            )}. Réglez-les dans l'application : Réglages → Intégrations → TMDB Enrichment → Language, et Réglages → Lecture → Sous-titres.`,
           );
         }
-        if (tmdbLanguage.unverified.length > 0) {
+        if (frenchDefaults.unverified.length > 0) {
           noticeParts.push(
-            `Langue TMDB envoyée mais non confirmée sur ${formatFrenchList(
-              tmdbLanguage.unverified,
-            )}. Vérifiez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+            `Réglages français envoyés mais non confirmés sur ${formatFrenchList(
+              frenchDefaults.unverified,
+            )}. Vérifiez-les dans l'application : Réglages → Lecture (langue des sous-titres et mode forcé) et TMDB Enrichment → Language.`,
           );
         }
         setSettingsNotice(noticeParts.join(" "));
       } catch (languageErr) {
         noticeParts.push(
-          `La langue TMDB n'a pas pu être passée en français (${
+          `Les réglages français n'ont pas pu être posés (${
             languageErr instanceof Error ? languageErr.message : "erreur inconnue"
-          }). Réglez-la dans l'application : Réglages → Intégrations → TMDB Enrichment → Language.`,
+          }). Réglez-les dans l'application : Réglages → Lecture pour les sous-titres, Intégrations → TMDB Enrichment → Language pour les métadonnées.`,
         );
         setSettingsNotice(noticeParts.join(" "));
       }
@@ -911,6 +922,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   /** Addons français retenus, pour un récapitulatif et un écran de fin exacts. */
   const frenchAddons = [
     ...(includeLoostream && hasTmdbKey ? ["Loostream"] : []),
+    ...(includeVfTrailer && hasTmdbKey ? ["VF Trailer"] : []),
     ...(includeFrenchio && hasDebridKey && hasTmdbKey ? ["Frenchio"] : []),
     ...(includeUwuFr && hasDebridKey && hasTmdbKey ? ["UwU-FR"] : []),
     ...(streamFusionManifestUrl.trim() ? ["StreamFusion"] : []),
@@ -1090,7 +1102,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         value={profileName}
                         onChange={(e) => setProfileName(e.target.value)}
                         maxLength={30}
-                        placeholder="Nuvio France FR"
+                        placeholder="FOCALE"
                         aria-label="Nom du profil Nuvio à créer"
                         className="w-full sm:w-64 shrink-0 px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
                       />
@@ -1328,10 +1340,10 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       </label>
                       <p className="text-xs text-mist-400 mt-1 leading-relaxed">
                         Les addons francophones de la communauté StremioFR, en
-                        plus de Torrentio et Comet. Les trois premiers lisent les
-                        clés saisies à l&apos;étape 2 : l&apos;assistant écrit
-                        leur lien de manifest à votre place, vous n&apos;avez rien
-                        à ouvrir ni à coller.
+                        plus de Torrentio et Comet. Tous lisent les clés saisies
+                        à l&apos;étape 2 : l&apos;assistant écrit leur lien de
+                        manifest à votre place, vous n&apos;avez rien à ouvrir ni
+                        à coller.
                       </p>
                     </div>
 
@@ -1341,6 +1353,15 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         description="Sources francophones lues en direct (miroirs Netflix, Prime et Disney+, StreamFlix, Movix) en VF et VOSTFR, sans débrideur."
                         checked={includeLoostream}
                         onChange={setIncludeLoostream}
+                        blockedReason={
+                          hasTmdbKey ? undefined : "Clé TMDB requise : saisissez-la à l'étape 2."
+                        }
+                      />
+                      <AddonToggle
+                        name="VF Trailer"
+                        description="Bandes-annonces officielles en français (Allociné, YouTube, TMDB) sur la fiche des films et séries."
+                        checked={includeVfTrailer}
+                        onChange={setIncludeVfTrailer}
                         blockedReason={
                           hasTmdbKey ? undefined : "Clé TMDB requise : saisissez-la à l'étape 2."
                         }
@@ -1370,7 +1391,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </div>
 
                     <p className="text-[11px] text-mist-500 leading-relaxed">
-                      Loostream affiche « {profileName.trim() || "Nuvio France FR"} » — le nom
+                      Loostream affiche « {profileName.trim() || "FOCALE"} » — le nom
                       de votre profil Nuvio — comme pseudo : changez ce nom à
                       l&apos;étape 1 pour le modifier. Torrentio est déjà installé
                       par l&apos;assistant, avec votre clé de débrideur.
@@ -1407,15 +1428,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </strong>
                     <div>
                       • <span className="text-mist-300">Profil créé</span> :{" "}
-                      « {profileName.trim() || "Nuvio France FR"} », réutilisé s&apos;il
+                      « {profileName.trim() || "FOCALE"} », réutilisé s&apos;il
                       existe déjà. Vos clés TMDB et MDBList y sont reprises de
                       l&apos;étape 2, ainsi que votre clé TorBox si vous en avez
                       une : Nuvio Desktop en a besoin.
                     </div>
                     <div>
-                      • <span className="text-mist-300">Réglages</span> : langue
-                      des métadonnées TMDB passée en français, sur téléviseur,
-                      mobile et ordinateur (English par défaut dans Nuvio).
+                      • <span className="text-mist-300">Réglages</span> : tout en
+                      français par défaut, sur téléviseur, mobile et ordinateur —
+                      métadonnées TMDB, sous-titres français (mode forcé) et piste
+                      audio française d&apos;abord. Les clients Nuvio arrivent en
+                      anglais, sans préférence de langue.
                     </div>
                     <div>
                       •{" "}
@@ -1584,6 +1607,20 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <li>Tout est prêt, bon visionnage !</li>
                 </ol>
               </div>
+
+              <p className="text-[11px] leading-relaxed text-mist-500 max-w-md mx-auto">
+                Suivi Trakt (facultatif) : Nuvio est déjà réglé pour s&apos;y
+                appuyer, mais la connexion à votre compte Trakt se fait dans
+                l&apos;application (Réglages → Intégrations → Trakt) et ne peut pas
+                être préparée d&apos;ici.{" "}
+                <Link
+                  href="/tutoriel#trakt"
+                  className="text-mist-300 underline decoration-line underline-offset-4 transition-colors hover:text-gold-300"
+                >
+                  Voir le tutoriel Trakt
+                </Link>
+                .
+              </p>
 
               <button
                 type="button"
