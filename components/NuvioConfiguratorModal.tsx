@@ -66,14 +66,14 @@ function AccountQuestion({
         <button
           type="button"
           onClick={() => onAnswer(true)}
-          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-sage-500/15 border border-sage-500/40 text-sage-300 hover:bg-sage-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-sage-500/15 border border-sage-500/40 text-sage-300 hover:bg-sage-500/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
         >
           Oui
         </button>
         <button
           type="button"
           onClick={() => onAnswer(false)}
-          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-gold-500/15 border border-gold-500/40 text-gold-300 hover:bg-gold-500/25 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+          className="px-4 py-1.5 rounded-lg text-xs font-bold bg-gold-500/15 border border-gold-500/40 text-gold-300 hover:bg-gold-500/25 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           Non
         </button>
@@ -95,7 +95,7 @@ function GuideToggle({
       type="button"
       onClick={onClick}
       aria-expanded={open}
-      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-gold-300 hover:text-gold-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 shrink-0"
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-gold-300 hover:text-gold-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 shrink-0"
     >
       <BookOpen className="w-3 h-3" />
       <span>{open ? "Masquer le tutoriel" : "Voir le tutoriel"}</span>
@@ -110,7 +110,7 @@ function DirectKeyLink({ guide }: { guide: ProviderGuide }) {
       href={guide.keyUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-sage-300 hover:text-sage-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 shrink-0"
+      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-sage-300 hover:text-sage-200 rounded-lg px-1.5 py-0.5 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sage-400/70 shrink-0"
     >
       <span>{guide.keyLabel}</span>
       <ExternalLink className="w-3 h-3" />
@@ -174,7 +174,7 @@ function GuidePanel({
           href={guide.signupUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
         >
           <span>{guide.signupLabel}</span>
           <UserPlus className="w-3 h-3" />
@@ -183,7 +183,7 @@ function GuidePanel({
           href={guide.keyUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           <span>{guide.keyLabel}</span>
           <ExternalLink className="w-3 h-3" />
@@ -191,7 +191,7 @@ function GuidePanel({
         <button
           type="button"
           onClick={onReady}
-          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+          className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
         >
           <span>{readyLabel}</span>
           <ArrowRight className="w-3 h-3" />
@@ -261,7 +261,7 @@ function AioMetadataField({
           value={password}
           onChange={(e) => onPasswordChange(e.target.value)}
           placeholder="6 caractères minimum"
-          className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
+          className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-hidden"
         />
         <p className="text-[11px] text-mist-400 leading-relaxed">
           Il protège votre configuration AIO Metadata et servira à la modifier plus
@@ -288,14 +288,14 @@ function AioMetadataField({
                   setTimeout(() => setCopied(false), 2000);
                 });
               }}
-              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
             >
               {copied ? "Copié !" : "Copier"}
             </button>
             <button
               type="button"
               onClick={() => onChange("")}
-              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-300 glass-panel border border-surface-border hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mist-400/70 transition-colors"
+              className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-300 glass-panel border border-surface-border hover:bg-surface-hover focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-mist-400/70 transition-colors"
             >
               Recommencer
             </button>
@@ -308,7 +308,7 @@ function AioMetadataField({
               type="button"
               onClick={handleGenerate}
               disabled={status === "loading" || passwordTooShort}
-              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-[11px] font-bold text-mist-100 bg-gold-600 border border-gold-500 hover:bg-gold-500 disabled:opacity-40 disabled:cursor-not-allowed focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
             >
               {status === "loading" ? (
                 <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -321,7 +321,7 @@ function AioMetadataField({
               <button
                 type="button"
                 onClick={() => setManual(true)}
-                className="text-[11px] font-semibold text-mist-400 hover:text-mist-200 underline decoration-dotted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-mist-400/70 rounded-lg px-1"
+                className="text-[11px] font-semibold text-mist-400 hover:text-mist-200 underline decoration-dotted focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-mist-400/70 rounded-lg px-1"
               >
                 J&apos;ai déjà une configuration, saisir mon lien
               </button>
@@ -340,7 +340,7 @@ function AioMetadataField({
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder="https://aiometadata.elfhosted.com/stremio/xxxxxxxx/manifest.json"
-              className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
+              className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-hidden"
             />
           )}
         </div>
@@ -416,7 +416,7 @@ function GuideField({
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
-            className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-none"
+            className="w-full px-4 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-hidden"
           />
           {children}
         </>
@@ -457,7 +457,7 @@ function AddonToggle({
         checked={!disabled && checked}
         disabled={disabled}
         onChange={(event) => onChange(event.target.checked)}
-        className="mt-0.5 h-4 w-4 shrink-0 accent-gold-400 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70"
+        className="mt-0.5 h-4 w-4 shrink-0 accent-gold-400 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70"
       />
       <span className="space-y-1">
         <span className="flex flex-wrap items-center gap-2">
@@ -521,7 +521,7 @@ function AlldebridKeyTest({ apiKey }: { apiKey: string }) {
         type="button"
         onClick={run}
         disabled={testing}
-        className="inline-flex items-center gap-2 rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover disabled:opacity-60 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+        className="inline-flex items-center gap-2 rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover disabled:opacity-60 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
       >
         {testing ? (
           <Loader2 className="w-3.5 h-3.5 animate-spin" />
@@ -1054,7 +1054,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         placeholder="votre-email@exemple.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-hidden"
                       />
                     </div>
 
@@ -1069,7 +1069,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         placeholder="Votre mot de passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-hidden"
                       />
                     </div>
                   </div>
@@ -1105,7 +1105,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         maxLength={30}
                         placeholder="FOCALE"
                         aria-label="Nom du profil Nuvio à créer"
-                        className="w-full sm:w-64 shrink-0 px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-none"
+                        className="w-full sm:w-64 shrink-0 px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-hidden"
                       />
                     </div>
 
@@ -1241,7 +1241,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         <button
                           type="button"
                           onClick={() => setMissingKeysWarning(null)}
-                          className="w-full sm:w-auto rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                          className="w-full sm:w-auto rounded-lg border border-surface-border bg-surface px-4 py-2 text-[11px] font-bold text-mist-200 hover:bg-surface-hover focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
                         >
                           Saisir ma clé
                         </button>
@@ -1251,7 +1251,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                             setMissingKeysWarning(null);
                             setStep((currentStep) => (currentStep + 1) as WizardStep);
                           }}
-                          className="w-full sm:w-auto rounded-lg border border-gold-500/40 bg-gold-500/20 px-4 py-2 text-[11px] font-bold text-gold-200 hover:bg-gold-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                          className="w-full sm:w-auto rounded-lg border border-gold-500/40 bg-gold-500/20 px-4 py-2 text-[11px] font-bold text-gold-200 hover:bg-gold-500/30 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
                         >
                           Continuer quand même
                         </button>
@@ -1301,7 +1301,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                             setLumioManifestId(resolvedUrl || null);
                             setLumioVerificationStatus(resolvedUrl ? "verified" : "error");
                           }}
-                          className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
+                          className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-sage-300 bg-sage-500/10 border border-sage-500/30 hover:bg-sage-500/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-sage-400/70 transition-colors"
                         >
                           Vérifier mon lien Lumio
                         </button>
@@ -1314,7 +1314,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                                 setTimeout(() => setLumioUrlCopied(false), 2000);
                               });
                             }}
-                            className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
+                            className="px-3.5 py-2 rounded-xl text-[11px] font-bold text-gold-300 bg-gold-500/10 border border-gold-500/30 hover:bg-gold-500/20 focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-gold-400/70 transition-colors"
                           >
                             {lumioUrlCopied ? "Copié !" : "Copier le lien"}
                           </button>

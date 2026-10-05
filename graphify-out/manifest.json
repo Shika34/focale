@@ -6,15 +6,15 @@
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1789845086.7795703,
-    "seen": 1790097468.9570055,
-    "ast_hash": "43b73ab813ae471ea0aa8ca5e2d2a1e4",
+    "mtime": 1791199094.9998658,
+    "seen": 1791199564.0814786,
+    "ast_hash": "abc6bdfb4e3aa572f066387f009278b8",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791134962.6125264,
-    "seen": 1791139218.568649,
-    "ast_hash": "535c7a5833aefa418282080d302d650d",
+    "mtime": 1791199290.341131,
+    "seen": 1791199564.0814803,
+    "ast_hash": "f08359ed72d854d8c1b11ae863c50d93",
     "semantic_hash": ""
   },
   "app/tutoriel/page.tsx": {
@@ -24,9 +24,9 @@
     "semantic_hash": ""
   },
   "components/CollectionBrowser.tsx": {
-    "mtime": 1789845086.7812629,
-    "seen": 1790097468.9570155,
-    "ast_hash": "fd7549cda6964b924f8d45ed5b039865",
+    "mtime": 1791199105.2559094,
+    "seen": 1791199564.08154,
+    "ast_hash": "74f8c0bded37fb383e4eb809fac93653",
     "semantic_hash": ""
   },
   "components/Footer.tsx": {
@@ -48,15 +48,15 @@
     "semantic_hash": ""
   },
   "components/NuvioConfiguratorModal.tsx": {
-    "mtime": 1791198306.596568,
-    "seen": 1791198346.5199783,
-    "ast_hash": "e6fe16f14c7a9872d5b711f6f47191cb",
+    "mtime": 1791199105.2673128,
+    "seen": 1791199564.081613,
+    "ast_hash": "a402836bbd37f58e3a19e21640886821",
     "semantic_hash": ""
   },
   "components/TorboxPromoBanner.tsx": {
-    "mtime": 1789845086.7820413,
-    "seen": 1790097468.957084,
-    "ast_hash": "231287d1b219fa686eac278e03c71a47",
+    "mtime": 1791199105.2580156,
+    "seen": 1791199564.0816143,
+    "ast_hash": "011ba8ef2d75489fac11aa7084dfafa6",
     "semantic_hash": ""
   },
   "components/TutorialGuide.tsx": {
@@ -90,16 +90,16 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1791134962.6158445,
-    "seen": 1791139218.5690615,
-    "ast_hash": "547b6b8f515b3c605edd9b75611feb85",
+    "mtime": 1791199076.6432269,
+    "seen": 1791199564.0818815,
+    "ast_hash": "0e0611bef2ae25a9aefb1361a7b0f3bf",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
-    "mtime": 1789300396.0,
-    "seen": 1789738991.1457,
-    "ast_hash": "c56b5f3c12f777a86e2513f45daab56a",
-    "semantic_hash": "c56b5f3c12f777a86e2513f45daab56a"
+    "mtime": 1791199096.4153485,
+    "seen": 1791199564.0818827,
+    "ast_hash": "4ae674cb9a5e6dc8c6afe2598c150776",
+    "semantic_hash": ""
   },
   "public/aiometadata-config-mitch.json": {
     "mtime": 1789389878.0,
@@ -111,12 +111,6 @@
     "mtime": 1789140235.1133578,
     "seen": 1789197412.6767297,
     "ast_hash": "",
-    "semantic_hash": ""
-  },
-  "tailwind.config.ts": {
-    "mtime": 1789402330.0,
-    "seen": 1789738991.1457016,
-    "ast_hash": "bc3e9ea3ac7fe8ce8ea9b90bed15547e",
     "semantic_hash": ""
   },
   "tsconfig.json": {
@@ -132,9 +126,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1791198342.502404,
-    "seen": 1791198346.5204453,
-    "ast_hash": "a232a9de5e2663123a286850f48dec92",
+    "mtime": 1791198699.063668,
+    "seen": 1791199564.0821135,
+    "ast_hash": "0cc146e93ae0505f1840f0447e3498c2",
     "semantic_hash": ""
   },
   "README.md": {
@@ -246,9 +240,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1791134962.611578,
-    "seen": 1791139218.5692117,
-    "ast_hash": "df5376b169650a25b8fcad9e3e8f13e0",
+    "mtime": 1791199458.9953313,
+    "seen": 1791199564.082092,
+    "ast_hash": "1435ddec2745f31963cfcf0119015707",
     "semantic_hash": ""
   },
   "docs/plans/2026-09-22-addons-francais.md": {

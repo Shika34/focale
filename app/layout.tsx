@@ -9,14 +9,14 @@ import { Analytics } from "@vercel/analytics/react";
 const sans = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-inter",
 });
 
 const display = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   display: "swap",
-  variable: "--font-display",
+  variable: "--font-instrument-serif",
 });
 
 export const viewport: Viewport = {
