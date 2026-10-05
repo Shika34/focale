@@ -82,9 +82,10 @@ Thumbs.db
 .history
 *.pem
 
-# Fichiers locaux de développement (Claude Code)
+# Fichiers locaux de développement (agents de codage)
 .claude/settings.local.json
 .claude/worktrees/
+.freebuff/
 debug_context.txt
 
 # Graphify — cache local uniquement
@@ -92,3 +93,4 @@ graphify-out/cache/
 graphify-out/transcripts/
 graphify-out/.graphify_python
 graphify-out/needs_update
+graphify-out/[0-9][0-9][0-9][0-9]-[0-9][0-9]-[0-9][0-9]/

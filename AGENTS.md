@@ -13,7 +13,7 @@
 - **Goal-Driven Execution:** Define verifiable success criteria before editing code.
 
 ## Stack & Commands
-- **Stack:** Next.js (App Router, no `/src`), TypeScript strict (`no-any`), Tailwind CSS v4, pnpm.
+- **Stack:** Next.js (App Router, no `/src`), TypeScript strict (`no-any`), Tailwind CSS v3.4, pnpm.
 - **Setup:** Alias `@/*` -> `./*`. Node v24+.
 - **Commands:** `pnpm dev` | `pnpm build` | `pnpm lint` | `pnpm test` (`pnpm test:watch` en continu)
 
@@ -27,14 +27,15 @@
 ## Development Directives
 - **UI Language:** All user-facing text, placeholders, tooltips, and messages MUST be in **French**.
 - **Components:** Functional arrow functions. `"use client"` only when interactivity requires it.
-- **Styles:** Tailwind v4 (Design tokens in `app/globals.css` under `@theme`, e.g. `--color-harmo-green`).
+- **Styles:** Tailwind v3 (`tailwind.config.ts` + `@tailwind base/components/utilities` dans `app/globals.css`). Les design tokens sont des variables CSS dans `:root` (`app/globals.css`), ex. `--background`, `--foreground`, `--line`.
 - **Accessibility:** WCAG, `focus-visible`, semantic HTML.
 - **Routes:** Folder names must be in **English** (`dashboard/`, `aiometadata/`).
 - **Git:** Branches `type/task_name_in_snake_case` (e.g. `feat/search_filter`). PR target `dev`.
 
 ## Graphify Tool
-- Read `graphify-out/GRAPH_REPORT.md` or `graphify-out/wiki/index.md` before analyzing architecture.
+- Read `graphify-out/GRAPH_REPORT.md` before analyzing architecture.
 - After code modifications, run `graphify update .`.
+- Les snapshots datés (`graphify-out/AAAA-MM-JJ/`) sont ignorés par git : seul le rapport courant à la racine de `graphify-out/` est versionné.
 - `--update` / `--cluster-only` sont des commandes d'assistant (`/graphify <chemin> --update`) ; en terminal, utiliser les sous-commandes `graphify update .`, `graphify cluster-only .`, `graphify query "..."`.
 - Les étapes LLM (étiquetage des communautés, extraction sémantique des docs) tournent sur Ollama en local : `OLLAMA_HOST` + `OLLAMA_MODEL` sont définis dans `~/.config/environment.d/50-graphify-ollama.conf`. Forcer explicitement si besoin : `graphify label . --backend=ollama`.
 
