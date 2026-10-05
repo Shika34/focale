@@ -13,7 +13,7 @@
 - **Goal-Driven Execution:** Define verifiable success criteria before editing code.
 
 ## Stack & Commands
-- **Stack:** Next.js (App Router, no `/src`), TypeScript strict (`no-any`), Tailwind CSS v3.4, pnpm.
+- **Stack:** Next.js (App Router, no `/src`), TypeScript strict (`no-any`), Tailwind CSS v4.3 (`@tailwindcss/postcss`), pnpm.
 - **Setup:** Alias `@/*` -> `./*`. Node v24+.
 - **Commands:** `pnpm dev` | `pnpm build` | `pnpm lint` | `pnpm test` (`pnpm test:watch` en continu)
 
@@ -27,7 +27,7 @@
 ## Development Directives
 - **UI Language:** All user-facing text, placeholders, tooltips, and messages MUST be in **French**.
 - **Components:** Functional arrow functions. `"use client"` only when interactivity requires it.
-- **Styles:** Tailwind v3 (`tailwind.config.ts` + `@tailwind base/components/utilities` dans `app/globals.css`). Les design tokens sont des variables CSS dans `:root` (`app/globals.css`), ex. `--background`, `--foreground`, `--line`.
+- **Styles:** Tailwind v4 (`@import "tailwindcss"` + bloc `@theme` dans `app/globals.css`, aucun `tailwind.config.ts`). Les design tokens sont des variables `--color-*` / `--font-*` / `--shadow-*` / `--radius-*` déclarées dans `@theme`. Toute nouvelle couleur ou police s'ajoute là, pas ailleurs.
 - **Accessibility:** WCAG, `focus-visible`, semantic HTML.
 - **Routes:** Folder names must be in **English** (`dashboard/`, `aiometadata/`).
 - **Git:** Branches `type/task_name_in_snake_case` (e.g. `feat/search_filter`). PR target `dev`.

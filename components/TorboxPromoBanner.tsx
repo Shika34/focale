@@ -130,7 +130,7 @@ export function TorboxPromoBanner() {
           <div className="space-y-1.5 text-xs leading-relaxed text-mist-300">
             <p>
               Code promo{" "}
-              <code className="rounded bg-ink-600 px-1 py-0.5 font-mono text-[11px] text-mist-200">
+              <code className="rounded-sm bg-ink-600 px-1 py-0.5 font-mono text-[11px] text-mist-200">
                 {COUPON_CODE}
               </code>{" "}
               : <strong className="font-medium text-mist-100">-30 %</strong>,

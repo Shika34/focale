@@ -1,16 +1,85 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-:root {
-  --background: #0c0c0e;
-  --foreground: #f5f2ec;
-  --line: #2a2a31;
+/* Détection explicite des sources (v4 scanne aussi le projet, ceci fige le périmètre). */
+@source "../app";
+@source "../components";
+
+/* Bascule sombre pilotée par la classe sur <html> (parité avec l'ancien darkMode: "class"). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Palette « salle obscure » : noirs chauds, un seul accent doré (la lumière du
+ * projecteur) et un vert sauge réservé aux états positifs. Aucun dégradé
+ * multicolore, aucune couleur décorative en plus.
+ */
+@theme {
+  --color-background: #0c0c0e;
+  --color-ink: #0c0c0e;
+  --color-ink-500: #22222a;
+  --color-ink-600: #1b1b21;
+  --color-ink-700: #15151a;
+  --color-ink-800: #111114;
+  --color-ink-900: #0c0c0e;
+  --color-ink-950: #08080a;
+
+  --color-line: #2a2a31;
+
+  --color-mist-50: #faf8f4;
+  --color-mist-100: #f5f2ec;
+  --color-mist-200: #e6e2da;
+  --color-mist-300: #c9c4ba;
+  --color-mist-400: #9e988e;
+  --color-mist-500: #7b756b;
+  --color-mist-600: #575249;
+  --color-mist-700: #403c35;
+  --color-mist-800: #2c2925;
+  --color-mist-900: #1d1b18;
+  --color-mist-950: #121110;
+
+  --color-gold-50: #fdf8ec;
+  --color-gold-100: #faf0d8;
+  --color-gold-200: #f5e3b4;
+  --color-gold-300: #efce86;
+  --color-gold-400: #e0b357;
+  --color-gold-500: #c9972f;
+  --color-gold-600: #a2761f;
+  --color-gold-700: #7c5a18;
+  --color-gold-800: #574011;
+  --color-gold-900: #3a2b0d;
+  --color-gold-950: #221908;
+
+  --color-sage-50: #f0f6f2;
+  --color-sage-100: #dceae3;
+  --color-sage-200: #bcd6c9;
+  --color-sage-300: #a5c9b8;
+  --color-sage-400: #82af9c;
+  --color-sage-500: #5f8c7a;
+  --color-sage-600: #47695c;
+  --color-sage-700: #345043;
+  --color-sage-800: #24382f;
+  --color-sage-900: #17251f;
+  --color-sage-950: #0d1613;
+
+  --color-surface: #15151a;
+  --color-surface-hover: #1e1e25;
+  --color-surface-elevated: #1b1b21;
+  --color-surface-border: #2a2a31;
+
+  /* Les variables --font-* sont posées par next/font sur <html> (voir app/layout.tsx). */
+  --font-sans: var(--font-inter), system-ui, sans-serif;
+  --font-display: var(--font-instrument-serif), Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Un seul halo, volontairement sobre : la lumière du projecteur. */
+  --shadow-glow: 0 1px 0 0 rgba(255, 255, 255, 0.03), 0 12px 32px -24px rgba(0, 0, 0, 0.9);
+  --shadow-panel: 0 1px 0 0 rgba(255, 255, 255, 0.03) inset, 0 20px 50px -40px rgba(0, 0, 0, 1);
+
+  --radius-card: 14px;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+  color: var(--color-mist-100);
+  background: var(--color-background);
   overflow-x: hidden;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -50,12 +119,12 @@ body {
 /* Surfaces : aplats, filets fins, aucun flou ni halo coloré. */
 .glass-panel {
   background: rgba(17, 17, 20, 0.92);
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-line);
 }
 
 .glass-card {
   background: #111114;
-  border: 1px solid var(--line);
+  border: 1px solid var(--color-line);
   transition:
     border-color 0.2s ease,
     background-color 0.2s ease,
@@ -70,7 +139,7 @@ body {
 
 /* Typographie éditoriale */
 .display {
-  font-family: var(--font-display), Georgia, serif;
+  font-family: var(--font-display);
   font-weight: 400;
   letter-spacing: -0.015em;
 }
@@ -79,7 +148,7 @@ body {
   font-size: 11px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #9e988e;
+  color: var(--color-mist-400);
 }
 
 /* Variante lisible pour l'accroche d'ouverture de l'accueil. */
@@ -91,7 +160,7 @@ body {
 
 .rule {
   height: 1px;
-  background: var(--line);
+  background: var(--color-line);
 }
 
 /* Rangées à défilement horizontal : pas de barre visible (pastilles, onglets). */

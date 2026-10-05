@@ -85,7 +85,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div>
             <p className="eyebrow">Aperçu</p>
-            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]">
+            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]/8">
               Nuvio une fois configuré
             </h2>
           </div>
@@ -151,7 +151,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div>
             <p className="eyebrow">Focale sur Nuvio</p>
-            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]">
+            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]/8">
               Nuvio, en deux minutes
             </h2>
           </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-5">
           <div>
             <p className="eyebrow">Focale sur Lumio</p>
-            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]">
+            <h2 className="display mt-3 text-2xl text-mist-100 sm:text-[32px]/8">
               Le français d&apos;abord
             </h2>
           </div>

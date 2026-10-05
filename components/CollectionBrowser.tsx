@@ -87,7 +87,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher parmi 756 dossiers…"
               aria-label="Rechercher un dossier"
-              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface/80 border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
+              className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface/80 border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:outline-hidden focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
             />
             {searchQuery && (
               <button
@@ -187,7 +187,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
                       <span className="font-semibold text-mist-100 text-sm line-clamp-1">
                         {folder.title}
                       </span>
-                      <span className="text-[10px] px-1.5 py-0.5 rounded bg-gold-500/10 text-gold-300 border border-gold-500/20 font-mono shrink-0">
+                      <span className="text-[10px] px-1.5 py-0.5 rounded-sm bg-gold-500/10 text-gold-300 border border-gold-500/20 font-mono shrink-0">
                         {folder.sourcesCount} source
                         {folder.sourcesCount > 1 ? "s" : ""}
                       </span>
@@ -229,7 +229,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
 
       {/* Folder Detail Modal */}
       {activeFolderDetail && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xs animate-in fade-in">
           <div
             role="dialog"
             aria-modal="true"

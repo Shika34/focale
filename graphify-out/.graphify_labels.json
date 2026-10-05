@@ -4,7 +4,7 @@
   "2": "TutorialGuide.tsx",
   "3": "TypeScript Configuration",
   "4": "layout.tsx",
-  "5": "Plan — Addons français complémentaires",
+  "5": "debrid-key-test.ts",
   "6": "AGENTS.md — Focale",
   "7": "NuvioConfiguratorModal.tsx",
   "8": "devDependencies",
@@ -15,5 +15,6 @@
   "13": "Next.js Security Configuration",
   "14": "Code Linting Configuration",
   "15": "PostCSS Configuration",
-  "16": "nuvio-api-settings.test.ts"
+  "16": "nuvio-api-settings.test.ts",
+  "17": "collections/page.tsx"
 }
