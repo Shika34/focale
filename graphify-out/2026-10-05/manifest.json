@@ -48,9 +48,9 @@
     "semantic_hash": ""
   },
   "components/NuvioConfiguratorModal.tsx": {
-    "mtime": 1791198306.596568,
-    "seen": 1791198346.5199783,
-    "ast_hash": "e6fe16f14c7a9872d5b711f6f47191cb",
+    "mtime": 1791139160.1876833,
+    "seen": 1791139218.56886,
+    "ast_hash": "75957f2ec29bc8f08076ca130f5e6064",
     "semantic_hash": ""
   },
   "components/TorboxPromoBanner.tsx": {
@@ -66,15 +66,15 @@
     "semantic_hash": ""
   },
   "lib/collections-summary.json": {
-    "mtime": 1791143918.164413,
-    "seen": 1791198346.520058,
+    "mtime": 1791138888.9142663,
+    "seen": 1791139218.5689387,
     "ast_hash": "e8fd45c39257622b0d96e941de07c9bb",
     "semantic_hash": ""
   },
   "lib/nuvio-api.ts": {
-    "mtime": 1791198287.7216544,
-    "seen": 1791198346.5200925,
-    "ast_hash": "d7c435bbd7aea8880472a572464d638c",
+    "mtime": 1791138772.2695637,
+    "seen": 1791139218.568981,
+    "ast_hash": "9c74c50dd46531dbf5e18d304a54d0c4",
     "semantic_hash": ""
   },
   "lib/nuvio-data.ts": {
@@ -132,9 +132,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1791198342.502404,
-    "seen": 1791198346.5204453,
-    "ast_hash": "a232a9de5e2663123a286850f48dec92",
+    "mtime": 1791134962.6121483,
+    "seen": 1791139218.5692148,
+    "ast_hash": "6b36e209cadf35517dee70a7b3b8fcbe",
     "semantic_hash": ""
   },
   "README.md": {
@@ -144,8 +144,8 @@
     "semantic_hash": ""
   },
   "lib/manifest-urls.ts": {
-    "mtime": 1791143918.1645985,
-    "seen": 1791198346.520091,
+    "mtime": 1791138722.2311118,
+    "seen": 1791139218.5689785,
     "ast_hash": "5e5d25f879d37a10f1978f145ebc98e8",
     "semantic_hash": ""
   },
@@ -228,15 +228,15 @@
     "semantic_hash": ""
   },
   "tests/manifest-urls.test.ts": {
-    "mtime": 1791143918.1722193,
-    "seen": 1791198346.5203166,
+    "mtime": 1791138664.729653,
+    "seen": 1791139218.5691679,
     "ast_hash": "bee662255f4a30eabe85e9a1c1b7c6df",
     "semantic_hash": ""
   },
   "tests/nuvio-api-settings.test.ts": {
-    "mtime": 1791198268.95174,
-    "seen": 1791198346.5203462,
-    "ast_hash": "c16c2847679514d4ed2460e108109350",
+    "mtime": 1791138673.849728,
+    "seen": 1791139218.5691733,
+    "ast_hash": "99ebf7c0cc590697221649f4d05cb9b8",
     "semantic_hash": ""
   },
   "vitest.config.mts": {
@@ -252,9 +252,9 @@
     "semantic_hash": ""
   },
   "docs/plans/2026-09-22-addons-francais.md": {
-    "mtime": 1791143918.1613061,
-    "seen": 1791198346.5204787,
-    "ast_hash": "2ce76da9b3f8ca9cc00202bea452cb95",
+    "mtime": 1791134962.6131532,
+    "seen": 1791139218.5692177,
+    "ast_hash": "d3f0aae525055abc6419c961937f4c9d",
     "semantic_hash": ""
   },
   "tests/nuvio-api-auth.test.ts": {
@@ -264,26 +264,26 @@
     "semantic_hash": ""
   },
   "lib/spotlight-art.ts": {
-    "mtime": 1791143918.1649113,
-    "seen": 1791198346.520191,
+    "mtime": 1791138687.6208398,
+    "seen": 1791139218.5690262,
     "ast_hash": "f1dd8feae43cd9e5150ca44d39e6ef27",
     "semantic_hash": ""
   },
   "tests/nuvio-addons-pack.test.ts": {
-    "mtime": 1791143918.172311,
-    "seen": 1791198346.5203178,
+    "mtime": 1791139173.57562,
+    "seen": 1791139218.5691695,
     "ast_hash": "9a8fa03a0a4d3e3e59a1900a953c959e",
     "semantic_hash": ""
   },
   "tests/spotlight-art.test.ts": {
-    "mtime": 1791143918.1725307,
-    "seen": 1791198346.520347,
+    "mtime": 1791138646.5275002,
+    "seen": 1791139218.5691748,
     "ast_hash": "9cb980cbc128e59f28ce063fdcb3aa5c",
     "semantic_hash": ""
   },
   "tests/spotlight-collection.test.ts": {
-    "mtime": 1791143918.1726205,
-    "seen": 1791198346.520348,
+    "mtime": 1791138646.5275002,
+    "seen": 1791139218.5691764,
     "ast_hash": "15b5e084edad7a7f2f39913f7344eee8",
     "semantic_hash": ""
   }

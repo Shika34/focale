@@ -134,6 +134,16 @@ const TMDB_LANGUAGE_KEY = "tmdb_language";
 /** Section du blob de réglages qui porte les préférences de lecture (audio, sous-titres). */
 const PLAYER_SETTINGS_FEATURE = "player_settings";
 
+/**
+ * Section du blob de réglages qui porte les notes externes MDBList. La clé
+ * d'activation est `mdblist_enabled` sur les trois plateformes — « Enable
+ * MDBList Ratings » dans l'Account Manager (`nuvio.tv/account?tab=settings`) —
+ * et vaut `false` au départ côté client (`MDBListSettingsDataStore.kt` de
+ * NuvioTV, `MDBListSettingsStorage` de mobile et desktop).
+ */
+const MDBLIST_SETTINGS_FEATURE = "mdblist_settings";
+const MDBLIST_ENABLED_KEY = "mdblist_enabled";
+
 /** Langue poussée par défaut : métadonnées TMDB, sous-titres et piste audio. */
 const FRENCH_LANGUAGE = "fr";
 
@@ -181,13 +191,34 @@ function readPreference(blob: unknown, feature: string, key: string): unknown {
   return features?.[feature]?.[key]?.value ?? null;
 }
 
-/** Vrai quand la langue TMDB et les préférences de lecture sont déjà en français. */
-function isFrenchConfigured(blob: unknown, platform: (typeof SETTINGS_PLATFORMS)[number]): boolean {
-  if (readPreference(blob, TMDB_SETTINGS_FEATURE, TMDB_LANGUAGE_KEY) !== FRENCH_LANGUAGE) {
-    return false;
-  }
-  return Object.entries(frenchPlaybackPreferences(platform)).every(
-    ([key, preference]) => readPreference(blob, PLAYER_SETTINGS_FEATURE, key) === preference.value,
+/**
+ * Réglages poussés par défaut dans le profil, par section du blob de réglages :
+ * langue des métadonnées TMDB, préférences de lecture françaises, et notes
+ * MDBList activées (la seule case que les clients laissent éteinte à la
+ * création d'un profil). Les cases par fournisseur de notes (`mdblist_show_*`
+ * sur la TV, `mdblist_use_*` sur mobile et desktop) sont déjà à `true` par
+ * défaut : les écrire écraserait un choix explicite de l'utilisateur.
+ */
+function defaultPreferenceSections(
+  platform: (typeof SETTINGS_PLATFORMS)[number],
+): Record<string, Record<string, SyncPreference>> {
+  return {
+    [TMDB_SETTINGS_FEATURE]: {
+      [TMDB_LANGUAGE_KEY]: { type: "string", value: FRENCH_LANGUAGE },
+    },
+    [PLAYER_SETTINGS_FEATURE]: frenchPlaybackPreferences(platform),
+    [MDBLIST_SETTINGS_FEATURE]: {
+      [MDBLIST_ENABLED_KEY]: { type: "boolean", value: true },
+    },
+  };
+}
+
+/** Vrai quand tous les réglages par défaut sont déjà posés sur cette plateforme. */
+function isDefaultConfigured(blob: unknown, platform: (typeof SETTINGS_PLATFORMS)[number]): boolean {
+  return Object.entries(defaultPreferenceSections(platform)).every(([feature, entries]) =>
+    Object.entries(entries).every(
+      ([key, preference]) => readPreference(blob, feature, key) === preference.value,
+    ),
   );
 }
 
@@ -454,28 +485,32 @@ export const NuvioApi = {
   },
 
   /**
-   * Règle les réglages français par défaut du profil, sur les trois plateformes
-   * Nuvio : téléviseur, mobile et ordinateur.
+   * Règle les réglages par défaut du profil, sur les trois plateformes Nuvio :
+   * téléviseur, mobile et ordinateur.
    *
-   * Trois réglages sont posés, ceux que chaque client laisse en anglais ou en
-   * automatique à la création d'un profil :
+   * Trois groupes de réglages sont posés, ceux que chaque client laisse en
+   * anglais, en automatique ou éteints à la création d'un profil :
    * - `tmdb_settings.tmdb_language` = « fr » (« Intégrations → TMDB Enrichment →
    *   Language », en anglais par défaut) ;
    * - `player_settings` : sous-titres préférés en français, mode forcé activé
-   *   (`subtitle_use_forced_subtitles`) et piste audio française d'abord ;
-   * - le nom de la clé des sous-titres diffère selon le client
-   *   (`subtitle_preferred_language` sur TV, `preferred_subtitle_language` sur
-   *   mobile et desktop) : chaque plateforme reçoit le sien.
+   *   (`subtitle_use_forced_subtitles`) et piste audio française d'abord (le nom
+   *   de la clé des sous-titres diffère selon le client,
+   *   `subtitle_preferred_language` sur TV, `preferred_subtitle_language` sur
+   *   mobile et desktop) ;
+   * - `mdblist_settings.mdblist_enabled` = true : « Enable MDBList Ratings »
+   *   dans l'Account Manager (`nuvio.tv/account?tab=settings`), éteint par
+   *   défaut côté client ; les cases par fournisseur de notes restent à leur
+   *   défaut (`true`) et ne sont jamais réécrites.
    *
    * Le blob de réglages existant de chaque plateforme est relu puis complété :
    * les clients Nuvio vident la section qu'ils importent avant d'y réécrire ce
    * qu'elle contient, donc pousser un blob partiel effacerait les autres
    * réglages du profil. Les valeurs écrites sont relues pour confirmation.
    *
-   * @returns Les plateformes mises à jour, celles déjà en français, celles dont
-   *          la relecture n'a rien confirmé, et les échecs par plateforme.
+   * @returns Les plateformes mises à jour, celles déjà réglées, celles dont la
+   *          relecture n'a rien confirmé, et les échecs par plateforme.
    */
-  async applyFrenchDefaults(
+  async applyProfileDefaults(
     token: string,
     profileId: number,
   ): Promise<{
@@ -499,27 +534,24 @@ export const NuvioApi = {
       try {
         const blob = settingsBlobValue(await pull(platform));
 
-        if (isFrenchConfigured(blob, platform)) {
+        if (isDefaultConfigured(blob, platform)) {
           already.push(platform);
           continue;
         }
 
-        const withTmdbLanguage = withPreferences(blob, TMDB_SETTINGS_FEATURE, {
-          [TMDB_LANGUAGE_KEY]: { type: "string", value: FRENCH_LANGUAGE },
-        });
+        let next = blob;
+        for (const [feature, entries] of Object.entries(defaultPreferenceSections(platform))) {
+          next = withPreferences(next, feature, entries);
+        }
         await rpc("/rest/v1/rpc/sync_push_profile_settings_blob", token, {
           p_profile_id: profileId,
-          p_settings_json: withPreferences(
-            withTmdbLanguage,
-            PLAYER_SETTINGS_FEATURE,
-            frenchPlaybackPreferences(platform),
-          ),
+          p_settings_json: next,
           p_platform: platform,
           p_origin_client_id: ORIGIN_CLIENT_ID,
         });
 
         const readBack = settingsBlobValue(await pull(platform));
-        if (isFrenchConfigured(readBack, platform)) {
+        if (isDefaultConfigured(readBack, platform)) {
           updated.push(platform);
         } else {
           unverified.push(platform);

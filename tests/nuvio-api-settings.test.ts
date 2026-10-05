@@ -76,7 +76,7 @@ const OTHER_FEATURE = {
 };
 const OTHER_PLAYER_PREFERENCE = { skip_intro_enabled: { type: "boolean", value: false } };
 
-describe("NuvioApi.applyFrenchDefaults", () => {
+describe("NuvioApi.applyProfileDefaults", () => {
   beforeEach(() => {
     stubSupabase(newState());
   });
@@ -90,7 +90,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     const state = newState();
     stubSupabase(state);
 
-    const result = await NuvioApi.applyFrenchDefaults("jeton", 4);
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
 
     expect(result).toEqual({
       updated: ["tv", "mobile", "desktop"],
@@ -109,11 +109,26 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     }
   });
 
+  it("active les notes MDBList sur les trois plateformes, et rien de plus", async () => {
+    const state = newState();
+    stubSupabase(state);
+
+    await NuvioApi.applyProfileDefaults("jeton", 4);
+
+    for (const platform of ["tv", "mobile", "desktop"]) {
+      expect(preferenceOf(state.blobs[platform], "mdblist_settings", "mdblist_enabled")).toBe(true);
+      // Les cases IMDb/Trakt/… de l'Account Manager restent à leur défaut client
+      // (`true`) : n'écrire que la clé d'activation évite d'écraser un choix.
+      const sections = (state.blobs[platform] as { features: Record<string, unknown> }).features;
+      expect(Object.keys(sections.mdblist_settings ?? {})).toEqual(["mdblist_enabled"]);
+    }
+  });
+
   it("règle les sous-titres français forcés et la VF, avec le nom de clé de chaque client", async () => {
     const state = newState();
     stubSupabase(state);
 
-    await NuvioApi.applyFrenchDefaults("jeton", 4);
+    await NuvioApi.applyProfileDefaults("jeton", 4);
 
     for (const platform of ["tv", "mobile", "desktop"]) {
       const blob = state.blobs[platform];
@@ -141,7 +156,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     });
     stubSupabase(state);
 
-    await NuvioApi.applyFrenchDefaults("jeton", 4);
+    await NuvioApi.applyProfileDefaults("jeton", 4);
 
     const pushed = state.blobs.tv as { features: Record<string, Record<string, unknown>> };
     expect(pushed.features.layout_settings).toEqual(OTHER_FEATURE.layout_settings);
@@ -151,7 +166,33 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     expect(languageOf(pushed)).toBe("fr");
   });
 
-  it("n'écrit pas sur une plateforme déjà réglée en français", async () => {
+  it("n'écrit pas sur une plateforme déjà réglée, notes MDBList comprises", async () => {
+    const state = newState({
+      blobs: {
+        tv: {
+          version: 1,
+          features: {
+            tmdb_settings: { tmdb_language: { type: "string", value: "fr" } },
+            player_settings: {
+              subtitle_preferred_language: { type: "string", value: "fr" },
+              subtitle_use_forced_subtitles: { type: "boolean", value: true },
+              preferred_audio_language: { type: "string", value: "fr" },
+            },
+            mdblist_settings: { mdblist_enabled: { type: "boolean", value: true } },
+          },
+        },
+      },
+    });
+    stubSupabase(state);
+
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
+
+    expect(result.already).toEqual(["tv"]);
+    expect(result.updated).toEqual(["mobile", "desktop"]);
+    expect(state.pushes.map((call) => call.platform)).not.toContain("tv");
+  });
+
+  it("active les notes MDBList d'une plateforme déjà en français, sans la régler deux fois", async () => {
     const state = newState({
       blobs: {
         tv: {
@@ -169,11 +210,11 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     });
     stubSupabase(state);
 
-    const result = await NuvioApi.applyFrenchDefaults("jeton", 4);
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
 
-    expect(result.already).toEqual(["tv"]);
-    expect(result.updated).toEqual(["mobile", "desktop"]);
-    expect(state.pushes.map((call) => call.platform)).not.toContain("tv");
+    expect(result.updated).toContain("tv");
+    expect(preferenceOf(state.blobs.tv, "mdblist_settings", "mdblist_enabled")).toBe(true);
+    expect(preferenceOf(state.blobs.tv, "player_settings", "subtitle_preferred_language")).toBe("fr");
   });
 
   it("réécrit une plateforme dont les sous-titres ne sont pas encore en français", async () => {
@@ -184,7 +225,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     });
     stubSupabase(state);
 
-    const result = await NuvioApi.applyFrenchDefaults("jeton", 4);
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
 
     expect(result.updated).toContain("tv");
     expect(preferenceOf(state.blobs.tv, "player_settings", "subtitle_preferred_language")).toBe("fr");
@@ -194,7 +235,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     const state = newState({ dropWrites: ["tv", "mobile", "desktop"] });
     stubSupabase(state);
 
-    const result = await NuvioApi.applyFrenchDefaults("jeton", 4);
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
 
     expect(result.updated).toEqual([]);
     expect(result.unverified).toEqual(["tv", "mobile", "desktop"]);
@@ -204,7 +245,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     const state = newState({ failWrites: ["tv"] });
     stubSupabase(state);
 
-    const result = await NuvioApi.applyFrenchDefaults("jeton", 4);
+    const result = await NuvioApi.applyProfileDefaults("jeton", 4);
 
     expect(result.errors).toHaveLength(1);
     expect(result.errors[0]).toContain("tv (");
@@ -217,7 +258,7 @@ describe("NuvioApi.applyFrenchDefaults", () => {
     const state = newState();
     stubSupabase(state);
 
-    await NuvioApi.applyFrenchDefaults("jeton", 4);
+    await NuvioApi.applyProfileDefaults("jeton", 4);
 
     for (const { body } of state.pulls) {
       expect(Object.keys(body).sort()).toEqual(["p_platform", "p_profile_id"]);

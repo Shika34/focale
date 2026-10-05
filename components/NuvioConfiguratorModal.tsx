@@ -858,36 +858,37 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         step: "Réglages du profil",
         percent: 92,
         details:
-          "Français par défaut : métadonnées, sous-titres forcés et piste audio (téléviseur, mobile, ordinateur)…",
+          "Français par défaut : métadonnées, sous-titres forcés et piste audio, notes MDBList activées (téléviseur, mobile, ordinateur)…",
       });
 
-      // Les clients Nuvio démarrent en anglais et sans préférence de langue : on
-      // règle le profil pour les trois plateformes avant de rendre la main.
+      // Les clients Nuvio démarrent en anglais, sans préférence de langue et sans
+      // notes externes : on règle le profil pour les trois plateformes avant de
+      // rendre la main.
       try {
-        const frenchDefaults = await NuvioApi.applyFrenchDefaults(
+        const profileDefaults = await NuvioApi.applyProfileDefaults(
           authRes.token,
           targetProfile.profile_index,
         );
-        if (frenchDefaults.errors.length > 0) {
+        if (profileDefaults.errors.length > 0) {
           noticeParts.push(
-            `Les réglages français n'ont pas pu être posés sur ${formatFrenchList(
-              frenchDefaults.errors,
-            )}. Réglez-les dans l'application : Réglages → Intégrations → TMDB Enrichment → Language, et Réglages → Lecture → Sous-titres.`,
+            `Les réglages du profil n'ont pas pu être posés sur ${formatFrenchList(
+              profileDefaults.errors,
+            )}. Réglez-les dans l'application : Réglages → Intégrations → TMDB Enrichment → Language, Réglages → Lecture → Sous-titres, et Réglages → Intégrations → MDBList.`,
           );
         }
-        if (frenchDefaults.unverified.length > 0) {
+        if (profileDefaults.unverified.length > 0) {
           noticeParts.push(
-            `Réglages français envoyés mais non confirmés sur ${formatFrenchList(
-              frenchDefaults.unverified,
-            )}. Vérifiez-les dans l'application : Réglages → Lecture (langue des sous-titres et mode forcé) et TMDB Enrichment → Language.`,
+            `Réglages envoyés mais non confirmés sur ${formatFrenchList(
+              profileDefaults.unverified,
+            )}. Vérifiez-les dans l'application : Réglages → Lecture (langue des sous-titres et mode forcé), TMDB Enrichment → Language, et MDBList Ratings.`,
           );
         }
         setSettingsNotice(noticeParts.join(" "));
       } catch (languageErr) {
         noticeParts.push(
-          `Les réglages français n'ont pas pu être posés (${
+          `Les réglages du profil n'ont pas pu être posés (${
             languageErr instanceof Error ? languageErr.message : "erreur inconnue"
-          }). Réglez-les dans l'application : Réglages → Lecture pour les sous-titres, Intégrations → TMDB Enrichment → Language pour les métadonnées.`,
+          }). Réglez-les dans l'application : Réglages → Lecture pour les sous-titres, Intégrations → TMDB Enrichment → Language pour les métadonnées, Intégrations → MDBList pour les notes.`,
         );
         setSettingsNotice(noticeParts.join(" "));
       }
@@ -1436,9 +1437,10 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     <div>
                       • <span className="text-mist-300">Réglages</span> : tout en
                       français par défaut, sur téléviseur, mobile et ordinateur —
-                      métadonnées TMDB, sous-titres français (mode forcé) et piste
-                      audio française d&apos;abord. Les clients Nuvio arrivent en
-                      anglais, sans préférence de langue.
+                      métadonnées TMDB, sous-titres français (mode forcé), piste
+                      audio française d&apos;abord et notes externes MDBList
+                      activées. Les clients Nuvio arrivent en anglais, sans
+                      préférence de langue et sans notes.
                     </div>
                     <div>
                       •{" "}
