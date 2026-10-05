@@ -199,32 +199,6 @@
       "source_location": "L14"
     },
     {
-      "id": "lib_debrid_key_test_alldebriduser",
-      "label": "AlldebridUser",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "alldebriduser",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L36"
-    },
-    {
-      "id": "lib_debrid_key_test_debridkeycheck",
-      "label": "DebridKeyCheck",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "debridkeycheck",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L28"
-    },
-    {
       "id": "components_nuvioconfiguratormodal_addontoggleprops",
       "label": "AddonToggleProps",
       "_callable": true,
@@ -288,6 +262,32 @@
       "norm_label": "wizardstep",
       "source_file": "components/NuvioConfiguratorModal.tsx",
       "source_location": "L35"
+    },
+    {
+      "id": "lib_debrid_key_test_alldebriduser",
+      "label": "AlldebridUser",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "alldebriduser",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L36"
+    },
+    {
+      "id": "lib_debrid_key_test_debridkeycheck",
+      "label": "DebridKeyCheck",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "debridkeycheck",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L28"
     },
     {
       "id": "lib_manifest_urls_base64manifesturl",
@@ -722,6 +722,30 @@
       "source_location": "L22"
     },
     {
+      "id": "tests_tailwind_v4_guards_test_riskytextsizecombos",
+      "label": "riskyTextSizeCombos()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "nuvio-api-settings.test.ts",
+      "file_type": "code",
+      "norm_label": "riskytextsizecombos()",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L39"
+    },
+    {
+      "id": "tests_tailwind_v4_guards_test_sourcefiles",
+      "label": "sourceFiles()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "nuvio-api-settings.test.ts",
+      "file_type": "code",
+      "norm_label": "sourcefiles()",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L30"
+    },
+    {
       "id": "app_collections_page_collectionspage",
       "label": "CollectionsPage()",
       "_callable": true,
@@ -731,7 +755,7 @@
       "file_type": "code",
       "norm_label": "collectionspage()",
       "source_file": "app/collections/page.tsx",
-      "source_location": "L12"
+      "source_location": "L18"
     },
     {
       "id": "components_collectionbrowser_collectionbrowser",
@@ -782,6 +806,18 @@
       "source_location": "L23"
     },
     {
+      "id": "app_layout_rootlayout",
+      "label": "RootLayout()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "rootlayout()",
+      "source_file": "app/layout.tsx",
+      "source_location": "L50"
+    },
+    {
       "id": "app_page_homepage",
       "label": "HomePage()",
       "_callable": true,
@@ -791,7 +827,19 @@
       "file_type": "code",
       "norm_label": "homepage()",
       "source_file": "app/page.tsx",
-      "source_location": "L79"
+      "source_location": "L84"
+    },
+    {
+      "id": "app_tutoriel_page_tutorielpage",
+      "label": "TutorielPage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "tutorielpage()",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L18"
     },
     {
       "id": "components_alldebridpromobanner_alldebridpromobanner",
@@ -806,6 +854,30 @@
       "source_location": "L15"
     },
     {
+      "id": "components_footer_footer",
+      "label": "Footer()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "footer()",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L5"
+    },
+    {
+      "id": "components_navbar_navbar",
+      "label": "Navbar()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "navbar()",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L16"
+    },
+    {
       "id": "components_torboxpromobanner_torboxpromobanner",
       "label": "TorboxPromoBanner()",
       "_callable": true,
@@ -818,136 +890,16 @@
       "source_location": "L17"
     },
     {
-      "id": "app_layout_rootlayout",
-      "label": "RootLayout()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "rootlayout()",
-      "source_file": "app/layout.tsx",
-      "source_location": "L49"
-    },
-    {
-      "id": "app_tutoriel_page_tutorielpage",
-      "label": "TutorielPage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "tutorielpage()",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L11"
-    },
-    {
-      "id": "components_footer_footer",
-      "label": "Footer()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "footer()",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "components_navbar_navbar",
-      "label": "Navbar()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "navbar()",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L16"
-    },
-    {
       "id": "components_tutorialguide_tutorialguide",
       "label": "TutorialGuide()",
       "_callable": true,
       "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "file_type": "code",
       "norm_label": "tutorialguide()",
       "source_file": "components/TutorialGuide.tsx",
       "source_location": "L153"
-    },
-    {
-      "id": "components_nuvioconfiguratormodal_alldebridkeytest",
-      "label": "AlldebridKeyTest()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "alldebridkeytest()",
-      "source_file": "components/NuvioConfiguratorModal.tsx",
-      "source_location": "L493"
-    },
-    {
-      "id": "lib_debrid_key_test_asrecord",
-      "label": "asRecord()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "asrecord()",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L43"
-    },
-    {
-      "id": "lib_debrid_key_test_checkalldebridkey",
-      "label": "checkAlldebridKey()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "checkalldebridkey()",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L87"
-    },
-    {
-      "id": "lib_debrid_key_test_messageforerrorcode",
-      "label": "messageForErrorCode()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "messageforerrorcode()",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L60"
-    },
-    {
-      "id": "lib_debrid_key_test_readuser",
-      "label": "readUser()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "readuser()",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "lib_nuvio_api_autherrormessage",
-      "label": "authErrorMessage()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "autherrormessage()",
-      "source_file": "lib/nuvio-api.ts",
-      "source_location": "L258"
     },
     {
       "id": "components_nuvioconfiguratormodal_accountquestion",
@@ -984,6 +936,18 @@
       "norm_label": "aiometadatafield()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
       "source_location": "L213"
+    },
+    {
+      "id": "components_nuvioconfiguratormodal_alldebridkeytest",
+      "label": "AlldebridKeyTest()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "alldebridkeytest()",
+      "source_file": "components/NuvioConfiguratorModal.tsx",
+      "source_location": "L493"
     },
     {
       "id": "components_nuvioconfiguratormodal_directkeylink",
@@ -1056,6 +1020,66 @@
       "norm_label": "nuvioconfiguratormodal()",
       "source_file": "components/NuvioConfiguratorModal.tsx",
       "source_location": "L555"
+    },
+    {
+      "id": "lib_debrid_key_test_asrecord",
+      "label": "asRecord()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "asrecord()",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "lib_debrid_key_test_checkalldebridkey",
+      "label": "checkAlldebridKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "checkalldebridkey()",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L87"
+    },
+    {
+      "id": "lib_debrid_key_test_messageforerrorcode",
+      "label": "messageForErrorCode()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "messageforerrorcode()",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "lib_debrid_key_test_readuser",
+      "label": "readUser()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "readuser()",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "lib_nuvio_api_autherrormessage",
+      "label": "authErrorMessage()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "autherrormessage()",
+      "source_file": "lib/nuvio-api.ts",
+      "source_location": "L258"
     },
     {
       "id": "lib_spotlight_art_spotlightartversion",
@@ -1514,18 +1538,6 @@
       "source_location": "L29"
     },
     {
-      "id": "context_handoff_2_project_status",
-      "label": "2. Project Status",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "nuvio-api.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "2. project status",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L11"
-    },
-    {
       "id": "docs_plans_2026_09_22_addons_francais_fait_22_09_2026",
       "label": "Fait (22/09/2026)",
       "_origin": "ast",
@@ -1853,6 +1865,39 @@
       "source_location": "L18"
     },
     {
+      "id": "tests_tailwind_v4_guards_test",
+      "label": "tailwind-v4-guards.test.ts",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "nuvio-api-settings.test.ts",
+      "file_type": "code",
+      "norm_label": "tailwind-v4-guards.test.ts",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "tests_tailwind_v4_guards_test_files",
+      "label": "files",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "nuvio-api-settings.test.ts",
+      "file_type": "code",
+      "norm_label": "files",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L51"
+    },
+    {
+      "id": "tests_tailwind_v4_guards_test_source_dirs",
+      "label": "SOURCE_DIRS",
+      "_origin": "ast",
+      "community": 16,
+      "community_name": "nuvio-api-settings.test.ts",
+      "file_type": "code",
+      "norm_label": "source_dirs",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L22"
+    },
+    {
       "id": "ref_vitest",
       "label": "vitest",
       "_origin": "ast",
@@ -1919,6 +1964,61 @@
       "source_location": "L1"
     },
     {
+      "id": "app_layout",
+      "label": "layout.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "layout.tsx",
+      "source_file": "app/layout.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_layout_display",
+      "label": "display",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "display",
+      "source_file": "app/layout.tsx",
+      "source_location": "L15"
+    },
+    {
+      "id": "app_layout_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/layout.tsx",
+      "source_location": "L29"
+    },
+    {
+      "id": "app_layout_sans",
+      "label": "sans",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "sans",
+      "source_file": "app/layout.tsx",
+      "source_location": "L9"
+    },
+    {
+      "id": "app_layout_viewport",
+      "label": "viewport",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "viewport",
+      "source_file": "app/layout.tsx",
+      "source_location": "L22"
+    },
+    {
       "id": "app_page",
       "label": "app/page.tsx",
       "_origin": "ast",
@@ -1938,7 +2038,18 @@
       "file_type": "code",
       "norm_label": "lumio_points",
       "source_file": "app/page.tsx",
-      "source_location": "L45"
+      "source_location": "L50"
+    },
+    {
+      "id": "app_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/page.tsx",
+      "source_location": "L8"
     },
     {
       "id": "app_page_nuvio_points",
@@ -1949,7 +2060,7 @@
       "file_type": "code",
       "norm_label": "nuvio_points",
       "source_file": "app/page.tsx",
-      "source_location": "L30"
+      "source_location": "L35"
     },
     {
       "id": "app_page_sections",
@@ -1960,7 +2071,7 @@
       "file_type": "code",
       "norm_label": "sections",
       "source_file": "app/page.tsx",
-      "source_location": "L60"
+      "source_location": "L65"
     },
     {
       "id": "app_page_shots",
@@ -1971,7 +2082,29 @@
       "file_type": "code",
       "norm_label": "shots",
       "source_file": "app/page.tsx",
-      "source_location": "L7"
+      "source_location": "L12"
+    },
+    {
+      "id": "app_tutoriel_page",
+      "label": "tutoriel/page.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "tutoriel/page.tsx",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "app_tutoriel_page_metadata",
+      "label": "metadata",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "metadata",
+      "source_file": "app/tutoriel/page.tsx",
+      "source_location": "L8"
     },
     {
       "id": "components_alldebridpromobanner",
@@ -1994,6 +2127,39 @@
       "norm_label": "plans",
       "source_file": "components/AlldebridPromoBanner.tsx",
       "source_location": "L6"
+    },
+    {
+      "id": "components_footer",
+      "label": "Footer.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "footer.tsx",
+      "source_file": "components/Footer.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_navbar",
+      "label": "Navbar.tsx",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "navbar.tsx",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L1"
+    },
+    {
+      "id": "components_navbar_nav_links",
+      "label": "NAV_LINKS",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "nav_links",
+      "source_file": "components/Navbar.tsx",
+      "source_location": "L10"
     },
     {
       "id": "components_torboxpromobanner",
@@ -2095,6 +2261,28 @@
       "source_location": "L26"
     },
     {
+      "id": "lib_site",
+      "label": "site.ts",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "site.ts",
+      "source_file": "lib/site.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "lib_site_site",
+      "label": "SITE",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "code",
+      "norm_label": "site",
+      "source_file": "lib/site.ts",
+      "source_location": "L7"
+    },
+    {
       "id": "lib_site_torbox_referral_link",
       "label": "TORBOX_REFERRAL_LINK",
       "_origin": "ast",
@@ -2115,6 +2303,17 @@
       "norm_label": "lucide-react",
       "source_file": "package.json",
       "source_location": "L15"
+    },
+    {
+      "id": "ref_next",
+      "label": "next",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
+      "file_type": "concept",
+      "norm_label": "next",
+      "source_file": "package.json",
+      "source_location": "L16"
     },
     {
       "id": "ref_react",
@@ -2337,225 +2536,11 @@
       "source_location": "L31"
     },
     {
-      "id": "app_layout",
-      "label": "layout.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "layout.tsx",
-      "source_file": "app/layout.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_layout_display",
-      "label": "display",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "display",
-      "source_file": "app/layout.tsx",
-      "source_location": "L15"
-    },
-    {
-      "id": "app_layout_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/layout.tsx",
-      "source_location": "L29"
-    },
-    {
-      "id": "app_layout_sans",
-      "label": "sans",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "sans",
-      "source_file": "app/layout.tsx",
-      "source_location": "L9"
-    },
-    {
-      "id": "app_layout_viewport",
-      "label": "viewport",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "viewport",
-      "source_file": "app/layout.tsx",
-      "source_location": "L22"
-    },
-    {
-      "id": "app_tutoriel_page",
-      "label": "tutoriel/page.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "tutoriel/page.tsx",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "app_tutoriel_page_metadata",
-      "label": "metadata",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "metadata",
-      "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L5"
-    },
-    {
-      "id": "components_footer",
-      "label": "Footer.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "footer.tsx",
-      "source_file": "components/Footer.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_navbar",
-      "label": "Navbar.tsx",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "navbar.tsx",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L1"
-    },
-    {
-      "id": "components_navbar_nav_links",
-      "label": "NAV_LINKS",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "nav_links",
-      "source_file": "components/Navbar.tsx",
-      "source_location": "L10"
-    },
-    {
-      "id": "lib_site",
-      "label": "site.ts",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "site.ts",
-      "source_file": "lib/site.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "lib_site_site",
-      "label": "SITE",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "code",
-      "norm_label": "site",
-      "source_file": "lib/site.ts",
-      "source_location": "L7"
-    },
-    {
-      "id": "ref_next",
-      "label": "next",
-      "_origin": "ast",
-      "community": 4,
-      "community_name": "layout.tsx",
-      "file_type": "concept",
-      "norm_label": "next",
-      "source_file": "package.json",
-      "source_location": "L16"
-    },
-    {
-      "id": "lib_debrid_key_test",
-      "label": "debrid-key-test.ts",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "code",
-      "norm_label": "debrid-key-test.ts",
-      "source_file": "lib/debrid-key-test.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "context_handoff",
-      "label": "CONTEXT_HANDOFF.md",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "context_handoff.md",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L1"
-    },
-    {
-      "id": "context_handoff_1_torbox_referral_data",
-      "label": "1. TorBox Referral Data",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "1. torbox referral data",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L6"
-    },
-    {
-      "id": "context_handoff_3_next_steps",
-      "label": "3. Next Steps",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "3. next steps",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L64"
-    },
-    {
-      "id": "context_handoff_4_end_of_session_instructions_ai",
-      "label": "4. End of Session Instructions (AI)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "4. end of session instructions (ai)",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L81"
-    },
-    {
-      "id": "context_handoff_context_handoff_focale_ex_nuvio_collection",
-      "label": "Context Handoff \u2014 Focale (ex NUVIO Collection)",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "debrid-key-test.ts",
-      "file_type": "document",
-      "node_kind": "heading",
-      "norm_label": "context handoff \u2014 focale (ex nuvio collection)",
-      "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L1"
-    },
-    {
       "id": "docs_plans_2026_09_22_addons_francais",
       "label": "2026-09-22-addons-francais.md",
       "_origin": "ast",
       "community": 5,
-      "community_name": "debrid-key-test.ts",
+      "community_name": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "file_type": "document",
       "node_kind": "page",
       "norm_label": "2026-09-22-addons-francais.md",
@@ -2567,7 +2552,7 @@
       "label": "Chantier du 04/10/2026",
       "_origin": "ast",
       "community": 5,
-      "community_name": "debrid-key-test.ts",
+      "community_name": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "chantier du 04/10/2026",
@@ -2579,7 +2564,7 @@
       "label": "Objectif",
       "_origin": "ast",
       "community": 5,
-      "community_name": "debrid-key-test.ts",
+      "community_name": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "objectif",
@@ -2591,7 +2576,7 @@
       "label": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "_origin": "ast",
       "community": 5,
-      "community_name": "debrid-key-test.ts",
+      "community_name": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "plan \u2014 addons francais complementaires",
@@ -2603,7 +2588,7 @@
       "label": "Reste \u00e0 faire (chantier du 22/09/2026)",
       "_origin": "ast",
       "community": 5,
-      "community_name": "debrid-key-test.ts",
+      "community_name": "Plan \u2014 Addons fran\u00e7ais compl\u00e9mentaires",
       "file_type": "document",
       "node_kind": "heading",
       "norm_label": "reste a faire (chantier du 22/09/2026)",
@@ -2730,6 +2715,17 @@
       "source_location": "L1"
     },
     {
+      "id": "lib_debrid_key_test",
+      "label": "debrid-key-test.ts",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "code",
+      "norm_label": "debrid-key-test.ts",
+      "source_file": "lib/debrid-key-test.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "lib_spotlight_art",
       "label": "spotlight-art.ts",
       "_origin": "ast",
@@ -2760,6 +2756,78 @@
       "file_type": "code",
       "norm_label": "spotlight-art.test.ts",
       "source_file": "tests/spotlight-art.test.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "context_handoff",
+      "label": "CONTEXT_HANDOFF.md",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "context_handoff.md",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "context_handoff_1_torbox_referral_data",
+      "label": "1. TorBox Referral Data",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "1. torbox referral data",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "context_handoff_2_project_status",
+      "label": "2. Project Status",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "2. project status",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L11"
+    },
+    {
+      "id": "context_handoff_3_next_steps",
+      "label": "3. Next Steps",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "3. next steps",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L69"
+    },
+    {
+      "id": "context_handoff_4_end_of_session_instructions_ai",
+      "label": "4. End of Session Instructions (AI)",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "4. end of session instructions (ai)",
+      "source_file": "CONTEXT_HANDOFF.md",
+      "source_location": "L87"
+    },
+    {
+      "id": "context_handoff_context_handoff_focale_ex_nuvio_collection",
+      "label": "Context Handoff \u2014 Focale (ex NUVIO Collection)",
+      "_origin": "ast",
+      "community": 7,
+      "community_name": "NuvioConfiguratorModal.tsx",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "context handoff \u2014 focale (ex nuvio collection)",
+      "source_file": "CONTEXT_HANDOFF.md",
       "source_location": "L1"
     },
     {
@@ -3019,8 +3087,8 @@
       "id": "app_globals",
       "label": "app_globals",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "app_globals",
@@ -3031,8 +3099,8 @@
       "id": "ref_next_font_google",
       "label": "ref_next_font_google",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_next_font_google",
@@ -3043,8 +3111,8 @@
       "id": "ref_next_link",
       "label": "ref_next_link",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_next_link",
@@ -3055,8 +3123,8 @@
       "id": "ref_next_navigation",
       "label": "ref_next_navigation",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_next_navigation",
@@ -3067,8 +3135,8 @@
       "id": "ref_vercel_analytics_react",
       "label": "ref_vercel_analytics_react",
       "_origin": "semantic",
-      "community": 4,
-      "community_name": "layout.tsx",
+      "community": 2,
+      "community_name": "TutorialGuide.tsx",
       "external": true,
       "file_type": "concept",
       "norm_label": "ref_vercel_analytics_react",
@@ -3098,7 +3166,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "app/collections/page.tsx",
-      "source_location": "L13",
+      "source_location": "L19",
       "weight": 1.0
     },
     {
@@ -3486,6 +3554,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_tailwind_v4_guards_test_sourcefiles",
+      "target": "tests_tailwind_v4_guards_test_sourcefiles",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
       "source": "tests_manifest_urls_test",
       "target": "tests_manifest_urls_test_decodepathconfig",
       "relation": "contains",
@@ -3618,6 +3698,18 @@
       "weight": 1.0
     },
     {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "tests_tailwind_v4_guards_test_riskytextsizecombos",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
       "source": "components_collectionbrowser_collectionbrowserprops",
       "target": "lib_nuvio_data_collectionsummaryitem",
       "relation": "references",
@@ -3722,7 +3814,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L2",
+      "source_location": "L3",
       "weight": 1.0
     },
     {
@@ -3734,7 +3826,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L3",
+      "source_location": "L4",
       "weight": 1.0
     },
     {
@@ -3746,7 +3838,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "app/page.tsx",
-      "source_location": "L4",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -4725,7 +4817,7 @@
     },
     {
       "source": "app_page",
-      "target": "components_herosection",
+      "target": "ref_next",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4733,11 +4825,12 @@
       "context": "import",
       "source_file": "app/page.tsx",
       "source_location": "L2",
+      "type_only": true,
       "weight": 1.0
     },
     {
       "source": "app_page",
-      "target": "components_torboxpromobanner",
+      "target": "components_herosection",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4749,7 +4842,7 @@
     },
     {
       "source": "app_page",
-      "target": "components_alldebridpromobanner",
+      "target": "components_torboxpromobanner",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4761,7 +4854,7 @@
     },
     {
       "source": "app_page",
-      "target": "ref_lucide_react",
+      "target": "components_alldebridpromobanner",
       "relation": "imports_from",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -4769,6 +4862,18 @@
       "context": "import",
       "source_file": "app/page.tsx",
       "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
+      "target": "ref_lucide_react",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "app/page.tsx",
+      "source_location": "L6",
       "weight": 1.0
     },
     {
@@ -5469,6 +5574,42 @@
       "weight": 1.0
     },
     {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "ref_node_fs",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "ref_node_path",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L2",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "ref_vitest",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "vitest_config",
       "target": "ref_node_url",
       "relation": "imports_from",
@@ -5621,7 +5762,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/collections/page.tsx",
-      "source_location": "L12",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5676,7 +5817,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/layout.tsx",
-      "source_location": "L49",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -5692,13 +5833,24 @@
     },
     {
       "source": "app_page",
+      "target": "app_page_shots",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "app/page.tsx",
+      "source_location": "L12",
+      "weight": 1.0
+    },
+    {
+      "source": "app_page",
       "target": "app_page_nuvio_points",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L30",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -5709,7 +5861,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L45",
+      "source_location": "L50",
       "weight": 1.0
     },
     {
@@ -5720,18 +5872,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L60",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
       "source": "app_page",
-      "target": "app_page_shots",
+      "target": "app_page_metadata",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L7",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -5742,7 +5894,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/page.tsx",
-      "source_location": "L79",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -5753,7 +5905,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L11",
+      "source_location": "L18",
       "weight": 1.0
     },
     {
@@ -5764,7 +5916,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "app/tutoriel/page.tsx",
-      "source_location": "L5",
+      "source_location": "L8",
       "weight": 1.0
     },
     {
@@ -6149,7 +6301,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L64",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -6160,7 +6312,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L81",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -7330,6 +7482,28 @@
       "weight": 1.0
     },
     {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "tests_tailwind_v4_guards_test_source_dirs",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "tests_tailwind_v4_guards_test_files",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
       "source": "tsconfig",
       "target": "tsconfig_compileroptions",
       "relation": "contains",
@@ -7546,6 +7720,18 @@
       "source_file": "postcss.config.mjs"
     },
     {
+      "source": "tests_tailwind_v4_guards_test",
+      "target": "tests_tailwind_v4_guards_test_sourcefiles",
+      "relation": "indirect_call",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.85,
+      "context": "argument",
+      "source_file": "tests/tailwind-v4-guards.test.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
       "source": "context_handoff_2_project_status",
       "target": "components_nuvioconfiguratormodal_aiometadatafield",
       "relation": "references",
@@ -7662,7 +7848,7 @@
       "confidence_score": 0.95,
       "context": "authErrorMessage()",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L68",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -7746,7 +7932,7 @@
       "confidence_score": 0.95,
       "context": "buildVfTrailerUrl",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L66",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -7830,7 +8016,7 @@
       "confidence_score": 0.95,
       "context": "readUser()",
       "source_file": "CONTEXT_HANDOFF.md",
-      "source_location": "L76",
+      "source_location": "L82",
       "weight": 1.0
     },
     {
@@ -7859,5 +8045,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "9d08ddd79f0d5ec51f01528ae1cd3b482d1b86c4"
+  "built_at_commit": "631dc78b146b92fc2c2b85ab46891b613b8e8457"
 }

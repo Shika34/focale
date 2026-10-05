@@ -1392,8 +1392,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </div>
 
                     <p className="text-[11px] text-mist-500 leading-relaxed">
-                      Loostream affiche « {profileName.trim() || "FOCALE"} » — le nom
-                      de votre profil Nuvio — comme pseudo : changez ce nom à
+                      Loostream affiche « {profileName.trim() || "FOCALE"} » (le nom
+                      de votre profil Nuvio) comme pseudo : changez ce nom à
                       l&apos;étape 1 pour le modifier. Torrentio est déjà installé
                       par l&apos;assistant, avec votre clé de débrideur.
                     </p>
@@ -1436,7 +1436,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </div>
                     <div>
                       • <span className="text-mist-300">Réglages</span> : tout en
-                      français par défaut, sur téléviseur, mobile et ordinateur —
+                      français par défaut, sur téléviseur, mobile et ordinateur :
                       métadonnées TMDB, sous-titres français (mode forcé), piste
                       audio française d&apos;abord et notes externes MDBList
                       activées. Les clients Nuvio arrivent en anglais, sans
@@ -1466,7 +1466,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     <div>
                       • <span className="text-mist-300">Addons français</span> :{" "}
                       {frenchAddons.length > 0
-                        ? `${formatFrenchList(frenchAddons)} — configurés automatiquement${
+                        ? `${formatFrenchList(frenchAddons)} : configurés automatiquement${
                             streamFusionManifestUrl.trim()
                               ? ", sauf StreamFusion (votre lien)"
                               : ""

@@ -1,8 +1,13 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { HeroSection } from "@/components/HeroSection";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
 import { AlldebridPromoBanner } from "@/components/AlldebridPromoBanner";
 import { ArrowUpRight } from "lucide-react";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 const SHOTS = [
   {

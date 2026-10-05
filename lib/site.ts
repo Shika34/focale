@@ -7,6 +7,8 @@ export const TORBOX_REFERRAL_LINK = "https://torbox.app/subscription?referral=49
 export const SITE = {
   name: "Focale",
   wordmark: "FOCALE",
+  /** URL publique de production : sert de base aux URL absolues des métadonnées. */
+  url: "https://focale-nuvio.vercel.app",
   tagline: "Le pack français pour Nuvio",
   description:
     "Focale prépare votre profil Nuvio en français : 18 collections (756 dossiers), configuration AIO Metadata créée automatiquement, Lumio, Torrentio, Comet et les addons français Loostream, Frenchio et UwU-FR, avec votre débrideur TorBox ou AllDebrid.",

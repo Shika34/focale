@@ -136,8 +136,8 @@ const PLAYER_SETTINGS_FEATURE = "player_settings";
 
 /**
  * Section du blob de réglages qui porte les notes externes MDBList. La clé
- * d'activation est `mdblist_enabled` sur les trois plateformes — « Enable
- * MDBList Ratings » dans l'Account Manager (`nuvio.tv/account?tab=settings`) —
+ * d'activation est `mdblist_enabled` sur les trois plateformes (« Enable
+ * MDBList Ratings » dans l'Account Manager, `nuvio.tv/account?tab=settings`)
  * et vaut `false` au départ côté client (`MDBListSettingsDataStore.kt` de
  * NuvioTV, `MDBListSettingsStorage` de mobile et desktop).
  */

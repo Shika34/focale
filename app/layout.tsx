@@ -27,6 +27,7 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE.url),
   title: `${SITE.name} : ${SITE.tagline}`,
   description: SITE.description,
   keywords: [...SITE.keywords],

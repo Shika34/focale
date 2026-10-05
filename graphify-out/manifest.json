@@ -1,31 +1,31 @@
 {
   "app/collections/page.tsx": {
-    "mtime": 1789845086.7795258,
-    "seen": 1790097468.9570012,
-    "ast_hash": "8c4afd68e4d5777f843cf6407b33722d",
+    "mtime": 1791208235.4647934,
+    "seen": 1791208276.4896214,
+    "ast_hash": "fdfa6e9631fd3b98b91bce8bb179ee26",
     "semantic_hash": ""
   },
   "app/layout.tsx": {
-    "mtime": 1791199094.9998658,
-    "seen": 1791199564.0814786,
-    "ast_hash": "abc6bdfb4e3aa572f066387f009278b8",
+    "mtime": 1791208191.3812857,
+    "seen": 1791208276.4896238,
+    "ast_hash": "73ee0b1929900dbbc1cb3b50dd4771e4",
     "semantic_hash": ""
   },
   "app/page.tsx": {
-    "mtime": 1791199290.341131,
-    "seen": 1791199564.0814803,
-    "ast_hash": "f08359ed72d854d8c1b11ae863c50d93",
+    "mtime": 1791208199.429895,
+    "seen": 1791208276.4896257,
+    "ast_hash": "d6d259b9f603ab6a547c2403bebab6d0",
     "semantic_hash": ""
   },
   "app/tutoriel/page.tsx": {
-    "mtime": 1791134962.612635,
-    "seen": 1791139218.5686512,
-    "ast_hash": "098dbcceec18a7aeb063c9d75be6b1b1",
+    "mtime": 1791208235.4647934,
+    "seen": 1791208276.489627,
+    "ast_hash": "c7b8e198631c71638fe11f46b63b3448",
     "semantic_hash": ""
   },
   "components/CollectionBrowser.tsx": {
-    "mtime": 1791199105.2559094,
-    "seen": 1791199564.08154,
+    "mtime": 1791200820.0333295,
+    "seen": 1791208276.4896815,
     "ast_hash": "74f8c0bded37fb383e4eb809fac93653",
     "semantic_hash": ""
   },
@@ -48,14 +48,14 @@
     "semantic_hash": ""
   },
   "components/NuvioConfiguratorModal.tsx": {
-    "mtime": 1791199105.2673128,
-    "seen": 1791199564.081613,
-    "ast_hash": "a402836bbd37f58e3a19e21640886821",
+    "mtime": 1791208029.3476324,
+    "seen": 1791208276.489773,
+    "ast_hash": "13ee7088e6b085deb7c1d2072644aaa7",
     "semantic_hash": ""
   },
   "components/TorboxPromoBanner.tsx": {
-    "mtime": 1791199105.2580156,
-    "seen": 1791199564.0816143,
+    "mtime": 1791200820.0337813,
+    "seen": 1791208276.4897742,
     "ast_hash": "011ba8ef2d75489fac11aa7084dfafa6",
     "semantic_hash": ""
   },
@@ -72,9 +72,9 @@
     "semantic_hash": ""
   },
   "lib/nuvio-api.ts": {
-    "mtime": 1791198287.7216544,
-    "seen": 1791198346.5200925,
-    "ast_hash": "d7c435bbd7aea8880472a572464d638c",
+    "mtime": 1791207998.3085647,
+    "seen": 1791208276.4899094,
+    "ast_hash": "bcc49e49167fede3902021e11388e188",
     "semantic_hash": ""
   },
   "lib/nuvio-data.ts": {
@@ -90,14 +90,14 @@
     "semantic_hash": ""
   },
   "package.json": {
-    "mtime": 1791199076.6432269,
-    "seen": 1791199564.0818815,
+    "mtime": 1791200820.0351672,
+    "seen": 1791208276.4900131,
     "ast_hash": "0e0611bef2ae25a9aefb1361a7b0f3bf",
     "semantic_hash": ""
   },
   "postcss.config.mjs": {
-    "mtime": 1791199096.4153485,
-    "seen": 1791199564.0818827,
+    "mtime": 1791200820.0358527,
+    "seen": 1791208276.4900138,
     "ast_hash": "4ae674cb9a5e6dc8c6afe2598c150776",
     "semantic_hash": ""
   },
@@ -126,9 +126,9 @@
     "semantic_hash": ""
   },
   "CONTEXT_HANDOFF.md": {
-    "mtime": 1791198699.063668,
-    "seen": 1791199564.0821135,
-    "ast_hash": "0cc146e93ae0505f1840f0447e3498c2",
+    "mtime": 1791208272.8772385,
+    "seen": 1791208276.4902723,
+    "ast_hash": "7a27bbc14fe28fd1a352a10056a2ce5c",
     "semantic_hash": ""
   },
   "README.md": {
@@ -156,9 +156,9 @@
     "semantic_hash": ""
   },
   "app/api/aiometadata/route.ts": {
-    "mtime": 1791134962.612397,
-    "seen": 1791139218.5685127,
-    "ast_hash": "fc6314ab87810e7536c0e8ead4ed0811",
+    "mtime": 1791208000.5146542,
+    "seen": 1791208276.4896169,
+    "ast_hash": "dbd4d766af24a3490d4d44d1d2f61f99",
     "semantic_hash": ""
   },
   "lib/provider-guides.ts": {
@@ -168,9 +168,9 @@
     "semantic_hash": ""
   },
   "lib/site.ts": {
-    "mtime": 1791134962.615645,
-    "seen": 1791139218.5690243,
-    "ast_hash": "f4b5e7752f9b9b73a37f94f6ce1a6a70",
+    "mtime": 1791208191.3790014,
+    "seen": 1791208276.489963,
+    "ast_hash": "b4b4cc7b9c64597bcf3ed17b3496a434",
     "semantic_hash": ""
   },
   "public/images/Nuvio-capture1.webp": {
@@ -240,8 +240,8 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1791199458.9953313,
-    "seen": 1791199564.082092,
+    "mtime": 1791200820.0323548,
+    "seen": 1791208276.4902484,
     "ast_hash": "1435ddec2745f31963cfcf0119015707",
     "semantic_hash": ""
   },
@@ -279,6 +279,12 @@
     "mtime": 1791143918.1726205,
     "seen": 1791198346.520348,
     "ast_hash": "15b5e084edad7a7f2f39913f7344eee8",
+    "semantic_hash": ""
+  },
+  "tests/tailwind-v4-guards.test.ts": {
+    "mtime": 1791200820.0361109,
+    "seen": 1791208276.4902017,
+    "ast_hash": "e1e95e28d32bf2425203c958b9fd5ad9",
     "semantic_hash": ""
   }
 }
