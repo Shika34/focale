@@ -6,12 +6,12 @@
     "pinToTop": true,
     "backdropImageUrl": null,
     "foldersCount": 22,
-    "sourcesCount": 743,
+    "sourcesCount": 686,
     "folders": [
       {
         "id": "folder-WFGY1XPD",
         "title": "Netflix",
-        "sourcesCount": 51,
+        "sourcesCount": 47,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -21,7 +21,7 @@
       {
         "id": "cf7a3d79-0cc9-42c5-b460-d2e3b838ecfc",
         "title": "Crunchyroll",
-        "sourcesCount": 20,
+        "sourcesCount": 17,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -31,7 +31,7 @@
       {
         "id": "folder-AT8KYHZO",
         "title": "Prime Video",
-        "sourcesCount": 50,
+        "sourcesCount": 46,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -41,7 +41,7 @@
       {
         "id": "folder-8ZBZOMW9",
         "title": "Disney+",
-        "sourcesCount": 48,
+        "sourcesCount": 44,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -51,7 +51,7 @@
       {
         "id": "folder-OA4T8NYO",
         "title": "HBO Max",
-        "sourcesCount": 49,
+        "sourcesCount": 45,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -61,7 +61,7 @@
       {
         "id": "folder-IQTF27K8",
         "title": "Apple TV+",
-        "sourcesCount": 44,
+        "sourcesCount": 40,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -71,7 +71,7 @@
       {
         "id": "folder-ILJM8PD0",
         "title": "Paramount+",
-        "sourcesCount": 48,
+        "sourcesCount": 44,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -81,7 +81,7 @@
       {
         "id": "folder-LN9SPMQN",
         "title": "Hulu",
-        "sourcesCount": 50,
+        "sourcesCount": 46,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -91,7 +91,7 @@
       {
         "id": "folder-9YQK1ZF1",
         "title": "Peacock",
-        "sourcesCount": 45,
+        "sourcesCount": 41,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -101,7 +101,7 @@
       {
         "id": "folder-9B3VK7AU",
         "title": "Starz",
-        "sourcesCount": 44,
+        "sourcesCount": 40,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -111,7 +111,7 @@
       {
         "id": "folder-526STREAM",
         "title": "AMC+",
-        "sourcesCount": 47,
+        "sourcesCount": 43,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -181,7 +181,7 @@
       {
         "id": "folder-6S0KR2JH",
         "title": "MGM+",
-        "sourcesCount": 44,
+        "sourcesCount": 40,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -201,7 +201,7 @@
       {
         "id": "folder-300STREAM",
         "title": "Pluto TV",
-        "sourcesCount": 49,
+        "sourcesCount": 45,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -211,7 +211,7 @@
       {
         "id": "folder-OKRSGYYC",
         "title": "Shudder",
-        "sourcesCount": 18,
+        "sourcesCount": 16,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -221,7 +221,7 @@
       {
         "id": "folder-73STREAM",
         "title": "Tubi TV",
-        "sourcesCount": 50,
+        "sourcesCount": 46,
         "sourcesPreview": [
           "Top 10 des films",
           "Top 10 des séries",
@@ -235,7 +235,7 @@
     "title": "En vedette",
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
-    "backdropImageUrl": null,
+    "backdropImageUrl": "",
     "foldersCount": 8,
     "sourcesCount": 8,
     "folders": [
@@ -310,7 +310,7 @@
     "title": "Découvrir",
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
-    "backdropImageUrl": null,
+    "backdropImageUrl": "",
     "foldersCount": 7,
     "sourcesCount": 121,
     "folders": [

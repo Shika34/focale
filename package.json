@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint .",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "build:index": "node scripts/build-collections-index.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
