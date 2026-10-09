@@ -267,6 +267,29 @@ export function authErrorMessage(err: unknown): string {
   return raw;
 }
 
+/**
+ * Nombre maximal de profils acceptés par Nuvio : `sync_push_profiles`,
+ * `sync_push_collections` et les autres RPC par profil refusent tout
+ * identifiant hors de `1..6` (« Invalid profile id », exception P0001).
+ * Les clients officiels déclarent cette limite en poussant leurs profils
+ * (`p_client_max_profiles`) ; l'oublier laisse le serveur sur son ancien
+ * comportement à quatre emplacements.
+ */
+const MAX_PROFILES = 6;
+
+/**
+ * Refuse un profil que Nuvio rejetterait, avec un message lisible : sans cette
+ * garde, l'appel partait avec un identifiant hors bornes et l'utilisateur
+ * lisait le JSON brut de PostgREST (`Invalid profile id`).
+ */
+function assertProfileIndex(profileId: number) {
+  if (!Number.isInteger(profileId) || profileId < 1 || profileId > MAX_PROFILES) {
+    throw new Error(
+      `Impossible de viser le profil Nuvio n°${String(profileId)} : Nuvio n'accepte que les profils 1 à ${MAX_PROFILES}. À l'étape 1, saisissez le nom d'un profil existant de votre compte, ou supprimez un profil dans l'application Nuvio, puis relancez la configuration.`,
+    );
+  }
+}
+
 export const NuvioApi = {
   /**
    * Connexion au compte Nuvio
@@ -365,9 +388,20 @@ export const NuvioApi = {
    */
   async createProfile(token: string, name: string): Promise<NuvioProfile> {
     const existing = await this.getProfiles(token);
-    const usedIndices = new Set(existing.map((p) => p.profile_index));
+    const usedIndices = new Set(
+      existing
+        .map((p) => p.profile_index)
+        .filter((index) => Number.isInteger(index) && index >= 1 && index <= MAX_PROFILES),
+    );
     let nextIdx = 1;
     while (usedIndices.has(nextIdx)) nextIdx++;
+
+    if (nextIdx > MAX_PROFILES) {
+      const names = existing.map((p) => p.name).filter(Boolean).join(", ");
+      throw new Error(
+        `Votre compte Nuvio a déjà ${MAX_PROFILES} profils, le maximum accepté : il n'y a plus d'emplacement libre pour un profil « ${name.trim() || "FOCALE"} ». À l'étape 1, remplacez le nom du profil par l'un des profils existants${names ? ` (${names})` : ""} : ses collections et ses réglages seront configurés. Vous pouvez aussi supprimer un profil dans l'application Nuvio, puis relancer la configuration.`,
+      );
+    }
 
     const newProfile: NuvioProfile = {
       profile_index: nextIdx,
@@ -380,6 +414,7 @@ export const NuvioApi = {
 
     const updated = [...existing, newProfile];
     await rpc("/rest/v1/rpc/sync_push_profiles", token, {
+      p_client_max_profiles: MAX_PROFILES,
       p_profiles: updated.map((p) => ({
         profile_index: p.profile_index,
         name: p.name,
@@ -397,6 +432,7 @@ export const NuvioApi = {
    * Injecte la collection complète dans un profil Nuvio
    */
   async pushCollections(token: string, profileId: number, collections: unknown[]) {
+    assertProfileIndex(profileId);
     return rpc("/rest/v1/rpc/sync_push_collections", token, {
       p_profile_id: profileId,
       p_collections_json: Array.isArray(collections) ? collections : [],
@@ -433,6 +469,7 @@ export const NuvioApi = {
     unverified: string[];
     verificationError: string;
   }> {
+    assertProfileIndex(profileId);
     const entries: { provider: string; credential_json: { api_key: string } }[] = [];
     const add = (provider: string, value?: string) => {
       const clean = value?.trim();
@@ -519,6 +556,7 @@ export const NuvioApi = {
     unverified: string[];
     errors: string[];
   }> {
+    assertProfileIndex(profileId);
     const pull = (platform: string) =>
       rpc("/rest/v1/rpc/sync_pull_profile_settings_blob", token, {
         p_profile_id: profileId,
@@ -599,6 +637,7 @@ export const NuvioApi = {
     profileId: number,
     addons: { name: string; url: string }[]
   ): Promise<number> {
+    assertProfileIndex(profileId);
     const incoming = addons.filter((a) => a.url?.trim());
     const existing = await this.getAddons(token, profileId).catch(() => [] as NuvioAddonInstall[]);
     const incomingUrls = new Set(incoming.map((addon) => addon.url));

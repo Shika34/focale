@@ -13,6 +13,14 @@
  * en paramètre `apikey`, réponse toujours en HTTP 200, soit
  * `{ status: "success", data: { user } }`, soit
  * `{ status: "error", error: { code, message } }`.
+ *
+ * `premiumUntil` arrive en **nombre** depuis l'API réelle
+ * (`{"isPremium":true,"premiumUntil":1792448800}`) alors que l'exemple de la
+ * documentation le montre entre guillemets : les deux formes sont acceptées.
+ * Un compte premium sans date de fin connue (champ absent, `null` ou zéro)
+ * reste un compte actif — c'est la seule chose que vérifient les autres
+ * clients (Torrentio, Comet, JDownloader) ; exiger une date faisait passer des
+ * comptes actifs pour des comptes sans abonnement.
  */
 
 const ALLDEBRID_USER_URL = "https://api.alldebrid.fr/v4/user";
@@ -36,7 +44,7 @@ export type DebridKeyCheck =
 interface AlldebridUser {
   username: string;
   isPremium: boolean;
-  /** Horodatage en secondes ; 0 si le compte n'est pas premium. */
+  /** Horodatage en secondes ; 0 quand AllDebrid n'en donne pas. */
   premiumUntil: number;
 }
 
@@ -44,16 +52,21 @@ function asRecord(value: unknown): Record<string, unknown> | null {
   return typeof value === "object" && value !== null ? (value as Record<string, unknown>) : null;
 }
 
+/** `premiumUntil` accepté en nombre (API réelle) ou en chaîne (doc), 0 sinon. */
+function readPremiumUntil(value: unknown): number {
+  const seconds = typeof value === "number" ? value : typeof value === "string" ? Number(value) : 0;
+  return Number.isFinite(seconds) && seconds > 0 ? seconds : 0;
+}
+
 function readUser(data: unknown): AlldebridUser | null {
   const user = asRecord(asRecord(data)?.user);
   if (!user) {
     return null;
   }
-  const premiumUntil = typeof user.premiumUntil === "string" ? Number(user.premiumUntil) : 0;
   return {
     username: typeof user.username === "string" ? user.username : "",
-    isPremium: user.isPremium === true,
-    premiumUntil: Number.isFinite(premiumUntil) && premiumUntil > 0 ? premiumUntil : 0,
+    isPremium: user.isPremium === true || user.isPremium === "true",
+    premiumUntil: readPremiumUntil(user.premiumUntil),
   };
 }
 
@@ -120,11 +133,15 @@ export async function checkAlldebridKey(apiKey: string): Promise<DebridKeyCheck>
   const user = readUser(body.data);
   const who = user?.username ? ` (compte ${user.username})` : "";
 
-  if (!user || !user.isPremium || user.premiumUntil === 0) {
+  if (!user || !user.isPremium) {
     return {
       status: "notice",
       message: `Clé AllDebrid valide${who}, mais aucun abonnement actif : Torrentio, Comet et Lumio ne pourront rien débriter. Activez une offre sur alldebrid.fr, puis relancez ce test.`,
     };
+  }
+
+  if (user.premiumUntil === 0) {
+    return { status: "valid", message: `Clé AllDebrid valide${who}. Abonnement actif.` };
   }
 
   const until = new Date(user.premiumUntil * 1000).toLocaleDateString("fr-FR", {
