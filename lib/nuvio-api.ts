@@ -28,7 +28,7 @@ const SUPABASE_BASE = "https://api.nuvio.tv";
 const SUPABASE_ANON_KEY =
   "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlzcyI6InN1cGFiYXNlIiwiaWF0IjoxNzgxNTIxMzQ2LCJleHAiOjE5MzkyMDEzNDZ9.tmQaj682pwzehpqlgCDMnySOqiUvpgRbrE43T4VJpDI";
 
-export interface NuvioProfile {
+interface NuvioProfile {
   profile_index: number;
   name: string;
   avatar_color_hex?: string;
@@ -37,7 +37,7 @@ export interface NuvioProfile {
   uses_primary_plugins?: boolean;
 }
 
-export interface ApiKeysConfig {
+interface ApiKeysConfig {
   torboxApiKey?: string;
   alldebridApiKey?: string;
   tmdbApiKey?: string;
@@ -45,7 +45,7 @@ export interface ApiKeysConfig {
   mdblistApiKey?: string;
 }
 
-export interface NuvioAddonInstall {
+interface NuvioAddonInstall {
   name: string;
   url: string;
   note?: string;

@@ -5,7 +5,7 @@ import { TORBOX_REFERRAL_LINK } from "./site";
  * Source unique : toute correction de libellé se fait ici.
  */
 
-export interface GuideStep {
+interface GuideStep {
   title: string;
   detail: string;
   bullets?: string[];

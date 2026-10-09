@@ -1,46 +1,17 @@
 # Dépendances
-/node_modules
 node_modules/
-jspm_packages/
-/.pnp
-.pnp.js
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
-.yarn-integrity
-.npm
 
 # Couverture de tests
 /coverage
 
 # Next.js et sorties de build
-/.next/
-.next
+.next/
 /out/
-out
 /build
-build
-.nuxt
-.dist
-.cache
-.cache/
-.parcel-cache
-.vuepress/dist
-.serverless/
-.fusebox/
-.dynamodb/
-.tern-port
-.vscode-test
 .vercel
 
 # Variables d'environnement
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 .env*.local
 
 # TypeScript
@@ -55,8 +26,6 @@ yarn-error.log*
 pnpm-debug.log*
 *.log
 .eslintcache
-.node_repl_history
-*.tgz
 
 # Système, IDE et éditeurs
 .DS_Store
@@ -68,17 +37,10 @@ ehthumbs.db
 Thumbs.db
 .directory
 *~
-.idea
 .idea/
-.vscode
-.vscode/
+.vscode/*
 !.vscode/extensions.json
 !.vscode/settings.json
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
 .history
 *.pem
 

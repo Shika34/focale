@@ -32,7 +32,7 @@ const VF_TRAILER_BASE = "https://vf-trailer-off.vercel.app";
 
 
 /** Clés de débrideur saisies à l'étape 2 de l'assistant. */
-export interface DebridKeys {
+interface DebridKeys {
   torboxApiKey?: string;
   alldebridApiKey?: string;
 }
