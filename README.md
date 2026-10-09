@@ -49,3 +49,7 @@ Les services tiers changent parfois le schéma de leur page de configuration. Si
 ## Crédits
 
 La disposition du catalogue s'inspire de Kaptain Collection. Les collections francophones et les addons cités appartiennent à leurs auteurs : la communauté StremioFR, ElfHosted, et les projets Torrentio, Comet, AIO Metadata, Lumio et VF Trailer.
+
+## Licence
+
+MIT : vous pouvez réutiliser le code, le modifier et le redistribuer, y compris pour un usage commercial, à condition de conserver la mention de copyright. Les collections francophones et les addons cités restent la propriété de leurs auteurs.
