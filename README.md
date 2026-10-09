@@ -6,6 +6,16 @@ Tout se passe dans le navigateur, sans ligne de commande et sans compte à crée
 
 Le site tourne sur [focale-nuvio.vercel.app](https://focale-nuvio.vercel.app).
 
+Une fois l'assistant passé, le profil ressemble à ceci.
+
+![Accueil de Nuvio : barre latérale, rangées Services de streaming, En vedette, Découvrir et Genres.](public/images/Nuvio-capture1-800.webp)
+
+*L'accueil : Services de streaming, En vedette, Découvrir et Genres.*
+
+![Collections Nuvio : rangées Humeurs et ambiances, Basé sur et Collections de films.](public/images/Nuvio-capture2-800.webp)
+
+*Les collections, dossier par dossier : Humeurs et ambiances, Basé sur, Collections de films.*
+
 ## Ce que l'assistant met en place
 
 Il crée un profil Nuvio nommé « Focale », ou réutilise celui qui porte déjà ce nom, puis y dépose :
