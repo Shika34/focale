@@ -20,7 +20,7 @@ import {
   BookOpen,
   HelpCircle,
 } from "lucide-react";
-import { NuvioApi, authErrorMessage } from "@/lib/nuvio-api";
+import { NuvioApi, authErrorMessage, profileTargetIssue } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
 import { checkAlldebridKey, type DebridKeyCheck } from "@/lib/debrid-key-test";
@@ -662,6 +662,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
    * Vérifie le compte Nuvio auprès de l'API officielle : connexion si le compte
    * existe, création avec le mot de passe saisi sinon (messages d'erreur en
    * français affichés dans le bandeau de l'assistant).
+   *
+   * La vérification porte aussi sur le profil de destination : Nuvio n'accepte
+   * que six profils, donc un compte plein et un nom inconnu sont annoncés ici,
+   * avant les étapes 2 à 4. Un tirage de profils en échec ne bloque pas la
+   * suite : la garde de l'envoi (`profileTargetIssue` dans `createProfile`)
+   * reste en place.
    */
   const verifyNuvioAccount = async (): Promise<boolean> => {
     // Garde synchrone : un double clic ne doit pas déclencher deux appels
@@ -672,6 +678,13 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     setVerifyingAccount(true);
     try {
       const auth = await NuvioApi.autoAuth(cleanEmail, password);
+      const profiles = await NuvioApi.getProfiles(auth.token).catch(() => null);
+      const issue = profiles ? profileTargetIssue(profiles, profileName) : null;
+      if (issue) {
+        setVerifiedAuth(null);
+        setErrorMessage(issue);
+        return false;
+      }
       setVerifiedAuth({ ...auth, email: cleanEmail, password });
       return true;
     } catch (err) {

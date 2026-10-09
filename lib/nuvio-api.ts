@@ -290,6 +290,41 @@ function assertProfileIndex(profileId: number) {
   }
 }
 
+/** Profil tel que le tire `sync_pull_profiles`, réduit à ce dont la garde a besoin. */
+interface ProfileSummary {
+  profile_index: number;
+  name: string;
+}
+
+/**
+ * Message à afficher quand le nom de profil demandé ne peut pas être créé,
+ * `null` quand il le peut. Deux cas passent : le nom existe déjà sur le compte
+ * (le profil est réutilisé) et il reste un emplacement libre parmi les six que
+ * Nuvio accepte. L'appel se fait à l'étape 1, pour ne pas faire remplir les
+ * étapes 2 à 4 avant de découvrir le refus à l'envoi.
+ */
+export function profileTargetIssue(
+  profiles: readonly ProfileSummary[],
+  name: string,
+): string | null {
+  const desired = name.trim() || "FOCALE";
+  if (profiles.some((p) => p.name.trim().toLowerCase() === desired.toLowerCase())) {
+    return null;
+  }
+
+  const used = new Set(
+    profiles
+      .map((p) => p.profile_index)
+      .filter((index) => Number.isInteger(index) && index >= 1 && index <= MAX_PROFILES),
+  );
+  for (let index = 1; index <= MAX_PROFILES; index++) {
+    if (!used.has(index)) return null;
+  }
+
+  const names = profiles.map((p) => p.name).filter(Boolean).join(", ");
+  return `Votre compte Nuvio a déjà ${MAX_PROFILES} profils, le maximum accepté : « ${desired} » ne pourra pas être créé. Saisissez le nom d'un profil existant${names ? ` (${names})` : ""} pour le configurer, ou supprimez un profil dans l'application Nuvio, puis relancez la vérification.`;
+}
+
 export const NuvioApi = {
   /**
    * Connexion au compte Nuvio
@@ -388,6 +423,11 @@ export const NuvioApi = {
    */
   async createProfile(token: string, name: string): Promise<NuvioProfile> {
     const existing = await this.getProfiles(token);
+    const issue = profileTargetIssue(existing, name);
+    if (issue) {
+      throw new Error(issue);
+    }
+
     const usedIndices = new Set(
       existing
         .map((p) => p.profile_index)
@@ -395,13 +435,6 @@ export const NuvioApi = {
     );
     let nextIdx = 1;
     while (usedIndices.has(nextIdx)) nextIdx++;
-
-    if (nextIdx > MAX_PROFILES) {
-      const names = existing.map((p) => p.name).filter(Boolean).join(", ");
-      throw new Error(
-        `Votre compte Nuvio a déjà ${MAX_PROFILES} profils, le maximum accepté : il n'y a plus d'emplacement libre pour un profil « ${name.trim() || "FOCALE"} ». À l'étape 1, remplacez le nom du profil par l'un des profils existants${names ? ` (${names})` : ""} : ses collections et ses réglages seront configurés. Vous pouvez aussi supprimer un profil dans l'application Nuvio, puis relancer la configuration.`,
-      );
-    }
 
     const newProfile: NuvioProfile = {
       profile_index: nextIdx,

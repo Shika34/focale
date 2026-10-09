@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { NuvioApi } from "@/lib/nuvio-api";
+import { NuvioApi, profileTargetIssue } from "@/lib/nuvio-api";
 
 /**
  * Choix du profil Nuvio de destination (étape 4 du configurateur).
@@ -70,6 +70,25 @@ describe("NuvioApi.createProfile", () => {
 
     await expect(NuvioApi.createProfile("jeton", "FOCALE")).rejects.toThrow(/6 profils/i);
     expect(calls.some((call) => call.path === "sync_push_profiles")).toBe(false);
+  });
+});
+
+describe("profileTargetIssue", () => {
+  it("laisse passer un nom déjà présent sur le compte", () => {
+    expect(profileTargetIssue(profilesUpTo(6), "Profil 3")).toBeNull();
+  });
+
+  it("laisse passer un nom quelconque tant qu'un emplacement est libre", () => {
+    expect(profileTargetIssue(profilesUpTo(5), "FOCALE")).toBeNull();
+    expect(profileTargetIssue([], "FOCALE")).toBeNull();
+  });
+
+  it("annonce le blocage quand les six emplacements sont pris", () => {
+    const issue = profileTargetIssue(profilesUpTo(6), "FOCALE");
+
+    expect(issue).toMatch(/6 profils/i);
+    expect(issue).toContain("Profil 1");
+    expect(issue).toContain("FOCALE");
   });
 });
 
