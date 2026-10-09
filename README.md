@@ -62,4 +62,4 @@ La disposition du catalogue s'inspire de Kaptain Collection. Les collections fra
 
 ## Licence
 
-MIT : vous pouvez réutiliser le code, le modifier et le redistribuer, y compris pour un usage commercial, à condition de conserver la mention de copyright. Les collections francophones et les addons cités restent la propriété de leurs auteurs.
+MIT, texte complet dans [LICENSE](LICENSE). Les collections francophones et les addons cités restent la propriété de leurs auteurs.
