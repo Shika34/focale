@@ -5,7 +5,4 @@ import nextTypescript from "eslint-config-next/typescript";
 export default defineConfig([
   ...nextCoreWebVitals,
   ...nextTypescript,
-  {
-    ignores: ["graphify-out/**"],
-  },
 ]);

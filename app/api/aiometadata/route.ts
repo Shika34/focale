@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import configTemplate from "@/public/aiometadata-config-mitch.json";
+import configTemplate from "@/public/aiometadata-config-fr.json";
 
 /**
  * Crée une configuration AIO Metadata sur l'instance publique à partir de la

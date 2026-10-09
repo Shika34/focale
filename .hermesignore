@@ -1,9 +1,0 @@
-# Fichiers de données volumineux (évite le gaspillage de tokens)
-nuvio-collections-mitch.json
-aiometadata-config-mitch.json
-
-# Caches et builds
-.next/
-node_modules/
-graphify-out/cache/
-graphify-out/transcripts/

@@ -145,7 +145,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
         </div>
         <div className="flex items-center gap-3">
           <a
-            href="/nuvio-collections-mitch.json"
+            href="/nuvio-collections-fr.json"
             download="nuvio-collections-fr.json"
             className="inline-flex items-center gap-1.5 text-gold-400 hover:text-gold-300 font-semibold"
           >

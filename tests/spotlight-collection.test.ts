@@ -16,7 +16,7 @@ interface Source {
 }
 
 const COLLECTIONS = JSON.parse(
-  readFileSync(join(__dirname, "..", "public", "nuvio-collections-mitch.json"), "utf8"),
+  readFileSync(join(__dirname, "..", "public", "nuvio-collections-fr.json"), "utf8"),
 ) as { id: string; folders: { title: string; sources: Source[] }[] }[];
 
 function spotlightFolders() {

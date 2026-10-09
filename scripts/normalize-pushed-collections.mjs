@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Normalise public/nuvio-collections-mitch.json, le fichier de collections que le
+ * Normalise public/nuvio-collections-fr.json, le fichier de collections que le
  * configurateur pousse tel quel dans le profil Nuvio.
  *
  * Deux défauts corrigés, tous les deux constatés dans le fichier livré :
@@ -27,7 +27,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const TARGET = join(ROOT, "public", "nuvio-collections-mitch.json");
+const TARGET = join(ROOT, "public", "nuvio-collections-fr.json");
 const ID_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
 function freshId(taken) {

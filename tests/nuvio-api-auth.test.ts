@@ -71,7 +71,7 @@ describe("NuvioApi.autoAuth", () => {
     const state = newState({ password: "secret-nuvio" });
     stubAuth(state);
 
-    const result = await NuvioApi.autoAuth("  mitch@exemple.com  ", "secret-nuvio");
+    const result = await NuvioApi.autoAuth("  utilisateur@exemple.com  ", "secret-nuvio");
 
     expect(result).toEqual({ token: "jeton", userId: "u-1", isNewAccount: false });
     // Email rogné avant l'envoi, et aucune inscription tentée.
@@ -90,10 +90,10 @@ describe("NuvioApi.autoAuth", () => {
   });
 
   it("refuse une connexion quand le compte existe déjà avec un autre mot de passe", async () => {
-    const state = newState({ registered: "mitch@exemple.com" });
+    const state = newState({ registered: "utilisateur@exemple.com" });
     stubAuth(state);
 
-    await expect(NuvioApi.autoAuth("mitch@exemple.com", "mauvais")).rejects.toThrow(
+    await expect(NuvioApi.autoAuth("utilisateur@exemple.com", "mauvais")).rejects.toThrow(
       /existe déjà.*mot de passe/i,
     );
   });
@@ -101,7 +101,7 @@ describe("NuvioApi.autoAuth", () => {
   it("remonte une erreur réseau sans la confondre avec un mot de passe erroné", async () => {
     stubAuth(newState(), { network: true });
 
-    await expect(NuvioApi.autoAuth("mitch@exemple.com", "secret-nuvio")).rejects.toThrow(
+    await expect(NuvioApi.autoAuth("utilisateur@exemple.com", "secret-nuvio")).rejects.toThrow(
       /connexion/i,
     );
   });

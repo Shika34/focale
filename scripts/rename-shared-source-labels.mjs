@@ -2,7 +2,7 @@
 /**
  * Renomme les libellés de sources partagés par des rangées aux filtres différents.
  *
- * Constat dans public/nuvio-collections-mitch.json : dans 25 dossiers, toutes les rangées de
+ * Constat dans public/nuvio-collections-fr.json : dans 25 dossiers, toutes les rangées de
  * genre portent un seul libellé, par exemple « Films de western » sur 21 rangées de « Netflix »
  * dont les filtres couvrent Action, Animation, Comédie, Drame, Horreur, Science-fiction, etc.
  *
@@ -25,7 +25,7 @@ import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
-const TARGET = join(ROOT, "public", "nuvio-collections-mitch.json");
+const TARGET = join(ROOT, "public", "nuvio-collections-fr.json");
 
 const GENRES_MOVIE = {
   28: "Action", 12: "Aventure", 16: "Animation", 35: "Comédie", 80: "Crime", 99: "Documentaire",

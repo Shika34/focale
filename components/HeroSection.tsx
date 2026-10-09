@@ -59,7 +59,7 @@ export function HeroSection() {
             </div>
 
             <a
-              href="/nuvio-collections-mitch.json"
+              href="/nuvio-collections-fr.json"
               download="nuvio-collections-fr.json"
               className="mt-6 inline-flex items-center gap-1.5 text-xs text-mist-500 transition-colors hover:text-mist-300"
             >

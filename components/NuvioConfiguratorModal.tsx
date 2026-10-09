@@ -782,7 +782,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
         details: "Envoi des 18 collections et 756 dossiers francophones…",
       });
 
-      const collRes = await fetch("/nuvio-collections-mitch.json");
+      const collRes = await fetch("/nuvio-collections-fr.json");
       const fullCollections = await collRes.json();
       // Les visuels « En vedette » de Kaptain sont remplacés sur place tous les
       // quatorze jours : une version par cycle évite que Nuvio resserve l'ancienne
