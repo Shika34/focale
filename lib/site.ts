@@ -7,6 +7,8 @@ export const TORBOX_REFERRAL_LINK = "https://torbox.app/subscription?referral=49
 export const SITE = {
   name: "Focale",
   wordmark: "FOCALE",
+  /** Dépôt public : utilisé par les appels à mettre une étoile. */
+  repo: "https://github.com/Shika34/focale",
   /** URL publique de production : sert de base aux URL absolues des métadonnées. */
   url: "https://focale-nuvio.vercel.app",
   tagline: "Le pack français pour Nuvio",

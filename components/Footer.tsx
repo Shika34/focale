@@ -39,6 +39,14 @@ export function Footer() {
                 >
                   Tutoriels
                 </Link>
+                <a
+                  href={SITE.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-mist-300 transition-colors hover:text-gold-300"
+                >
+                  Code source
+                </a>
               </div>
             </div>
 

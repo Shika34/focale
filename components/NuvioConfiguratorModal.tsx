@@ -19,7 +19,9 @@ import {
   UserPlus,
   BookOpen,
   HelpCircle,
+  Star,
 } from "lucide-react";
+import { SITE } from "@/lib/site";
 import { NuvioApi, authErrorMessage, profileTargetIssue } from "@/lib/nuvio-api";
 import { buildLumioUrl } from "@/lib/manifest-urls";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
@@ -1644,6 +1646,22 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
               >
                 Fermer
               </button>
+
+              <p className="text-xs leading-relaxed text-mist-400 max-w-md mx-auto">
+                Focale est un projet bénévole, sans compte, sans suivi et sans
+                publicité. Si le profil vous sert, une étoile sur le dépôt aide
+                d&apos;autres francophones à le trouver :{" "}
+                <a
+                  href={SITE.repo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 font-bold text-mist-200 underline decoration-line underline-offset-4 transition-colors hover:text-gold-300"
+                >
+                  <Star className="h-3.5 w-3.5 text-gold-400" />
+                  github.com/Shika34/focale
+                </a>
+                .
+              </p>
             </div>
           )}
         </div>
