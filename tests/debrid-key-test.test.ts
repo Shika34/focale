@@ -1,6 +1,6 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import { checkAlldebridKey } from "@/lib/debrid-key-test";
+import { checkAlldebridKey, checkPremiumizeKey } from "@/lib/debrid-key-test";
 
 /**
  * Test d'une clé AllDebrid (étape 2 du configurateur).
@@ -94,5 +94,81 @@ describe("checkAlldebridKey", () => {
       throw new TypeError("Failed to fetch");
     }));
     expect((await checkAlldebridKey("cle")).status).toBe("unreachable");
+  });
+});
+
+/**
+ * Test d'une clé Premiumize (étape 2 du configurateur).
+ *
+ * La forme des réponses vient de l'API réelle : `premiumize.me/api/account/info`
+ * renvoie `{ status, customer_id, premium_until }`, avec `premium_until` à
+ * `null` sur un compte gratuit, et
+ * `{ status: "error", message, code }` (`authentication_failed`) sur une clé
+ * refusée — le tout en HTTP 200. La clé part en paramètre `apikey` : l'API
+ * n'autorise pas l'en-tête `Authorization` en pré-vol, donc un test dans le
+ * navigateur doit éviter cet en-tête.
+ */
+describe("checkPremiumizeKey", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
+  it("accepte un abonnement actif", async () => {
+    stubUserResponse({
+      status: "success",
+      customer_id: "1234567",
+      premium_until: 1799999999,
+      limit_used: 0.42,
+      booster_points: 0,
+    });
+    const check = await checkPremiumizeKey("cle");
+    expect(check.status).toBe("valid");
+    expect(check.message).toContain("1234567");
+    expect(check.message).toMatch(/abonnement actif/i);
+  });
+
+  it("signale un compte sans abonnement (premium_until null)", async () => {
+    stubUserResponse({ status: "success", customer_id: "1234567", premium_until: null });
+    const check = await checkPremiumizeKey("cle");
+    expect(check.status).toBe("notice");
+    expect(check.message).toMatch(/aucun abonnement actif/i);
+  });
+
+  it("refuse une clé refusée par l'API", async () => {
+    stubUserResponse({ status: "error", message: "Not logged in.", code: "authentication_failed" });
+    expect((await checkPremiumizeKey("cle")).status).toBe("invalid");
+  });
+
+  it("ne demande rien sans clé saisie", async () => {
+    expect((await checkPremiumizeKey("   ")).status).toBe("invalid");
+  });
+
+  it("signale une limitation de débit et une API injoignable", async () => {
+    stubUserResponse({ status: "error", code: "rate_limit" }, 429);
+    expect((await checkPremiumizeKey("cle")).status).toBe("unreachable");
+
+    vi.stubGlobal("fetch", vi.fn(async () => {
+      throw new TypeError("Failed to fetch");
+    }));
+    expect((await checkPremiumizeKey("cle")).status).toBe("unreachable");
+  });
+
+  it("interroge Premiumize avec la clé en paramètre apikey, sans en-tête Authorization", async () => {
+    const fetchMock = vi.fn(async () =>
+      new Response(
+        JSON.stringify({ status: "success", customer_id: "1", premium_until: 1799999999 }),
+        { status: 200, headers: { "Content-Type": "application/json" } },
+      ),
+    );
+    vi.stubGlobal("fetch", fetchMock);
+
+    await checkPremiumizeKey("  ma clé  ");
+
+    const [url, init] = fetchMock.mock.calls[0] as unknown as [string, RequestInit];
+    expect(url).toBe(
+      `https://www.premiumize.me/api/account/info?apikey=${encodeURIComponent("ma clé")}`,
+    );
+    expect(init.headers).toEqual({ Accept: "application/json" });
   });
 });

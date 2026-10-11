@@ -23,9 +23,13 @@ import {
 } from "lucide-react";
 import { SITE } from "@/lib/site";
 import { NuvioApi, authErrorMessage, profileTargetIssue } from "@/lib/nuvio-api";
-import { buildLumioUrl } from "@/lib/manifest-urls";
+import { buildLumioUrl, debridNames, debridUsableBy } from "@/lib/manifest-urls";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
-import { checkAlldebridKey, type DebridKeyCheck } from "@/lib/debrid-key-test";
+import {
+  checkAlldebridKey,
+  checkPremiumizeKey,
+  type DebridKeyCheck,
+} from "@/lib/debrid-key-test";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
 
 interface NuvioConfiguratorModalProps {
@@ -486,19 +490,32 @@ function AddonToggle({
 }
 
 /**
- * Test d'une clé AllDebrid, affiché sous le champ de saisie.
+ * Test d'une clé de débrideur, affiché sous le champ de saisie.
  *
- * Le test part du navigateur de l'utilisateur (voir `checkAlldebridKey`) : il
- * valide la clé et, si AllDebrid refuse à cause de l'IP ou du pays, le dit en
- * français au lieu de laisser l'utilisateur découvrir le problème dans Nuvio.
+ * Le test part du navigateur de l'utilisateur (voir `lib/debrid-key-test.ts`) :
+ * il valide la clé et, si le débrideur refuse à cause de l'IP ou du pays, le dit
+ * en français au lieu de laisser l'utilisateur découvrir le problème dans Nuvio.
+ * Real-Debrid n'a pas de test : son API n'autorise pas les appels depuis un
+ * navigateur (voir l'en-tête de `lib/debrid-key-test.ts`).
  */
-function AlldebridKeyTest({ apiKey }: { apiKey: string }) {
+function DebridKeyTest({
+  apiKey,
+  label,
+  hint,
+  check,
+}: {
+  apiKey: string;
+  label: string;
+  /** Précision affichée sous le bouton, propre au débrideur. */
+  hint: string;
+  check: (apiKey: string) => Promise<DebridKeyCheck>;
+}) {
   const [tested, setTested] = useState<{ key: string; check: DebridKeyCheck } | null>(null);
   const [testing, setTesting] = useState(false);
   const key = apiKey.trim();
 
   // Un verdict ne vaut que pour la clé testée : la modifier le retire.
-  const check = tested?.key === key ? tested.check : null;
+  const result = tested?.key === key ? tested.check : null;
 
   if (!key) {
     return null;
@@ -506,14 +523,14 @@ function AlldebridKeyTest({ apiKey }: { apiKey: string }) {
 
   const run = async () => {
     setTesting(true);
-    setTested({ key, check: await checkAlldebridKey(key) });
+    setTested({ key, check: await check(key) });
     setTesting(false);
   };
 
   const resultColor =
-    check?.status === "valid"
+    result?.status === "valid"
       ? "text-sage-300"
-      : check?.status === "invalid"
+      : result?.status === "invalid"
         ? "text-red-300"
         : "text-gold-300";
 
@@ -530,24 +547,22 @@ function AlldebridKeyTest({ apiKey }: { apiKey: string }) {
         ) : (
           <CheckCircle2 className="w-3.5 h-3.5 text-gold-400" />
         )}
-        {testing ? "Vérification…" : "Tester ma clé AllDebrid"}
+        {testing ? "Vérification…" : `Tester ma clé ${label}`}
       </button>
       <p className="text-[11px] text-mist-500 leading-relaxed">
-        Le test part de votre navigateur : il vérifie la clé et que votre connexion
-        n&apos;est pas bloquée par AllDebrid. Votre clé n&apos;est envoyée qu&apos;à
-        AllDebrid.
+        {hint} Votre clé n&apos;est envoyée qu&apos;à {label}.
       </p>
-      {check && (
+      {result && (
         <p
           role="status"
           className={`text-[11px] leading-relaxed flex items-start gap-1.5 ${resultColor}`}
         >
-          {check.status === "valid" ? (
+          {result.status === "valid" ? (
             <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" />
           ) : (
             <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
           )}
-          <span>{check.message}</span>
+          <span>{result.message}</span>
         </p>
       )}
     </div>
@@ -565,6 +580,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [mdblistKey, setMdblistKey] = useState("");
   const [torboxKey, setTorboxKey] = useState("");
   const [alldebridKey, setAlldebridKey] = useState("");
+  const [realdebridKey, setRealdebridKey] = useState("");
+  const [premiumizeKey, setPremiumizeKey] = useState("");
   const [protectionPassword, setProtectionPassword] = useState("");
   const [aioMetadataUrl, setAioMetadataUrl] = useState("");
   const [lumioManifestUrl, setLumioManifestUrl] = useState("");
@@ -616,6 +633,17 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [lumioManifestId, setLumioManifestId] = useState<string | null>(null);
   const [lumioVerificationStatus, setLumioVerificationStatus] = useState<'idle' | 'verified' | 'error'>('idle');
   const totalSteps = 4;
+
+  /**
+   * Clés de débrideur saisies à l'étape 2, sous la forme attendue par les
+   * générateurs de manifest et par l'API Nuvio.
+   */
+  const debridKeySet = {
+    torboxApiKey: torboxKey,
+    alldebridApiKey: alldebridKey,
+    realdebridApiKey: realdebridKey,
+    premiumizeApiKey: premiumizeKey,
+  };
 
   // Fermeture au clavier (Échap) et blocage du défilement de la page derrière.
   useEffect(() => {
@@ -719,9 +747,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     }
 
     if (step === 2) {
-      // Un seul débrideur suffit : TorBox ou AllDebrid.
+      // Un seul débrideur suffit.
       const missing = {
-        debrid: !torboxKey.trim() && !alldebridKey.trim(),
+        debrid: !debridNames(debridKeySet),
         tmdb: !tmdbKey.trim(),
       };
       if (missing.debrid || missing.tmdb) {
@@ -819,8 +847,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           tmdbApiKey: tmdbKey,
           tvdbApiKey: tvdbKey,
           mdblistApiKey: mdblistKey,
-          torboxApiKey: torboxKey,
-          alldebridApiKey: alldebridKey,
+          ...debridKeySet,
         },
         {
           aioMetadataUrl,
@@ -845,10 +872,12 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           tmdbApiKey: tmdbKey,
           mdblistApiKey: mdblistKey,
           torboxApiKey: torboxKey,
+          realdebridApiKey: realdebridKey,
+          premiumizeApiKey: premiumizeKey,
         });
         if (seededKeys.pushed === 0) {
           noticeParts.push(
-            "Aucune clé de métadonnées ni clé TorBox n'a été déposée dans ce profil : sans clé TMDB, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
+            "Aucune clé de métadonnées ni clé de débrideur n'a été déposée dans ce profil : sans clé TMDB, Nuvio Desktop n'affichera pas les catalogues TMDB (l'application mobile et la TV utilisent une clé TMDB intégrée).",
           );
         } else if (seededKeys.verificationError) {
           noticeParts.push(
@@ -931,23 +960,29 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     4: "Récapitulatif",
   };
 
-  /** Clés dont dépendent les addons générés automatiquement. */
-  const hasDebridKey = Boolean(torboxKey.trim() || alldebridKey.trim());
+  /**
+   * Débrideurs retenus à l'étape 2 : « TorBox », « TorBox et AllDebrid », « ».
+   * Torrentio et Comet les lisent tous ; Frenchio accepte en plus Real-Debrid
+   * mais pas Premiumize, UwU-FR n'accepte que TorBox et AllDebrid.
+   */
+  const selectedDebridNames = debridNames(debridKeySet);
   const hasTmdbKey = Boolean(tmdbKey.trim());
+  const canUseFrenchio = debridUsableBy(debridKeySet, "frenchio");
+  const canUseUwuFr = debridUsableBy(debridKeySet, "uwu-fr");
 
   /** Addons français retenus, pour un récapitulatif et un écran de fin exacts. */
   const frenchAddons = [
     ...(includeLoostream && hasTmdbKey ? ["Loostream"] : []),
     ...(includeVfTrailer && hasTmdbKey ? ["VF Trailer"] : []),
-    ...(includeFrenchio && hasDebridKey && hasTmdbKey ? ["Frenchio"] : []),
-    ...(includeUwuFr && hasDebridKey && hasTmdbKey ? ["UwU-FR"] : []),
+    ...(includeFrenchio && canUseFrenchio && hasTmdbKey ? ["Frenchio"] : []),
+    ...(includeUwuFr && canUseUwuFr && hasTmdbKey ? ["UwU-FR"] : []),
     ...(streamFusionManifestUrl.trim() ? ["StreamFusion"] : []),
   ];
 
   /** Contenu réellement installé, pour un récapitulatif de fin exact. */
   const installedContents = [
     "la collection complète",
-    "les addons essentiels",
+    "les addons de base",
     ...(aioMetadataUrl.trim() ? ["votre configuration AIO Metadata"] : []),
     ...(lumioManifestUrl.trim() ? ["votre profil Lumio"] : []),
     ...(frenchAddons.length > 0
@@ -1139,10 +1174,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       2. Ajoutez vos clés API
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
-                      Il vous faut au moins une clé de débrideur (TorBox ou
-                      AllDebrid, les deux si vous avez les deux comptes) : elle
-                      débrite vos flux et sert aussi à configurer Lumio,
-                      Torrentio et Comet. Les clés de
+                      Il vous faut au moins une clé de débrideur (TorBox,
+                      AllDebrid, Real-Debrid ou Premiumize), celle du service
+                      dont vous avez le compte : elle débrite vos flux et
+                      sert aussi à configurer Torrentio, Comet et vos addons
+                      français. Les clés de
                       métadonnées (TMDB, TheTVDB et MDBList) enrichissent les
                       affiches, les fiches et les catalogues d&apos;AIO Metadata.
                       La clé TMDB est enregistrée dans votre profil : elle est
@@ -1165,7 +1201,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   />
                   <GuideField
                     label="AllDebrid"
-                    description="Votre clé AllDebrid alimente Torrentio, Comet et votre profil Lumio, exactement comme celle de TorBox. Vous pouvez renseigner les deux débrideurs si vous avez les deux comptes."
+                    description="Votre clé AllDebrid alimente Torrentio, Comet et Frenchio, comme celle de TorBox. Vous pouvez renseigner plusieurs débrideurs si vous avez plusieurs comptes."
                     value={alldebridKey}
                     placeholder="Collez votre clé API AllDebrid…"
                     guide={PROVIDER_GUIDES.alldebrid}
@@ -1175,7 +1211,43 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       setMissingKeysWarning(null);
                     }}
                   >
-                    <AlldebridKeyTest apiKey={alldebridKey} />
+                    <DebridKeyTest
+                      apiKey={alldebridKey}
+                      label="AllDebrid"
+                      hint="Le test part de votre navigateur : il vérifie la clé et que votre connexion n'est pas bloquée par AllDebrid."
+                      check={checkAlldebridKey}
+                    />
+                  </GuideField>
+                  <GuideField
+                    label="Real-Debrid"
+                    description="Votre clé Real-Debrid alimente Torrentio, Comet et Frenchio. Nuvio l'accepte aussi dans votre profil, sans l'afficher dans ses services connectés."
+                    value={realdebridKey}
+                    placeholder="Collez votre jeton privé Real-Debrid…"
+                    guide={PROVIDER_GUIDES.realdebrid}
+                    secret
+                    onChange={(value) => {
+                      setRealdebridKey(value);
+                      setMissingKeysWarning(null);
+                    }}
+                  />
+                  <GuideField
+                    label="Premiumize"
+                    description="Votre clé Premiumize alimente Torrentio et Comet. Nuvio l'intègre nativement, comme TorBox."
+                    value={premiumizeKey}
+                    placeholder="Collez votre clé API Premiumize…"
+                    guide={PROVIDER_GUIDES.premiumize}
+                    secret
+                    onChange={(value) => {
+                      setPremiumizeKey(value);
+                      setMissingKeysWarning(null);
+                    }}
+                  >
+                    <DebridKeyTest
+                      apiKey={premiumizeKey}
+                      label="Premiumize"
+                      hint="Le test part de votre navigateur : il vérifie la clé et que votre abonnement est actif."
+                      check={checkPremiumizeKey}
+                    />
                   </GuideField>
                   <GuideField
                     label="TMDB (fortement recommandé)"
@@ -1213,7 +1285,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <strong className="text-mist-100">
                         Configuration automatique :
                       </strong>{" "}
-                      votre clé de débrideur personnalise Torrentio et Comet, et
+                      votre clé de débrideur personnalise Torrentio, Comet et vos
+                      addons français, et
                       vos clés TMDB, TheTVDB et MDBList sont injectées dans votre
                       configuration AIO Metadata lors de l&apos;envoi à Nuvio.
                     </p>
@@ -1236,10 +1309,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                           </p>
                           {missingKeysWarning.debrid && (
                             <p>
-                              Sans clé de débrideur (TorBox ou AllDebrid), aucun
+                              Sans clé de débrideur (TorBox, AllDebrid,
+                              Real-Debrid ou Premiumize), aucun
                               flux vidéo ne se lancera : c&apos;est elle qui
-                              débrite les liens trouvés par Torrentio et Comet,
-                              et qui alimente votre profil Lumio.
+                              débrite les liens trouvés par Torrentio, Comet et
+                              vos addons français.
                             </p>
                           )}
                           {missingKeysWarning.tmdb && (
@@ -1301,7 +1375,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
 
                   <GuideField
                     label="Lumio"
-                    description="Films et séries en français via votre profil Lumio, branché sur votre débrideur TorBox ou AllDebrid."
+                    description="Films et séries en français via votre profil Lumio, branché sur le débrideur connecté à votre compte Lumio."
                     value={lumioManifestUrl}
                     placeholder="https://mylumio.tv/xxxxxx/manifest.json"
                     guide={PROVIDER_GUIDES.lumio}
@@ -1388,9 +1462,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         checked={includeFrenchio}
                         onChange={setIncludeFrenchio}
                         blockedReason={
-                          hasDebridKey && hasTmdbKey
+                          canUseFrenchio && hasTmdbKey
                             ? undefined
-                            : "Clé de débrideur et clé TMDB requises à l'étape 2."
+                            : "Clés TorBox, AllDebrid ou Real-Debrid, et clé TMDB, requises à l'étape 2."
                         }
                       />
                       <AddonToggle
@@ -1399,9 +1473,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                         checked={includeUwuFr}
                         onChange={setIncludeUwuFr}
                         blockedReason={
-                          hasDebridKey && hasTmdbKey
+                          canUseUwuFr && hasTmdbKey
                             ? undefined
-                            : "Clé de débrideur et clé TMDB requises à l'étape 2."
+                            : "Clés TorBox ou AllDebrid, et clé TMDB, requises à l'étape 2."
                         }
                       />
                     </div>
@@ -1433,7 +1507,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </h4>
                     <p className="text-sm text-mist-400 mt-2 leading-relaxed">
                       Dernière vérification avant d&apos;ajouter les collections
-                      françaises et les addons essentiels dans votre profil
+                      françaises et les addons de base dans votre profil
                       Nuvio.
                     </p>
                   </div>
@@ -1491,13 +1565,11 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </div>
                     <div>
                       • <span className="text-mist-300">Débrideur</span> :{" "}
-                      {torboxKey.trim() && alldebridKey.trim()
-                        ? "TorBox et AllDebrid : les deux clés placées dans Torrentio, Comet et Lumio"
-                        : torboxKey.trim()
-                          ? "TorBox : placé dans Torrentio, Comet et Lumio"
-                          : alldebridKey.trim()
-                            ? "AllDebrid : placé dans Torrentio, Comet et Lumio"
-                            : "aucune clé fournie : Torrentio et Comet seront installés sans débrideur"}
+                      {selectedDebridNames
+                        ? `${selectedDebridNames} : ${
+                            selectedDebridNames.includes(" et ") ? "clés placées" : "clé placée"
+                          } dans Torrentio, Comet et vos addons français`
+                        : "aucune clé fournie : Torrentio et Comet seront installés sans débrideur"}
                       .
                     </div>
                     <div>

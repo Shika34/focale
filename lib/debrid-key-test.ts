@@ -1,5 +1,5 @@
 /**
- * Vérification d'une clé AllDebrid depuis le navigateur.
+ * Vérification d'une clé de débrideur depuis le navigateur.
  *
  * Le test part du navigateur de l'utilisateur et non du serveur, pour deux
  * raisons : AllDebrid refuse les connexions par IP (`AUTH_BLOCKED`,
@@ -9,8 +9,8 @@
  * `https://api.alldebrid.fr` est déclaré dans la `connect-src` de la CSP
  * (`next.config.mjs`).
  *
- * Contrat vérifié sur l'API v4 (docs.alldebrid.com) : `GET /v4/user` avec la clé
- * en paramètre `apikey`, réponse toujours en HTTP 200, soit
+ * Contrat AllDebrid vérifié sur l'API v4 (docs.alldebrid.com) : `GET /v4/user`
+ * avec la clé en paramètre `apikey`, réponse toujours en HTTP 200, soit
  * `{ status: "success", data: { user } }`, soit
  * `{ status: "error", error: { code, message } }`.
  *
@@ -21,9 +21,27 @@
  * reste un compte actif — c'est la seule chose que vérifient les autres
  * clients (Torrentio, Comet, JDownloader) ; exiger une date faisait passer des
  * comptes actifs pour des comptes sans abonnement.
+ *
+ * Contrat Premiumize vérifié sur l'API réelle : `GET /api/account/info` avec la
+ * clé en paramètre `apikey` (jamais dans l'en-tête `Authorization` : Premiumize
+ * répond bien `access-control-allow-origin: *`, mais n'autorise pas cet
+ * en-tête en pré-vol, donc le navigateur bloquerait la requête). Réponse en
+ * HTTP 200 également, soit
+ * `{ status: "success", customer_id, premium_until, limit_used, booster_points }`,
+ * soit `{ status: "error", message, code }` (`premium_until` vaut `null` sur un
+ * compte gratuit). `https://www.premiumize.me` est déclaré dans la `connect-src`
+ * de la CSP.
+ *
+ * Real-Debrid n'est pas testable ici : son API ne renvoie aucun en-tête CORS
+ * (`access-control-allow-origin` absent, vérifié en pré-vol comme en GET), donc
+ * le navigateur bloque la réponse quelle que soit la forme de la requête. Sa
+ * clé n'est validée qu'à l'installation des manifests Torrentio et Comet, qui
+ * l'exploitent.
  */
 
 const ALLDEBRID_USER_URL = "https://api.alldebrid.fr/v4/user";
+const PREMIUMIZE_ACCOUNT_URL = "https://www.premiumize.me/api/account/info";
+
 
 /** Codes d'erreur AllDebrid dont le message est écrit pour l'utilisateur. */
 const KEY_REFUSED_MESSAGE =
@@ -152,5 +170,80 @@ export async function checkAlldebridKey(apiKey: string): Promise<DebridKeyCheck>
   return {
     status: "valid",
     message: `Clé AllDebrid valide${who}. Abonnement actif jusqu'au ${until}.`,
+  };
+}
+
+/** Messages Premiumize écrits pour l'utilisateur. */
+const PREMIUMIZE_KEY_REFUSED_MESSAGE =
+  "Premiumize refuse cette clé : elle est invalide. Recopiez la clé API depuis premiumize.me → « Account » → « API », sans espace avant ni après.";
+const PREMIUMIZE_UNREACHABLE_MESSAGE =
+  "Premiumize n'a pas répondu. Vérifiez votre connexion, puis réessayez.";
+
+/**
+ * Vérifie la clé auprès de Premiumize et rend un message prêt à afficher.
+ *
+ * La clé passe en paramètre `apikey` et non dans l'en-tête `Authorization`
+ * (voir l'en-tête du fichier) : c'est la seule forme que le navigateur peut
+ * envoyer sans pré-vol, donc la seule qui fonctionne ici.
+ */
+export async function checkPremiumizeKey(apiKey: string): Promise<DebridKeyCheck> {
+  const key = apiKey.trim();
+  if (!key) {
+    return { status: "invalid", message: "Saisissez d'abord votre clé Premiumize." };
+  }
+
+  let payload: unknown;
+  try {
+    const response = await fetch(
+      `${PREMIUMIZE_ACCOUNT_URL}?apikey=${encodeURIComponent(key)}`,
+      { headers: { Accept: "application/json" } },
+    );
+    if (response.status === 429) {
+      return {
+        status: "unreachable",
+        message: "Trop de tests en peu de temps : attendez une minute, puis réessayez.",
+      };
+    }
+    payload = await response.json();
+  } catch {
+    return { status: "unreachable", message: PREMIUMIZE_UNREACHABLE_MESSAGE };
+  }
+
+  const body = asRecord(payload);
+  if (!body) {
+    return { status: "unreachable", message: PREMIUMIZE_UNREACHABLE_MESSAGE };
+  }
+
+  if (body.status !== "success") {
+    const code = typeof body.code === "string" ? body.code : "";
+    if (code === "authentication_failed" || code === "invalid_apikey") {
+      return { status: "invalid", message: PREMIUMIZE_KEY_REFUSED_MESSAGE };
+    }
+    return {
+      status: "invalid",
+      message: `Premiumize refuse cette clé${code ? ` (code ${code})` : ""}. Vérifiez la clé, puis réessayez.`,
+    };
+  }
+
+  const who = typeof body.customer_id === "string" && body.customer_id ? ` (compte ${body.customer_id})` : "";
+  const premiumUntil = readPremiumUntil(body.premium_until);
+
+  // `premium_until` vaut `null` sur un compte gratuit : même distinction que
+  // pour AllDebrid, un compte sans abonnement ne peut rien débriter.
+  if (premiumUntil === 0) {
+    return {
+      status: "notice",
+      message: `Clé Premiumize valide${who}, mais aucun abonnement actif : Torrentio et Comet ne pourront rien débriter. Activez une offre sur premiumize.me, puis relancez ce test.`,
+    };
+  }
+
+  const until = new Date(premiumUntil * 1000).toLocaleDateString("fr-FR", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  });
+  return {
+    status: "valid",
+    message: `Clé Premiumize valide${who}. Abonnement actif jusqu'au ${until}.`,
   };
 }

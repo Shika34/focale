@@ -23,7 +23,7 @@ Il crée un profil Nuvio nommé « Focale », ou réutilise celui qui porte déj
 - les 18 collections et leurs dossiers, filtres réglés ;
 - une configuration AIO Metadata construite avec vos clés TMDB, TheTVDB et MDBList ;
 - un manifeste Lumio personnel, généré pour votre débrideur ;
-- Torrentio et Comet, avec TorBox ou AllDebrid selon la clé saisie ;
+- Torrentio et Comet, avec vos débrideurs (TorBox, AllDebrid, Real-Debrid, Premiumize) selon les clés saisies ;
 - les addons francophones Loostream, Frenchio et UwU-FR, plus VF Trailer ;
 - les réglages de lecture en français : sous-titres forcés et piste audio française.
 
@@ -32,17 +32,17 @@ Lumio et StreamFusion se configurent sur leur propre site. L'assistant vous dema
 ## Les quatre étapes
 
 1. **Compte Nuvio.** Inscription ou connexion, puis recherche du profil à préparer.
-2. **Clés.** TMDB, TheTVDB, MDBList, et votre clé TorBox ou AllDebrid. Chaque champ est précédé d'une question du type « avez-vous déjà un compte ? » : répondre non ouvre un guide pas à pas, et un lien direct mène à la page des clés du fournisseur. La clé AllDebrid peut être testée sur place, depuis votre navigateur, avant l'envoi.
+2. **Clés.** TMDB, TheTVDB, MDBList, et vos clés de débrideur (TorBox, AllDebrid, Real-Debrid, Premiumize). Chaque champ est précédé d'une question du type « avez-vous déjà un compte ? » : répondre non ouvre un guide pas à pas, et un lien direct mène à la page des clés du fournisseur. Les clés AllDebrid et Premiumize peuvent être testées sur place, depuis votre navigateur, avant l'envoi.
 3. **Addons.** Vous cochez ce que vous voulez en plus. Une case dont la prérequise manque se désactive et affiche la raison.
 4. **Envoi.** Un récapitulatif liste ce qui part réellement, puis l'assistant écrit dans votre profil Nuvio.
 
 ## Les pages du site
 
-L'accueil présente l'assistant, ce qu'il installe, et ce que Nuvio comme Lumio changent au visionnage. La page collections parcourt les 18 collections dossier par dossier, avec le nombre de sources de chacune. La page tutoriel réunit dix guides : compte Nuvio, débrideurs TorBox et AllDebrid, clés TMDB, TheTVDB et MDBList, profil Lumio, VF et VOSTFR, StreamFusion, suivi Trakt.
+L'accueil présente l'assistant, ce qu'il installe, et ce que Nuvio comme Lumio changent au visionnage. La page collections parcourt les 18 collections dossier par dossier, avec le nombre de sources de chacune. La page tutoriel réunit douze guides : compte Nuvio, débrideurs TorBox, AllDebrid, Real-Debrid et Premiumize, clés TMDB, TheTVDB et MDBList, profil Lumio, VF et VOSTFR, StreamFusion, suivi Trakt.
 
 ## Vos clés
 
-Les clés saisies servent à construire des URL de manifestes et la configuration AIO Metadata. Elles ne sont écrites ni sur le disque du serveur ni dans une base de données : la route serveur qui parle à AIO Metadata ne fait que transmettre, et le test de la clé AllDebrid part de votre navigateur. Le site ne dépose aucun cookie de suivi.
+Les clés saisies servent à construire des URL de manifestes et la configuration AIO Metadata. Elles ne sont écrites ni sur le disque du serveur ni dans une base de données : la route serveur qui parle à AIO Metadata ne fait que transmettre, et les tests de clés AllDebrid et Premiumize partent de votre navigateur. Le site ne dépose aucun cookie de suivi.
 
 ## Stack
 

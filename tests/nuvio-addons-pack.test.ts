@@ -47,6 +47,25 @@ describe("NuvioApi.buildAddonsList", () => {
     expect(names({ ...NO_KEYS, torboxApiKey: "T" })).not.toContain("Frenchio");
   });
 
+  it("alimente Torrentio et Comet avec Real-Debrid et Premiumize", () => {
+    const addons = NuvioApi.buildAddonsList({
+      ...NO_KEYS,
+      tmdbApiKey: "K",
+      realdebridApiKey: "RD",
+      premiumizeApiKey: "PM",
+    });
+
+    const torrentio = addons.find((addon) => addon.name === "Torrentio");
+    expect(torrentio?.url).toContain("realdebrid=RD");
+    expect(torrentio?.url).toContain("premiumize=PM");
+    // Frenchio sait lire Real-Debrid, mais pas Premiumize.
+    expect(addons.map((addon) => addon.name)).toContain("Frenchio");
+  });
+
+  it("n'installe pas Frenchio quand seule la clé Premiumize est fournie", () => {
+    expect(names({ ...NO_KEYS, tmdbApiKey: "K", premiumizeApiKey: "PM" })).not.toContain("Frenchio");
+  });
+
   it("retire UwU-FR et VF Trailer quand ils sont décochés", () => {
     const keys = { ...NO_KEYS, tmdbApiKey: "K", torboxApiKey: "T" };
     const addons = names(keys, { uwuFr: true, vfTrailer: false });

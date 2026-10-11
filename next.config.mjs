@@ -12,8 +12,9 @@ const contentSecurityPolicy = [
   "img-src 'self' data: blob: https://image.tmdb.org",
   "font-src 'self' data:",
   // Appels sortants du navigateur : l'API Nuvio (comptes, collections, addons)
-  // et l'API AllDebrid (test de la clé et de l'IP, cf. lib/debrid-key-test.ts).
-  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr",
+  // et les API de débrideur testées depuis la page (AllDebrid et Premiumize,
+  // cf. lib/debrid-key-test.ts).
+  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr https://www.premiumize.me",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

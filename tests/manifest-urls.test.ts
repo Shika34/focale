@@ -12,6 +12,7 @@ import {
   buildVfTrailerUrl,
   debridEntries,
   debridNames,
+  debridUsableBy,
 } from "@/lib/manifest-urls";
 
 /** Décode une config base64 UTF-8 prise dans le chemin d'un manifest. */
@@ -27,6 +28,7 @@ function decodeBase64UrlConfig(url: string): Record<string, unknown> {
 }
 
 const BOTH_KEYS = { torboxApiKey: "TB-KEY", alldebridApiKey: "AD-KEY" };
+const ALL_KEYS = { ...BOTH_KEYS, realdebridApiKey: "RD-KEY", premiumizeApiKey: "PM-KEY" };
 
 describe("debridEntries", () => {
   it("ne retient que les clés renseignées, dans l'ordre TorBox puis AllDebrid", () => {
@@ -50,6 +52,35 @@ describe("debridNames", () => {
     expect(debridNames({ alldebridApiKey: "ad" })).toBe("AllDebrid");
     expect(debridNames({})).toBe("");
   });
+
+  it("sépare par des virgules et garde le « et » pour le dernier", () => {
+    expect(debridNames(ALL_KEYS)).toBe("TorBox, AllDebrid, Real-Debrid et Premiumize");
+    expect(debridNames({ realdebridApiKey: "RD-KEY" })).toBe("Real-Debrid");
+    expect(debridNames({ premiumizeApiKey: "PM-KEY" })).toBe("Premiumize");
+  });
+});
+
+describe("debridEntriesFor / debridUsableBy", () => {
+  it("retient les quatre débrideurs dans l'ordre TorBox, AllDebrid, Real-Debrid, Premiumize", () => {
+    expect(debridEntries(ALL_KEYS)).toEqual([
+      { id: "torbox", apiKey: "TB-KEY" },
+      { id: "alldebrid", apiKey: "AD-KEY" },
+      { id: "realdebrid", apiKey: "RD-KEY" },
+      { id: "premiumize", apiKey: "PM-KEY" },
+    ]);
+  });
+
+  it("sait quels addons savent lire quelle clé", () => {
+    const premiumOnly = { premiumizeApiKey: "PM-KEY" };
+    const realDebridOnly = { realdebridApiKey: "RD-KEY" };
+
+    expect(debridUsableBy(premiumOnly, "frenchio")).toBe(false);
+    expect(debridUsableBy(premiumOnly, "uwu-fr")).toBe(false);
+    expect(debridUsableBy(realDebridOnly, "frenchio")).toBe(true);
+    expect(debridUsableBy(realDebridOnly, "uwu-fr")).toBe(false);
+    expect(debridUsableBy(BOTH_KEYS, "uwu-fr")).toBe(true);
+    expect(debridUsableBy({}, "frenchio")).toBe(false);
+  });
 });
 
 describe("buildTorrentioUrl", () => {
@@ -57,6 +88,12 @@ describe("buildTorrentioUrl", () => {
     const url = buildTorrentioUrl(BOTH_KEYS);
     expect(url).toBe(
       "https://torrentio.strem.fun/sort=qualityfilter|language=french,english|torbox=TB-KEY|alldebrid=AD-KEY/manifest.json",
+    );
+  });
+
+  it("porte aussi realdebrid et premiumize, dans l'ordre attendu", () => {
+    expect(buildTorrentioUrl(ALL_KEYS)).toBe(
+      "https://torrentio.strem.fun/sort=qualityfilter|language=french,english|torbox=TB-KEY|alldebrid=AD-KEY|realdebrid=RD-KEY|premiumize=PM-KEY/manifest.json",
     );
   });
 
@@ -84,6 +121,15 @@ describe("buildCometUrl", () => {
 
   it("n'annonce aucun débrideur quand aucune clé n'est saisie", () => {
     expect(decodePathConfig(buildCometUrl({})).debridServices).toEqual([]);
+  });
+
+  it("passe les identifiants realdebrid et premiumize attendus par Comet", () => {
+    expect(decodePathConfig(buildCometUrl(ALL_KEYS)).debridServices).toEqual([
+      { service: "torbox", apiKey: "TB-KEY" },
+      { service: "alldebrid", apiKey: "AD-KEY" },
+      { service: "realdebrid", apiKey: "RD-KEY" },
+      { service: "premiumize", apiKey: "PM-KEY" },
+    ]);
   });
 });
 
@@ -151,6 +197,16 @@ describe("buildFrenchioUrl", () => {
     expect(buildFrenchioUrl(BOTH_KEYS, undefined)).toBe("");
     expect(buildFrenchioUrl({}, "TMDB-KEY")).toBe("");
   });
+
+  it("place la clé Real-Debrid dans realdebrid_key", () => {
+    const config = decodePathConfig(buildFrenchioUrl({ realdebridApiKey: "RD-KEY" }, "TMDB-KEY"));
+    expect(config.realdebrid_key).toBe("RD-KEY");
+    expect(config.providers_order).toEqual(["ygg", "realdebrid"]);
+  });
+
+  it("reste sans débrideur quand seule la clé Premiumize est fournie (Frenchio l'ignore)", () => {
+    expect(buildFrenchioUrl({ premiumizeApiKey: "PM-KEY" }, "TMDB-KEY")).toBe("");
+  });
 });
 
 describe("buildUwuFrUrl", () => {
@@ -171,6 +227,15 @@ describe("buildUwuFrUrl", () => {
   it("renvoie une chaîne vide sans clé TMDB ou sans débrideur", () => {
     expect(buildUwuFrUrl(BOTH_KEYS, "  ")).toBe("");
     expect(buildUwuFrUrl({}, "TMDB-KEY")).toBe("");
+  });
+
+  it("reste sans débrideur avec Real-Debrid ou Premiumize (UwU-FR ne les connaît pas)", () => {
+    expect(buildUwuFrUrl({ realdebridApiKey: "RD-KEY" }, "TMDB-KEY")).toBe("");
+    expect(buildUwuFrUrl({ premiumizeApiKey: "PM-KEY" }, "TMDB-KEY")).toBe("");
+  });
+
+  it("garde TorBox comme débrideur préféré même quand les quatre clés sont fournies", () => {
+    expect(decodePathConfig(buildUwuFrUrl(ALL_KEYS, "TMDB-KEY")).debrid_preferred).toBe("torbox");
   });
 });
 

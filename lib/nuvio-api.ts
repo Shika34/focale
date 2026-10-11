@@ -7,8 +7,9 @@
  * Deux exceptions, assumées et documentées à l'écran :
  * - les clés de métadonnées passent par la route serveur `/api/aiometadata`
  *   pour créer la configuration AIO Metadata (voir app/api/aiometadata/route.ts) ;
- * - les clés de débrideur (TorBox et/ou AllDebrid) sont intégrées aux URLs de
- *   manifest Torrentio et Comet, car c'est le format imposé par ces addons.
+ * - les clés de débrideur (TorBox, AllDebrid, Real-Debrid et/ou Premiumize)
+ *   sont intégrées aux URLs de manifest Torrentio, Comet, Frenchio et UwU-FR,
+ *   car c'est le format imposé par ces addons.
  */
 
 import {
@@ -40,6 +41,8 @@ interface NuvioProfile {
 interface ApiKeysConfig {
   torboxApiKey?: string;
   alldebridApiKey?: string;
+  realdebridApiKey?: string;
+  premiumizeApiKey?: string;
   tmdbApiKey?: string;
   tvdbApiKey?: string;
   mdblistApiKey?: string;
@@ -101,12 +104,18 @@ async function rpc(path: string, token: string, body: Record<string, unknown>) {
 /**
  * Identifiants des fournisseurs stockés par Nuvio hors des blobs de réglages
  * (`provider` + `credential_json.api_key`, via les RPC `sync_*_provider_credentials`).
- * Les identifiants de débrideur sont préfixés `debrid:`.
+ * Les identifiants de débrideur sont préfixés `debrid:` puis le nom interne du
+ * fournisseur côté Nuvio : `torbox`, `premiumize` et `realdebrid`
+ * (`DebridProviders` du client Nuvio — Premiumize s'affiche dans ses services
+ * connectés, Real-Debrid non, mais les trois acceptent une clé API). AllDebrid
+ * n'a pas d'entrée : Nuvio ne le connaît pas du tout.
  */
 const PROVIDER_CREDENTIAL_IDS = {
   tmdb: "tmdb",
   mdblist: "mdblist",
   torbox: "debrid:torbox",
+  premiumize: "debrid:premiumize",
+  realdebrid: "debrid:realdebrid",
 } as const;
 
 /**
@@ -482,9 +491,12 @@ export const NuvioApi = {
    * profil), alors que les apps TV et mobile utilisent une clé TMDB intégrée à
    * l'application.
    *
-   * AllDebrid n'a pas d'entrée ici : les services connectés de Nuvio ne
-   * connaissent que TorBox et Premiumize. Sa clé ne sert donc que dans les
-   * manifests Torrentio et Comet générés à l'étape 3.
+   * AllDebrid n'a pas d'entrée ici : Nuvio ne le connaît pas. Sa clé ne sert
+   * donc que dans les manifests Torrentio, Comet et Frenchio générés à
+   * l'étape 3. Premiumize et Real-Debrid ont une entrée : Nuvio accepte une clé
+   * API pour les trois débrideurs qu'il connaît (`torbox`, `premiumize`,
+   * `realdebrid`), même si Real-Debrid n'est pas affiché dans ses services
+   * connectés.
    *
    * Les identifiants sont relus après envoi pour confirmer qu'ils sont bien
    * stockés.
@@ -512,6 +524,8 @@ export const NuvioApi = {
     add(PROVIDER_CREDENTIAL_IDS.tmdb, keys.tmdbApiKey);
     add(PROVIDER_CREDENTIAL_IDS.mdblist, keys.mdblistApiKey);
     add(PROVIDER_CREDENTIAL_IDS.torbox, keys.torboxApiKey);
+    add(PROVIDER_CREDENTIAL_IDS.premiumize, keys.premiumizeApiKey);
+    add(PROVIDER_CREDENTIAL_IDS.realdebrid, keys.realdebridApiKey);
 
     if (entries.length === 0) {
       return { pushed: 0, providers: [], unverified: [], verificationError: "" };
@@ -746,6 +760,8 @@ export const NuvioApi = {
     const debridKeys = {
       torboxApiKey: keys.torboxApiKey,
       alldebridApiKey: keys.alldebridApiKey,
+      realdebridApiKey: keys.realdebridApiKey,
+      premiumizeApiKey: keys.premiumizeApiKey,
     };
     const debrid = debridNames(debridKeys);
     const hasDebrid = debridEntries(debridKeys).length > 0;

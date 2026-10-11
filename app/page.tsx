@@ -68,8 +68,8 @@ const SECTIONS = [
     label: "Tutoriels",
     title: "Comptes, clés API, Lumio",
     description:
-      "Dix tutoriels courts pour créer vos comptes et récupérer chaque clé (Nuvio, votre débrideur TorBox ou AllDebrid, les métadonnées, Lumio et le réglage VF + VOSTFR, StreamFusion en option) dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
-    meta: "10 tutoriels",
+      "Douze tutoriels courts pour créer vos comptes et récupérer chaque clé (Nuvio, votre débrideur TorBox, AllDebrid, Real-Debrid ou Premiumize, les métadonnées, Lumio et le réglage VF + VOSTFR, StreamFusion en option) dans l'ordre où l'assistant vous les demande, plus le suivi Trakt en option.",
+    meta: "12 tutoriels",
   },
   {
     href: "/collections",

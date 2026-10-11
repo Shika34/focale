@@ -3,7 +3,7 @@ import { SITE } from "@/lib/site";
 import type { Metadata } from "next";
 
 const DESCRIPTION =
-  "Dix tutoriels courts : compte Nuvio, débrideurs TorBox et AllDebrid, clés TMDB, TheTVDB, MDBList, profil Lumio, réglage VF + VOSTFR, StreamFusion (facultatif) et le suivi Trakt (facultatif), dans l'ordre où l'assistant vous les demande.";
+  "Douze tutoriels courts : compte Nuvio, débrideurs TorBox, AllDebrid, Real-Debrid et Premiumize, clés TMDB, TheTVDB, MDBList, profil Lumio, réglage VF + VOSTFR, StreamFusion (facultatif) et le suivi Trakt (facultatif), dans l'ordre où l'assistant vous les demande.";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/tutoriel" },

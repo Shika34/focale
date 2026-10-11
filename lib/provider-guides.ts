@@ -24,7 +24,15 @@ export interface ProviderGuide {
 
 /** Tutoriels affichés dès que l'utilisateur n'a pas encore de compte ou de clé. */
 export const PROVIDER_GUIDES: Record<
-  "tmdb" | "tvdb" | "mdblist" | "torbox" | "alldebrid" | "lumio" | "streamfusion",
+  | "tmdb"
+  | "tvdb"
+  | "mdblist"
+  | "torbox"
+  | "alldebrid"
+  | "realdebrid"
+  | "premiumize"
+  | "lumio"
+  | "streamfusion",
   ProviderGuide
 > = {
   tmdb: {
@@ -163,7 +171,67 @@ export const PROVIDER_GUIDES: Record<
     signupLabel: "Créer mon compte AllDebrid",
     keyUrl: "https://alldebrid.fr/apikeys/",
     keyLabel: "Ouvrir mes clés API",
-    note: "AllDebrid n'est pas intégré nativement à Nuvio : les services connectés de l'application ne connaissent que TorBox et Premiumize. Ici, c'est Torrentio et Comet qui débrident, avec votre clé : l'assistant les configure pour vous, et le résultat est le même à l'écran.",
+    note: "AllDebrid n'est pas affiché dans les services connectés de Nuvio : les clients n'y montrent que TorBox et Premiumize. Ici, c'est Torrentio, Comet et Frenchio qui débrident, avec votre clé : l'assistant les configure pour vous, et le résultat est le même à l'écran.",
+  },
+  realdebrid: {
+    question: "Avez-vous déjà un compte Real-Debrid ?",
+    steps: [
+      {
+        title: "Créer un compte Real-Debrid",
+        detail: "Inscrivez-vous sur real-debrid.com : le service est payant, il n'a pas d'offre gratuite. Créez le compte depuis un ordinateur, c'est plus simple.",
+      },
+      {
+        title: "Confirmer votre email",
+        detail: "Ouvrez l'email de confirmation envoyé par Real-Debrid, puis connectez-vous.",
+      },
+      {
+        title: "Rejoindre une offre",
+        detail: "Real-Debrid ne débrite rien avec un compte gratuit : choisissez une formule (points ou abonnement) dans l'onglet « Premium ».",
+      },
+      {
+        title: "Ouvrir la page du jeton API",
+        detail: "Une fois connecté, ouvrez real-debrid.com/apitoken : c'est la page qui liste vos jetons privés.",
+      },
+      {
+        title: "Copier le jeton privé",
+        detail: "Cliquez sur « Afficher » à côté de « Jeton privé », puis copiez la longue suite de caractères et collez-la dans le champ ci-dessous. Gardez-la privée : elle donne accès à votre compte.",
+      },
+    ],
+    signupUrl: "https://real-debrid.com/",
+    signupLabel: "Créer mon compte Real-Debrid",
+    keyUrl: "https://real-debrid.com/apitoken",
+    keyLabel: "Ouvrir mes jetons API",
+    note: "Real-Debrid n'apparaît pas dans les services connectés de Nuvio, qui n'y montre que TorBox et Premiumize. Sa clé est tout de même déposée dans votre profil Nuvio, et elle alimente Torrentio, Comet et Frenchio. La clé ne peut pas être testée depuis le navigateur, contrairement à celles d'AllDebrid et de Premiumize : l'API de Real-Debrid n'autorise pas les appels du navigateur. L'assistant l'utilise donc telle quelle à l'installation.",
+  },
+  premiumize: {
+    question: "Avez-vous déjà un compte Premiumize ?",
+    steps: [
+      {
+        title: "Créer un compte Premiumize",
+        detail: "Inscrivez-vous sur premiumize.me. Le service est payant (abonnement mensuel ou points).",
+      },
+      {
+        title: "Confirmer votre email",
+        detail: "Validez l'email de confirmation, puis connectez-vous à votre compte.",
+      },
+      {
+        title: "Ouvrir la page du compte",
+        detail: "Rendez-vous sur premiumize.me/account : c'est là que se trouvent votre offre et votre clé.",
+      },
+      {
+        title: "Rejoindre une offre",
+        detail: "Sans abonnement actif, Premiumize ne débrite pas vos flux : activez une formule dans la section « Premium ».",
+      },
+      {
+        title: "Copier la clé API",
+        detail: "Dans la section « API », cliquez sur « Show API Key », copiez la clé et collez-la dans le champ ci-dessous. Gardez-la privée : elle donne accès à votre compte.",
+      },
+    ],
+    signupUrl: "https://www.premiumize.me/register",
+    signupLabel: "Créer mon compte Premiumize",
+    keyUrl: "https://www.premiumize.me/account",
+    keyLabel: "Ouvrir mon compte Premiumize",
+    note: "Nuvio intègre Premiumize nativement (Services connectés) : sa clé est déposée dans votre profil et alimente aussi Torrentio et Comet. Frenchio et UwU-FR ne savent pas débriter avec Premiumize : ils seront installés sans débrideur si c'est votre seule clé.",
   },
   lumio: {
     question: "Avez-vous déjà un compte Lumio et son URL de manifest ?",

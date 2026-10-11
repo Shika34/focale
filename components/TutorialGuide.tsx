@@ -137,6 +137,12 @@ const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
   { key: "nuvio", label: "Compte Nuvio", guide: NUVIO_TUTORIAL },
   { key: "torbox", label: "Débrideur TorBox", guide: PROVIDER_GUIDES.torbox },
   { key: "alldebrid", label: "Débrideur AllDebrid", guide: PROVIDER_GUIDES.alldebrid },
+  {
+    key: "realdebrid",
+    label: "Débrideur Real-Debrid",
+    guide: PROVIDER_GUIDES.realdebrid,
+  },
+  { key: "premiumize", label: "Débrideur Premiumize", guide: PROVIDER_GUIDES.premiumize },
   { key: "tmdb", label: "Clé TMDB", guide: PROVIDER_GUIDES.tmdb },
   { key: "tvdb", label: "Clé TheTVDB", guide: PROVIDER_GUIDES.tvdb },
   { key: "mdblist", label: "Clé MDBList", guide: PROVIDER_GUIDES.mdblist },
@@ -161,8 +167,9 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Dix tutoriels courts, dans l&apos;ordre : le compte Nuvio, les deux
-          débrideurs acceptés par l&apos;assistant (TorBox et AllDebrid), les
+          Douze tutoriels courts, dans l&apos;ordre : le compte Nuvio, les quatre
+          débrideurs acceptés par l&apos;assistant (TorBox, AllDebrid,
+          Real-Debrid et Premiumize), les
           trois clés de métadonnées, le profil Lumio, le réglage VF + VOSTFR,
           puis StreamFusion si vous voulez cet addon en plus. L&apos;assistant
           pose chaque question au bon moment et applique ces réglages à votre

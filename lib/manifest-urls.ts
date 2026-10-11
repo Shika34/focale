@@ -15,9 +15,17 @@
  * AIO Metadata et AIOStreams stockent leur configuration côté serveur
  * (UUID + mot de passe) : leur manifest est fourni par l'utilisateur.
  *
- * Débrideurs : TorBox et AllDebrid. Torrentio et Comet acceptent les deux clés
- * en même temps (manifest vérifié : « Torrentio AD/TB », « Comet | ElfHosted |
- * TB+AD »), les clés vides étant simplement omises.
+ * Débrideurs : TorBox, AllDebrid, Real-Debrid et Premiumize. Torrentio et Comet
+ * acceptent plusieurs clés en même temps (manifests vérifiés : « Torrentio
+ * AD/TB » → « Torrentio RD/PM », « Comet | ElfHosted | TB+AD » → « Comet |
+ * ElfHosted | RD+PM »), les clés vides étant simplement omises.
+ *
+ * Chaque addon n'accepte qu'une partie de ces débrideurs : Torrentio et Comet
+ * prennent les quatre, Frenchio prend TorBox, AllDebrid et Real-Debrid mais pas
+ * Premiumize, UwU-FR ne prend que TorBox et AllDebrid (pages /configure
+ * relevées). `debridEntriesFor` restreint donc les clés avant de construire
+ * chaque manifest — un débrideur non reconnu par un addon l'aurait laissé sans
+ * débrideur, ou pire, avec une entrée invalide.
  */
 
 const TORRENTIO_BASE = "https://torrentio.strem.fun";
@@ -35,32 +43,59 @@ const VF_TRAILER_BASE = "https://vf-trailer-off.vercel.app";
 interface DebridKeys {
   torboxApiKey?: string;
   alldebridApiKey?: string;
+  realdebridApiKey?: string;
+  premiumizeApiKey?: string;
 }
 
 /** Un débrideur renseigné, sous l'identifiant attendu par Torrentio et Comet. */
 interface DebridEntry {
-  id: "torbox" | "alldebrid";
+  id: "torbox" | "alldebrid" | "realdebrid" | "premiumize";
   apiKey: string;
 }
 
 const DEBRIDERS: { id: DebridEntry["id"]; name: string; read: (keys: DebridKeys) => string | undefined }[] = [
   { id: "torbox", name: "TorBox", read: (keys) => keys.torboxApiKey },
   { id: "alldebrid", name: "AllDebrid", read: (keys) => keys.alldebridApiKey },
+  { id: "realdebrid", name: "Real-Debrid", read: (keys) => keys.realdebridApiKey },
+  { id: "premiumize", name: "Premiumize", read: (keys) => keys.premiumizeApiKey },
 ];
 
-/** Débrideurs réellement renseignés, dans l'ordre TorBox puis AllDebrid. */
+/** Débrideurs réellement renseignés, dans l'ordre ci-dessus. */
 export function debridEntries(keys: DebridKeys): DebridEntry[] {
+  return debridEntriesFor(keys, DEBRIDERS.map(({ id }) => id));
+}
+
+/**
+ * Débrideurs renseignés qu'un addon donné sait lire, dans l'ordre ci-dessus.
+ * Les identifiants sont ceux attendus par Torrentio et Comet ; ils servent
+ * aussi de clés de préférence pour UwU-FR (`debrid_preferred`).
+ */
+export function debridEntriesFor(
+  keys: DebridKeys,
+  allowed: readonly DebridEntry["id"][],
+): DebridEntry[] {
   return DEBRIDERS.flatMap(({ id, read }) => {
     const apiKey = read(keys)?.trim();
-    return apiKey ? [{ id, apiKey }] : [];
+    return apiKey && allowed.includes(id) ? [{ id, apiKey }] : [];
   });
+}
+
+/** Débrideurs retenus par Frenchio : TorBox, AllDebrid et Real-Debrid. */
+const FRENCHIO_DEBRIDER_IDS = ["torbox", "alldebrid", "realdebrid"] as const;
+/** Débrideurs retenus par UwU-FR : TorBox et AllDebrid seulement. */
+const UWU_FR_DEBRIDER_IDS = ["torbox", "alldebrid"] as const;
+
+/** Nombre de clés de débrideur qu'un addon donné exploite réellement. */
+export function debridUsableBy(keys: DebridKeys, addon: "frenchio" | "uwu-fr"): boolean {
+  const allowed = addon === "frenchio" ? FRENCHIO_DEBRIDER_IDS : UWU_FR_DEBRIDER_IDS;
+  return debridEntriesFor(keys, allowed).length > 0;
 }
 
 /** Noms français des débrideurs retenus : « TorBox », « TorBox et AllDebrid », « ». */
 export function debridNames(keys: DebridKeys): string {
-  return DEBRIDERS.filter(({ read }) => read(keys)?.trim())
-    .map(({ name }) => name)
-    .join(" et ");
+  const names = DEBRIDERS.filter(({ read }) => read(keys)?.trim()).map(({ name }) => name);
+  if (names.length <= 1) return names.join("");
+  return `${names.slice(0, -1).join(", ")} et ${names[names.length - 1]}`;
 }
 
 /** Encode une config JSON en base64 puis l'insère dans le chemin du manifest. */
@@ -131,7 +166,7 @@ export function buildLoostreamUrl(tmdbApiKey: string | undefined, pseudo: string
  */
 export function buildFrenchioUrl(keys: DebridKeys, tmdbApiKey: string | undefined): string {
   const tmdbKey = tmdbApiKey?.trim();
-  const debrid = debridEntries(keys);
+  const debrid = debridEntriesFor(keys, FRENCHIO_DEBRIDER_IDS);
   if (!tmdbKey || debrid.length === 0) return "";
   const keyOf = (id: DebridEntry["id"]) => debrid.find((entry) => entry.id === id)?.apiKey ?? "";
   return `${FRENCHIO_BASE}/${base64Utf8Config({
@@ -139,7 +174,7 @@ export function buildFrenchioUrl(keys: DebridKeys, tmdbApiKey: string | undefine
     alldebrid_key: keyOf("alldebrid"),
     torbox_key: keyOf("torbox"),
     debridlink_key: "",
-    realdebrid_key: "",
+    realdebrid_key: keyOf("realdebrid"),
     trackers: [],
     abn_username: "",
     abn_password: "",
@@ -161,7 +196,7 @@ export function buildFrenchioUrl(keys: DebridKeys, tmdbApiKey: string | undefine
  */
 export function buildUwuFrUrl(keys: DebridKeys, tmdbApiKey: string | undefined): string {
   const tmdbKey = tmdbApiKey?.trim();
-  const debrid = debridEntries(keys);
+  const debrid = debridEntriesFor(keys, UWU_FR_DEBRIDER_IDS);
   if (!tmdbKey || debrid.length === 0) return "";
   const keyOf = (id: DebridEntry["id"]) => debrid.find((entry) => entry.id === id)?.apiKey ?? null;
   return `${UWU_FR_BASE}/${base64Utf8Config({
