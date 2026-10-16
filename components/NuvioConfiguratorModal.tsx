@@ -264,6 +264,8 @@ function AioMetadataField({
         </label>
         <input
           type="password"
+          name="aio-protection-password"
+          autoComplete="new-password"
           value={password}
           onChange={(e) => onPasswordChange(e.target.value)}
           placeholder="6 caractères minimum"
@@ -343,6 +345,10 @@ function AioMetadataField({
           {manual && (
             <input
               type="text"
+              name="aio-manifest-url"
+              autoComplete="off"
+              spellCheck={false}
+              inputMode="url"
               value={value}
               onChange={(e) => onChange(e.target.value)}
               placeholder="https://aiometadata.elfhosted.com/stremio/xxxxxxxx/manifest.json"
@@ -417,8 +423,12 @@ function GuideField({
 
       {answer === "yes" && (
         <>
+          {/* Le navigateur remplirait sinon ces champs avec l'identifiant du
+              site : les clés et les liens ne sont pas des identifiants. */}
           <input
             type={secret ? "password" : "text"}
+            autoComplete={secret ? "new-password" : "off"}
+            spellCheck={false}
             value={value}
             onChange={(e) => onChange(e.target.value)}
             placeholder={placeholder}
@@ -1101,6 +1111,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <input
                         type="email"
                         required
+                        name="nuvio-email"
+                        autoComplete="username"
+                        spellCheck={false}
                         placeholder="votre-email@exemple.com"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
@@ -1116,6 +1129,8 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <input
                         type="password"
                         required
+                        name="nuvio-password"
+                        autoComplete="current-password"
                         placeholder="Votre mot de passe"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
@@ -1150,6 +1165,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       </div>
                       <input
                         type="text"
+                        name="nuvio-profile-name"
+                        autoComplete="off"
+                        spellCheck={false}
                         value={profileName}
                         onChange={(e) => setProfileName(e.target.value)}
                         maxLength={30}

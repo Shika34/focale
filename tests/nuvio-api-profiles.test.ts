@@ -116,3 +116,43 @@ describe("NuvioApi.pushCollections", () => {
     ]);
   });
 });
+
+describe("NuvioApi.getProviderCredentials", () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+    vi.restoreAllMocks();
+  });
+
+  it("retient les clés non vides, rangées par identifiant de fournisseur", async () => {
+    vi.stubGlobal(
+      "fetch",
+      vi.fn(async (url: string | URL, init: RequestInit = {}) => {
+        expect(String(url)).toContain("sync_pull_provider_credentials");
+        expect(JSON.parse(String(init.body))).toEqual({ p_profile_id: 1 });
+        return new Response(
+          JSON.stringify([
+            { provider: "tmdb", credential_json: { api_key: "cle-tmdb" } },
+            { provider: "debrid:torbox", credential_json: { api_key: "  cle-torbox  " } },
+            { provider: "mdblist", credential_json: { api_key: "   " } },
+            { provider: "", credential_json: { api_key: "orpheline" } },
+            { provider: "debrid:premiumize" },
+          ]),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        );
+      }),
+    );
+
+    expect(await NuvioApi.getProviderCredentials("jeton", 1)).toEqual({
+      tmdb: "cle-tmdb",
+      "debrid:torbox": "cle-torbox",
+    });
+  });
+
+  it("refuse un profil hors bornes sans appeler Nuvio", async () => {
+    const fetchSpy = vi.fn();
+    vi.stubGlobal("fetch", fetchSpy);
+
+    await expect(NuvioApi.getProviderCredentials("jeton", 7)).rejects.toThrow(/profil Nuvio/i);
+    expect(fetchSpy).not.toHaveBeenCalled();
+  });
+});

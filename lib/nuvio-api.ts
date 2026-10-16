@@ -48,7 +48,7 @@ interface ApiKeysConfig {
   mdblistApiKey?: string;
 }
 
-interface NuvioAddonInstall {
+export interface NuvioAddonInstall {
   name: string;
   url: string;
   note?: string;
@@ -656,6 +656,30 @@ export const NuvioApi = {
     const data = await rpc("/rest/v1/rpc/get_sync_owner", token, {});
     if (typeof data === "string") return data;
     return data?.owner || data?.id || data?.user_id || "";
+  },
+
+  /**
+   * Clés déjà enregistrées dans le profil, par identifiant de fournisseur
+   * (`tmdb`, `mdblist`, `debrid:torbox`, `debrid:premiumize`,
+   * `debrid:realdebrid`). La fenêtre de mise à jour s'en sert pour ne pas
+   * redemander une clé que le profil possède déjà.
+   */
+  async getProviderCredentials(
+    token: string,
+    profileId: number,
+  ): Promise<Record<string, string>> {
+    assertProfileIndex(profileId);
+    const rows = await rpc("/rest/v1/rpc/sync_pull_provider_credentials", token, {
+      p_profile_id: profileId,
+    });
+    const stored: Record<string, string> = {};
+    for (const row of Array.isArray(rows) ? rows : []) {
+      const record = row as { provider?: unknown; credential_json?: { api_key?: unknown } };
+      const provider = typeof record.provider === "string" ? record.provider.trim() : "";
+      const value = record.credential_json?.api_key;
+      if (provider && typeof value === "string" && value.trim()) stored[provider] = value.trim();
+    }
+    return stored;
   },
 
   /**

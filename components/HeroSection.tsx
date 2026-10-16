@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { useState } from "react";
-import { ArrowRight, Download } from "lucide-react";
+import { ArrowRight, Download, RefreshCw } from "lucide-react";
 import { getStats } from "@/lib/nuvio-data";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
+import { CollectionsUpdateModal } from "@/components/CollectionsUpdateModal";
 
 export function HeroSection() {
   const stats = getStats();
   const [configModalOpen, setConfigModalOpen] = useState(false);
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
 
   const facts = [
     { label: "Collections francophones", value: String(stats.totalCollections) },
@@ -58,14 +60,24 @@ export function HeroSection() {
               </Link>
             </div>
 
-            <a
-              href="/nuvio-collections-fr.json"
-              download="nuvio-collections-fr.json"
-              className="mt-6 inline-flex items-center gap-1.5 text-xs text-mist-500 transition-colors hover:text-mist-300"
-            >
-              <Download className="h-3.5 w-3.5" />
-              Télécharger la liste des collections (JSON)
-            </a>
+            <div className="mt-6 flex flex-wrap items-center gap-x-5 gap-y-3">
+              <a
+                href="/nuvio-collections-fr.json"
+                download="nuvio-collections-fr.json"
+                className="inline-flex items-center gap-1.5 text-xs text-mist-500 transition-colors hover:text-mist-300"
+              >
+                <Download className="h-3.5 w-3.5" />
+                Télécharger la liste des collections (JSON)
+              </a>
+              <button
+                type="button"
+                onClick={() => setUpdateModalOpen(true)}
+                className="inline-flex items-center gap-2 rounded-lg border border-gold-500/40 px-4 py-2 text-xs font-semibold text-gold-300 transition-colors hover:border-gold-400 hover:bg-gold-950/40 hover:text-gold-200"
+              >
+                <RefreshCw className="h-3.5 w-3.5" />
+                Mettre à jour mes collections et addons Focale
+              </button>
+            </div>
           </div>
 
           <aside className="lg:pt-3">
@@ -96,6 +108,11 @@ export function HeroSection() {
       <NuvioConfiguratorModal
         isOpen={configModalOpen}
         onClose={() => setConfigModalOpen(false)}
+      />
+
+      <CollectionsUpdateModal
+        isOpen={updateModalOpen}
+        onClose={() => setUpdateModalOpen(false)}
       />
     </>
   );
