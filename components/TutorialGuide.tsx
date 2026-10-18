@@ -107,7 +107,6 @@ const BINGECAT_TUTORIAL: ProviderGuide = {
       bullets: [
         "Le dossier « Pour vous » n'apparaît que si ce lien est fourni : sans lui, la section est retirée du profil plutôt que de rester vide.",
         "Focale retient quatre paires de rangées film et série, dans l'ordre de votre manifest Bingecat.",
-        "Cette section ne peut pas venir de Trakt : le Trakt de Nuvio reste dans son backend, et l'instance publique d'AIO Metadata n'expose pas de connexion Trakt.",
       ],
     },
     {
