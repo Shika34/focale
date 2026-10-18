@@ -1129,6 +1129,146 @@
         "showInHome": true,
         "source": "trakt",
         "cacheTTL": 300
+      },
+      {
+        "id": "flixpatrol.netflix.fr.movie",
+        "name": "Top 10 France · netflix",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.netflix.fr.series",
+        "name": "Top 10 France · netflix",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.amazon-prime.fr.movie",
+        "name": "Top 10 France · amazon-prime",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.amazon-prime.fr.series",
+        "name": "Top 10 France · amazon-prime",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.disney.fr.movie",
+        "name": "Top 10 France · disney",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.disney.fr.series",
+        "name": "Top 10 France · disney",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.hbo-max.fr.movie",
+        "name": "Top 10 France · hbo-max",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.hbo-max.fr.series",
+        "name": "Top 10 France · hbo-max",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.apple-tv.fr.movie",
+        "name": "Top 10 France · apple-tv",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.apple-tv.fr.series",
+        "name": "Top 10 France · apple-tv",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.paramount.fr.movie",
+        "name": "Top 10 France · paramount",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.paramount.fr.series",
+        "name": "Top 10 France · paramount",
+        "type": "series",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.crunchyroll.fr.all",
+        "name": "Top 10 France · crunchyroll",
+        "type": "all",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
+      },
+      {
+        "id": "flixpatrol.mubi.fr.movie",
+        "name": "Top 10 France · mubi",
+        "type": "movie",
+        "source": "flixpatrol",
+        "enabled": true,
+        "showInHome": false,
+        "randomizePerPage": false,
+        "enableRatingPosters": false
       }
     ],
     "language": "fr-FR",
@@ -1168,7 +1308,7 @@
       "originalLangFallback": false
     },
     "includeAdult": false,
-    "lastModified": 1789060939679,
+    "lastModified": "2026-10-18T18:00:02.233Z",
     "configVersion": 1789060939680,
     "searchEnabled": true,
     "tvdbSeasonType": "default",
@@ -1202,7 +1342,7 @@
   },
   "metadata": {
     "apiKeysExcluded": true,
-    "totalCatalogs": 107,
-    "enabledCatalogs": 31
+    "totalCatalogs": 121,
+    "enabledCatalogs": 45
   }
 }

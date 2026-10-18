@@ -8,8 +8,12 @@
  * version par cycle force le rechargement du bon visuel.
  */
 
-/** Chemin, sur raw.githubusercontent.com, des images concernées. */
-const SPOTLIGHT_ART_PATH = "/art/spotlights/";
+/**
+ * Chemins des images concernées : le CDN actuel de Kaptain (`art.kaptain.stream`,
+ * où chaque visuel est remplacé sur place) et l'ancien miroir GitHub, conservé
+ * pour les collections téléchargées avant la bascule.
+ */
+const SPOTLIGHT_ART_PATHS = ["art.kaptain.stream/spotlights/", "/art/spotlights/"];
 
 /** Collection dont les visuels tournent (identifiant de Kaptain, inchangé). */
 const SPOTLIGHT_COLLECTION_ID = "collection-SPOTLIGHTS";
@@ -34,7 +38,10 @@ function versionedArtUrl(url: string, version: string): string {
 function versionedRecord<T extends Record<string, unknown>>(record: T, version: string): T {
   const next: Record<string, unknown> = { ...record };
   for (const [key, value] of Object.entries(next)) {
-    if (typeof value === "string" && value.includes(SPOTLIGHT_ART_PATH)) {
+    if (
+      typeof value === "string" &&
+      SPOTLIGHT_ART_PATHS.some((path) => value.includes(path))
+    ) {
       next[key] = versionedArtUrl(value, version);
     }
   }

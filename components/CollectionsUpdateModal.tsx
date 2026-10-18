@@ -17,6 +17,14 @@ import {
 import { getStats } from "@/lib/nuvio-data";
 import { NuvioApi, type NuvioAddonInstall } from "@/lib/nuvio-api";
 import { debridUsableBy } from "@/lib/manifest-urls";
+import {
+  AIO_BASE_URL,
+  aioConfigUuid,
+  aioLoadErrorMessage,
+  mergeFrenchCatalogs,
+  type AioCatalog,
+  type AioConfig,
+} from "@/lib/aio-update";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
 import {
   COLLECTIONS_UPDATE_SOURCE,
@@ -97,6 +105,11 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
   const [debridKey, setDebridKey] = useState("");
   const [tmdbKey, setTmdbKey] = useState("");
   const [installedNames, setInstalledNames] = useState<string[]>([]);
+  /** Identifiant de la configuration AIO Metadata installée, s'il y en a une. */
+  const [aioUuid, setAioUuid] = useState<string | null>(null);
+  const [aioPassword, setAioPassword] = useState("");
+  const [aioBusy, setAioBusy] = useState(false);
+  const [aioNotice, setAioNotice] = useState<{ ok: boolean; text: string } | null>(null);
   /** Garde synchrone : un double clic ne doit pas lancer deux envois. */
   const sendingRef = useRef(false);
 
@@ -205,6 +218,9 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
       });
       setInstalledAddons(installed);
       setMissingAddons(missing);
+      setAioUuid(aioConfigUuid(addons));
+      setAioPassword("");
+      setAioNotice(null);
       // Aucun addon coché d'avance : l'utilisateur choisit ce qu'il ajoute.
       setSelected(Object.fromEntries(missing.map((addon) => [addon.id, false])));
       setManifestUrls({});
@@ -224,6 +240,79 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
       setViewState("form");
     } finally {
       sendingRef.current = false;
+    }
+  };
+
+  /**
+   * Recharge la configuration AIO Metadata installée, y ajoute les catalogues
+   * « Top 10 France » manquants, puis la réenregistre à l'identique : mêmes
+   * clés, même UUID, donc même manifest déjà installé dans Nuvio.
+   */
+  const handleAioUpdate = async () => {
+    if (!aioUuid) return;
+    const secret = aioPassword.trim();
+    if (secret.length < 6) {
+      setAioNotice({
+        ok: false,
+        text: "Saisissez le mot de passe choisi à la création de votre configuration AIO Metadata (6 caractères minimum).",
+      });
+      return;
+    }
+    if (aioBusy) return;
+
+    setAioBusy(true);
+    setAioNotice(null);
+    try {
+      const loadRes = await fetch(`${AIO_BASE_URL}/api/config/load/${aioUuid}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password: secret }),
+      });
+      if (!loadRes.ok) {
+        setAioNotice({ ok: false, text: aioLoadErrorMessage(loadRes.status) });
+        return;
+      }
+      const loaded = (await loadRes.json()) as { config?: AioConfig };
+      if (!loaded.config) {
+        setAioNotice({ ok: false, text: aioLoadErrorMessage(500) });
+        return;
+      }
+
+      const templateRes = await fetch("/aiometadata-config-fr.json");
+      const template = (await templateRes.json()) as { config?: { catalogs?: AioCatalog[] } };
+      const templateCatalogs = template.config?.catalogs ?? [];
+      const { config: merged, added } = mergeFrenchCatalogs(loaded.config, templateCatalogs);
+
+      if (added.length === 0) {
+        setAioNotice({
+          ok: true,
+          text: "Votre configuration expose déjà les classements France : rien à changer.",
+        });
+        return;
+      }
+
+      const saveRes = await fetch(`${AIO_BASE_URL}/api/config/update/${aioUuid}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ config: merged, password: secret }),
+      });
+      if (!saveRes.ok) {
+        setAioNotice({ ok: false, text: aioLoadErrorMessage(saveRes.status) });
+        return;
+      }
+
+      setAioNotice({
+        ok: true,
+        text: `${added.length} catalogue${added.length > 1 ? "s" : ""} France ajouté${added.length > 1 ? "s" : ""}. Relancez Nuvio si les nouvelles rangées n'apparaissent pas tout de suite.`,
+      });
+      setAioPassword("");
+    } catch {
+      setAioNotice({
+        ok: false,
+        text: "Impossible de joindre AIO Metadata. Vérifiez votre connexion, puis réessayez.",
+      });
+    } finally {
+      setAioBusy(false);
     }
   };
 
@@ -521,6 +610,63 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {aioUuid && (
+                <div className="rounded-2xl border border-gold-500/30 bg-surface-elevated/60 p-4 space-y-3">
+                  <div className="flex items-start gap-2">
+                    <Sparkles className="w-4 h-4 shrink-0 mt-0.5 text-gold-400" />
+                    <div className="space-y-1">
+                      <span className="text-xs font-bold text-mist-100">
+                        Classements France des services de streaming
+                      </span>
+                      <p className="text-[11px] leading-relaxed text-mist-400">
+                        Les rangées « Top 10 France » passent par votre configuration
+                        AIO Metadata. Celle d&apos;un profil configuré avant le
+                        18 octobre 2026 ne contient pas ces catalogues : saisissez son
+                        mot de passe pour les y ajouter. Vos clés, votre UUID et le
+                        manifest installé dans Nuvio ne changent pas.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-2 sm:flex-row">
+                    <input
+                      type="password"
+                      name="focale-aio-password"
+                      autoComplete="off"
+                      value={aioPassword}
+                      onChange={(event) => {
+                        setAioPassword(event.target.value);
+                        setAioNotice(null);
+                      }}
+                      placeholder="Mot de passe AIO Metadata"
+                      aria-label="Mot de passe de votre configuration AIO Metadata"
+                      disabled={aioBusy}
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm focus:border-gold-500 focus:outline-hidden disabled:opacity-60"
+                    />
+                    <button
+                      type="button"
+                      onClick={handleAioUpdate}
+                      disabled={aioBusy}
+                      className="inline-flex shrink-0 items-center justify-center gap-2 rounded-xl border border-gold-500/40 px-3.5 py-2.5 text-xs font-semibold text-gold-300 transition-colors hover:bg-gold-500/10 disabled:opacity-60"
+                    >
+                      {aioBusy ? (
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                      ) : (
+                        <RefreshCw className="w-4 h-4" />
+                      )}
+                      <span>{aioBusy ? "Mise à jour…" : "Mettre à jour ma configuration"}</span>
+                    </button>
+                  </div>
+                  {aioNotice && (
+                    <p
+                      role={aioNotice.ok ? "status" : "alert"}
+                      className={`text-[11px] leading-relaxed ${aioNotice.ok ? "text-sage-300" : "text-red-300"}`}
+                    >
+                      {aioNotice.text}
+                    </p>
+                  )}
                 </div>
               )}
 

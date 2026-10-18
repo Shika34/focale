@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
+import collectionCounts from "@/lib/collection-counts.json";
 import {
   X,
   Aperture,
@@ -832,7 +833,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       setProgressState({
         step: "Ajout des collections françaises",
         percent: 70,
-        details: "Envoi des 18 collections et 756 dossiers francophones…",
+        details: `Envoi des ${collectionCounts.collections} collections et ${collectionCounts.folders} dossiers francophones…`,
       });
 
       const collRes = await fetch("/nuvio-collections-fr.json");
@@ -1554,7 +1555,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <span className="text-mist-300">
                         Collection complète
                       </span>{" "}
-                      : 18 catégories et 756 dossiers francophones.
+                      : `${collectionCounts.collections} catégories et ${collectionCounts.folders} dossiers francophones`.
                     </div>
                     <div>
                       • <span className="text-mist-300">AIO Metadata</span> :{" "}

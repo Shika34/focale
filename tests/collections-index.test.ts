@@ -31,6 +31,11 @@ const SUMMARY = JSON.parse(
   readFileSync(join(__dirname, "..", "lib", "collections-summary.json"), "utf8"),
 ) as unknown[];
 
+/** Compteurs seuls, embarqués par les composants clients (navbar, navigateur). */
+const COUNTS = JSON.parse(
+  readFileSync(join(__dirname, "..", "lib", "collection-counts.json"), "utf8"),
+) as { collections: number; folders: number; sources: number };
+
 /** Nombre de titres de sources conservés pour l'aperçu d'un dossier. */
 const PREVIEW_COUNT = 3;
 
@@ -82,6 +87,16 @@ describe("index des collections", () => {
       0,
     );
     expect(fromSummary).toBe(fromSource);
+  });
+
+  it("publie des compteurs cohérents pour les composants clients", () => {
+    const folders = SOURCE.reduce((total, collection) => total + collection.folders.length, 0);
+    const sources = SOURCE.reduce(
+      (total, collection) =>
+        total + collection.folders.reduce((sum, folder) => sum + folder.sources.length, 0),
+      0,
+    );
+    expect(COUNTS).toEqual({ collections: SOURCE.length, folders, sources });
   });
 
   it.each(SOURCE.map((collection, index) => [collection.title, index] as const))(

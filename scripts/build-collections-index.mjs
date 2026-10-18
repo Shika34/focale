@@ -19,6 +19,11 @@ import { fileURLToPath } from "node:url";
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const SOURCE = join(ROOT, "public", "nuvio-collections-fr.json");
 const TARGET = join(ROOT, "lib", "collections-summary.json");
+/**
+ * Compteurs seuls, pour les composants clients : importer l'index complet y
+ * embarquerait les 784 dossiers, alors que l'interface n'affiche que les totaux.
+ */
+const COUNTS_TARGET = join(ROOT, "lib", "collection-counts.json");
 
 /** Nombre de titres de sources conservés pour l'aperçu d'un dossier. */
 const PREVIEW_COUNT = 3;
@@ -49,4 +54,12 @@ writeFileSync(TARGET, `${JSON.stringify(summary, null, 2)}\n`);
 
 const folders = summary.reduce((total, collection) => total + collection.foldersCount, 0);
 const sources = summary.reduce((total, collection) => total + collection.sourcesCount, 0);
-console.log(`${summary.length} collections, ${folders} dossiers, ${sources} sources → lib/collections-summary.json`);
+
+writeFileSync(
+  COUNTS_TARGET,
+  `${JSON.stringify({ collections: summary.length, folders, sources }, null, 2)}\n`,
+);
+
+console.log(
+  `${summary.length} collections, ${folders} dossiers, ${sources} sources → lib/collections-summary.json + lib/collection-counts.json`,
+);

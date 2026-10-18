@@ -11,10 +11,12 @@ const contentSecurityPolicy = [
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https://image.tmdb.org",
   "font-src 'self' data:",
-  // Appels sortants du navigateur : l'API Nuvio (comptes, collections, addons)
-  // et les API de débrideur testées depuis la page (AllDebrid et Premiumize,
-  // cf. lib/debrid-key-test.ts).
-  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr https://www.premiumize.me",
+  // Appels sortants du navigateur : l'API Nuvio (comptes, collections, addons),
+  // les API de débrideur testées depuis la page (AllDebrid et Premiumize, cf.
+  // lib/debrid-key-test.ts) et l'instance AIO Metadata, dont la fenêtre de mise
+  // à jour recharge puis réenregistre la configuration de l'utilisateur
+  // (cf. lib/aio-update.ts).
+  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr https://www.premiumize.me https://aiometadata.elfhosted.com",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

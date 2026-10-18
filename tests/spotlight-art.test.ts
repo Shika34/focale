@@ -62,6 +62,23 @@ describe("versionSpotlightArt", () => {
     expect(updated[1].folders[0].coverImageUrl).toBe(`${COVER}?v=13`);
   });
 
+  it("versionne aussi les visuels servis par le CDN actuel de Kaptain", () => {
+    const cdn = [
+      {
+        id: "collection-SPOTLIGHTS",
+        folders: [
+          { coverImageUrl: "https://art.kaptain.stream/spotlights/the-saga/live/cover.png" },
+        ],
+      },
+    ];
+
+    const out = versionSpotlightArt(cdn, "12") as { folders: Record<string, string>[] }[];
+
+    expect(out[0].folders[0].coverImageUrl).toBe(
+      "https://art.kaptain.stream/spotlights/the-saga/live/cover.png?v=12",
+    );
+  });
+
   it("ne modifie pas la structure reçue", () => {
     const source = spotlightCollection();
     versionSpotlightArt(source, "12");

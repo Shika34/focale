@@ -5,11 +5,12 @@ import { usePathname } from "next/navigation";
 import { Aperture, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
+import collectionCounts from "@/lib/collection-counts.json";
 import { SITE } from "@/lib/site";
 
 const NAV_LINKS = [
   { name: "Accueil", href: "/" },
-  { name: "Collections", href: "/collections", hint: "756" },
+  { name: "Collections", href: "/collections", hint: String(collectionCounts.folders) },
   { name: "Tutoriels", href: "/tutoriel" },
 ];
 

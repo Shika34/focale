@@ -4,6 +4,7 @@ import { HeroSection } from "@/components/HeroSection";
 import { TorboxPromoBanner } from "@/components/TorboxPromoBanner";
 import { AlldebridPromoBanner } from "@/components/AlldebridPromoBanner";
 import { ArrowUpRight } from "lucide-react";
+import collectionCounts from "@/lib/collection-counts.json";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -27,7 +28,7 @@ const SHOTS = [
     height: 579,
     title: "Vos collections",
     description:
-      "Humeurs et ambiances, Basé sur, Collections de films : 18 collections et 756 dossiers, dossier par dossier.",
+      `Humeurs et ambiances, Basé sur, Collections de films : ${collectionCounts.collections} collections et ${collectionCounts.folders} dossiers, dossier par dossier.`,
     alt: "Collections Nuvio : rangées Humeurs et ambiances, Basé sur et Collections de films.",
   },
 ];
@@ -74,10 +75,10 @@ const SECTIONS = [
   {
     href: "/collections",
     label: "Collections",
-    title: "18 collections, 756 dossiers",
+    title: `${collectionCounts.collections} collections, ${collectionCounts.folders} dossiers`,
     description:
       "Le catalogue francophone complet, parcourable dossier par dossier avant de l'envoyer dans votre profil Nuvio.",
-    meta: "756 dossiers",
+    meta: `${collectionCounts.folders} dossiers`,
   },
 ];
 

@@ -6,76 +6,76 @@
     "pinToTop": true,
     "backdropImageUrl": null,
     "foldersCount": 22,
-    "sourcesCount": 686,
+    "sourcesCount": 700,
     "folders": [
       {
         "id": "folder-WFGY1XPD",
         "title": "Netflix",
-        "sourcesCount": 47,
+        "sourcesCount": 49,
         "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
-        ]
-      },
-      {
-        "id": "cf7a3d79-0cc9-42c5-b460-d2e3b838ecfc",
-        "title": "Crunchyroll",
-        "sourcesCount": 17,
-        "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
         ]
       },
       {
         "id": "folder-AT8KYHZO",
         "title": "Prime Video",
-        "sourcesCount": 46,
+        "sourcesCount": 48,
         "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
         ]
       },
       {
         "id": "folder-8ZBZOMW9",
         "title": "Disney+",
-        "sourcesCount": 44,
+        "sourcesCount": 46,
         "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
         ]
       },
       {
         "id": "folder-OA4T8NYO",
         "title": "HBO Max",
-        "sourcesCount": 45,
+        "sourcesCount": 47,
         "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
         ]
       },
       {
         "id": "folder-IQTF27K8",
         "title": "Apple TV+",
-        "sourcesCount": 40,
+        "sourcesCount": 42,
         "sourcesPreview": [
-          "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
         ]
       },
       {
         "id": "folder-ILJM8PD0",
         "title": "Paramount+",
-        "sourcesCount": 44,
+        "sourcesCount": 46,
         "sourcesPreview": [
+          "Top 10 France des films",
+          "Top 10 France des séries",
+          "Top 10 des films"
+        ]
+      },
+      {
+        "id": "cf7a3d79-0cc9-42c5-b460-d2e3b838ecfc",
+        "title": "Crunchyroll",
+        "sourcesCount": 18,
+        "sourcesPreview": [
+          "Top 10 France",
           "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 des séries"
         ]
       },
       {
@@ -191,11 +191,11 @@
       {
         "id": "1f10af82-da2e-446d-8cac-0658bf587667",
         "title": "Mubi",
-        "sourcesCount": 23,
+        "sourcesCount": 24,
         "sourcesPreview": [
+          "Top 10 France des films",
           "Top 10 des films",
-          "Top 10 des séries",
-          "Nouveaux films"
+          "Top 10 des séries"
         ]
       },
       {
@@ -764,8 +764,8 @@
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
     "backdropImageUrl": null,
-    "foldersCount": 10,
-    "sourcesCount": 60,
+    "foldersCount": 12,
+    "sourcesCount": 72,
     "folders": [
       {
         "id": "folder-BSTRUE01",
@@ -866,6 +866,26 @@
           "Nouvelles séries",
           "Films populaires"
         ]
+      },
+      {
+        "id": "folder-BSANME01",
+        "title": "Animé et manga",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
+      },
+      {
+        "id": "folder-BSBORD01",
+        "title": "Jeux de société",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Nouveaux films",
+          "Nouvelles séries",
+          "Films populaires"
+        ]
       }
     ]
   },
@@ -875,13 +895,13 @@
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
     "backdropImageUrl": null,
-    "foldersCount": 249,
-    "sourcesCount": 514,
+    "foldersCount": 255,
+    "sourcesCount": 528,
     "folders": [
       {
         "id": "folder-3B76E2AD",
         "title": "Collections de films d'action",
-        "sourcesCount": 52,
+        "sourcesCount": 54,
         "sourcesPreview": [
           "Collection Bad Boys",
           "Collection Piège de cristal (Die Hard)",
@@ -891,7 +911,7 @@
       {
         "id": "folder-1EA77FFE",
         "title": "Collections de comédies",
-        "sourcesCount": 34,
+        "sourcesCount": 35,
         "sourcesPreview": [
           "Collection Ace Ventura",
           "Collection American Pie",
@@ -921,7 +941,7 @@
       {
         "id": "folder-B362DBAF",
         "title": "Collections famille et animation",
-        "sourcesCount": 43,
+        "sourcesCount": 44,
         "sourcesPreview": [
           "Collection Alvin et les Chipmunks",
           "Collection Cars",
@@ -941,7 +961,7 @@
       {
         "id": "folder-EFF8894F",
         "title": "Collections de films d'horreur",
-        "sourcesCount": 40,
+        "sourcesCount": 43,
         "sourcesPreview": [
           "Collection Les Griffes de la nuit (A Nightmare on Elm Street)",
           "Collection Sans un bruit",
@@ -961,7 +981,7 @@
       {
         "id": "folder-28BBC0D4",
         "title": "Collections de science-fiction",
-        "sourcesCount": 37,
+        "sourcesCount": 38,
         "sourcesPreview": [
           "Collection Alien",
           "Collection Retour vers le futur",
@@ -1277,6 +1297,14 @@
         ]
       },
       {
+        "id": "folder-FCDEAD01",
+        "title": "Collection Deadpool",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Deadpool"
+        ]
+      },
+      {
         "id": "folder-31D5B2FE",
         "title": "Collection Un justicier dans la ville",
         "sourcesCount": 1,
@@ -1498,6 +1526,14 @@
         "sourcesCount": 1,
         "sourcesPreview": [
           "Collection Godzilla"
+        ]
+      },
+      {
+        "id": "folder-FCGZKG01",
+        "title": "Collection Godzilla x Kong",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Godzilla x Kong"
         ]
       },
       {
@@ -2253,11 +2289,27 @@
         ]
       },
       {
+        "id": "folder-FCSMIL01",
+        "title": "Collection Smile",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Smile"
+        ]
+      },
+      {
         "id": "folder-B8C5C0EA",
         "title": "Sniper",
         "sourcesCount": 1,
         "sourcesPreview": [
           "Collection Sniper"
+        ]
+      },
+      {
+        "id": "folder-FCSONC01",
+        "title": "Collection Sonic le hérisson",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Sonic le hérisson"
         ]
       },
       {
@@ -2370,6 +2422,14 @@
         "sourcesCount": 1,
         "sourcesPreview": [
           "Collection Teenage Mutant Ninja Turtles"
+        ]
+      },
+      {
+        "id": "folder-FCTERF01",
+        "title": "Collection Terrifier",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection Terrifier"
         ]
       },
       {
@@ -2773,6 +2833,14 @@
         ]
       },
       {
+        "id": "folder-FCXTRL01",
+        "title": "Trilogie X de Ti West",
+        "sourcesCount": 1,
+        "sourcesPreview": [
+          "Collection X"
+        ]
+      },
+      {
         "id": "folder-EB28323E",
         "title": "Collection Tomb Raider",
         "sourcesCount": 1,
@@ -2900,8 +2968,8 @@
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
     "backdropImageUrl": null,
-    "foldersCount": 152,
-    "sourcesCount": 668,
+    "foldersCount": 160,
+    "sourcesCount": 713,
     "folders": [
       {
         "id": "folder-WBL5AUA4",
@@ -2934,6 +3002,16 @@
       {
         "id": "folder-DA5P6E85",
         "title": "Ana de Armas",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ACTGARF1",
+        "title": "Andrew Garfield",
         "sourcesCount": 6,
         "sourcesPreview": [
           "Films populaires",
@@ -3051,6 +3129,16 @@
         ]
       },
       {
+        "id": "folder-ACTHADE1",
+        "title": "Bill Hader",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
         "id": "folder-Z7DBVRV0",
         "title": "Bill Murray",
         "sourcesCount": 6,
@@ -3076,6 +3164,16 @@
         "sourcesCount": 2,
         "sourcesPreview": [
           "Films populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
+        "id": "folder-ACTCRAN1",
+        "title": "Bryan Cranston",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
           "Films les mieux notés"
         ]
       },
@@ -3885,6 +3983,16 @@
         ]
       },
       {
+        "id": "folder-ACTGOTH1",
+        "title": "Mia Goth",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
         "id": "folder-Q5MTSVE1",
         "title": "Michael B. Jordan",
         "sourcesCount": 6,
@@ -4075,6 +4183,16 @@
         ]
       },
       {
+        "id": "folder-ACTFERG1",
+        "title": "Rebecca Ferguson",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
+        ]
+      },
+      {
         "id": "folder-TDL8CIHS",
         "title": "Reese Witherspoon",
         "sourcesCount": 3,
@@ -4104,6 +4222,16 @@
         ]
       },
       {
+        "id": "folder-ACTPATT1",
+        "title": "Robert Pattinson",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Films populaires",
+          "Films les mieux notés",
+          "Nouveaux films"
+        ]
+      },
+      {
         "id": "folder-FJZ84GA3",
         "title": "Robin Williams",
         "sourcesCount": 3,
@@ -4111,6 +4239,16 @@
           "Films populaires",
           "Films les mieux notés",
           "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ACTCROW1",
+        "title": "Russell Crowe",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
         ]
       },
       {
@@ -4386,6 +4524,16 @@
           "Films populaires",
           "Films les mieux notés",
           "Nouveaux films"
+        ]
+      },
+      {
+        "id": "folder-ACTSALD1",
+        "title": "Zoe Saldana",
+        "sourcesCount": 6,
+        "sourcesPreview": [
+          "Films populaires",
+          "Séries populaires",
+          "Films les mieux notés"
         ]
       },
       {
@@ -6471,8 +6619,8 @@
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
     "backdropImageUrl": null,
-    "foldersCount": 68,
-    "sourcesCount": 204,
+    "foldersCount": 80,
+    "sourcesCount": 240,
     "folders": [
       {
         "id": "folder-PB23HCW4",
@@ -6527,6 +6675,16 @@
       {
         "id": "folder-CD33CE8A",
         "title": "Animal Planet",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00200",
+        "title": "BBC America",
         "sourcesCount": 3,
         "sourcesPreview": [
           "Séries populaires",
@@ -6675,6 +6833,16 @@
         ]
       },
       {
+        "id": "folder-NET00203",
+        "title": "Cooking Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
         "id": "folder-3565B08C",
         "title": "CTV",
         "sourcesCount": 3,
@@ -6795,8 +6963,28 @@
         ]
       },
       {
+        "id": "folder-NET00201",
+        "title": "Game Show Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
         "id": "folder-7DAD2C58",
         "title": "Hallmark Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00209",
+        "title": "Hallmark Mystery",
         "sourcesCount": 3,
         "sourcesPreview": [
           "Séries populaires",
@@ -6895,8 +7083,48 @@
         ]
       },
       {
+        "id": "folder-NET00202",
+        "title": "Magnolia Network",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00207",
+        "title": "MeTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00208",
+        "title": "MotorTrend",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
         "id": "folder-U6XLS85Q",
         "title": "MTV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00204",
+        "title": "Nat Geo Wild",
         "sourcesCount": 3,
         "sourcesPreview": [
           "Séries populaires",
@@ -6975,6 +7203,16 @@
         ]
       },
       {
+        "id": "folder-NET00206",
+        "title": "Science Channel",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
         "id": "folder-869XK12L",
         "title": "Showtime",
         "sourcesCount": 3,
@@ -6997,6 +7235,16 @@
       {
         "id": "folder-FD2C4625",
         "title": "Sky Max",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-NET00205",
+        "title": "Smithsonian Channel",
         "sourcesCount": 3,
         "sourcesPreview": [
           "Séries populaires",
@@ -7147,6 +7395,26 @@
       {
         "id": "folder-B2A80F79",
         "title": "VH1",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-VICETV01",
+        "title": "Vice TV",
+        "sourcesCount": 3,
+        "sourcesPreview": [
+          "Séries populaires",
+          "Séries récentes",
+          "Séries les mieux notées"
+        ]
+      },
+      {
+        "id": "folder-WETV0001",
+        "title": "WE tv",
         "sourcesCount": 3,
         "sourcesPreview": [
           "Séries populaires",

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import collectionCounts from "@/lib/collection-counts.json";
 import { CollectionSummaryItem } from "@/lib/nuvio-data";
 import { NuvioConfiguratorModal } from "@/components/NuvioConfiguratorModal";
 import {
@@ -73,7 +74,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
             <span>Catalogue des collections Nuvio</span>
           </h2>
           <p className="text-mist-400 text-sm mt-1">
-            Explorez les 18 collections et 756 dossiers francophones intégrés automatiquement dans votre profil.
+            Explorez les {collectionCounts.collections} collections et {collectionCounts.folders} dossiers francophones intégrés automatiquement dans votre profil.
           </p>
         </div>
 
@@ -85,7 +86,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
               type="text"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Rechercher parmi 756 dossiers…"
+              placeholder={`Rechercher parmi ${collectionCounts.folders} dossiers…`}
               aria-label="Rechercher un dossier"
               className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-surface/80 border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:outline-hidden focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all"
             />
@@ -141,7 +142,8 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
       {/* Summary Bar */}
       <div className="flex flex-col gap-2 p-4 rounded-xl glass-panel mb-8 text-xs text-mist-300 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <span className="font-semibold text-mist-100">{totalVisibleFolders}</span> dossiers affichés sur 756
+          <span className="font-semibold text-mist-100">{totalVisibleFolders}</span> dossiers affichés sur{" "}
+          {collectionCounts.folders} · {collectionCounts.sources} sources
         </div>
         <div className="flex items-center gap-3">
           <a
@@ -150,7 +152,7 @@ export function CollectionBrowser({ collections }: CollectionBrowserProps) {
             className="inline-flex items-center gap-1.5 text-gold-400 hover:text-gold-300 font-semibold"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>Télécharger le JSON brut (5 Mo)</span>
+            <span>Télécharger le JSON brut</span>
           </a>
         </div>
       </div>
