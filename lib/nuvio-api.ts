@@ -24,6 +24,7 @@ import {
   debridEntries,
   debridNames,
 } from "./manifest-urls";
+import { normaliseBingecatManifestUrl } from "./bingecat";
 
 const SUPABASE_BASE = "https://api.nuvio.tv";
 const SUPABASE_ANON_KEY =
@@ -773,6 +774,8 @@ export const NuvioApi = {
       aioMetadataUrl?: string;
       lumioManifestUrl?: string;
       streamFusionManifestUrl?: string;
+      /** Manifest Bingecat de l'utilisateur, source des rangées « Pour vous ». */
+      bingecatManifestUrl?: string;
       /** Nom du profil Nuvio, repris comme pseudo par Loostream et VF Trailer. */
       profileName?: string;
       loostream?: boolean;
@@ -792,6 +795,7 @@ export const NuvioApi = {
     const aioMetadataUrl = manifests.aioMetadataUrl?.trim();
     const lumioUrl = buildLumioUrl(manifests.lumioManifestUrl);
     const streamFusionUrl = buildStreamFusionUrl(manifests.streamFusionManifestUrl);
+    const bingecatUrl = normaliseBingecatManifestUrl(manifests.bingecatManifestUrl ?? "");
     const profileName = manifests.profileName ?? "";
     const loostreamUrl =
       manifests.loostream === false ? "" : buildLoostreamUrl(keys.tmdbApiKey, profileName);
@@ -813,6 +817,14 @@ export const NuvioApi = {
           : "Instance publique AIO Metadata, sans vos clés ni vos catalogues",
       },
     ];
+
+    if (bingecatUrl) {
+      addons.push({
+        name: "Bingecat",
+        url: bingecatUrl,
+        note: "Recommandations personnelles pour « Pour vous »",
+      });
+    }
 
     if (lumioUrl) {
       addons.push({

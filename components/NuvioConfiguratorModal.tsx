@@ -27,6 +27,12 @@ import { NuvioApi, authErrorMessage, profileTargetIssue } from "@/lib/nuvio-api"
 import { buildLumioUrl, debridNames, debridUsableBy } from "@/lib/manifest-urls";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
 import {
+  attachBingecatRows,
+  bingecatRows,
+  normaliseBingecatManifestUrl,
+  type BingecatManifest,
+} from "@/lib/bingecat";
+import {
   checkAlldebridKey,
   checkPremiumizeKey,
   type DebridKeyCheck,
@@ -597,6 +603,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [aioMetadataUrl, setAioMetadataUrl] = useState("");
   const [lumioManifestUrl, setLumioManifestUrl] = useState("");
   const [streamFusionManifestUrl, setStreamFusionManifestUrl] = useState("");
+  const [bingecatManifestUrl, setBingecatManifestUrl] = useState("");
   /** Addons français configurés automatiquement, activés par défaut. */
   const [includeLoostream, setIncludeLoostream] = useState(true);
   const [includeFrenchio, setIncludeFrenchio] = useState(true);
@@ -841,10 +848,29 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       // Les visuels « En vedette » de Kaptain sont remplacés sur place tous les
       // quatorze jours : une version par cycle évite que Nuvio resserve l'ancienne
       // affiche depuis son cache d'images.
+      //
+      // Les rangées personnelles de « Pour vous » viennent de Bingecat quand son
+      // manifest est fourni : elles portent l'identifiant d'addon propre à ce
+      // compte, donc elles ne peuvent pas vivre dans le fichier du site.
+      let collectionsToPush = versionSpotlightArt(fullCollections, spotlightArtVersion());
+      const bingecatUrl = normaliseBingecatManifestUrl(bingecatManifestUrl);
+      if (bingecatUrl) {
+        try {
+          const manifestRes = await fetch(bingecatUrl);
+          if (manifestRes.ok) {
+            const manifest = (await manifestRes.json()) as BingecatManifest;
+            collectionsToPush = attachBingecatRows(collectionsToPush, bingecatRows(manifest));
+          }
+        } catch {
+          // Manifest injoignable : le profil part sans les rangées Bingecat,
+          // l'installation de l'addon reste possible.
+        }
+      }
+
       await NuvioApi.pushCollections(
         authRes.token,
         targetProfile.profile_index,
-        versionSpotlightArt(fullCollections, spotlightArtVersion()),
+        collectionsToPush,
       );
 
       setProgressState({
@@ -864,6 +890,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           aioMetadataUrl,
           lumioManifestUrl,
           streamFusionManifestUrl,
+          bingecatManifestUrl,
           profileName: profileName.trim() || "FOCALE",
           loostream: includeLoostream,
           frenchio: includeFrenchio,
@@ -988,6 +1015,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
     ...(includeFrenchio && canUseFrenchio && hasTmdbKey ? ["Frenchio"] : []),
     ...(includeUwuFr && canUseUwuFr && hasTmdbKey ? ["UwU-FR"] : []),
     ...(streamFusionManifestUrl.trim() ? ["StreamFusion"] : []),
+    ...(bingecatManifestUrl.trim() ? ["Bingecat"] : []),
   ];
 
   /** Contenu réellement installé, pour un récapitulatif de fin exact. */
@@ -1440,6 +1468,45 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       )}
                     </div>
                   </GuideField>
+
+                  <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
+                    <div>
+                      <label className="text-sm font-bold text-mist-100 flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-gold-400" />
+                        <span>Bingecat (facultatif)</span>
+                      </label>
+                      <p className="text-xs text-mist-400 mt-1 leading-relaxed">
+                        Remplit les rangées « Pour vous » (recommandations,
+                        « parce que vous avez regardé », nouveautés) à partir de
+                        votre historique. Nuvio et l&apos;instance publique d&apos;AIO
+                        Metadata ne savent pas lire Trakt pour ces rangées : sans
+                        Bingecat, elles restent vides. Créez un compte sur
+                        bingecat.com, configurez votre addon, puis collez son lien de
+                        manifest ci-dessous.
+                      </p>
+                    </div>
+                    <input
+                      type="text"
+                      name="bingecat-manifest"
+                      autoComplete="off"
+                      spellCheck={false}
+                      inputMode="url"
+                      value={bingecatManifestUrl}
+                      onChange={(event) => setBingecatManifestUrl(event.target.value)}
+                      placeholder="https://bingecat.com/stremio/…/manifest.json"
+                      aria-label="Lien de manifest Bingecat"
+                      className="w-full px-3.5 py-2.5 rounded-xl bg-surface border border-surface-border text-mist-100 text-sm placeholder-mist-500 focus:border-gold-500 focus:outline-hidden"
+                    />
+                    <a
+                      href="https://bingecat.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-gold-300 hover:text-gold-200"
+                    >
+                      <ExternalLink className="w-3 h-3" />
+                      <span>Ouvrir Bingecat</span>
+                    </a>
+                  </div>
 
                   <div className="p-4 rounded-2xl bg-surface-elevated/70 border border-surface-border/50 space-y-3">
                     <div>

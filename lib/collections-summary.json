@@ -311,19 +311,9 @@
     "viewMode": "FOLLOW_LAYOUT",
     "pinToTop": true,
     "backdropImageUrl": "",
-    "foldersCount": 7,
-    "sourcesCount": 121,
+    "foldersCount": 6,
+    "sourcesCount": 108,
     "folders": [
-      {
-        "id": "folder-25429024",
-        "title": "Pour vous",
-        "sourcesCount": 13,
-        "sourcesPreview": [
-          "Films recommandés",
-          "Séries recommandées",
-          "Prochains épisodes"
-        ]
-      },
       {
         "id": "folder-9D1C5A0D",
         "title": "Nouveaux films",

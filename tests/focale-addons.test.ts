@@ -60,7 +60,7 @@ describe("splitFocaleAddons", () => {
       ["cinemeta", "comet", "lumio", "opensubtitles", "torrentio"].sort(),
     );
     expect(missing.map((addon) => addon.id).sort()).toEqual(
-      ["frenchio", "loostream", "streamfusion", "uwu-fr", "vf-trailer"].sort(),
+      ["bingecat", "frenchio", "loostream", "streamfusion", "uwu-fr", "vf-trailer"].sort(),
     );
   });
 

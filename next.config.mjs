@@ -16,7 +16,7 @@ const contentSecurityPolicy = [
   // lib/debrid-key-test.ts) et l'instance AIO Metadata, dont la fenêtre de mise
   // à jour recharge puis réenregistre la configuration de l'utilisateur
   // (cf. lib/aio-update.ts).
-  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr https://www.premiumize.me https://aiometadata.elfhosted.com",
+  "connect-src 'self' https://api.nuvio.tv https://api.alldebrid.fr https://www.premiumize.me https://aiometadata.elfhosted.com https://bingecat.com",
   "form-action 'self'",
   "frame-ancestors 'none'",
   "base-uri 'self'",

@@ -18,6 +18,12 @@ import { getStats } from "@/lib/nuvio-data";
 import { NuvioApi, type NuvioAddonInstall } from "@/lib/nuvio-api";
 import { debridUsableBy } from "@/lib/manifest-urls";
 import {
+  attachBingecatRows,
+  bingecatRows,
+  normaliseBingecatManifestUrl,
+  type BingecatManifest,
+} from "@/lib/bingecat";
+import {
   AIO_BASE_URL,
   aioConfigUuid,
   aioLoadErrorMessage,
@@ -385,11 +391,24 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
       // Les visuels « En vedette » changent tous les quinze jours : la version
       // posée sur les affiches évite que Nuvio resserve l'ancienne depuis son
       // cache d'images.
-      await NuvioApi.pushCollections(
-        target.token,
-        target.profileIndex,
-        versionSpotlightArt(collections, spotlightArtVersion()),
-      );
+      //
+      // Les rangées personnelles de « Pour vous » viennent de Bingecat quand son
+      // manifest est fourni : leur identifiant d'addon est propre au compte, donc
+      // elles ne peuvent pas être écrites dans le fichier du site.
+      let collectionsToPush = versionSpotlightArt(collections, spotlightArtVersion());
+      const bingecatUrl = normaliseBingecatManifestUrl(manifestUrls.bingecat ?? "");
+      if (bingecatUrl) {
+        try {
+          const manifestRes = await fetch(bingecatUrl);
+          if (manifestRes.ok) {
+            const manifest = (await manifestRes.json()) as BingecatManifest;
+            collectionsToPush = attachBingecatRows(collectionsToPush, bingecatRows(manifest));
+          }
+        } catch {
+          // Manifest injoignable : les collections partent sans ces rangées.
+        }
+      }
+      await NuvioApi.pushCollections(target.token, target.profileIndex, collectionsToPush);
 
       let installedNow: string[] = [];
       if (selectedIds.length > 0) {
@@ -410,6 +429,7 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
           vfTrailer: selectedIds.includes("vf-trailer"),
           lumioManifestUrl: manifestUrls.lumio,
           streamFusionManifestUrl: manifestUrls.streamfusion,
+          bingecatManifestUrl: manifestUrls.bingecat,
         }).filter((addon: NuvioAddonInstall) =>
           missingAddons.some(
             (catalogueAddon) => selectedIds.includes(catalogueAddon.id) && catalogueAddon.name === addon.name,

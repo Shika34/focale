@@ -106,6 +106,17 @@ export const FOCALE_ADDONS: readonly FocaleAddon[] = [
     needs: { debrid: true, tmdb: true },
   },
   {
+    id: "bingecat",
+    name: "Bingecat",
+    description:
+      "Recommandations personnelles : « Pour vous » se remplit à partir de votre historique Bingecat.",
+    needs: { debrid: false, tmdb: false, manifestUrl: true },
+    manifestLabel: "Lien de manifest Bingecat",
+    manifestHint:
+      "Sur bingecat.com, connectez-vous, configurez votre addon puis copiez son lien de manifest (…/stremio/<identifiant>/manifest.json).",
+    manifestLink: { url: "https://bingecat.com/", label: "Ouvrir Bingecat" },
+  },
+  {
     id: "lumio",
     name: "Lumio",
     description: "Vos sources réglées chez Lumio, avec ses préférences francophones.",

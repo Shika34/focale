@@ -78,6 +78,51 @@ const TRAKT_TUTORIAL: ProviderGuide = {
   note: "Facultatif, et hors assistant : l'assistant ne vous demandera jamais rien pour Trakt, parce que Nuvio l'intègre nativement. Depuis août 2026, Trakt réserve la création d'une application API à ses membres VIP (environ 5 $ par mois), inutile d'y passer : c'est Nuvio qui porte l'intégration, pas ce site.",
 };
 
+const BINGECAT_TUTORIAL: ProviderGuide = {
+  question: "Voulez-vous des rangées « Pour vous » ?",
+  steps: [
+    {
+      title: "Créer un compte Bingecat",
+      detail:
+        "Ouvrez bingecat.com et créez un compte gratuit. Bingecat calcule ses recommandations à partir de l'historique du compte : plus vous marquez de titres comme vus, plus les rangées se remplissent.",
+    },
+    {
+      title: "Configurer l'addon",
+      detail:
+        "Dans Bingecat, ouvrez la configuration de l'addon et activez les rangées personnelles (recommandations, « parce que vous avez regardé », nouveautés, listes). Chaque rangée activée devient une ligne du dossier « Pour vous ».",
+    },
+    {
+      title: "Copier le lien de manifest",
+      detail:
+        "Une fois la configuration enregistrée, Bingecat affiche un lien de manifest propre à votre compte, de la forme https://bingecat.com/stremio/<identifiant>/manifest.json. Copiez-le en entier.",
+    },
+    {
+      title: "Coller le lien dans Focale",
+      detail:
+        "À l'étape 3 de l'assistant, collez-le dans le champ Bingecat. Le même champ existe dans « Mettre à jour mes collections et addons » pour un profil déjà configuré. Le lien reste dans votre navigateur : il sert à lire vos catalogues et à installer l'addon dans le profil.",
+    },
+    {
+      title: "Ce que ça change",
+      detail: "Trois points à connaître :",
+      bullets: [
+        "Le dossier « Pour vous » n'apparaît que si ce lien est fourni : sans lui, la section est retirée du profil plutôt que de rester vide.",
+        "Focale retient quatre paires de rangées film et série, dans l'ordre de votre manifest Bingecat.",
+        "Cette section ne peut pas venir de Trakt : le Trakt de Nuvio reste dans son backend, et l'instance publique d'AIO Metadata n'expose pas de connexion Trakt.",
+      ],
+    },
+    {
+      title: "Si les rangées restent vides",
+      detail:
+        "Bingecat a besoin d'un historique pour recommander : marquez quelques films ou séries comme vus dans Nuvio, puis relancez l'application. Une rangée alimentée par une liste vide reste vide, c'est normal.",
+    },
+  ],
+  signupUrl: "https://bingecat.com/",
+  signupLabel: "Créer mon compte Bingecat",
+  keyUrl: "https://bingecat.com/",
+  keyLabel: "Ouvrir ma configuration Bingecat",
+  note: "Facultatif : sans compte Bingecat, le pack fonctionne à l'identique, sans le dossier « Pour vous ». Bingecat est un service tiers gratuit, indépendant de Nuvio et de Focale.",
+};
+
 const VOSTFR_TUTORIAL: ProviderGuide = {
   question: "Avez-vous activé le VOSTFR dans votre profil Lumio ?",
   steps: [
@@ -154,6 +199,7 @@ const TUTORIALS: { key: string; label: string; guide: ProviderGuide }[] = [
     guide: PROVIDER_GUIDES.streamfusion,
   },
   { key: "trakt", label: "Suivi Trakt (facultatif)", guide: TRAKT_TUTORIAL },
+  { key: "bingecat", label: "Recommandations Bingecat (facultatif)", guide: BINGECAT_TUTORIAL },
 ];
 
 export function TutorialGuide() {
@@ -167,15 +213,16 @@ export function TutorialGuide() {
           Créer les comptes, récupérer les clés, tout brancher.
         </h1>
         <p className="mt-5 text-base leading-relaxed text-mist-300">
-          Douze tutoriels courts, dans l&apos;ordre : le compte Nuvio, les quatre
+          Treize tutoriels courts, dans l&apos;ordre : le compte Nuvio, les quatre
           débrideurs acceptés par l&apos;assistant (TorBox, AllDebrid,
           Real-Debrid et Premiumize), les
           trois clés de métadonnées, le profil Lumio, le réglage VF + VOSTFR,
           puis StreamFusion si vous voulez cet addon en plus. L&apos;assistant
           pose chaque question au bon moment et applique ces réglages à votre
           place : les autres addons français (Loostream, Frenchio, UwU-FR) ne
-          demandent, eux, aucune manipulation. Le dernier, Trakt, est facultatif :
-          il ne concerne que le suivi de ce que vous regardez.
+          demandent, eux, aucune manipulation. Les deux derniers sont
+          facultatifs : Trakt ne concerne que le suivi de ce que vous regardez,
+          et Bingecat fournit les recommandations du dossier « Pour vous ».
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <button
