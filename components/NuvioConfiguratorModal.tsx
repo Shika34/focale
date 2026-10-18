@@ -1478,9 +1478,7 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                       <p className="text-xs text-mist-400 mt-1 leading-relaxed">
                         Remplit les rangées « Pour vous » (recommandations,
                         « parce que vous avez regardé », nouveautés) à partir de
-                        votre historique. Nuvio et l&apos;instance publique d&apos;AIO
-                        Metadata ne savent pas lire Trakt pour ces rangées : sans
-                        Bingecat, elles restent vides. Créez un compte sur
+                        votre historique. Créez un compte sur
                         bingecat.com, configurez votre addon, puis collez son lien de
                         manifest ci-dessous.
                       </p>
