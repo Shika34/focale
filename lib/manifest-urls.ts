@@ -35,6 +35,15 @@ const FRENCHIO_BASE = "https://frenchio.elfhosted.com";
 const UWU_FR_BASE = "https://uwu.creepso.com";
 /** Hôte inscrit dans la configuration UwU-FR (l'addon le réutilise pour ses liens). */
 const UWU_FR_HOST = "uwu.creepso.com";
+/**
+ * Sous-titres français et anglais, 10 par langue au maximum.
+ * L'instance officielle OpenSubtitles v3 renvoie toutes les langues : sans
+ * plafond, une seule piste française se noie sous des centaines de lignes
+ * anglaises. Le préfixe du chemin est un identifiant au hasard côté addon : une
+ * valeur fixe suffit, la configuration étant la même pour tous les profils.
+ */
+const SUBSENSE_BASE = "https://subsense.nepiraw.com";
+const SUBSENSE_PROFILE_PREFIX = "focale01";
 /** Bandes-annonces VF (Allociné, YouTube, TMDB) : configuration base64url dans le chemin. */
 const VF_TRAILER_BASE = "https://vf-trailer-off.vercel.app";
 
@@ -276,6 +285,17 @@ export function buildVfTrailerUrl(tmdbApiKey: string | undefined, pseudo: string
     pseudo: pseudo.trim().slice(0, 40) || "Focale",
     tmdbKey,
   })}/manifest.json`;
+}
+
+/**
+ * Manifest SubSense : sous-titres français d'abord, anglais en secours, dix par
+ * langue. L'instance officielle OpenSubtitles v3 renvoie toutes les langues
+ * sans plafond ; celle-ci garde une liste courte et lisible.
+ */
+export function buildSubSenseUrl(): string {
+  return `${SUBSENSE_BASE}/${SUBSENSE_PROFILE_PREFIX}-${encodeURIComponent(
+    JSON.stringify({ languages: ["fr", "en"], maxSubtitles: 10 }),
+  )}/manifest.json`;
 }
 
 /** Manifest Torrentio avec les débrideurs renseignés et le filtre de langue. */

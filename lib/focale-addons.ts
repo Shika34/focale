@@ -64,6 +64,14 @@ export const FOCALE_ADDONS: readonly FocaleAddon[] = [
     needs: { debrid: false, tmdb: false },
   },
   {
+    id: "subsense",
+    name: "SubSense",
+    host: "subsense.nepiraw.com",
+    description:
+      "Sous-titres français d'abord, anglais en secours, dix par langue : la liste reste courte au lieu des centaines de pistes d'OpenSubtitles.",
+    needs: { debrid: false, tmdb: false },
+  },
+  {
     id: "torrentio",
     name: "Torrentio",
     host: "torrentio.strem.fun",

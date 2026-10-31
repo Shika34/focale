@@ -7,6 +7,7 @@ import {
   buildLumioUrl,
   buildProvidedManifestUrl,
   buildStreamFusionUrl,
+  buildSubSenseUrl,
   buildTorrentioUrl,
   buildUwuFrUrl,
   buildVfTrailerUrl,
@@ -80,6 +81,22 @@ describe("debridEntriesFor / debridUsableBy", () => {
     expect(debridUsableBy(realDebridOnly, "uwu-fr")).toBe(false);
     expect(debridUsableBy(BOTH_KEYS, "uwu-fr")).toBe(true);
     expect(debridUsableBy({}, "frenchio")).toBe(false);
+  });
+});
+
+describe("buildSubSenseUrl", () => {
+  it("plafonne les sous-titres à dix par langue, français d'abord", () => {
+    const url = buildSubSenseUrl();
+    const config = JSON.parse(
+      decodeURIComponent(url.split("/").at(-2)?.split("-").slice(1).join("-") ?? ""),
+    ) as { languages: string[]; maxSubtitles: number };
+
+    expect(url.startsWith("https://subsense.nepiraw.com/")).toBe(true);
+    expect(config).toEqual({ languages: ["fr", "en"], maxSubtitles: 10 });
+  });
+
+  it("garde une URL stable d'un appel à l'autre", () => {
+    expect(buildSubSenseUrl()).toBe(buildSubSenseUrl());
   });
 });
 

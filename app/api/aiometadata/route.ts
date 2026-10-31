@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import configTemplate from "@/public/aiometadata-config-fr.json";
 
+import { normalizeTmdbKey } from "@/lib/tmdb-key";
+
 /**
  * Crée une configuration AIO Metadata sur l'instance publique à partir de la
  * configuration FR du site, en y injectant les clés de l'utilisateur.
@@ -70,7 +72,12 @@ export async function POST(request: Request) {
     );
   }
 
-  const tmdbApiKey = readKey(body.tmdbApiKey);
+  // Le jeton d'accès en lecture (v4, ~200 caractères) est plus long que la clé
+  // v3 et ne serait pas reconnu comme une clé : on en extrait la clé v3 avant
+  // de mesurer. Un type inattendu reste refusé par `readKey`.
+  const tmdbRaw =
+    typeof body.tmdbApiKey === "string" ? normalizeTmdbKey(body.tmdbApiKey) : body.tmdbApiKey;
+  const tmdbApiKey = readKey(tmdbRaw);
   const tvdbApiKey = readKey(body.tvdbApiKey);
   const mdblistApiKey = readKey(body.mdblistApiKey);
   if (tmdbApiKey === null || tvdbApiKey === null || mdblistApiKey === null) {

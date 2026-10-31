@@ -32,6 +32,7 @@ import {
   type AioConfig,
 } from "@/lib/aio-update";
 import { spotlightArtVersion, versionSpotlightArt } from "@/lib/spotlight-art";
+import { preflightManifests } from "@/lib/manifest-preflight";
 import {
   COLLECTIONS_UPDATE_SOURCE,
   findProfileByName,
@@ -111,6 +112,8 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
   const [debridKey, setDebridKey] = useState("");
   const [tmdbKey, setTmdbKey] = useState("");
   const [installedNames, setInstalledNames] = useState<string[]>([]);
+  /** Addons cochés dont le manifest n'a pas répondu : installés nulle part. */
+  const [skippedNames, setSkippedNames] = useState<string[]>([]);
   /** Identifiant de la configuration AIO Metadata installée, s'il y en a une. */
   const [aioUuid, setAioUuid] = useState<string | null>(null);
   const [aioPassword, setAioPassword] = useState("");
@@ -368,6 +371,7 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
 
     setErrorMessage("");
     setViewState("updating");
+    setSkippedNames([]);
 
     try {
       setProgressState({
@@ -436,8 +440,14 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
           ),
         );
 
-        await NuvioApi.installAddons(target.token, target.profileIndex, addons);
-        installedNow = addons.map((addon: NuvioAddonInstall) => addon.name);
+        // Un manifest muet n'est pas installé : dans le profil il ne donnerait
+        // ni source ni rangée, et l'accueil garderait une entrée morte.
+        const preflight = await preflightManifests(addons);
+        if (preflight.ready.length > 0) {
+          await NuvioApi.installAddons(target.token, target.profileIndex, preflight.ready);
+        }
+        installedNow = preflight.ready.map((addon: NuvioAddonInstall) => addon.name);
+        setSkippedNames(preflight.failed.map((addon) => `${addon.name} (${addon.reason})`));
       }
 
       setInstalledNames(installedNow);
@@ -946,6 +956,13 @@ export function CollectionsUpdateModal({ isOpen, onClose }: CollectionsUpdateMod
                     ? `, plus ${installedNames.length} addon${installedNames.length > 1 ? "s" : ""} : ${installedNames.join(", ")}.`
                     : ", sans nouvel addon : le pack était déjà complet."}
                 </p>
+                {skippedNames.length > 0 && (
+                  <p className="text-xs text-mist-400 mt-2 max-w-md mx-auto leading-relaxed">
+                    Non installé, manifest indisponible :{" "}
+                    {skippedNames.join(", ")}. Recochez l&apos;addon et relancez
+                    la mise à jour quand il sera de nouveau en ligne.
+                  </p>
+                )}
               </div>
 
               <div className="p-4 rounded-2xl bg-surface-elevated/80 border border-surface-border text-xs text-mist-300 text-left space-y-2.5 max-w-md mx-auto">
