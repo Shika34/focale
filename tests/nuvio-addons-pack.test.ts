@@ -22,7 +22,14 @@ function names(keys: Parameters<typeof NuvioApi.buildAddonsList>[0], manifests =
 
 describe("NuvioApi.buildAddonsList", () => {
   it("garde toujours les addons essentiels du pack", () => {
-    expect(names(NO_KEYS)).toEqual(["Cinemeta", "OpenSubtitles v3", "AIO Metadata", "Torrentio", "Comet"]);
+    expect(names(NO_KEYS)).toEqual([
+      "Cinemeta",
+      "OpenSubtitles v3",
+      "SubSense",
+      "AIO Metadata",
+      "Torrentio",
+      "Comet",
+    ]);
   });
 
   it("ajoute Loostream et VF Trailer quand la clé TMDB est fournie", () => {

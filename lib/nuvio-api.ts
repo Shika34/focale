@@ -17,6 +17,7 @@ import {
   buildStreamFusionUrl,
   buildTorrentioUrl,
   buildCometUrl,
+  buildSubSenseUrl,
   buildLoostreamUrl,
   buildFrenchioUrl,
   buildUwuFrUrl,
@@ -25,6 +26,8 @@ import {
   debridNames,
 } from "./manifest-urls";
 import { normaliseBingecatManifestUrl } from "./bingecat";
+import type { AddonSnapshotRow } from "./addons-backup";
+import { normalizeTmdbKey } from "./tmdb-key";
 
 const SUPABASE_BASE = "https://api.nuvio.tv";
 const SUPABASE_ANON_KEY =
@@ -522,7 +525,9 @@ export const NuvioApi = {
       if (clean) entries.push({ provider, credential_json: { api_key: clean } });
     };
 
-    add(PROVIDER_CREDENTIAL_IDS.tmdb, keys.tmdbApiKey);
+    // Jeton v4 accepté : sa clé v3 (champ `aud`) est celle qu'attendent l'API
+    // Nuvio et les addons.
+    add(PROVIDER_CREDENTIAL_IDS.tmdb, normalizeTmdbKey(keys.tmdbApiKey));
     add(PROVIDER_CREDENTIAL_IDS.mdblist, keys.mdblistApiKey);
     add(PROVIDER_CREDENTIAL_IDS.torbox, keys.torboxApiKey);
     add(PROVIDER_CREDENTIAL_IDS.premiumize, keys.premiumizeApiKey);
@@ -701,23 +706,63 @@ export const NuvioApi = {
   },
 
   /**
+   * Liste les addons d'un profil avec leur état complet (activé ou non, ordre
+   * d'affichage) : c'est la forme qui sert de sauvegarde avant écriture, et
+   * celle que `restoreAddons` remet en place.
+   */
+  async getAddonsSnapshot(token: string, profileId: number): Promise<AddonSnapshotRow[]> {
+    assertProfileIndex(profileId);
+    const res = await fetchWithRetry(
+      `${SUPABASE_BASE}/rest/v1/addons?select=name,url,enabled,sort_order&profile_id=eq.${profileId}&order=sort_order`,
+      { method: "GET", headers: authHeaders(token) }
+    );
+    if (!res.ok) return [];
+    const data = await res.json().catch(() => []);
+    if (!Array.isArray(data)) return [];
+
+    return data
+      .map(
+        (
+          row: { name?: unknown; url?: unknown; enabled?: unknown; sort_order?: unknown },
+          index: number
+        ): AddonSnapshotRow => ({
+          name: String(row.name || "Addon"),
+          url: String(row.url || ""),
+          enabled: row.enabled !== false,
+          sort_order: typeof row.sort_order === "number" ? row.sort_order : index,
+        })
+      )
+      .filter((addon: AddonSnapshotRow) => addon.url);
+  },
+
+  /**
    * Installe / fusionne une liste d'addons sur un profil via l'API officielle
    * (remplacement atomique du profil, en conservant les addons non gérés).
+   *
+   * Rend aussi la liste telle qu'elle était avant l'écriture : l'appelant peut
+   * la proposer en sauvegarde et la remettre en place avec `restoreAddons`.
    */
   async installAddons(
     token: string,
     profileId: number,
     addons: { name: string; url: string }[]
-  ): Promise<number> {
+  ): Promise<{ installed: number; previous: AddonSnapshotRow[] }> {
     assertProfileIndex(profileId);
     const incoming = addons.filter((a) => a.url?.trim());
-    const existing = await this.getAddons(token, profileId).catch(() => [] as NuvioAddonInstall[]);
+    const previous = await this.getAddonsSnapshot(token, profileId).catch(
+      () => [] as AddonSnapshotRow[]
+    );
     const incomingUrls = new Set(incoming.map((addon) => addon.url));
-    const extras = existing.filter((addon) => !incomingUrls.has(addon.url));
-    const merged = [...incoming, ...extras].map((addon, i) => ({
+    const extras = previous.filter((addon) => !incomingUrls.has(addon.url));
+    // Les addons du pack passent devant et sont activés ; ceux qui étaient déjà
+    // là gardent leur état et leur lien.
+    const merged = [
+      ...incoming.map((addon) => ({ name: addon.name, url: addon.url, enabled: true })),
+      ...extras.map((addon) => ({ name: addon.name, url: addon.url, enabled: addon.enabled })),
+    ].map((addon, i) => ({
       name: addon.name,
       url: addon.url,
-      enabled: true,
+      enabled: addon.enabled,
       sort_order: i,
     }));
 
@@ -726,7 +771,7 @@ export const NuvioApi = {
         p_profile_id: profileId,
         p_addons: merged,
       });
-      return incoming.length;
+      return { installed: incoming.length, previous };
     } catch (pushErr) {
       console.warn("sync_push_addons a échoué, repli sur insertion unitaire:", pushErr);
       const ownerId = await this.getOwnerId(token);
@@ -756,8 +801,34 @@ export const NuvioApi = {
         }
       }
 
-      return installedCount;
+      return { installed: installedCount, previous };
     }
+  },
+
+  /**
+   * Remet la liste d'addons d'avant une installation : mêmes noms, mêmes
+   * liens, activés ou non, même ordre. Remplacement atomique du profil.
+   */
+  async restoreAddons(
+    token: string,
+    profileId: number,
+    rows: readonly AddonSnapshotRow[]
+  ): Promise<number> {
+    assertProfileIndex(profileId);
+    const payload = rows
+      .filter((row) => row.url?.trim())
+      .map((row, i) => ({
+        name: row.name,
+        url: row.url,
+        enabled: row.enabled !== false,
+        sort_order: i,
+      }));
+
+    await rpc("/rest/v1/rpc/sync_push_addons", token, {
+      p_profile_id: profileId,
+      p_addons: payload,
+    });
+    return payload.length;
   },
 
   /**
@@ -797,18 +868,26 @@ export const NuvioApi = {
     const streamFusionUrl = buildStreamFusionUrl(manifests.streamFusionManifestUrl);
     const bingecatUrl = normaliseBingecatManifestUrl(manifests.bingecatManifestUrl ?? "");
     const profileName = manifests.profileName ?? "";
+    // Jeton v4 accepté : sa clé v3 (champ `aud`) est la seule que lisent les
+    // addons.
+    const tmdbKey = normalizeTmdbKey(keys.tmdbApiKey);
     const loostreamUrl =
-      manifests.loostream === false ? "" : buildLoostreamUrl(keys.tmdbApiKey, profileName);
+      manifests.loostream === false ? "" : buildLoostreamUrl(tmdbKey, profileName);
     const frenchioUrl =
-      manifests.frenchio === false ? "" : buildFrenchioUrl(debridKeys, keys.tmdbApiKey);
+      manifests.frenchio === false ? "" : buildFrenchioUrl(debridKeys, tmdbKey);
     const uwuFrUrl =
-      manifests.uwuFr === true ? buildUwuFrUrl(debridKeys, keys.tmdbApiKey) : "";
+      manifests.uwuFr === true ? buildUwuFrUrl(debridKeys, tmdbKey) : "";
     const vfTrailerUrl =
-      manifests.vfTrailer === false ? "" : buildVfTrailerUrl(keys.tmdbApiKey, profileName);
+      manifests.vfTrailer === false ? "" : buildVfTrailerUrl(tmdbKey, profileName);
 
     const addons: NuvioAddonInstall[] = [
       { name: "Cinemeta", url: "https://v3-cinemeta.strem.io/manifest.json", note: "Métadonnées officielles" },
       { name: "OpenSubtitles v3", url: "https://opensubtitles-v3.strem.io/manifest.json", note: "Sous-titres français officiels" },
+      {
+        name: "SubSense",
+        url: buildSubSenseUrl(),
+        note: "Sous-titres français, anglais en secours",
+      },
       {
         name: "AIO Metadata",
         url: aioMetadataUrl || "https://aiometadata.elfhosted.com/manifest.json",

@@ -14,6 +14,7 @@ import {
 const installedPack = [
   { name: "Cinemeta", url: "https://v3-cinemeta.strem.io/manifest.json" },
   { name: "OpenSubtitles v3", url: "https://opensubtitles-v3.strem.io/manifest.json" },
+  { name: "SubSense", url: "https://subsense.nepiraw.com/focale01-x/manifest.json" },
   { name: "AIO Metadata", url: "https://aiometadata.elfhosted.com/mon-identifiant/manifest.json" },
   { name: "Torrentio", url: "https://torrentio.strem.fun/realdebrid=UNE_AUTRE_CLE|sort=quality/manifest.json" },
   { name: "Comet", url: "https://comet.elfhosted.com/ANCIENNE_CLE/manifest.json" },
@@ -57,7 +58,7 @@ describe("splitFocaleAddons", () => {
     const { installed, missing } = splitFocaleAddons(installedPack);
 
     expect(installed.map((addon) => addon.id).sort()).toEqual(
-      ["cinemeta", "comet", "lumio", "opensubtitles", "torrentio"].sort(),
+      ["cinemeta", "comet", "lumio", "opensubtitles", "subsense", "torrentio"].sort(),
     );
     expect(missing.map((addon) => addon.id).sort()).toEqual(
       ["bingecat", "frenchio", "loostream", "streamfusion", "uwu-fr", "vf-trailer"].sort(),

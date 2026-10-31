@@ -55,8 +55,9 @@ export const PROVIDER_GUIDES: Record<
         detail: "Indiquez un usage personnel (par exemple « Nuvio, usage personnel »), acceptez les conditions puis validez le formulaire.",
       },
       {
-        title: "Copier la clé v3",
-        detail: "Copiez la valeur affichée à côté de « Clé API (v3 auth) » et collez-la dans le champ ci-dessous.",
+        title: "Copier la clé",
+        detail:
+          "Copiez la valeur affichée à côté de « Clé API (v3 auth) », ou le « Jeton d'accès en lecture » (v4) affiché plus bas : les deux sont acceptés, l'assistant y retrouve la même clé.",
       },
     ],
     signupUrl: "https://www.themoviedb.org/signup",

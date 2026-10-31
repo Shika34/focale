@@ -38,6 +38,9 @@ import {
   type DebridKeyCheck,
 } from "@/lib/debrid-key-test";
 import { PROVIDER_GUIDES, type ProviderGuide } from "@/lib/provider-guides";
+import { preflightManifests } from "@/lib/manifest-preflight";
+import type { AddonsSnapshot } from "@/lib/addons-backup";
+import { AddonsUndoPanel } from "@/components/AddonsUndoPanel";
 
 interface NuvioConfiguratorModalProps {
   isOpen: boolean;
@@ -642,6 +645,16 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
   const [profileName, setProfileName] = useState("FOCALE");
   const [targetProfileName, setTargetProfileName] = useState("FOCALE");
   const [settingsNotice, setSettingsNotice] = useState("");
+  /**
+   * Addons d'avant l'installation, avec la session qui permet de les remettre
+   * en place. Renseigné dès qu'une écriture a eu lieu, effacé à la remise en
+   * état ou à la fermeture de l'assistant.
+   */
+  const [undoState, setUndoState] = useState<{
+    token: string;
+    profileIndex: number;
+    snapshot: AddonsSnapshot;
+  } | null>(null);
   /** Informations manquantes à l'étape 2, pour la demande de confirmation. */
   const [missingKeysWarning, setMissingKeysWarning] = useState<{
     debrid: boolean;
@@ -874,9 +887,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
       );
 
       setProgressState({
-        step: "Installation des addons sélectionnés",
-        percent: 82,
-        details: "Installation de vos addons personnalisés, de Torrentio et Comet avec votre débrideur…",
+        step: "Préparation des addons",
+        percent: 76,
+        details: "Vos addons personnalisés, Torrentio et Comet avec votre débrideur…",
       });
 
       const addons = NuvioApi.buildAddonsList(
@@ -898,9 +911,55 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
           vfTrailer: includeVfTrailer,
         },
       );
-      await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, addons);
+      // Un manifest muet n'est pas installé : dans le profil il ne produirait
+      // ni source ni rangée, et l'accueil Nuvio garderait une entrée morte,
+      // impossible à distinguer d'une panne passagère.
+      setProgressState({
+        step: "Vérification des addons",
+        percent: 80,
+        details: "Chaque manifest est appelé une fois : ceux qui répondent mal sont écartés.",
+      });
+      const preflight = await preflightManifests(addons);
+      setProgressState({
+        step: "Installation des addons",
+        percent: 86,
+        details: `${preflight.ready.length} addon${preflight.ready.length > 1 ? "s" : ""} à installer dans le profil « ${targetProfile.name} »…`,
+      });
+      // Liste d'avant l'écriture : relevée ici, avant tout envoi, pour que la
+      // remise en état reste possible même si l'installation échoue à
+      // mi-chemin. Gardée telle quelle si une première tentative a déjà écrit
+      // dans ce profil : la bonne référence reste la liste d'origine.
+      const previous = await NuvioApi.getAddonsSnapshot(
+        authRes.token,
+        targetProfile.profile_index,
+      ).catch(() => []);
+      if (previous.length > 0) {
+        setUndoState((current) =>
+          current && current.profileIndex === targetProfile.profile_index
+            ? current
+            : {
+                token: authRes.token,
+                profileIndex: targetProfile.profile_index,
+                snapshot: {
+                  profileName: targetProfile.name || profileName.trim() || "FOCALE",
+                  takenAt: new Date().toISOString(),
+                  addons: previous,
+                },
+              },
+        );
+      }
+
+      await NuvioApi.installAddons(authRes.token, targetProfile.profile_index, preflight.ready);
 
       const noticeParts: string[] = [];
+
+      if (preflight.failed.length > 0) {
+        noticeParts.push(
+          `${formatFrenchList(
+            preflight.failed.map((addon) => `${addon.name} (${addon.reason})`),
+          )} n'a pas été installé : son manifest est indisponible (raison entre parenthèses). Relancez la mise à jour depuis la fenêtre « Mettre à jour mes collections » quand il sera de nouveau en ligne.`,
+        );
+      }
 
       // Nuvio Desktop n'utilise pas de clé TMDB intégrée : sans `tmdb_api_key`
       // propre au profil, ses catalogues TMDB (la majorité des collections)
@@ -1658,8 +1717,9 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                     </div>
                     <div>
                       • <span className="text-mist-300">Addons</span> : Cinemeta,
-                      OpenSubtitles v3, AIO Metadata, Torrentio et Comet, réglés sur
-                      votre débrideur
+                      OpenSubtitles v3, SubSense (sous-titres français),
+                      AIO Metadata, Torrentio et Comet, réglés sur votre
+                      débrideur
                       {frenchAddons.length > 0
                         ? `, plus ${formatFrenchList(frenchAddons)}.`
                         : "."}
@@ -1780,6 +1840,21 @@ export function NuvioConfiguratorModal({ isOpen, onClose }: NuvioConfiguratorMod
                   <li>Tout est prêt, bon visionnage !</li>
                 </ol>
               </div>
+
+              {undoState && (
+                <div className="max-w-md mx-auto w-full">
+                  <AddonsUndoPanel
+                    snapshot={undoState.snapshot}
+                    onRestore={async () => {
+                      await NuvioApi.restoreAddons(
+                        undoState.token,
+                        undoState.profileIndex,
+                        undoState.snapshot.addons,
+                      );
+                    }}
+                  />
+                </div>
+              )}
 
               <p className="text-[11px] leading-relaxed text-mist-500 max-w-md mx-auto">
                 Suivi Trakt (facultatif) : Nuvio est déjà réglé pour s&apos;y
